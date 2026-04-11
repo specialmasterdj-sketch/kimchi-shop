@@ -1,5 +1,5 @@
 // KIMCHI Shop - Final Curated Catalog (Top ~1000)
-// Generated: 2026-04-11T10:52:16.786Z
+// Generated: 2026-04-11T12:52:33.126Z
 // Total: 752 products
 
 const CATEGORIES = {
@@ -1520,7 +1520,7 @@ const PRODUCTS = [
     "size": "16.91 OZ",
     "category": "beverages",
     "price": 4.99,
-    "image": "images_clean/rhee/09875K.jpg",
+    "image": "images/official/resized/09875K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1531,7 +1531,7 @@ const PRODUCTS = [
     "size": "1.5 L",
     "category": "beverages",
     "price": 4.99,
-    "image": "images_clean/rhee/09880K.jpg",
+    "image": "images/official/resized/09880K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1586,7 +1586,7 @@ const PRODUCTS = [
     "size": "1.5 L",
     "category": "beverages",
     "price": 9.99,
-    "image": "images_clean/rhee/10001K.jpg",
+    "image": "images/official/resized/10001K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1597,7 +1597,7 @@ const PRODUCTS = [
     "size": "8.2 OZ",
     "category": "beverages",
     "price": 9.99,
-    "image": "images_clean/rhee/10003K.jpg",
+    "image": "images/official/resized/10003K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1696,7 +1696,7 @@ const PRODUCTS = [
     "size": "6.76 OZ",
     "category": "beverages",
     "price": 4.99,
-    "image": "images_clean/rhee/10660K.jpg",
+    "image": "images/official/resized/10660K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1718,7 +1718,7 @@ const PRODUCTS = [
     "size": "6.76 OZ",
     "category": "beverages",
     "price": 4.99,
-    "image": "images_clean/rhee/10663K.jpg",
+    "image": "images/official/resized/10663K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3434,7 +3434,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 5.49,
-    "image": "images_clean/choripdong/HD3078.jpg",
+    "image": "images/official/resized/HD3078.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3445,7 +3445,7 @@ const PRODUCTS = [
     "size": "0.14 OZ",
     "category": "seaweed",
     "price": 9.99,
-    "image": "images_clean/rhee/image133.jpg",
+    "image": "images/official/resized/07196K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3522,7 +3522,7 @@ const PRODUCTS = [
     "size": "5g",
     "category": "seaweed",
     "price": 3.99,
-    "image": "images_clean/choripdong/HD3054.jpg",
+    "image": "images/official/resized/HD3054.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3577,7 +3577,7 @@ const PRODUCTS = [
     "size": "0.17 OZ",
     "category": "seaweed",
     "price": 6.99,
-    "image": "images_clean/rhee/07129K.jpg",
+    "image": "images/official/resized/07129K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3588,7 +3588,7 @@ const PRODUCTS = [
     "size": "2.47 OZ",
     "category": "seaweed",
     "price": 6.99,
-    "image": "images_clean/rhee/07133K.jpg",
+    "image": "images/official/resized/07133K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4193,7 +4193,7 @@ const PRODUCTS = [
     "size": "10.8 OZ",
     "category": "prepared",
     "price": 1.99,
-    "image": "images_clean/rhee/06510J.jpg",
+    "image": "images/official/resized/06510J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4204,7 +4204,7 @@ const PRODUCTS = [
     "size": "10.8 OZ",
     "category": "prepared",
     "price": 2.49,
-    "image": "images_clean/rhee/image151.jpg",
+    "image": "images/official/resized/06511J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4215,7 +4215,7 @@ const PRODUCTS = [
     "size": "10.8 OZ",
     "category": "prepared",
     "price": 1.99,
-    "image": "images_clean/rhee/image152.jpg",
+    "image": "images/official/resized/06512J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4644,7 +4644,7 @@ const PRODUCTS = [
     "size": "4.76 OZ",
     "category": "snacks",
     "price": 3.99,
-    "image": "images_clean/rhee/21284K.jpg",
+    "image": "images/official/resized/21284K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4787,7 +4787,7 @@ const PRODUCTS = [
     "size": "3.17 OZ",
     "category": "snacks",
     "price": 1.49,
-    "image": "images_clean/rhee/09213K.jpg",
+    "image": "images/official/resized/09213K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -5117,7 +5117,7 @@ const PRODUCTS = [
     "size": "",
     "category": "frozen",
     "price": 7.99,
-    "image": "images_clean/choripdong/IB1019.jpg",
+    "image": "images/official/resized/IB1019.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5150,7 +5150,7 @@ const PRODUCTS = [
     "size": "",
     "category": "frozen",
     "price": 7.99,
-    "image": "images_clean/choripdong/IB1013.jpg",
+    "image": "images/official/resized/IB1013.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5161,7 +5161,7 @@ const PRODUCTS = [
     "size": "",
     "category": "frozen",
     "price": 7.99,
-    "image": "images_clean/choripdong/IB1016.jpg",
+    "image": "images/official/resized/IB1016.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5172,7 +5172,7 @@ const PRODUCTS = [
     "size": "",
     "category": "frozen",
     "price": 7.99,
-    "image": "images_clean/choripdong/IB1018.jpg",
+    "image": "images/official/resized/IB1018.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5183,7 +5183,7 @@ const PRODUCTS = [
     "size": "",
     "category": "frozen",
     "price": 7.99,
-    "image": "images_clean/choripdong/IB1017.jpg",
+    "image": "images/official/resized/IB1017.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5436,7 +5436,7 @@ const PRODUCTS = [
     "size": "",
     "category": "frozen",
     "price": 7.99,
-    "image": "images_clean/choripdong/IB1015.jpg",
+    "image": "images/official/resized/IB1015.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5535,7 +5535,7 @@ const PRODUCTS = [
     "size": "190ML",
     "category": "frozen",
     "price": 8.49,
-    "image": "images_clean/choripdong/LS2027.jpg",
+    "image": "images/official/resized/LS2027.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5546,7 +5546,7 @@ const PRODUCTS = [
     "size": "190ML",
     "category": "frozen",
     "price": 8.49,
-    "image": "images_clean/choripdong/LS2028.jpg",
+    "image": "images/official/resized/LS2028.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5634,7 +5634,7 @@ const PRODUCTS = [
     "size": "5.5 LB",
     "category": "baking",
     "price": 5.99,
-    "image": "images_clean/rhee/image19.jpg",
+    "image": "images/official/resized/02057K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -5645,7 +5645,7 @@ const PRODUCTS = [
     "size": "5.5 LB",
     "category": "baking",
     "price": 6.99,
-    "image": "images_clean/rhee/image20.jpg",
+    "image": "images/official/resized/02054K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -6536,7 +6536,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 3.49,
-    "image": "images_clean/rhee/05015K.jpg",
+    "image": "images/official/resized/05015K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -6580,7 +6580,7 @@ const PRODUCTS = [
     "size": "4 LB",
     "category": "seasonings",
     "price": 10.99,
-    "image": "images_clean/rhee/05382K.jpg",
+    "image": "images/official/resized/05382K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7053,7 +7053,7 @@ const PRODUCTS = [
     "size": "12 OZ",
     "category": "canned",
     "price": 9.49,
-    "image": "images_clean/rhee/19127D.jpg",
+    "image": "images/official/resized/19127D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7086,7 +7086,7 @@ const PRODUCTS = [
     "size": "12 OZ",
     "category": "canned",
     "price": 4.49,
-    "image": "images_clean/rhee/19363K.jpg",
+    "image": "images/official/resized/19363K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7427,7 +7427,7 @@ const PRODUCTS = [
     "size": "",
     "category": "canned",
     "price": 7.99,
-    "image": "images_clean/rhee/19601K.jpg",
+    "image": "images/official/resized/19601K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7438,7 +7438,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "canned",
     "price": 7.99,
-    "image": "images_clean/rhee/19610K.jpg",
+    "image": "images/official/resized/19610K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7702,7 +7702,7 @@ const PRODUCTS = [
     "size": "2.4 OZ",
     "category": "nuts",
     "price": 7.99,
-    "image": "images_clean/rhee/image129.jpg",
+    "image": "images/official/resized/21206K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7779,7 +7779,7 @@ const PRODUCTS = [
     "size": "30 OZ",
     "category": "nuts",
     "price": 6.49,
-    "image": "images_clean/rhee/01221D.jpg",
+    "image": "images/official/resized/01221D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7867,7 +7867,7 @@ const PRODUCTS = [
     "size": "4 LB",
     "category": "nuts",
     "price": 6.49,
-    "image": "images_clean/rhee/02170D.jpg",
+    "image": "images/official/resized/02170D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -8241,7 +8241,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seafood",
     "price": 8.49,
-    "image": "",
+    "image": "images/official/resized/8501743NS.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -8252,7 +8252,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seafood",
     "price": 3.49,
-    "image": "",
+    "image": "images/official/resized/18072.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -8263,7 +8263,7 @@ const PRODUCTS = [
     "size": "300G",
     "category": "seafood",
     "price": 5.99,
-    "image": "",
+    "image": "images/official/resized/436327.jpg",
     "vendor": "Namdaemun"
   },
   {
@@ -8373,7 +8373,7 @@ const PRODUCTS = [
     "size": "200ML",
     "category": "dairy",
     "price": 7.99,
-    "image": "images_clean/twobros/products/11001K.jpg",
+    "image": "images/official/resized/11001K.jpg",
     "vendor": "Two Bros Food"
   },
   {
@@ -8395,7 +8395,7 @@ const PRODUCTS = [
     "size": "200ML",
     "category": "dairy",
     "price": 7.99,
-    "image": "",
+    "image": "images/official/resized/11003K.jpg",
     "vendor": "Two Bros Food"
   }
 ];
