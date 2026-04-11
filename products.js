@@ -3,10 +3,10 @@
 // Total: 752 products
 
 const CATEGORIES = {
-  "ramen": {
-    "en": "Ramen & Noodles",
-    "kr": "라면 & 면류",
-    "es": "Fideos y Ramen",
+  "ramyun": {
+    "en": "Ramyun",
+    "kr": "라면",
+    "es": "Ramen",
     "icon": "🍜"
   },
   "snacks": {
@@ -21,11 +21,29 @@ const CATEGORIES = {
     "es": "Bebidas",
     "icon": "🧃"
   },
+  "tea": {
+    "en": "Tea & Coffee",
+    "kr": "차 & 커피",
+    "es": "Té y Café",
+    "icon": "🍵"
+  },
+  "kimchi": {
+    "en": "Kimchi & Banchan",
+    "kr": "김치 & 반찬",
+    "es": "Kimchi y Banchan",
+    "icon": "🥬"
+  },
   "frozen": {
     "en": "Frozen",
     "kr": "냉동식품",
     "es": "Congelados",
     "icon": "❄️"
+  },
+  "ready": {
+    "en": "Ready to Cook",
+    "kr": "즉석 & 간편식",
+    "es": "Listos para Cocinar",
+    "icon": "🍱"
   },
   "rice": {
     "en": "Rice & Grains",
@@ -33,101 +51,47 @@ const CATEGORIES = {
     "es": "Arroz y Granos",
     "icon": "🍚"
   },
-  "sauces": {
-    "en": "Sauces",
-    "kr": "소스 & 양념",
-    "es": "Salsas",
-    "icon": "🫙"
+  "dairy": {
+    "en": "Dairy & Soy",
+    "kr": "유제품 & 두부",
+    "es": "Lácteos y Soya",
+    "icon": "🥛"
+  },
+  "meat": {
+    "en": "Meat & Seafood",
+    "kr": "육류 & 해산물",
+    "es": "Carnes y Mariscos",
+    "icon": "🥩"
+  },
+  "produce": {
+    "en": "Fruits & Vegetables",
+    "kr": "과일 & 채소",
+    "es": "Frutas y Verduras",
+    "icon": "🥬"
+  },
+  "pantry": {
+    "en": "Pantry",
+    "kr": "식료품",
+    "es": "Despensa",
+    "icon": "🏪"
   },
   "seasonings": {
-    "en": "Seasonings",
-    "kr": "조미료",
+    "en": "Seasonings & Condiments",
+    "kr": "양념 & 조미료",
     "es": "Condimentos",
     "icon": "🧂"
   },
-    "tea": {
-    "en": "Tea & Coffee",
-    "kr": "차 & 커피",
-    "es": "Te y Cafe",
-    "icon": "🍵"
-  },
   "seaweed": {
-    "en": "Seaweed",
-    "kr": "김 & 해조류",
-    "es": "Algas",
+    "en": "Seaweed & Dried",
+    "kr": "김 & 건어물",
+    "es": "Algas y Secos",
     "icon": "🌿"
   },
-  "kimchi": {
-    "en": "Kimchi & Banchan",
-    "kr": "김치 & 반찬",
-    "es": "Kimchi",
-    "icon": "🥬"
-  },
-  "prepared": {
-    "en": "Prepared Foods",
-    "kr": "즉석식품",
-    "es": "Preparados",
-    "icon": "🍱"
-  },
-  "canned": {
-    "en": "Canned Goods",
-    "kr": "통조림",
-    "es": "Enlatados",
-    "icon": "🥫"
-  },
-  "nuts": {
-    "en": "Nuts & Seeds",
-    "kr": "견과류",
-    "es": "Nueces",
-    "icon": "🥜"
-  },
-  "dried": {
-    "en": "Dried Goods",
-    "kr": "건조식품",
-    "es": "Secos",
-    "icon": "📦"
-  },
-  "baking": {
-    "en": "Baking",
-    "kr": "베이킹",
-    "es": "Hornear",
-    "icon": "🧁"
-  },
-  "meat": {
-    "en": "Meat",
-    "kr": "육류",
-    "es": "Carnes",
-    "icon": "🥩"
-  },
-  "seafood": {
-    "en": "Seafood",
-    "kr": "해산물",
-    "es": "Mariscos",
-    "icon": "🦐"
-  },
-  "tofu": {
-    "en": "Tofu & Soy",
-    "kr": "두부",
-    "es": "Tofu",
-    "icon": "🧊"
-  },
-  "produce": {
-    "en": "Produce",
-    "kr": "채소 & 과일",
-    "es": "Verduras",
-    "icon": "🥬"
-  },
-  "dairy": {
-    "en": "Dairy",
-    "kr": "유제품",
-    "es": "Lácteos",
-    "icon": "🥛"
-  },
-  "other": {
-    "en": "Other",
-    "kr": "기타",
-    "es": "Otros",
-    "icon": "🛒"
+  "bakery": {
+    "en": "Bakery & Bread",
+    "kr": "베이커리 & 빵",
+    "es": "Panadería",
+    "icon": "🍞"
   }
 };
 
@@ -138,7 +102,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN (4P)",
     "nameKr": "",
     "size": "4.2 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 5.99,
     "image": "images/official/resized/08180K.jpg",
     "vendor": "Rhee Bros"
@@ -149,7 +113,7 @@ const PRODUCTS = [
     "name": "CHAPAGETTI NOODLES (4P)",
     "nameKr": "",
     "size": "4.5 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 5.99,
     "image": "images/official/resized/08348K.jpg",
     "vendor": "Rhee Bros"
@@ -160,7 +124,7 @@ const PRODUCTS = [
     "name": "CARBO BULDAK RAMEN (5P)",
     "nameKr": "",
     "size": "4.58 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08479K.jpg",
     "vendor": "Rhee Bros"
@@ -171,7 +135,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN BLACK (CUP 6P)",
     "nameKr": "",
     "size": "3.5 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 13.49,
     "image": "images/official/resized/08193K.jpg",
     "vendor": "Rhee Bros"
@@ -182,7 +146,7 @@ const PRODUCTS = [
     "name": "CARBO BULDAK RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.82 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08484K.jpg",
     "vendor": "Rhee Bros"
@@ -193,7 +157,7 @@ const PRODUCTS = [
     "name": "HOT & SPICY RAMEN (BOWL)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08213K.jpg",
     "vendor": "Rhee Bros"
@@ -204,7 +168,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN (10P)",
     "nameKr": "",
     "size": "4.2 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 14.49,
     "image": "images/official/resized/08147K.jpg",
     "vendor": "Rhee Bros"
@@ -215,7 +179,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.64 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 10.99,
     "image": "images/official/resized/08220K.jpg",
     "vendor": "Rhee Bros"
@@ -226,7 +190,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN (BOWL 12P)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 3.49,
     "image": "images/official/resized/08212K.jpg",
     "vendor": "Rhee Bros"
@@ -237,7 +201,7 @@ const PRODUCTS = [
     "name": "CARBO BULDAK RAMEN (BIG BOWL)",
     "nameKr": "",
     "size": "3.74 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 4.49,
     "image": "images/official/resized/08480K.jpg",
     "vendor": "Rhee Bros"
@@ -248,7 +212,7 @@ const PRODUCTS = [
     "name": "BULDAK RAMEN (BIG BOWL)",
     "nameKr": "",
     "size": "3.7 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 3.49,
     "image": "images/official/resized/08158K.jpg",
     "vendor": "Rhee Bros"
@@ -259,7 +223,7 @@ const PRODUCTS = [
     "name": "SHRIMP RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.3 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 1.99,
     "image": "images/official/resized/08225K.jpg",
     "vendor": "Rhee Bros"
@@ -270,7 +234,7 @@ const PRODUCTS = [
     "name": "SOON RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.64 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 1.99,
     "image": "images/official/resized/08286K.jpg",
     "vendor": "Rhee Bros"
@@ -281,7 +245,7 @@ const PRODUCTS = [
     "name": "NEOGURI UDON (CUP 6P)",
     "nameKr": "",
     "size": "2.64 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.49,
     "image": "images/official/resized/08801K.jpg",
     "vendor": "Rhee Bros"
@@ -292,7 +256,7 @@ const PRODUCTS = [
     "name": "BULDAK RAMEN (5P)",
     "nameKr": "",
     "size": "4.9 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08155K.jpg",
     "vendor": "Rhee Bros"
@@ -303,7 +267,7 @@ const PRODUCTS = [
     "name": "SOON RAMEN (4P)",
     "nameKr": "",
     "size": "3.95 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 5.99,
     "image": "images/official/resized/08229K.jpg",
     "vendor": "Rhee Bros"
@@ -314,7 +278,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN (BIG BOWL 6P)",
     "nameKr": "",
     "size": "4.02 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 3.49,
     "image": "images/official/resized/08358K.jpg",
     "vendor": "Rhee Bros"
@@ -325,7 +289,7 @@ const PRODUCTS = [
     "name": "BULDAK RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.47 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.99,
     "image": "images/official/resized/08157K.jpg",
     "vendor": "Rhee Bros"
@@ -336,7 +300,7 @@ const PRODUCTS = [
     "name": "SWEET POTATO NOODLES (JAPCHAE 1.5#)",
     "nameKr": "",
     "size": "1.5 LB",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.79,
     "image": "images/official/assi_08027K.jpg",
     "vendor": "Rhee Bros"
@@ -347,7 +311,7 @@ const PRODUCTS = [
     "name": "BEEF RAMEN (BOWL)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08226K.jpg",
     "vendor": "Rhee Bros"
@@ -358,7 +322,7 @@ const PRODUCTS = [
     "name": "SHRIMP RAMEN (BOWL MILD)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08294K.jpg",
     "vendor": "Rhee Bros"
@@ -369,7 +333,7 @@ const PRODUCTS = [
     "name": "CARBONARA BULDAK TOPOKKI (BIG BOWL)",
     "nameKr": "",
     "size": "6.31 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 4.49,
     "image": "images/official/resized/08500K.jpg",
     "vendor": "Rhee Bros"
@@ -380,7 +344,7 @@ const PRODUCTS = [
     "name": "BIBIMMEN RAMEN (5P)",
     "nameKr": "",
     "size": "4.58 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.99,
     "image": "images/official/paldo_08722K.jpg",
     "vendor": "Rhee Bros"
@@ -391,7 +355,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN BLACK (4P)",
     "nameKr": "",
     "size": "4.2 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 13.49,
     "image": "images/official/resized/08344K.jpg",
     "vendor": "Rhee Bros"
@@ -402,7 +366,7 @@ const PRODUCTS = [
     "name": "KIMCHI RAMEN (BOWL)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08224K.jpg",
     "vendor": "Rhee Bros"
@@ -413,7 +377,7 @@ const PRODUCTS = [
     "name": "CHICKEN RAMEN (BOWL SPICY)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08290K.jpg",
     "vendor": "Rhee Bros"
@@ -424,7 +388,7 @@ const PRODUCTS = [
     "name": "SHRIMP RAMEN (BOWL SPICY)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08291K.jpg",
     "vendor": "Rhee Bros"
@@ -435,7 +399,7 @@ const PRODUCTS = [
     "name": "LOBSTER RAMEN (BOWL)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 3.49,
     "image": "images/official/resized/08295K.jpg",
     "vendor": "Rhee Bros"
@@ -446,7 +410,7 @@ const PRODUCTS = [
     "name": "CHICKEN RAMEN (BOWL MILD)",
     "nameKr": "",
     "size": "3.03 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/resized/08293K.jpg",
     "vendor": "Rhee Bros"
@@ -457,7 +421,7 @@ const PRODUCTS = [
     "name": "BULDAK RAMEN 2X SPICY (CUP 6P)",
     "nameKr": "",
     "size": "2.46 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.49,
     "image": "images/official/resized/08478K.jpg",
     "vendor": "Rhee Bros"
@@ -468,7 +432,7 @@ const PRODUCTS = [
     "name": "CHEESE BULDAK RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.46 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08485K.jpg",
     "vendor": "Rhee Bros"
@@ -479,7 +443,7 @@ const PRODUCTS = [
     "name": "JIN RAMEN CUP (MILD)",
     "nameKr": "",
     "size": "2.29 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 4.99,
     "image": "images/official/jl_nongshim_08325K.jpg",
     "vendor": "Rhee Bros"
@@ -490,7 +454,7 @@ const PRODUCTS = [
     "name": "2X SPICY BULDAK RAMEN (5P)",
     "nameKr": "",
     "size": "4.9 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.49,
     "image": "images/official/resized/08465K.jpg",
     "vendor": "Rhee Bros"
@@ -501,7 +465,7 @@ const PRODUCTS = [
     "name": "JIN RAMEN CUP (SPICY)",
     "nameKr": "",
     "size": "2.29 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 5.49,
     "image": "images/official/jl_ottogi_08324K.jpg",
     "vendor": "Rhee Bros"
@@ -512,7 +476,7 @@ const PRODUCTS = [
     "name": "SAMYANG RAMEN ORIGINAL (4P)",
     "nameKr": "",
     "size": "4.23 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08455K.jpg",
     "vendor": "Rhee Bros"
@@ -523,7 +487,7 @@ const PRODUCTS = [
     "name": "QUATTRO CHEESE BULDAK RAMEN (5P)",
     "nameKr": "",
     "size": "5.11 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08482K.jpg",
     "vendor": "Rhee Bros"
@@ -534,7 +498,7 @@ const PRODUCTS = [
     "name": "HABANERO LIME BULDAK RAMEN (5P)",
     "nameKr": "",
     "size": "4.76 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/resized/08483K.jpg",
     "vendor": "Rhee Bros"
@@ -545,7 +509,7 @@ const PRODUCTS = [
     "name": "SHIN RAMEN GOLD (4P)",
     "nameKr": "",
     "size": "4.58 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 5.99,
     "image": "images/official/resized/08387K.jpg",
     "vendor": "Rhee Bros"
@@ -556,7 +520,7 @@ const PRODUCTS = [
     "name": "LOBSTER RAMEN",
     "nameKr": "",
     "size": "4.23 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.99,
     "image": "images/official/paldo_08454K.jpg",
     "vendor": "Rhee Bros"
@@ -567,7 +531,7 @@ const PRODUCTS = [
     "name": "CHEESE TOPOKKI",
     "nameKr": "",
     "size": "8.47 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 8.49,
     "image": "images/official/dongwon_08526K.jpg",
     "vendor": "Rhee Bros"
@@ -578,7 +542,7 @@ const PRODUCTS = [
     "name": "HOT & SPICY TOPOKKI",
     "nameKr": "",
     "size": "8.47 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 2.99,
     "image": "images/official/dongwon_08527K.jpg",
     "vendor": "Rhee Bros"
@@ -589,7 +553,7 @@ const PRODUCTS = [
     "name": "RAPOKKI",
     "nameKr": "",
     "size": "11.53 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 3.99,
     "image": "images/official/dongwon_08545K.jpg",
     "vendor": "Rhee Bros"
@@ -600,7 +564,7 @@ const PRODUCTS = [
     "name": "SEAFOOD RAMEN (KING CUP)",
     "nameKr": "",
     "size": "3.88 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 3.49,
     "image": "images/official/paldo_08636K.jpg",
     "vendor": "Rhee Bros"
@@ -611,7 +575,7 @@ const PRODUCTS = [
     "name": "LOBSTER RAMEN (KING CUP)",
     "nameKr": "",
     "size": "3.88 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 3.49,
     "image": "images/official/paldo_08637K.jpg",
     "vendor": "Rhee Bros"
@@ -622,7 +586,7 @@ const PRODUCTS = [
     "name": "CRUSHED RAMEN & MOZZARELLA CORN DOGS",
     "nameKr": "",
     "size": "12.34 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.49,
     "image": "images/official/assi_29097K.jpg",
     "vendor": "Rhee Bros"
@@ -633,7 +597,7 @@ const PRODUCTS = [
     "name": "JAPCHAE NOODLES (L)",
     "nameKr": "",
     "size": "4 LB",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.79,
     "image": "images/official/assi_08021K.jpg",
     "vendor": "Rhee Bros"
@@ -644,7 +608,7 @@ const PRODUCTS = [
     "name": "SAMYANG RAMEN (CUP 6P)",
     "nameKr": "",
     "size": "2.29 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.99,
     "image": "images/official/resized/08038K.jpg",
     "vendor": "Rhee Bros"
@@ -655,7 +619,7 @@ const PRODUCTS = [
     "name": "CHICKEN NOODLES (CUP)",
     "nameKr": "",
     "size": "2.47 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 9.99,
     "image": "images/official/jl_nongshim_08088T.jpg",
     "vendor": "Rhee Bros"
@@ -666,7 +630,7 @@ const PRODUCTS = [
     "name": "KATSUO UDON NOODLE BOWL",
     "nameKr": "",
     "size": "8.3 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.99,
     "image": "images/official/assi_08090K.jpg",
     "vendor": "Rhee Bros"
@@ -677,7 +641,7 @@ const PRODUCTS = [
     "name": "INSTANT JJAJANG NOODLE BOWL",
     "nameKr": "",
     "size": "8.2 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/assi_08094K.jpg",
     "vendor": "Rhee Bros"
@@ -699,7 +663,7 @@ const PRODUCTS = [
     "name": "FANCY VARIETY RICE",
     "nameKr": "",
     "size": "15 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 11.99,
     "image": "images/official/fix_00030D.jpg",
     "vendor": "Rhee Bros"
@@ -710,7 +674,7 @@ const PRODUCTS = [
     "name": "FANCY VARIETY RICE",
     "nameKr": "",
     "size": "40 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 11.99,
     "image": "images/official/fix_00033D.jpg",
     "vendor": "Rhee Bros"
@@ -743,7 +707,7 @@ const PRODUCTS = [
     "name": "COOKED RICE",
     "nameKr": "",
     "size": "7.4 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 13.99,
     "image": "images/official/jl_ottogi_01177K.jpg",
     "vendor": "Rhee Bros"
@@ -787,7 +751,7 @@ const PRODUCTS = [
     "name": "EXTRA FANCY RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/fix_00004D.jpg",
     "vendor": "Rhee Bros"
@@ -798,7 +762,7 @@ const PRODUCTS = [
     "name": "EXTRA FANCY SWEET RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/fix_00014D.jpg",
     "vendor": "Rhee Bros"
@@ -809,7 +773,7 @@ const PRODUCTS = [
     "name": "SWEET RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 9.99,
     "image": "images/official/fix_00016D.jpg",
     "vendor": "Rhee Bros"
@@ -820,7 +784,7 @@ const PRODUCTS = [
     "name": "PREMIUM GRADE BROWN RICE",
     "nameKr": "",
     "size": "2 LB",
-    "category": "rice",
+    "category": "beverages",
     "price": 21.99,
     "image": "images/official/fix_00024D.jpg",
     "vendor": "Rhee Bros"
@@ -831,7 +795,7 @@ const PRODUCTS = [
     "name": "FANCY VARIETY RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 11.99,
     "image": "images/official/fix_00035D.jpg",
     "vendor": "Rhee Bros"
@@ -842,7 +806,7 @@ const PRODUCTS = [
     "name": "PREMIUM GRADE SUSHI RICE",
     "nameKr": "",
     "size": "2 LB",
-    "category": "rice",
+    "category": "beverages",
     "price": 21.99,
     "image": "images/official/fix_00036D.jpg",
     "vendor": "Rhee Bros"
@@ -864,7 +828,7 @@ const PRODUCTS = [
     "name": "WILD SWEET RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 4.49,
     "image": "images/official/fix_00093D.jpg",
     "vendor": "Rhee Bros"
@@ -875,7 +839,7 @@ const PRODUCTS = [
     "name": "THAI SWEET RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/jl_ottogi_01020D.jpg",
     "vendor": "Rhee Bros"
@@ -897,7 +861,7 @@ const PRODUCTS = [
     "name": "THAI JASMINE RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 19.49,
     "image": "images/official/fix_01033D.jpg",
     "vendor": "Rhee Bros"
@@ -908,7 +872,7 @@ const PRODUCTS = [
     "name": "BROWN JASMINE RICE",
     "nameKr": "",
     "size": "5 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 11.49,
     "image": "images/official/fix_01048D.jpg",
     "vendor": "Rhee Bros"
@@ -919,7 +883,7 @@ const PRODUCTS = [
     "name": "COOKED BROWN RICE",
     "nameKr": "",
     "size": "6.87 OZ",
-    "category": "rice",
+    "category": "pantry",
     "price": 9.99,
     "image": "images/official/dongwon_01194K.jpg",
     "vendor": "Rhee Bros"
@@ -930,7 +894,7 @@ const PRODUCTS = [
     "name": "BROWN RICE HOT PEPPER PASTE (2.2#)",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "rice",
+    "category": "seasonings",
     "price": 9.99,
     "image": "images/official/jl_daesang_03422K.jpg",
     "vendor": "Rhee Bros"
@@ -941,7 +905,7 @@ const PRODUCTS = [
     "name": "BROWN RICE HOT PEPPER PASTE (6.6#)",
     "nameKr": "",
     "size": "6.6 LB",
-    "category": "rice",
+    "category": "seasonings",
     "price": 9.99,
     "image": "images/official/03423K.jpg",
     "vendor": "Rhee Bros"
@@ -1018,7 +982,7 @@ const PRODUCTS = [
     "name": "Cooked Black Rice 6/3/210g",
     "nameKr": "동원)쎈쿡 건강한 흑미밥 6/3/210g",
     "size": "",
-    "category": "rice",
+    "category": "pantry",
     "price": 4.99,
     "image": "images/official/jl_ottogi_KD1073.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1073,7 +1037,7 @@ const PRODUCTS = [
     "name": "EXTRA FANCY RICE",
     "nameKr": "",
     "size": "10 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/hankukmi_00003D.jpg",
     "vendor": "Rhee Bros"
@@ -1084,7 +1048,7 @@ const PRODUCTS = [
     "name": "EXTRA FANCY BROWN RICE",
     "nameKr": "",
     "size": "15 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 11.99,
     "image": "images/official/rheechun_00012D.jpg",
     "vendor": "Rhee Bros"
@@ -1106,7 +1070,7 @@ const PRODUCTS = [
     "name": "WILD SWEET RICE",
     "nameKr": "",
     "size": "50 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 4.49,
     "image": "images/official/hankukmi_00091D.jpg",
     "vendor": "Rhee Bros"
@@ -1117,7 +1081,7 @@ const PRODUCTS = [
     "name": "THAI JASMINE RICE",
     "nameKr": "",
     "size": "50 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 19.49,
     "image": "images/official/threeelephants_01030D.jpg",
     "vendor": "Rhee Bros"
@@ -1139,7 +1103,7 @@ const PRODUCTS = [
     "name": "BROWN JASMINE RICE",
     "nameKr": "",
     "size": "15 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 11.49,
     "image": "images/official/threeelephants_01047D.jpg",
     "vendor": "Rhee Bros"
@@ -1150,7 +1114,7 @@ const PRODUCTS = [
     "name": "BROKEN JASMINE RICE",
     "nameKr": "",
     "size": "20 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 17.49,
     "image": "images/official/threeelephants_01078D.jpg",
     "vendor": "Rhee Bros"
@@ -1161,7 +1125,7 @@ const PRODUCTS = [
     "name": "JASMINE RICE",
     "nameKr": "",
     "size": "20 LB",
-    "category": "rice",
+    "category": "pantry",
     "price": 17.49,
     "image": "images/official/final_01079V.jpg",
     "vendor": "Rhee Bros"
@@ -1194,7 +1158,7 @@ const PRODUCTS = [
     "name": "Wang Black Bean 16/2 LBS / 왕 서리태 16/2 LBS",
     "nameKr": "왕 서리태 16/2 LBS",
     "size": "",
-    "category": "dried",
+    "category": "pantry",
     "price": 7.49,
     "image": "images/official/jl_ottogi_41481.jpg",
     "vendor": "Wang Globalnet"
@@ -1205,7 +1169,7 @@ const PRODUCTS = [
     "name": "Wang Sweet Rice Flour 8/3 Lb (1.36 kg) / 왕 찹쌀가루 8/3 Lb (1.36 kg)",
     "nameKr": "왕 찹쌀가루 8/3 Lb (1.36 kg)",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 9.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -1227,7 +1191,7 @@ const PRODUCTS = [
     "name": "Wang Korean Soybean Paste (컵) 20/1.1lb 500 / 왕 한식콩된장(컵) 20/1.1lb 500",
     "nameKr": "왕 한식콩된장(컵) 20/1.1lb 500",
     "size": "",
-    "category": "sauces",
+    "category": "dairy",
     "price": 7.49,
     "image": "images/official/jl_daesang_10833.jpg",
     "vendor": "Wang Globalnet"
@@ -1249,7 +1213,7 @@ const PRODUCTS = [
     "name": "STRAWBERRY FLAVORED MILK",
     "nameKr": "",
     "size": "6.8 OZ",
-    "category": "beverages",
+    "category": "produce",
     "price": 7.99,
     "image": "images/official/BINGGRAE_11025K.jpg",
     "vendor": "Rhee Bros"
@@ -1262,7 +1226,7 @@ const PRODUCTS = [
     "name": "COFFEE FLAVORED MILK",
     "nameKr": "",
     "size": "6.8 OZ",
-    "category": "beverages",
+    "category": "pantry",
     "price": 7.99,
     "image": "images/official/BINGGRAE_10999K.jpg",
     "vendor": "Rhee Bros"
@@ -1405,7 +1369,7 @@ const PRODUCTS = [
     "name": "ORGANIC COCONUT MILK (14 OZ)",
     "nameKr": "",
     "size": "14 OZ",
-    "category": "beverages",
+    "category": "pantry",
     "price": 6.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -1768,7 +1732,7 @@ const PRODUCTS = [
     "name": "Soy Bean Paste 30.84 LB",
     "nameKr": "신송)재래된장 30.84 LB",
     "size": "",
-    "category": "sauces",
+    "category": "dairy",
     "price": 6.99,
     "image": "",
     "vendor": "Choripdong / Seoul Trading"
@@ -1779,7 +1743,7 @@ const PRODUCTS = [
     "name": "COOKING WINE (XL)",
     "nameKr": "",
     "size": "1.8 L",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.99,
     "image": "images/official/lotte_03119K.jpg",
     "vendor": "Rhee Bros"
@@ -1790,7 +1754,7 @@ const PRODUCTS = [
     "name": "SWEET CHILI SAUCE FOR CHICKEN (XL)",
     "nameKr": "",
     "size": "8.8 LB",
-    "category": "sauces",
+    "category": "meat",
     "price": 6.49,
     "image": "images/official/jl_daesang_06633T.jpg",
     "vendor": "Rhee Bros"
@@ -1801,7 +1765,7 @@ const PRODUCTS = [
     "name": "CHICKEN SWEET CHILI SAUCE (L)",
     "nameKr": "",
     "size": "32 OZ",
-    "category": "sauces",
+    "category": "meat",
     "price": 4.99,
     "image": "images/official/06675T.jpg",
     "vendor": "Rhee Bros"
@@ -1812,7 +1776,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR BEEF (L)",
     "nameKr": "",
     "size": "1.85 LB",
-    "category": "sauces",
+    "category": "beverages",
     "price": 3.49,
     "image": "images/official/assi_05217K.jpg",
     "vendor": "Rhee Bros"
@@ -1823,7 +1787,7 @@ const PRODUCTS = [
     "name": "Mirim(Cooking Wine) 6/1.8 l(2kg)",
     "nameKr": "롯데)미림  6/1.8 L",
     "size": "1.8 L",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.99,
     "image": "images/official/lotte_KL1003.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1834,7 +1798,7 @@ const PRODUCTS = [
     "name": "Cheese Rice cake 16/240g",
     "nameKr": "동원)고소치즈 떡볶이 16/240g",
     "size": "240g",
-    "category": "prepared",
+    "category": "ready",
     "price": 6.49,
     "image": "images/official/jl_ottogi_KD0114.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1845,7 +1809,7 @@ const PRODUCTS = [
     "name": "FISH SAUCE (S)",
     "nameKr": "",
     "size": "10.14 OZ",
-    "category": "sauces",
+    "category": "meat",
     "price": 3.49,
     "image": "images/official/03315T.jpg",
     "vendor": "Rhee Bros"
@@ -1856,7 +1820,7 @@ const PRODUCTS = [
     "name": "SEASONING SOY SAUCE (L)",
     "nameKr": "",
     "size": "27 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "images/official/jl_daesang_03313C.jpg",
     "vendor": "Rhee Bros"
@@ -1867,7 +1831,7 @@ const PRODUCTS = [
     "name": "Hot Spicy Rice Cake 16/120g",
     "nameKr": "동원)더 매운 떡볶이(컵) 16/120g",
     "size": "120g",
-    "category": "prepared",
+    "category": "ready",
     "price": 15.49,
     "image": "images/official/jl_daesang_KD0115.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1878,7 +1842,7 @@ const PRODUCTS = [
     "name": "SOY SAUCE JIN GOLD S (1.7L)",
     "nameKr": "",
     "size": "1.7 L",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.49,
     "image": "images/official/jl_ottogi_03016K.jpg",
     "vendor": "Rhee Bros"
@@ -1889,7 +1853,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR RIBS (L)",
     "nameKr": "",
     "size": "1.85 LB",
-    "category": "sauces",
+    "category": "beverages",
     "price": 6.49,
     "image": "images/official/assi_05211K.jpg",
     "vendor": "Rhee Bros"
@@ -1900,7 +1864,7 @@ const PRODUCTS = [
     "name": "Spicy & Sweet Rice Cake 16/240g",
     "nameKr": "동원)매콤달콤 떡볶이 16/240g",
     "size": "240g",
-    "category": "rice",
+    "category": "ready",
     "price": 4.49,
     "image": "images/official/jl_lotte_KD0112.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1911,7 +1875,7 @@ const PRODUCTS = [
     "name": "Cheese Rice cake 16/120g",
     "nameKr": "동원)고소치즈 떡볶이(컵) 16/120g",
     "size": "120g",
-    "category": "prepared",
+    "category": "ready",
     "price": 4.49,
     "image": "images/official/DW_KD0113.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1922,7 +1886,7 @@ const PRODUCTS = [
     "name": "Hot Spicy Rice Cake 16/240g",
     "nameKr": "동원)더 매운 떡볶이 16/240g",
     "size": "240g",
-    "category": "prepared",
+    "category": "ready",
     "price": 15.49,
     "image": "images/official/DW_KD0116.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1933,7 +1897,7 @@ const PRODUCTS = [
     "name": "Spicy & Sweet Rice Cake 16/120g",
     "nameKr": "동원)매콤달콤 떡볶이(컵) 16/120g",
     "size": "120g",
-    "category": "rice",
+    "category": "ready",
     "price": 4.49,
     "image": "images/official/DW_KD0111.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1955,7 +1919,7 @@ const PRODUCTS = [
     "name": "DRIED RICE CAKE WITH CREAM SAUCE(TOPOKKI) 32/4.06oz",
     "nameKr": "무꼬뭐꼬)뽀로로떡볶이컵(크림맛) 32/115g",
     "size": "",
-    "category": "sauces",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/jl_lotte_KS1115.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1966,7 +1930,7 @@ const PRODUCTS = [
     "name": "SOY SAUCE JIN GOLD-S (860ML)",
     "nameKr": "",
     "size": "29.08 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.49,
     "image": "images/official/03018K.jpg",
     "vendor": "Rhee Bros"
@@ -1977,7 +1941,7 @@ const PRODUCTS = [
     "name": "BREWED SOY SAUCE PREMIUM 501 (860ML)",
     "nameKr": "",
     "size": "29 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 10.49,
     "image": "images/official/03026K.jpg",
     "vendor": "Rhee Bros"
@@ -1988,7 +1952,7 @@ const PRODUCTS = [
     "name": "NATURALLY BREWED SOY SAUCE 501 (1.7L)",
     "nameKr": "",
     "size": "1.7 L",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 10.49,
     "image": "images/official/jl_daesang_03027K.jpg",
     "vendor": "Rhee Bros"
@@ -1999,7 +1963,7 @@ const PRODUCTS = [
     "name": "SOY SAUCE FOR SOUP (860ML)",
     "nameKr": "",
     "size": "29.08 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 9.49,
     "image": "images/official/jl_daesang_03028K.jpg",
     "vendor": "Rhee Bros"
@@ -2010,7 +1974,7 @@ const PRODUCTS = [
     "name": "SOY SAUCE JIN S (860ML)",
     "nameKr": "",
     "size": "29 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.49,
     "image": "images/official/03034K.jpg",
     "vendor": "Rhee Bros"
@@ -2021,7 +1985,7 @@ const PRODUCTS = [
     "name": "ORGANIC TAMARI SOY SAUCE (GF)",
     "nameKr": "",
     "size": "20 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -2032,7 +1996,7 @@ const PRODUCTS = [
     "name": "COOKING WINE (WHITE 25.4 OZ)",
     "nameKr": "",
     "size": "25.3 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.99,
     "image": "images/official/jl_ottogi_03104C.jpg",
     "vendor": "Rhee Bros"
@@ -2043,7 +2007,7 @@ const PRODUCTS = [
     "name": "SOY SAUCE JIN GOLD F3 (860ML)",
     "nameKr": "",
     "size": "29 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.49,
     "image": "images/official/03145K.jpg",
     "vendor": "Rhee Bros"
@@ -2054,7 +2018,7 @@ const PRODUCTS = [
     "name": "SPICY SOY SAUCE (SEASONING & STIRFRY)",
     "nameKr": "",
     "size": "15.8 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 7.49,
     "image": "images/official/jl_daesang_03195K.jpg",
     "vendor": "Rhee Bros"
@@ -2065,7 +2029,7 @@ const PRODUCTS = [
     "name": "ORGANIC SOY SAUCE",
     "nameKr": "",
     "size": "10 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -2076,7 +2040,7 @@ const PRODUCTS = [
     "name": "MUSHROOM SOY SAUCE",
     "nameKr": "",
     "size": "23.5 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -2087,7 +2051,7 @@ const PRODUCTS = [
     "name": "FISH SAUCE (L)",
     "nameKr": "",
     "size": "152 OZ",
-    "category": "sauces",
+    "category": "meat",
     "price": 3.49,
     "image": "images/official/03316T.jpg",
     "vendor": "Rhee Bros"
@@ -2098,7 +2062,7 @@ const PRODUCTS = [
     "name": "PREMIUM ANCHOVY SAUCE (BLUE)",
     "nameKr": "",
     "size": "23.6 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 10.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -2109,7 +2073,7 @@ const PRODUCTS = [
     "name": "SESAME CHILI HOT OIL (6 OZ)",
     "nameKr": "",
     "size": "6 OZ",
-    "category": "sauces",
+    "category": "pantry",
     "price": 14.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -2120,7 +2084,7 @@ const PRODUCTS = [
     "name": "HOT PEPPER PASTE (2.2#)",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 9.99,
     "image": "images/official/03404K.jpg",
     "vendor": "Rhee Bros"
@@ -2131,7 +2095,7 @@ const PRODUCTS = [
     "name": "HOT PEPPER PASTE (1.1#)",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/03405K.jpg",
     "vendor": "Rhee Bros"
@@ -2142,7 +2106,7 @@ const PRODUCTS = [
     "name": "HOT PEPPER PASTE (LESS HOT 1.1#)",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 9.99,
     "image": "images/official/03416K.jpg",
     "vendor": "Rhee Bros"
@@ -2153,7 +2117,7 @@ const PRODUCTS = [
     "name": "HOT PEPPER PASTE (1.1# JAR)",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/assi_03432K.jpg",
     "vendor": "Rhee Bros"
@@ -2164,7 +2128,7 @@ const PRODUCTS = [
     "name": "PLUM HOT PEPPER PASTE (4.4#)",
     "nameKr": "",
     "size": "4.4 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/03444K.jpg",
     "vendor": "Rhee Bros"
@@ -2175,7 +2139,7 @@ const PRODUCTS = [
     "name": "BLACK BEAN SAUCE (JJAJANG 1.1# JAR)",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/assi_03470K.jpg",
     "vendor": "Rhee Bros"
@@ -2186,7 +2150,7 @@ const PRODUCTS = [
     "name": "BLACK BEAN SAUCE (JJAJANG 2.2# JAR)",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/assi_03471K.jpg",
     "vendor": "Rhee Bros"
@@ -2197,7 +2161,7 @@ const PRODUCTS = [
     "name": "K-BBQ DIPPING SAUCE (ORIGINAL)",
     "nameKr": "",
     "size": "11.99 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "images/official/assi_03524K.jpg",
     "vendor": "Rhee Bros"
@@ -2208,7 +2172,7 @@ const PRODUCTS = [
     "name": "BULDAK HOT CHICKEN FLAVOR SAUCE",
     "nameKr": "",
     "size": "7.05 OZ",
-    "category": "sauces",
+    "category": "ramyun",
     "price": 6.49,
     "image": "images/official/resized/03540K.jpg",
     "vendor": "Rhee Bros"
@@ -2219,7 +2183,7 @@ const PRODUCTS = [
     "name": "CARBO HOT CHICKEN FLAVOR SAUCE",
     "nameKr": "",
     "size": "7.05 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/resized/03542K.jpg",
     "vendor": "Rhee Bros"
@@ -2241,7 +2205,7 @@ const PRODUCTS = [
     "name": "TUNA EXTRACT SAUCE",
     "nameKr": "",
     "size": "16.9 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 14.99,
     "image": "images/official/dongwon_03803K.jpg",
     "vendor": "Rhee Bros"
@@ -2252,7 +2216,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR BEEF (L)",
     "nameKr": "",
     "size": "31.7 OZ",
-    "category": "sauces",
+    "category": "beverages",
     "price": 3.49,
     "image": "images/official/jl_daesang_05197K.jpg",
     "vendor": "Rhee Bros"
@@ -2263,7 +2227,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR RIBS (L)",
     "nameKr": "",
     "size": "31.7 OZ",
-    "category": "sauces",
+    "category": "beverages",
     "price": 6.49,
     "image": "images/official/jl_ottogi_05198K.jpg",
     "vendor": "Rhee Bros"
@@ -2274,7 +2238,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR PORK (L)",
     "nameKr": "",
     "size": "1.85 LB",
-    "category": "sauces",
+    "category": "beverages",
     "price": 3.49,
     "image": "images/official/assi_05222K.jpg",
     "vendor": "Rhee Bros"
@@ -2296,7 +2260,7 @@ const PRODUCTS = [
     "name": "CHICKEN SWEET CHILI SAUCE (S)",
     "nameKr": "",
     "size": "12 OZ",
-    "category": "sauces",
+    "category": "meat",
     "price": 4.99,
     "image": "images/official/06680T.jpg",
     "vendor": "Rhee Bros"
@@ -2307,7 +2271,7 @@ const PRODUCTS = [
     "name": "OYSTER SAUCE (S)",
     "nameKr": "",
     "size": "7.5 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -2318,7 +2282,7 @@ const PRODUCTS = [
     "name": "RICE CAKE 12/1KG",
     "nameKr": "한상)떡볶이떡 12/1KG",
     "size": "1KG",
-    "category": "prepared",
+    "category": "ready",
     "price": 4.49,
     "image": "images/official/jl_ottogi_EH1107.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2329,7 +2293,7 @@ const PRODUCTS = [
     "name": "RICE CAKE 12/2.2LB(1KG)",
     "nameKr": "한상)떡국떡 12/2.2LB(1KG)",
     "size": "2.2LB",
-    "category": "prepared",
+    "category": "ready",
     "price": 4.49,
     "image": "",
     "vendor": "Choripdong / Seoul Trading"
@@ -2340,7 +2304,7 @@ const PRODUCTS = [
     "name": "RICE CAKE 20/500g",
     "nameKr": "한상)떡볶이떡 20/500g",
     "size": "500g",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/jl_ottogi_EH1105.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2351,7 +2315,7 @@ const PRODUCTS = [
     "name": "RICE CAKE 20/1.1LB(500g)",
     "nameKr": "한상)떡국떡 20/1.1LB(500g)",
     "size": "1.1LB",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.49,
     "image": "",
     "vendor": "Choripdong / Seoul Trading"
@@ -2362,7 +2326,7 @@ const PRODUCTS = [
     "name": "Beef Broth Soup 24/1.21LB",
     "nameKr": "한상)설렁탕 24/1.21LB",
     "size": "",
-    "category": "prepared",
+    "category": "ready",
     "price": 6.49,
     "image": "images/official/jl_daesang_EH1053.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2373,7 +2337,7 @@ const PRODUCTS = [
     "name": "Kimchee Pancake 15/450g",
     "nameKr": "한상)깡통시장 한입김치전  15/450g",
     "size": "450g",
-    "category": "kimchi",
+    "category": "bakery",
     "price": 10.99,
     "image": "images/official/jl_daesang_EH1069.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2868,7 +2832,7 @@ const PRODUCTS = [
     "name": "Sunshine Moonlight(Koshihikari) 15 LB",
     "nameKr": "일월쌀 (고시히카리) 15 LB",
     "size": "",
-    "category": "rice",
+    "category": "pantry",
     "price": 5.99,
     "image": "images/official/final_CS1141A.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2879,7 +2843,7 @@ const PRODUCTS = [
     "name": "Cooked White Rice Bowl 12/3/7.4 oz",
     "nameKr": "백설)햇반 12/3/7.4oz(210g)",
     "size": "",
-    "category": "dried",
+    "category": "pantry",
     "price": 16.99,
     "image": "images/official/CJ_KB1049.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2890,7 +2854,7 @@ const PRODUCTS = [
     "name": "Tuna(light)standard-Can 12/4/150g",
     "nameKr": "동원)라이트 참치-기획 \"러브동원1호\" 12/4/150g",
     "size": "150g",
-    "category": "dried",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/jl_ottogi_KD1049.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2901,7 +2865,7 @@ const PRODUCTS = [
     "name": "COOKED RICE 1/12/210g",
     "nameKr": "오뚜기)맛있는밥 1/12/210g",
     "size": "210g",
-    "category": "prepared",
+    "category": "ready",
     "price": 13.99,
     "image": "images/official/final_KO1201.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2912,7 +2876,7 @@ const PRODUCTS = [
     "name": "Cooked Rice 3 Pack 6/3/210g",
     "nameKr": "오뚜기)맛있는밥 3팩 6/3/210g",
     "size": "210g",
-    "category": "prepared",
+    "category": "ready",
     "price": 15.49,
     "image": "images/official/final_KO1201C.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2923,7 +2887,7 @@ const PRODUCTS = [
     "name": "4 Kinds Cheese Hot Chicken Flavored Ramen-KimChi 8/5/4.59oz 30476 8801073143463",
     "nameKr": "삼양)4가지치즈불닭볶음면(멀티) 8/5/130g(4.59oz)",
     "size": "130g",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 8.99,
     "image": "images/official/jl_nongshim_NS1090.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2934,7 +2898,7 @@ const PRODUCTS = [
     "name": "Roasted Sesame 24/4oz (113g)",
     "nameKr": "초)볶음참깨 24/4oz (113g)",
     "size": "4oz",
-    "category": "dried",
+    "category": "pantry",
     "price": 14.99,
     "image": "images/official/jl_ottogi_PC4001.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2956,7 +2920,7 @@ const PRODUCTS = [
     "name": "Cooked Black Rice 24/130g",
     "nameKr": "동원)양반 흑미밥 24/130g",
     "size": "",
-    "category": "dried",
+    "category": "pantry",
     "price": 4.49,
     "image": "images/official/jl_ottogi_KD1078.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2967,7 +2931,7 @@ const PRODUCTS = [
     "name": "COOKED BROWN RICE 12/211g",
     "nameKr": "오뚜기)맛있는발아현미밥 12/210g",
     "size": "210g",
-    "category": "rice",
+    "category": "pantry",
     "price": 9.99,
     "image": "images/official/final_KO1201A.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2978,7 +2942,7 @@ const PRODUCTS = [
     "name": "Cooked Rice 24/130g",
     "nameKr": "동원)양반 밥 24/130g",
     "size": "",
-    "category": "prepared",
+    "category": "ready",
     "price": 4.49,
     "image": "images/official/DW_KD1077.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -2989,7 +2953,7 @@ const PRODUCTS = [
     "name": "Bbq Sauce For Beef 12/500g",
     "nameKr": "백설)소불고기양념 12/500g",
     "size": "",
-    "category": "sauces",
+    "category": "meat",
     "price": 4.49,
     "image": "images/official/CJ_KB1101.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3000,7 +2964,7 @@ const PRODUCTS = [
     "name": "Ricecake with Cheese Flavored Sauce 12/360g",
     "nameKr": "비비고)떡볶이 치즈맛 파우치 12/360g",
     "size": "",
-    "category": "sauces",
+    "category": "ready",
     "price": 6.99,
     "image": "images/official/jl_damteo_KB1165.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3011,7 +2975,7 @@ const PRODUCTS = [
     "name": "Rose Rice Cake 16/160g",
     "nameKr": "동원)로제 떡볶이(컵) 16/160g",
     "size": "160g",
-    "category": "prepared",
+    "category": "ready",
     "price": 4.49,
     "image": "images/official/DW_KD0117.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3022,7 +2986,7 @@ const PRODUCTS = [
     "name": "BLACK RICE (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "dried",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/assi_00097D.jpg",
     "vendor": "Rhee Bros"
@@ -3033,7 +2997,7 @@ const PRODUCTS = [
     "name": "ROASTED SESAME SEEDS (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/assi_01139D.jpg",
     "vendor": "Rhee Bros"
@@ -3055,7 +3019,7 @@ const PRODUCTS = [
     "name": "CORN OIL",
     "nameKr": "",
     "size": "64 OZ",
-    "category": "dried",
+    "category": "pantry",
     "price": 4.49,
     "image": "images/official/jl_ottogi_05153D.jpg",
     "vendor": "Rhee Bros"
@@ -3077,7 +3041,7 @@ const PRODUCTS = [
     "name": "Mixed Beans 10/4lb",
     "nameKr": "초)건강 혼합콩 10/1.8kg(4lb)",
     "size": "1.8kg",
-    "category": "dried",
+    "category": "pantry",
     "price": 4.99,
     "image": "images/official/crd_CH1001.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3176,7 +3140,7 @@ const PRODUCTS = [
     "name": "Green Pea 24/2LB",
     "nameKr": "초)완두콩  24/2 LB",
     "size": "2 LB",
-    "category": "dried",
+    "category": "pantry",
     "price": 8.49,
     "image": "images/official/crd_CW1002.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3198,7 +3162,7 @@ const PRODUCTS = [
     "name": "Korean BBQ Brisket Dipping Sauce 12/10.93oz",
     "nameKr": "동방)브리스켓 소스 12/310g",
     "size": "310g",
-    "category": "sauces",
+    "category": "meat",
     "price": 3.99,
     "image": "",
     "vendor": "Choripdong / Seoul Trading"
@@ -3209,7 +3173,7 @@ const PRODUCTS = [
     "name": "Bibigo Beef bone soup 4/6/500g",
     "nameKr": "CJ)비비고 사골곰탕 Multi 4/6/500g",
     "size": "500g",
-    "category": "prepared",
+    "category": "meat",
     "price": 6.49,
     "image": "images/official/CJ_EB1042A.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3220,7 +3184,7 @@ const PRODUCTS = [
     "name": "COLD NOODLE-BEEF FLAVOR 6/5/350ml(11.8oz)",
     "nameKr": "초)냉면육수 (소고기맛) 6/5/350ml(11.8oz)",
     "size": "350ml",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 18.99,
     "image": "images/official/jl_nongshim_EC1406.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3231,7 +3195,7 @@ const PRODUCTS = [
     "name": "COLD NOODLE-RADISH FLAVOR 6/5/10.58oz(300ml)",
     "nameKr": "초)냉면육수 (동치미) 6/5/300ml",
     "size": "300ml",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 2.49,
     "image": "images/official/jl_nongshim_EC1407.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3341,7 +3305,7 @@ const PRODUCTS = [
     "name": "Cut Sea Tangle 12/150g",
     "nameKr": "동원)양반 자른 다시마 12/150g",
     "size": "150g",
-    "category": "dried",
+    "category": "pantry",
     "price": 10.99,
     "image": "images/official/jl_ottogi_HD3133.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3385,7 +3349,7 @@ const PRODUCTS = [
     "name": "Spicy Mushroom Soup 18/500g",
     "nameKr": "비비고)버섯육개장 18/500g",
     "size": "500g",
-    "category": "prepared",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/jl_daesang_KB1175.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3407,7 +3371,7 @@ const PRODUCTS = [
     "name": "Tteokbokki Sauce 20/5.29oz",
     "nameKr": "칠갑)매콤달콤떡볶이양념장 20/150g(5.29oz)",
     "size": "150g",
-    "category": "sauces",
+    "category": "ready",
     "price": 17.49,
     "image": "images/official/jl_daesang_KC4505.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3704,7 +3668,7 @@ const PRODUCTS = [
     "name": "Cut Sea Tangle 15/80g",
     "nameKr": "동원)양반 자른 다시마 15/80g",
     "size": "80g",
-    "category": "seaweed",
+    "category": "pantry",
     "price": 10.99,
     "image": "images/official/DW_HD3131.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3737,7 +3701,7 @@ const PRODUCTS = [
     "name": "Rice Ball (Vegetable & Seaweed)15/0.84oz / 주먹밥 (야채&김)15/0.84oz",
     "nameKr": "주먹밥  (야채&김)15/0.84oz",
     "size": "",
-    "category": "seaweed",
+    "category": "ready",
     "price": 5.99,
     "image": "images/official/jl_ottogi_26633.jpg",
     "vendor": "Wang Globalnet"
@@ -3979,7 +3943,7 @@ const PRODUCTS = [
     "name": "TOFU (FIRM)",
     "nameKr": "",
     "size": "16 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 1.99,
     "image": "images/official/assi_19981D.jpg",
     "vendor": "Rhee Bros"
@@ -3990,7 +3954,7 @@ const PRODUCTS = [
     "name": "HOT AND SPICY SOUP BASE (MALATANG)",
     "nameKr": "",
     "size": "7 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 2.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -4001,7 +3965,7 @@ const PRODUCTS = [
     "name": "BEEF BROTH FOR NAENGMYEON (BEEF BONE)",
     "nameKr": "",
     "size": "11.6 OZ",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 13.49,
     "image": "images/official/assi_04141K.jpg",
     "vendor": "Rhee Bros"
@@ -4012,7 +3976,7 @@ const PRODUCTS = [
     "name": "RICE PORRIDGE W/ABALONE (PKG)",
     "nameKr": "",
     "size": "14.82 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/dongwon_04256K.jpg",
     "vendor": "Rhee Bros"
@@ -4023,7 +3987,7 @@ const PRODUCTS = [
     "name": "SWEET RED BEAN PORRIDGE W/CHESTNUT (PKG)",
     "nameKr": "",
     "size": "14.82 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 15.99,
     "image": "images/official/dongwon_04258K.jpg",
     "vendor": "Rhee Bros"
@@ -4034,7 +3998,7 @@ const PRODUCTS = [
     "name": "PUMKPIN PORRIDGE (PKG)",
     "nameKr": "",
     "size": "14.82 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/dongwon_04259K.jpg",
     "vendor": "Rhee Bros"
@@ -4045,7 +4009,7 @@ const PRODUCTS = [
     "name": "RICE PORRIDGE W/ABALONE",
     "nameKr": "",
     "size": "10.05 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/dongwon_04261K.jpg",
     "vendor": "Rhee Bros"
@@ -4056,7 +4020,7 @@ const PRODUCTS = [
     "name": "RICE PORRIDGE W/VEGETABLE",
     "nameKr": "",
     "size": "10.05 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/dongwon_04266K.jpg",
     "vendor": "Rhee Bros"
@@ -4067,7 +4031,7 @@ const PRODUCTS = [
     "name": "SWEET RED BEAN PORRIDGE W/CHESTNUT",
     "nameKr": "",
     "size": "10.05 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 15.99,
     "image": "images/official/dongwon_04267K.jpg",
     "vendor": "Rhee Bros"
@@ -4078,7 +4042,7 @@ const PRODUCTS = [
     "name": "PINE NUT PORRIDGE",
     "nameKr": "",
     "size": "10.05 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 3.49,
     "image": "images/official/dongwon_04269K.jpg",
     "vendor": "Rhee Bros"
@@ -4089,7 +4053,7 @@ const PRODUCTS = [
     "name": "INSTANT MISO SOUP (TOFU 5P)",
     "nameKr": "",
     "size": "3.17 OZ",
-    "category": "prepared",
+    "category": "dairy",
     "price": 3.49,
     "image": "images/official/KABUTO_04281J.jpg",
     "vendor": "Rhee Bros"
@@ -4100,7 +4064,7 @@ const PRODUCTS = [
     "name": "TABLET BROTH (ORIGINAL)",
     "nameKr": "",
     "size": "3.52 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 13.49,
     "image": "images/official/assi_04300K.jpg",
     "vendor": "Rhee Bros"
@@ -4111,7 +4075,7 @@ const PRODUCTS = [
     "name": "BEEF SOUP STOCK (1.1#)",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "prepared",
+    "category": "meat",
     "price": 6.49,
     "image": "images/official/assi_04304K.jpg",
     "vendor": "Rhee Bros"
@@ -4122,7 +4086,7 @@ const PRODUCTS = [
     "name": "BEEF BONE FLAVORED SOUP",
     "nameKr": "",
     "size": "21.16 OZ",
-    "category": "prepared",
+    "category": "meat",
     "price": 2.49,
     "image": "images/official/assi_04551K.jpg",
     "vendor": "Rhee Bros"
@@ -4144,7 +4108,7 @@ const PRODUCTS = [
     "name": "SOYBEAN PASTE SOUP WITH MUSHROOM",
     "nameKr": "",
     "size": "21.16 OZ",
-    "category": "sauces",
+    "category": "dairy",
     "price": 6.49,
     "image": "images/official/assi_04555K.jpg",
     "vendor": "Rhee Bros"
@@ -4177,7 +4141,7 @@ const PRODUCTS = [
     "name": "TOFU (EX-FIRM YELLOW)",
     "nameKr": "",
     "size": "10.8 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 1.99,
     "image": "images/official/resized/06510J.jpg",
     "vendor": "Rhee Bros"
@@ -4188,7 +4152,7 @@ const PRODUCTS = [
     "name": "TOFU (SOFT RED)",
     "nameKr": "",
     "size": "10.8 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 2.49,
     "image": "images/official/resized/06511J.jpg",
     "vendor": "Rhee Bros"
@@ -4199,7 +4163,7 @@ const PRODUCTS = [
     "name": "TOFU (FIRM BLUE)",
     "nameKr": "",
     "size": "10.8 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 1.99,
     "image": "images/official/resized/06512J.jpg",
     "vendor": "Rhee Bros"
@@ -4210,7 +4174,7 @@ const PRODUCTS = [
     "name": "BEEF BONE SOUP",
     "nameKr": "",
     "size": "17.64 OZ",
-    "category": "prepared",
+    "category": "meat",
     "price": 6.49,
     "image": "images/official/dongwon_08624K.jpg",
     "vendor": "Rhee Bros"
@@ -4221,7 +4185,7 @@ const PRODUCTS = [
     "name": "PEANUT BALL W/SQUID FLAVOR (L)",
     "nameKr": "",
     "size": "7.13 OZ",
-    "category": "seafood",
+    "category": "meat",
     "price": 5.49,
     "image": "images/official/orion_09456K.jpg",
     "vendor": "Rhee Bros"
@@ -4232,7 +4196,7 @@ const PRODUCTS = [
     "name": "CHOCOLATE RICE CAKE COOKIE",
     "nameKr": "",
     "size": "9.1 OZ",
-    "category": "snacks",
+    "category": "ready",
     "price": 5.49,
     "image": "images/official/jl_lotte_10419K.jpg",
     "vendor": "Rhee Bros"
@@ -4265,7 +4229,7 @@ const PRODUCTS = [
     "name": "SOFT TOFU SOUP",
     "nameKr": "",
     "size": "19.4 OZ",
-    "category": "prepared",
+    "category": "dairy",
     "price": 2.49,
     "image": "images/official/assi_19902K.jpg",
     "vendor": "Rhee Bros"
@@ -4276,7 +4240,7 @@ const PRODUCTS = [
     "name": "SOYBEAN PASTE SOUP",
     "nameKr": "",
     "size": "21.16 OZ",
-    "category": "sauces",
+    "category": "dairy",
     "price": 6.49,
     "image": "images/official/assi_19903K.jpg",
     "vendor": "Rhee Bros"
@@ -4287,7 +4251,7 @@ const PRODUCTS = [
     "name": "TOFU (SOFT)",
     "nameKr": "",
     "size": "16 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 2.49,
     "image": "images/official/assi_19982D.jpg",
     "vendor": "Rhee Bros"
@@ -4298,7 +4262,7 @@ const PRODUCTS = [
     "name": "TOFU (SILKEN)",
     "nameKr": "",
     "size": "16 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 2.99,
     "image": "images/official/assi_19983D.jpg",
     "vendor": "Rhee Bros"
@@ -4309,7 +4273,7 @@ const PRODUCTS = [
     "name": "FRIED BEAN CURD (SUSHI AGE)",
     "nameKr": "",
     "size": "3.5 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 4.79,
     "image": "images/official/HANA_20015J.jpg",
     "vendor": "Rhee Bros"
@@ -4320,7 +4284,7 @@ const PRODUCTS = [
     "name": "FERMENTED SOYBEAN (BONITO 3P)",
     "nameKr": "",
     "size": "5.2 OZ",
-    "category": "tofu",
+    "category": "dairy",
     "price": 6.49,
     "image": "images/official/KABUTO_20021J.jpg",
     "vendor": "Rhee Bros"
@@ -4331,7 +4295,7 @@ const PRODUCTS = [
     "name": "FRIED FISH CAKE (JAPAN VEGETABLE AGE BALL)",
     "nameKr": "",
     "size": "24.2 LB",
-    "category": "frozen",
+    "category": "bakery",
     "price": 5.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -4342,7 +4306,7 @@ const PRODUCTS = [
     "name": "COMBO FISH CAKE",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "frozen",
+    "category": "bakery",
     "price": 8.49,
     "image": "images/official/assi_20434K.jpg",
     "vendor": "Rhee Bros"
@@ -4353,7 +4317,7 @@ const PRODUCTS = [
     "name": "RECTANGULAR FISH CAKE (KOREA 22#)",
     "nameKr": "",
     "size": "22 LB",
-    "category": "frozen",
+    "category": "bakery",
     "price": 8.49,
     "image": "images/official/assi_20460K.jpg",
     "vendor": "Rhee Bros"
@@ -4419,7 +4383,7 @@ const PRODUCTS = [
     "name": "RED BEAN CREAM BREAD",
     "nameKr": "",
     "size": "4.05 OZ",
-    "category": "snacks",
+    "category": "bakery",
     "price": 3.99,
     "image": "images/official/jl_damteo_20846K.jpg",
     "vendor": "Rhee Bros"
@@ -4430,7 +4394,7 @@ const PRODUCTS = [
     "name": "CUSTARD RED BEAN BREAD",
     "nameKr": "",
     "size": "3.7 OZ",
-    "category": "snacks",
+    "category": "bakery",
     "price": 3.99,
     "image": "images/official/SAMLIP_20861K.jpg",
     "vendor": "Rhee Bros"
@@ -4441,7 +4405,7 @@ const PRODUCTS = [
     "name": "OK-SUSU (SWEET CORN 5P)",
     "nameKr": "",
     "size": "4.73 OZ",
-    "category": "prepared",
+    "category": "pantry",
     "price": 5.49,
     "image": "images/official/lotte_20971K.jpg",
     "vendor": "Rhee Bros"
@@ -4452,7 +4416,7 @@ const PRODUCTS = [
     "name": "RAW SHRIMP (PND T-ON 41/50)",
     "nameKr": "",
     "size": "2 LB",
-    "category": "seafood",
+    "category": "meat",
     "price": 10.99,
     "image": "images/official/final_21363D.jpg",
     "vendor": "Rhee Bros"
@@ -4463,7 +4427,7 @@ const PRODUCTS = [
     "name": "KIMCHI SPICY BULGOGI KIMBAP",
     "nameKr": "",
     "size": "8.1 OZ",
-    "category": "prepared",
+    "category": "kimchi",
     "price": 5.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -4474,7 +4438,7 @@ const PRODUCTS = [
     "name": "SEASONED SHREDDED SQUID KIMBAP",
     "nameKr": "",
     "size": "8.1 OZ",
-    "category": "seaweed",
+    "category": "ready",
     "price": 5.99,
     "image": "images/official/final_27780K.jpg",
     "vendor": "Rhee Bros"
@@ -4496,7 +4460,7 @@ const PRODUCTS = [
     "name": "SEASONED FILE FISH (10 OZ)",
     "nameKr": "",
     "size": "10 OZ",
-    "category": "seafood",
+    "category": "meat",
     "price": 3.49,
     "image": "images/official/assi_29312K.jpg",
     "vendor": "Rhee Bros"
@@ -4507,7 +4471,7 @@ const PRODUCTS = [
     "name": "MAK-GUKSOO NOODLES",
     "nameKr": "",
     "size": "2LB",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 7.99,
     "image": "images/official/assi_08022K.jpg",
     "vendor": "Rhee Bros"
@@ -4595,7 +4559,7 @@ const PRODUCTS = [
     "name": "STRAWBERRY CREAM BUN(1P)",
     "nameKr": "",
     "size": "4.76 OZ",
-    "category": "snacks",
+    "category": "bakery",
     "price": 3.99,
     "image": "images/official/SAMLIP_21282K.jpg",
     "vendor": "Rhee Bros"
@@ -4617,7 +4581,7 @@ const PRODUCTS = [
     "name": "FRESH MILK CREAM BUN(1P)",
     "nameKr": "",
     "size": "4.76 OZ",
-    "category": "snacks",
+    "category": "bakery",
     "price": 3.99,
     "image": "images/official/SAMLIP_21280K.jpg",
     "vendor": "Rhee Bros"
@@ -4793,7 +4757,7 @@ const PRODUCTS = [
     "name": "BINCH BISCUIT (L)",
     "nameKr": "",
     "size": "7.2 OZ",
-    "category": "snacks",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/lotte_09402K.jpg",
     "vendor": "Rhee Bros"
@@ -4903,7 +4867,7 @@ const PRODUCTS = [
     "name": "O! TUBE (CHEDDAR CHEESE, L)",
     "nameKr": "",
     "size": "4.06 OZ",
-    "category": "dairy",
+    "category": "snacks",
     "price": 4.99,
     "image": "images/official/orion_09582K.jpg",
     "vendor": "Rhee Bros"
@@ -4991,7 +4955,7 @@ const PRODUCTS = [
     "name": "O! TUBE (TOMATO KETCHUP, L)",
     "nameKr": "",
     "size": "4.06 OZ",
-    "category": "sauces",
+    "category": "snacks",
     "price": 4.99,
     "image": "images/official/orion_10447K.jpg",
     "vendor": "Rhee Bros"
@@ -5002,7 +4966,7 @@ const PRODUCTS = [
     "name": "O! TUBE (HONEY BUTTER, L)",
     "nameKr": "",
     "size": "4.06 OZ",
-    "category": "dairy",
+    "category": "snacks",
     "price": 3.49,
     "image": "images/official/orion_10448K.jpg",
     "vendor": "Rhee Bros"
@@ -5024,7 +4988,7 @@ const PRODUCTS = [
     "name": "O! TUBE (JALAPENO CHEESE, L)",
     "nameKr": "",
     "size": "4.06 OZ",
-    "category": "dairy",
+    "category": "snacks",
     "price": 4.99,
     "image": "images/official/orion_10868K.jpg",
     "vendor": "Rhee Bros"
@@ -5233,7 +5197,7 @@ const PRODUCTS = [
     "name": "Bibigo Rice Fried Dumpling(Beef) 12/1.75LB(28oz)",
     "nameKr": "CJ)비비고 백설 쌀 군만두 12/1.75LB(28oz)",
     "size": "",
-    "category": "rice",
+    "category": "frozen",
     "price": 4.49,
     "image": "images/official/CJ_EC5019.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5310,7 +5274,7 @@ const PRODUCTS = [
     "name": "Yogurt Ice 4/5/170ml",
     "nameKr": "롯데)요구르트 아이스 (오리지널)4/5/170ml",
     "size": "170ml",
-    "category": "frozen",
+    "category": "pantry",
     "price": 2.99,
     "image": "images/official/lotte_IL1016.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5332,7 +5296,7 @@ const PRODUCTS = [
     "name": "Strawberry Screwbar Pouch 4/5/170ml",
     "nameKr": "롯데)딸기스크류바 파우치 4/5/160ml",
     "size": "160ml",
-    "category": "produce",
+    "category": "frozen",
     "price": 25.99,
     "image": "images/official/lotte_IL1018B.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5453,7 +5417,7 @@ const PRODUCTS = [
     "name": "Sweet Corn 6/5/140ml",
     "nameKr": "롯데)찰옥수수 6/5/140ml",
     "size": "140ml",
-    "category": "frozen",
+    "category": "pantry",
     "price": 5.49,
     "image": "images/official/lotte_IL1010.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5464,7 +5428,7 @@ const PRODUCTS = [
     "name": "Chocolate Flavored Milk 4/6/200ML",
     "nameKr": "서울)초콜릿 우유 4/6/200ML",
     "size": "200ML",
-    "category": "beverages",
+    "category": "snacks",
     "price": 7.99,
     "image": "images/official/Seoul_LS2026.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5519,7 +5483,7 @@ const PRODUCTS = [
     "name": "Mango Flavored Milk 4/6/190ML",
     "nameKr": "서울)망고 우유 4/6/190ML",
     "size": "190ML",
-    "category": "beverages",
+    "category": "pantry",
     "price": 8.49,
     "image": "images/official/resized/LS2027.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5530,7 +5494,7 @@ const PRODUCTS = [
     "name": "Melon Flavored Milk 4/6/190ML",
     "nameKr": "서울)메론 우유 4/6/190ML",
     "size": "190ML",
-    "category": "beverages",
+    "category": "produce",
     "price": 8.49,
     "image": "images/official/resized/LS2028.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5574,7 +5538,7 @@ const PRODUCTS = [
     "name": "O!Dessert)Whipped Cream Filled bread 24/120g",
     "nameKr": "오디저트)크림빵빵 24/120g(4.23oz)",
     "size": "120g",
-    "category": "snacks",
+    "category": "bakery",
     "price": 3.99,
     "image": "",
     "vendor": "Choripdong / Seoul Trading"
@@ -5618,7 +5582,7 @@ const PRODUCTS = [
     "name": "ALL PURPOSE WHEAT FLOUR (5.5#)",
     "nameKr": "",
     "size": "5.5 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.99,
     "image": "images/official/resized/02057K.jpg",
     "vendor": "Rhee Bros"
@@ -5629,7 +5593,7 @@ const PRODUCTS = [
     "name": "STRONG WHEAT FLOUR (5.5#)",
     "nameKr": "",
     "size": "5.5 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.99,
     "image": "images/official/resized/02054K.jpg",
     "vendor": "Rhee Bros"
@@ -5640,7 +5604,7 @@ const PRODUCTS = [
     "name": "RICE FLOUR (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.49,
     "image": "images/official/assi_02002D.jpg",
     "vendor": "Rhee Bros"
@@ -5651,7 +5615,7 @@ const PRODUCTS = [
     "name": "SWEET RICE FLOUR (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.49,
     "image": "images/official/assi_02008D.jpg",
     "vendor": "Rhee Bros"
@@ -5662,7 +5626,7 @@ const PRODUCTS = [
     "name": "MIXED FLOUR FOR CAKE",
     "nameKr": "",
     "size": "14.1 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 8.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -5673,7 +5637,7 @@ const PRODUCTS = [
     "name": "GLUTINOUS RICE FLOUR",
     "nameKr": "",
     "size": "14.1 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 4.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -5684,7 +5648,7 @@ const PRODUCTS = [
     "name": "POTATO STARCH (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.79,
     "image": "images/official/assi_02032D.jpg",
     "vendor": "Rhee Bros"
@@ -5695,7 +5659,7 @@ const PRODUCTS = [
     "name": "CORN STARCH",
     "nameKr": "",
     "size": "1 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 2.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -5706,7 +5670,7 @@ const PRODUCTS = [
     "name": "PREMIUM TEMPURA BATTER MIX",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.99,
     "image": "images/official/jl_ottogi_02150K.jpg",
     "vendor": "Rhee Bros"
@@ -5717,7 +5681,7 @@ const PRODUCTS = [
     "name": "PREMIUM VEGETABLE PANCAKE MIX",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 4.49,
     "image": "images/official/jl_daesang_02151K.jpg",
     "vendor": "Rhee Bros"
@@ -5728,7 +5692,7 @@ const PRODUCTS = [
     "name": "ACORN STARCH (8 OZ)",
     "nameKr": "",
     "size": "8 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 2.49,
     "image": "images/official/assi_02164D.jpg",
     "vendor": "Rhee Bros"
@@ -5772,7 +5736,7 @@ const PRODUCTS = [
     "name": "RICE FLOUR FOR CAKE",
     "nameKr": "",
     "size": "14.1 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 4.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -5860,7 +5824,7 @@ const PRODUCTS = [
     "name": "FRYING MIX",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 3.99,
     "image": "images/official/jl_daesang_13307K.jpg",
     "vendor": "Rhee Bros"
@@ -5871,7 +5835,7 @@ const PRODUCTS = [
     "name": "Gompyo Wheat Flour , All Purpose 6/5.5 LBS / 곰표 밀가루,중력분 6/5.5 LBS",
     "nameKr": "곰표 밀가루,중력분 6/5.5 LBS",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.99,
     "image": "images/official/final_33673.jpg",
     "vendor": "Wang Globalnet"
@@ -5882,7 +5846,7 @@ const PRODUCTS = [
     "name": "Surasang Pancake Mix 10/2 lb / 수라상 부침가루 10/2 lb",
     "nameKr": "수라상 부침가루 10/2 lb",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 8.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -5893,7 +5857,7 @@ const PRODUCTS = [
     "name": "Surasang Frying Mix 10/2 Lb / 수라상 튀김가루 10/2 Lb",
     "nameKr": "수라상 튀김가루 10/2 Lb",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 8.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -5904,7 +5868,7 @@ const PRODUCTS = [
     "name": "Surasang Bread Crumbs 12/500 g / 수라상 빵가루 12/500 g",
     "nameKr": "수라상 빵가루 12/500 g",
     "size": "",
-    "category": "snacks",
+    "category": "bakery",
     "price": 6.49,
     "image": "images/official/jl_daesang_13658.jpg",
     "vendor": "Wang Globalnet"
@@ -5915,7 +5879,7 @@ const PRODUCTS = [
     "name": "Skina Bread Crumbs 20 Lb (9.07 kg) / 스키나 빵가루 20 Lb (9.07 kg)",
     "nameKr": "스키나 빵가루 20 Lb (9.07 kg)",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 14.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -5926,7 +5890,7 @@ const PRODUCTS = [
     "name": "CJ Beksul All Purpose Flour 2.2lb (1kg) / CJ 백설 밀가루(중력분) 1kg",
     "nameKr": "CJ 백설 밀가루(중력분) 1kg",
     "size": "2.2lb",
-    "category": "baking",
+    "category": "bakery",
     "price": 9.49,
     "image": "images/official/CJ_CJ050.jpg",
     "vendor": "Wang Globalnet"
@@ -5937,7 +5901,7 @@ const PRODUCTS = [
     "name": "CJ Beksul Frying Mix 2.2lb (1kg) / CJ 백설 튀김가루 1kg",
     "nameKr": "CJ 백설 튀김가루 1kg",
     "size": "2.2lb",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.49,
     "image": "images/official/CJ_CJ051.jpg",
     "vendor": "Wang Globalnet"
@@ -5948,7 +5912,7 @@ const PRODUCTS = [
     "name": "CJ Beksul Pancake Mix 2.2lb (1kg) / CJ 백설 부침가루 1kg",
     "nameKr": "CJ 백설 부침가루 1kg",
     "size": "2.2lb",
-    "category": "baking",
+    "category": "bakery",
     "price": 4.49,
     "image": "images/official/CJ_CJ052.jpg",
     "vendor": "Wang Globalnet"
@@ -5981,7 +5945,7 @@ const PRODUCTS = [
     "name": "TAPIOCA PEARL (L)",
     "nameKr": "",
     "size": "14 OZ",
-    "category": "baking",
+    "category": "pantry",
     "price": 2.49,
     "image": "images/official/jl_nongshim_8501641NS.jpg",
     "vendor": "Rhee Bros"
@@ -5992,7 +5956,7 @@ const PRODUCTS = [
     "name": "Wang Potato Starch 16/2LBS / 왕 감자가루 16/2LBS",
     "nameKr": "왕 감자가루 16/2LBS",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 4.49,
     "image": "images/official/jl_nongshim_8501743NS.jpg",
     "vendor": "Wang Globalnet"
@@ -6113,7 +6077,7 @@ const PRODUCTS = [
     "name": "Korean Red Pepper",
     "nameKr": "",
     "size": "CS",
-    "category": "seasonings",
+    "category": "produce",
     "price": 5.99,
     "image": "images/official/jl_daesang_40200.jpg",
     "vendor": "Asia Vegetable"
@@ -6245,7 +6209,7 @@ const PRODUCTS = [
     "name": "Turmeric 5 LB",
     "nameKr": "강황",
     "size": "5 LB",
-    "category": "produce",
+    "category": "pantry",
     "price": 5.49,
     "image": "images/official/jl_ottogi_893730.jpg",
     "vendor": "Fresh Point"
@@ -6355,7 +6319,7 @@ const PRODUCTS = [
     "name": "Hawaii Purple Sweet Potato",
     "nameKr": "",
     "size": "CS",
-    "category": "produce",
+    "category": "pantry",
     "price": 3.99,
     "image": "images/official/jl_ottogi_20045.jpg",
     "vendor": "Asia Vegetable"
@@ -6366,7 +6330,7 @@ const PRODUCTS = [
     "name": "White Peach - 1 Layer TP",
     "nameKr": "",
     "size": "CS",
-    "category": "produce",
+    "category": "pantry",
     "price": 3.99,
     "image": "images/official/jl_ottogi_30121.jpg",
     "vendor": "Asia Vegetable"
@@ -6399,7 +6363,7 @@ const PRODUCTS = [
     "name": "Snow Peas",
     "nameKr": "",
     "size": "CS",
-    "category": "produce",
+    "category": "pantry",
     "price": 3.99,
     "image": "",
     "vendor": "Asia Vegetable"
@@ -6476,7 +6440,7 @@ const PRODUCTS = [
     "name": "VINEGAR",
     "nameKr": "",
     "size": "1 L",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 4.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -6487,7 +6451,7 @@ const PRODUCTS = [
     "name": "PICKLED RED CHILI IN VINEGAR (BTL)",
     "nameKr": "",
     "size": "16 OZ",
-    "category": "kimchi",
+    "category": "seasonings",
     "price": 5.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -6531,7 +6495,7 @@ const PRODUCTS = [
     "name": "CORN STARCH (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 2.49,
     "image": "images/official/ASSI_05030D.jpg",
     "vendor": "Rhee Bros"
@@ -6564,7 +6528,7 @@ const PRODUCTS = [
     "name": "4#1",
     "nameKr": "",
     "size": "4 LB",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 10.99,
     "image": "images/official/resized/05382K.jpg",
     "vendor": "Rhee Bros"
@@ -6641,7 +6605,7 @@ const PRODUCTS = [
     "name": "Wang Kimchi Red Pepper Flakes Coarse 10/3lb / 왕 김치고추가루Coarse 10/3lb",
     "nameKr": "왕 김치고추가루Coarse 10/3lb",
     "size": "",
-    "category": "seasonings",
+    "category": "kimchi",
     "price": 5.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -6652,7 +6616,7 @@ const PRODUCTS = [
     "name": "Wang Kimchi Red Pepper Flakes coarse6/5 lb / 왕 김치고추가루coarse6/5 lb",
     "nameKr": "왕 김치고추가루coarse6/5 lb",
     "size": "",
-    "category": "seasonings",
+    "category": "kimchi",
     "price": 6.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -6663,7 +6627,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 10/4 lb / 왕 볶음통깨 10/4 lb",
     "nameKr": "왕 볶음통깨  10/4 lb",
     "size": "",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 6.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -6674,7 +6638,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 12/2 lb / 왕 볶음통깨 12/2 lb",
     "nameKr": "왕 볶음통깨  12/2 lb",
     "size": "",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 6.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -6696,7 +6660,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 12/8 oz / 왕 볶음통깨 12/8 oz",
     "nameKr": "왕 볶음통깨 12/8 oz",
     "size": "",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 6.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -6707,7 +6671,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 12/16 oz / 왕 볶음통깨 12/16 oz",
     "nameKr": "왕 볶음통깨 12/16 oz",
     "size": "",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 6.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -6806,7 +6770,7 @@ const PRODUCTS = [
     "name": "Soy Bean Oil 0.9L / 백설 100% 콩기름 0.9L",
     "nameKr": "백설 100% 콩기름 0.9L",
     "size": "0.9L",
-    "category": "tofu",
+    "category": "dairy",
     "price": 8.99,
     "image": "images/official/CJ_cj_1020125.jpg",
     "vendor": "Wang Globalnet"
@@ -6817,7 +6781,7 @@ const PRODUCTS = [
     "name": "Soy Bean Oil 1.8L / 백설 100% 콩기름 1.8L",
     "nameKr": "백설 100% 콩기름 1.8L",
     "size": "1.8L",
-    "category": "tofu",
+    "category": "dairy",
     "price": 8.99,
     "image": "images/official/CJ_cj_1020288.jpg",
     "vendor": "Wang Globalnet"
@@ -6828,7 +6792,7 @@ const PRODUCTS = [
     "name": "Corn Oil 1.8L / 백설 100% 옥수수유",
     "nameKr": "백설 100% 옥수수유",
     "size": "1.8L",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 4.49,
     "image": "images/official/CJ_cj_1020291.jpg",
     "vendor": "Wang Globalnet"
@@ -6839,7 +6803,7 @@ const PRODUCTS = [
     "name": "Soy Bean Oil Crispy 1.8L / 바삭 요리유",
     "nameKr": "바삭 요리유",
     "size": "1.8L",
-    "category": "tofu",
+    "category": "dairy",
     "price": 21.99,
     "image": "images/official/CJ_cj_1020698.jpg",
     "vendor": "Wang Globalnet"
@@ -6850,7 +6814,7 @@ const PRODUCTS = [
     "name": "Olive Oil 500ml / 백설 올리브유 500ml",
     "nameKr": "백설 올리브유 500ml",
     "size": "500ml",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/CJ_cj_1020694.jpg",
     "vendor": "Wang Globalnet"
@@ -6861,7 +6825,7 @@ const PRODUCTS = [
     "name": "Olive Oil 900ml / 백설 올리브유 900ml",
     "nameKr": "백설 올리브유 900ml",
     "size": "900ml",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 7.99,
     "image": "images/official/CJ_cj_1020693.jpg",
     "vendor": "Wang Globalnet"
@@ -6872,7 +6836,7 @@ const PRODUCTS = [
     "name": "Sun Flower Seed Oil 900ml / 백설 해바라기씨유",
     "nameKr": "백설 해바라기씨유",
     "size": "900ml",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 27.49,
     "image": "images/official/CJ_cj_1020697.jpg",
     "vendor": "Wang Globalnet"
@@ -6971,7 +6935,7 @@ const PRODUCTS = [
     "name": "LUNCHEON LOAF",
     "nameKr": "",
     "size": "12 OZ",
-    "category": "canned",
+    "category": "ready",
     "price": 4.99,
     "image": "images/official/assi_07441D.jpg",
     "vendor": "Rhee Bros"
@@ -6982,7 +6946,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (S 4CAN)",
     "nameKr": "",
     "size": "5.3 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07598K.jpg",
     "vendor": "Rhee Bros"
@@ -6993,7 +6957,7 @@ const PRODUCTS = [
     "name": "ORGANIC ROASTED CHESTNUTS",
     "nameKr": "",
     "size": "7 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/assi_06194C.jpg",
     "vendor": "Rhee Bros"
@@ -7004,7 +6968,7 @@ const PRODUCTS = [
     "name": "RED BEAN PASTE (CAN S)",
     "nameKr": "",
     "size": "16.75 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/jl_ottogi_06472K.jpg",
     "vendor": "Rhee Bros"
@@ -7015,7 +6979,7 @@ const PRODUCTS = [
     "name": "RED BEAN PASTE (KOSHIAN)",
     "nameKr": "",
     "size": "16.75 OZ",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 5.99,
     "image": "images/official/KABUTO_06478C.jpg",
     "vendor": "Rhee Bros"
@@ -7026,7 +6990,7 @@ const PRODUCTS = [
     "name": "PICKLED GINGER (SUSHI GINGER S.BTL 5 OZ)",
     "nameKr": "",
     "size": "5 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 9.49,
     "image": "images/official/HANA_19121J.jpg",
     "vendor": "Rhee Bros"
@@ -7037,7 +7001,7 @@ const PRODUCTS = [
     "name": "PICKLED GINGER (SUSHI GINGER BTL 12 OZ)",
     "nameKr": "",
     "size": "12 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 9.49,
     "image": "images/official/resized/19127D.jpg",
     "vendor": "Rhee Bros"
@@ -7081,7 +7045,7 @@ const PRODUCTS = [
     "name": "COOKED SILKWORM CHRYSALIS (CAN)",
     "nameKr": "",
     "size": "4.5 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 2.49,
     "image": "images/official/final_07434K.jpg",
     "vendor": "Rhee Bros"
@@ -7092,7 +7056,7 @@ const PRODUCTS = [
     "name": "LUNCHEON MEAT",
     "nameKr": "",
     "size": "12 OZ",
-    "category": "canned",
+    "category": "ready",
     "price": 4.99,
     "image": "images/official/dongwon_07445D.jpg",
     "vendor": "Rhee Bros"
@@ -7103,7 +7067,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (S 4 CHUNK+4 DHA)",
     "nameKr": "",
     "size": "3.2 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07597K.jpg",
     "vendor": "Rhee Bros"
@@ -7114,7 +7078,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (L 3CAN)",
     "nameKr": "",
     "size": "8.81 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07599K.jpg",
     "vendor": "Rhee Bros"
@@ -7136,7 +7100,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (S)",
     "nameKr": "",
     "size": "4.8 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07629K.jpg",
     "vendor": "Rhee Bros"
@@ -7147,7 +7111,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (DHA S)",
     "nameKr": "",
     "size": "4.8 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07630K.jpg",
     "vendor": "Rhee Bros"
@@ -7158,7 +7122,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (DOUBLE HOT PEPPER S)",
     "nameKr": "",
     "size": "4.8 OZ",
-    "category": "seasonings",
+    "category": "produce",
     "price": 14.99,
     "image": "images/official/dongwon_07632K.jpg",
     "vendor": "Rhee Bros"
@@ -7169,7 +7133,7 @@ const PRODUCTS = [
     "name": "TUNA (VEGETABLES S 4CAN)",
     "nameKr": "",
     "size": "4.8 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07633K.jpg",
     "vendor": "Rhee Bros"
@@ -7180,7 +7144,7 @@ const PRODUCTS = [
     "name": "TUNA (DOUBLE HOT PEPPER S 4CAN)",
     "nameKr": "",
     "size": "4.8 OZ",
-    "category": "seasonings",
+    "category": "produce",
     "price": 14.99,
     "image": "images/official/dongwon_07635K.jpg",
     "vendor": "Rhee Bros"
@@ -7191,7 +7155,7 @@ const PRODUCTS = [
     "name": "TUNA CAN (FIERY HOT S)",
     "nameKr": "",
     "size": "4.8 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 14.99,
     "image": "images/official/dongwon_07638K.jpg",
     "vendor": "Rhee Bros"
@@ -7202,7 +7166,7 @@ const PRODUCTS = [
     "name": "TABLET BROTH (SPICY)",
     "nameKr": "",
     "size": "",
-    "category": "prepared",
+    "category": "ready",
     "price": 13.49,
     "image": "images/official/assi_04301K.jpg",
     "vendor": "Rhee Bros"
@@ -7213,7 +7177,7 @@ const PRODUCTS = [
     "name": "POWDER",
     "nameKr": "",
     "size": "",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 12.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7224,7 +7188,7 @@ const PRODUCTS = [
     "name": "ANCHOVY SCUP STOCK",
     "nameKr": "",
     "size": "",
-    "category": "canned",
+    "category": "meat",
     "price": 10.99,
     "image": "images/official/assi_04307K.jpg",
     "vendor": "Rhee Bros"
@@ -7235,7 +7199,7 @@ const PRODUCTS = [
     "name": "PORK FLAVOR SCUP",
     "nameKr": "",
     "size": "10 OZ",
-    "category": "prepared",
+    "category": "pantry",
     "price": 9.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7246,7 +7210,7 @@ const PRODUCTS = [
     "name": "DRIED SWEET POTATO",
     "nameKr": "",
     "size": "",
-    "category": "dried",
+    "category": "seaweed",
     "price": 3.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7257,7 +7221,7 @@ const PRODUCTS = [
     "name": "(CHINA 220)",
     "nameKr": "",
     "size": "",
-    "category": "canned",
+    "category": "pantry",
     "price": 5.99,
     "image": "images/official/final_06014K.jpg",
     "vendor": "Rhee Bros"
@@ -7268,7 +7232,7 @@ const PRODUCTS = [
     "name": "MUSF ROOM (",
     "nameKr": "",
     "size": "16 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 11.99,
     "image": "images/official/final_06034K.jpg",
     "vendor": "Rhee Bros"
@@ -7279,7 +7243,7 @@ const PRODUCTS = [
     "name": "DOILED RADISH LEAVES",
     "nameKr": "",
     "size": "1 LB",
-    "category": "produce",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/ASSI_06100K.jpg",
     "vendor": "Rhee Bros"
@@ -7290,7 +7254,7 @@ const PRODUCTS = [
     "name": "SCUP STOC K",
     "nameKr": "",
     "size": "",
-    "category": "seasonings",
+    "category": "pantry",
     "price": 8.99,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7301,7 +7265,7 @@ const PRODUCTS = [
     "name": "OTTOGI RICE SYRUP",
     "nameKr": "",
     "size": "11LB",
-    "category": "canned",
+    "category": "pantry",
     "price": 8.49,
     "image": "images/official/jl_ottogi_09993K.jpg",
     "vendor": "Rhee Bros"
@@ -7323,7 +7287,7 @@ const PRODUCTS = [
     "name": "BOILED ROYAL FERN",
     "nameKr": "",
     "size": "16 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/ASSI_19092K.jpg",
     "vendor": "Rhee Bros"
@@ -7334,7 +7298,7 @@ const PRODUCTS = [
     "name": "SEASONED",
     "nameKr": "",
     "size": "7 OZ",
-    "category": "canned",
+    "category": "pantry",
     "price": 12.49,
     "image": "images/official/final_19109K.jpg",
     "vendor": "Rhee Bros"
@@ -7345,7 +7309,7 @@ const PRODUCTS = [
     "name": "RADISH (4P1",
     "nameKr": "",
     "size": "",
-    "category": "produce",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/final_19273K.jpg",
     "vendor": "Rhee Bros"
@@ -7356,7 +7320,7 @@ const PRODUCTS = [
     "name": "RADISH",
     "nameKr": "",
     "size": "",
-    "category": "produce",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/final_19274K.jpg",
     "vendor": "Rhee Bros"
@@ -7367,7 +7331,7 @@ const PRODUCTS = [
     "name": "KOREAN STYLE PATTY",
     "nameKr": "",
     "size": "",
-    "category": "frozen",
+    "category": "ready",
     "price": 10.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7378,7 +7342,7 @@ const PRODUCTS = [
     "name": "MINCED GARLIC IN WATER",
     "nameKr": "",
     "size": "",
-    "category": "seasonings",
+    "category": "beverages",
     "price": 7.99,
     "image": "images/official/assi_19341K.jpg",
     "vendor": "Rhee Bros"
@@ -7400,7 +7364,7 @@ const PRODUCTS = [
     "name": "1PI",
     "nameKr": "",
     "size": "",
-    "category": "produce",
+    "category": "pantry",
     "price": 12.99,
     "image": "images/official/final_19347K.jpg",
     "vendor": "Rhee Bros"
@@ -7411,7 +7375,7 @@ const PRODUCTS = [
     "name": "PEELEO PICKLED GARLIC",
     "nameKr": "",
     "size": "",
-    "category": "kimchi",
+    "category": "pantry",
     "price": 7.99,
     "image": "images/official/resized/19601K.jpg",
     "vendor": "Rhee Bros"
@@ -7433,7 +7397,7 @@ const PRODUCTS = [
     "name": "ASSI MINI FISH CAKE (16P)",
     "nameKr": "",
     "size": "",
-    "category": "frozen",
+    "category": "bakery",
     "price": 8.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7444,7 +7408,7 @@ const PRODUCTS = [
     "name": "KOREAN STYLE MEAT",
     "nameKr": "",
     "size": "",
-    "category": "canned",
+    "category": "pantry",
     "price": 10.49,
     "image": "images/official/final_20630D.jpg",
     "vendor": "Rhee Bros"
@@ -7455,7 +7419,7 @@ const PRODUCTS = [
     "name": "PORK FLAVOR SOUP",
     "nameKr": "",
     "size": "",
-    "category": "prepared",
+    "category": "pantry",
     "price": 2.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7466,7 +7430,7 @@ const PRODUCTS = [
     "name": "ASSI PEELED CHESTNUT",
     "nameKr": "",
     "size": "12 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/final_26026D.jpg",
     "vendor": "Rhee Bros"
@@ -7477,7 +7441,7 @@ const PRODUCTS = [
     "name": "BEEF BROTH FOR",
     "nameKr": "",
     "size": "12 OZ",
-    "category": "prepared",
+    "category": "ready",
     "price": 13.49,
     "image": "images/official/ASSI_52106K.jpg",
     "vendor": "Rhee Bros"
@@ -7488,7 +7452,7 @@ const PRODUCTS = [
     "name": "움쉐프의 2배 Tuna Extract 12/16.9 z / 움쉐프의 2배참치액12/16.9 z",
     "nameKr": "움쉐프의 2배참치액12/16.9 z",
     "size": "",
-    "category": "canned",
+    "category": "pantry",
     "price": 6.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -7499,7 +7463,7 @@ const PRODUCTS = [
     "name": "Penguin 꽁치통조림 24/14oz.(400g) / 펭귄 꽁치통조림 24/14oz.(400g)",
     "nameKr": "펭귄 꽁치통조림 24/14oz.(400g)",
     "size": "",
-    "category": "canned",
+    "category": "pantry",
     "price": 8.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -7543,7 +7507,7 @@ const PRODUCTS = [
     "name": "F Surasang Vienna Sausage 24/12oz / F 수라상 비엔나소세지24/12oz",
     "nameKr": "F 수라상  비엔나소세지24/12oz",
     "size": "",
-    "category": "meat",
+    "category": "ready",
     "price": 8.99,
     "image": "images/official/web_16045.jpg",
     "vendor": "Wang Globalnet"
@@ -7554,7 +7518,7 @@ const PRODUCTS = [
     "name": "GOMPYO CHICKEN BREADER MIX[10KG(22.05LBS)]",
     "nameKr": "",
     "size": "10KG",
-    "category": "snacks",
+    "category": "bakery",
     "price": 10.49,
     "image": "images/official/jl_ottogi_411336.jpg",
     "vendor": "Namdaemun"
@@ -7565,7 +7529,7 @@ const PRODUCTS = [
     "name": "KOREAN BULGOGI SAUCE [36/100G)]",
     "nameKr": "",
     "size": "100G",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 22.99,
     "image": "images/official/jl_ottogi_440768.jpg",
     "vendor": "Namdaemun"
@@ -7576,7 +7540,7 @@ const PRODUCTS = [
     "name": "KOREAN GALBI SAUCE [36/100G)]",
     "nameKr": "",
     "size": "100G",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 6.49,
     "image": "images/official/NDM_440769.jpg",
     "vendor": "Namdaemun"
@@ -7587,7 +7551,7 @@ const PRODUCTS = [
     "name": "SPICY CHICKEN FLAVORED NOODLES [20/ 210G (7.40OZ)]",
     "nameKr": "",
     "size": "210G",
-    "category": "ramen",
+    "category": "ramyun",
     "price": 6.49,
     "image": "images/official/jl_nongshim_431077.jpg",
     "vendor": "Namdaemun"
@@ -7642,7 +7606,7 @@ const PRODUCTS = [
     "name": "YELLOW SESAME SEEDS (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/01147D.jpg",
     "vendor": "Rhee Bros"
@@ -7653,7 +7617,7 @@ const PRODUCTS = [
     "name": "ROASTED SESAME SEEDS (7.5 OZ BTL)",
     "nameKr": "",
     "size": "7.5 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/05389D.jpg",
     "vendor": "Rhee Bros"
@@ -7664,7 +7628,7 @@ const PRODUCTS = [
     "name": "ROASTED BLACK SESAME SEEDS (7.5 OZ BTL)",
     "nameKr": "",
     "size": "7.5 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/jl_ottogi_05412D.jpg",
     "vendor": "Rhee Bros"
@@ -7675,7 +7639,7 @@ const PRODUCTS = [
     "name": "ROASTED WHITE SESAME SEEDS (7.5 OZ BTL)",
     "nameKr": "",
     "size": "7.5 OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/05413D.jpg",
     "vendor": "Rhee Bros"
@@ -7697,7 +7661,7 @@ const PRODUCTS = [
     "name": "RED BEAN (CHINA, 50#)",
     "nameKr": "",
     "size": "50 LB",
-    "category": "dried",
+    "category": "pantry",
     "price": 6.99,
     "image": "images/official/ASSI_01039D.jpg",
     "vendor": "Rhee Bros"
@@ -7708,7 +7672,7 @@ const PRODUCTS = [
     "name": "SOYBEAN",
     "nameKr": "",
     "size": "50 LB",
-    "category": "tofu",
+    "category": "dairy",
     "price": 8.99,
     "image": "images/official/ASSI_01041D.jpg",
     "vendor": "Rhee Bros"
@@ -7719,7 +7683,7 @@ const PRODUCTS = [
     "name": "BLACK BEAN (CHINA, 50#)",
     "nameKr": "",
     "size": "50 LB",
-    "category": "dried",
+    "category": "pantry",
     "price": 8.99,
     "image": "images/official/ASSI_01061D.jpg",
     "vendor": "Rhee Bros"
@@ -7730,7 +7694,7 @@ const PRODUCTS = [
     "name": "YELLOW SESAME SEEDS",
     "nameKr": "",
     "size": "50 LB",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7741,7 +7705,7 @@ const PRODUCTS = [
     "name": "BLACK SESAME SEEDS (14 OZ)",
     "nameKr": "",
     "size": "14OZ",
-    "category": "nuts",
+    "category": "pantry",
     "price": 4.99,
     "image": "images/official/ASSI_01118D.jpg",
     "vendor": "Rhee Bros"
@@ -7752,7 +7716,7 @@ const PRODUCTS = [
     "name": "JOB'S TEARS (14 OZ)",
     "nameKr": "",
     "size": "14 OZ",
-    "category": "dried",
+    "category": "tea",
     "price": 6.99,
     "image": "images/official/jl_ottogi_01206D.jpg",
     "vendor": "Rhee Bros"
@@ -7763,7 +7727,7 @@ const PRODUCTS = [
     "name": "ORGANIC BLACK BEANS",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "dried",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/resized/01221D.jpg",
     "vendor": "Rhee Bros"
@@ -7774,7 +7738,7 @@ const PRODUCTS = [
     "name": "ORGANIC RED BEANS",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "dried",
+    "category": "pantry",
     "price": 6.99,
     "image": "images/official/jl_ottogi_01223D.jpg",
     "vendor": "Rhee Bros"
@@ -7785,7 +7749,7 @@ const PRODUCTS = [
     "name": "POTATO STARCH",
     "nameKr": "",
     "size": "4 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.79,
     "image": "images/official/ASSI_02096D.jpg",
     "vendor": "Rhee Bros"
@@ -7796,7 +7760,7 @@ const PRODUCTS = [
     "name": "KOREAN VEGETABLE PANCAKE MIX",
     "nameKr": "",
     "size": "2 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 4.49,
     "image": "images/official/ASSI_02148K.jpg",
     "vendor": "Rhee Bros"
@@ -7807,7 +7771,7 @@ const PRODUCTS = [
     "name": "TEMPURA BATTER MIX",
     "nameKr": "",
     "size": "1.1 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.99,
     "image": "images/official/ASSI_02153K.jpg",
     "vendor": "Rhee Bros"
@@ -7818,7 +7782,7 @@ const PRODUCTS = [
     "name": "TEMPURA BATTER MIX (L)",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.99,
     "image": "images/official/02155K.jpg",
     "vendor": "Rhee Bros"
@@ -7829,7 +7793,7 @@ const PRODUCTS = [
     "name": "COARSE MALT POMDER",
     "nameKr": "",
     "size": "",
-    "category": "nuts",
+    "category": "pantry",
     "price": 5.99,
     "image": "images/official/ASSI_02156D.jpg",
     "vendor": "Rhee Bros"
@@ -7840,7 +7804,7 @@ const PRODUCTS = [
     "name": "ACORN STARCH (14 OZ)",
     "nameKr": "",
     "size": "14 OZ",
-    "category": "baking",
+    "category": "bakery",
     "price": 2.49,
     "image": "images/official/ASSI_02163D.jpg",
     "vendor": "Rhee Bros"
@@ -7851,7 +7815,7 @@ const PRODUCTS = [
     "name": "SWEET RICE FLOUR",
     "nameKr": "",
     "size": "4 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.49,
     "image": "images/official/resized/02170D.jpg",
     "vendor": "Rhee Bros"
@@ -7884,7 +7848,7 @@ const PRODUCTS = [
     "name": "SOYBEAN",
     "nameKr": "",
     "size": "10 LB",
-    "category": "tofu",
+    "category": "dairy",
     "price": 8.99,
     "image": "images/official/ASSI_01054D.jpg",
     "vendor": "Rhee Bros"
@@ -7895,7 +7859,7 @@ const PRODUCTS = [
     "name": "ROASTED SESAME SEEDS",
     "nameKr": "",
     "size": "4 LB",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/01113K.jpg",
     "vendor": "Rhee Bros"
@@ -7906,7 +7870,7 @@ const PRODUCTS = [
     "name": "ROASTED SESAME SEEDS",
     "nameKr": "",
     "size": "",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/01136D.jpg",
     "vendor": "Rhee Bros"
@@ -7917,7 +7881,7 @@ const PRODUCTS = [
     "name": "RED BEAN (30 OZ)",
     "nameKr": "",
     "size": "30 OZ",
-    "category": "dried",
+    "category": "pantry",
     "price": 6.99,
     "image": "images/official/ASSI_01208D.jpg",
     "vendor": "Rhee Bros"
@@ -7928,7 +7892,7 @@ const PRODUCTS = [
     "name": "SOYBEAN",
     "nameKr": "",
     "size": "",
-    "category": "tofu",
+    "category": "dairy",
     "price": 8.99,
     "image": "images/official/ASSI_01214D.jpg",
     "vendor": "Rhee Bros"
@@ -7939,7 +7903,7 @@ const PRODUCTS = [
     "name": "ALL PURPOSE WHEAT FLOUR GOLDEN (5.5#)",
     "nameKr": "",
     "size": "",
-    "category": "baking",
+    "category": "bakery",
     "price": 5.99,
     "image": "images/official/02059K.jpg",
     "vendor": "Rhee Bros"
@@ -7950,7 +7914,7 @@ const PRODUCTS = [
     "name": "ASSI RICE FLOUR (441",
     "nameKr": "",
     "size": "4 LB",
-    "category": "baking",
+    "category": "bakery",
     "price": 6.49,
     "image": "",
     "vendor": "Rhee Bros"
@@ -7961,7 +7925,7 @@ const PRODUCTS = [
     "name": "ROASTED SESAME SEEDS (16 OZ,BTL)",
     "nameKr": "",
     "size": "",
-    "category": "nuts",
+    "category": "pantry",
     "price": 6.49,
     "image": "images/official/05396D.jpg",
     "vendor": "Rhee Bros"
@@ -7972,7 +7936,7 @@ const PRODUCTS = [
     "name": "Rice Ball Seafood 15/0.84z / 주먹밥 해물 15/0.84z",
     "nameKr": "주먹밥 해물 15/0.84z",
     "size": "",
-    "category": "prepared",
+    "category": "ready",
     "price": 10.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -8005,7 +7969,7 @@ const PRODUCTS = [
     "name": "Wang 손질한 Blue Crab CUT12/1.5#(6-10P / 왕 손질한꽃게 CUT12/1.5#(6-10P",
     "nameKr": "왕 손질한꽃게 CUT12/1.5#(6-10P",
     "size": "",
-    "category": "seafood",
+    "category": "frozen",
     "price": 4.99,
     "image": "images/official/final_17193.jpg",
     "vendor": "Wang Globalnet"
@@ -8016,7 +7980,7 @@ const PRODUCTS = [
     "name": "Wang 손질한 Monkfish 24/1.5Lb / 왕 손질한 아구 24/1.5Lb",
     "nameKr": "왕 손질한 아구 24/1.5Lb",
     "size": "",
-    "category": "seafood",
+    "category": "frozen",
     "price": 8.49,
     "image": "images/official/final_10368.jpg",
     "vendor": "Wang Globalnet"
@@ -8027,7 +7991,7 @@ const PRODUCTS = [
     "name": "Wang 자반토막 Hairtail/Cutlassfish 24/1.1lbs / 왕 자반토막갈치24/1.1lbs",
     "nameKr": "왕 자반토막갈치24/1.1lbs",
     "size": "",
-    "category": "seafood",
+    "category": "meat",
     "price": 8.49,
     "image": "images/official/final_18073.jpg",
     "vendor": "Wang Globalnet"
@@ -8038,7 +8002,7 @@ const PRODUCTS = [
     "name": "Wang 통통 Squid 12/1.6LB / 왕 통통오징어 12/1.6LB",
     "nameKr": "왕 통통오징어 12/1.6LB",
     "size": "",
-    "category": "seafood",
+    "category": "frozen",
     "price": 6.99,
     "image": "images/official/web_35384.jpg",
     "vendor": "Wang Globalnet"
@@ -8049,7 +8013,7 @@ const PRODUCTS = [
     "name": "Wang Shelled Clam (300/500)24/10oz / 왕 바지락살(300/500)24/10oz",
     "nameKr": "왕 바지락살(300/500)24/10oz",
     "size": "",
-    "category": "seafood",
+    "category": "meat",
     "price": 6.99,
     "image": "images/official/final_2796.jpg",
     "vendor": "Wang Globalnet"
@@ -8060,7 +8024,7 @@ const PRODUCTS = [
     "name": "Surasang Stock Anchovy 16/8oz / 수라상 다시멸치 16/8oz",
     "nameKr": "수라상 다시멸치 16/8oz",
     "size": "",
-    "category": "seafood",
+    "category": "meat",
     "price": 6.49,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -8071,7 +8035,7 @@ const PRODUCTS = [
     "name": "Surasang Soup Anchovy 16/8oz. / 수라상 지리멸치 16/8oz.",
     "nameKr": "수라상 지리멸치 16/8oz.",
     "size": "",
-    "category": "prepared",
+    "category": "meat",
     "price": 6.49,
     "image": "images/official/jl_ottogi_4979.jpg",
     "vendor": "Wang Globalnet"
@@ -8082,7 +8046,7 @@ const PRODUCTS = [
     "name": "Donghae 햇 Yam 른 Squid 16/141g / 동해 햇마른오징어16/141g",
     "nameKr": "동해 햇마른오징어16/141g",
     "size": "",
-    "category": "seafood",
+    "category": "meat",
     "price": 3.99,
     "image": "",
     "vendor": "Wang Globalnet"
@@ -8093,7 +8057,7 @@ const PRODUCTS = [
     "name": "Ohyang Seafood Stew 12/1.1lbs / 오향 해물잡탕12/1.1lbs",
     "nameKr": "오향 해물잡탕12/1.1lbs",
     "size": "",
-    "category": "prepared",
+    "category": "pantry",
     "price": 7.99,
     "image": "images/official/final_8568.jpg",
     "vendor": "Wang Globalnet"
@@ -8104,7 +8068,7 @@ const PRODUCTS = [
     "name": "Raw Squid Salad 16/330 g / 오징어물회 16/330 g",
     "nameKr": "오징어물회 16/330 g",
     "size": "",
-    "category": "seafood",
+    "category": "meat",
     "price": 4.99,
     "image": "images/official/final_6336.jpg",
     "vendor": "Wang Globalnet"
@@ -8126,7 +8090,7 @@ const PRODUCTS = [
     "name": "ABALONE PORRIDGE [25/ 300G (10.50OZ)]",
     "nameKr": "",
     "size": "300G",
-    "category": "prepared",
+    "category": "ready",
     "price": 5.99,
     "image": "images/official/jl_ottogi_431102.jpg",
     "vendor": "Namdaemun"
@@ -8137,7 +8101,7 @@ const PRODUCTS = [
     "name": "BRAISED FISH SAUCE [36/100G)]",
     "nameKr": "",
     "size": "100G",
-    "category": "sauces",
+    "category": "seasonings",
     "price": 6.99,
     "image": "images/official/NDM_440770.jpg",
     "vendor": "Namdaemun"
@@ -8148,7 +8112,7 @@ const PRODUCTS = [
     "name": "DRIED SQUID [3PCS/PACK, 30PACK] -FZ",
     "nameKr": "",
     "size": "3/30PACK",
-    "category": "seafood",
+    "category": "meat",
     "price": 6.99,
     "image": "images/official/NDM_490999.jpg",
     "vendor": "Namdaemun"
@@ -8159,7 +8123,7 @@ const PRODUCTS = [
     "name": "FRIED FISH CAKE (BALL) [10/ 1KG (35.27OZ)]",
     "nameKr": "",
     "size": "1KG",
-    "category": "frozen",
+    "category": "bakery",
     "price": 5.49,
     "image": "images/official/NDM_433178.jpg",
     "vendor": "Namdaemun"
@@ -8170,7 +8134,7 @@ const PRODUCTS = [
     "name": "SEASONED SHREDDED SQUID (HONEY) [10KG (22LBS)]",
     "nameKr": "",
     "size": "10KG",
-    "category": "seafood",
+    "category": "meat",
     "price": 5.99,
     "image": "images/official/NDM_335507.jpg",
     "vendor": "Namdaemun"
@@ -8181,7 +8145,7 @@ const PRODUCTS = [
     "name": "POLLACK(DONGTAE/CUT)",
     "nameKr": "",
     "size": "1.5 LB",
-    "category": "seafood",
+    "category": "pantry",
     "price": 4.99,
     "image": "images/official/final_111460.jpg",
     "vendor": "Link"
@@ -8192,7 +8156,7 @@ const PRODUCTS = [
     "name": "COD(CUT)",
     "nameKr": "",
     "size": "1.5 LB",
-    "category": "seafood",
+    "category": "pantry",
     "price": 4.99,
     "image": "images/official/final_111465.jpg",
     "vendor": "Link"
@@ -8203,7 +8167,7 @@ const PRODUCTS = [
     "name": "OCTOPUS",
     "nameKr": "",
     "size": "1.5 LB",
-    "category": "seafood",
+    "category": "meat",
     "price": 10.49,
     "image": "images/official/final_112045.jpg",
     "vendor": "Link"
@@ -8236,7 +8200,7 @@ const PRODUCTS = [
     "name": "Surasang Chanbada Hairtail/Cutlassfish (Tray)24/11.5z / 수라상찬바다갈치(Tray)24/11.5z",
     "nameKr": "수라상찬바다갈치(Tray)24/11.5z",
     "size": "",
-    "category": "seafood",
+    "category": "meat",
     "price": 3.49,
     "image": "images/official/resized/18072.jpg",
     "vendor": "Wang Globalnet"
@@ -8247,7 +8211,7 @@ const PRODUCTS = [
     "name": "SEASONED OCTOPUS [12/ 300G (10.58OZ)]",
     "nameKr": "",
     "size": "300G",
-    "category": "seafood",
+    "category": "meat",
     "price": 5.99,
     "image": "images/official/resized/436327.jpg",
     "vendor": "Namdaemun"
@@ -8258,7 +8222,7 @@ const PRODUCTS = [
     "name": "Bibigo Tofu Soft Type / 비비고 두부 찌개용",
     "nameKr": "비비고 두부 찌개용",
     "size": "300g",
-    "category": "tofu",
+    "category": "dairy",
     "price": 2.49,
     "image": "images/official/CJ_cj_1020313.jpg",
     "vendor": "Wang Globalnet"
@@ -8269,7 +8233,7 @@ const PRODUCTS = [
     "name": "Bibigo Tofu Firm Type / 비비고 두부 부침용",
     "nameKr": "비비고 두부 부침용",
     "size": "300g",
-    "category": "tofu",
+    "category": "dairy",
     "price": 1.99,
     "image": "images/official/CJ_cj_1020314.jpg",
     "vendor": "Wang Globalnet"
@@ -8280,7 +8244,7 @@ const PRODUCTS = [
     "name": "Bibigo Extra Soft Tofu / 비비고 순두부",
     "nameKr": "비비고 순두부",
     "size": "350g",
-    "category": "tofu",
+    "category": "dairy",
     "price": 2.49,
     "image": "images/official/CJ_cj_1020361.jpg",
     "vendor": "Wang Globalnet"
@@ -8346,7 +8310,7 @@ const PRODUCTS = [
     "name": "FORTUNE DAIRY BEVERAGE (YOGURT)",
     "nameKr": "",
     "size": "338ML",
-    "category": "dairy",
+    "category": "pantry",
     "price": 3.49,
     "image": "images/official/final_FMQ004.jpg",
     "vendor": "Two Bros Food"
