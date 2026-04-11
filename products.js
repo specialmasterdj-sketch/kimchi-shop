@@ -1248,28 +1248,8 @@ const PRODUCTS = [
     "image": "images/official/BINGGRAE_11025K.jpg",
     "vendor": "Rhee Bros"
   },
-  {
-    "id": "AK 1033",
-    "brand": "KOCO",
-    "name": "S/S Steamer L 60",
-    "nameKr": "스텐찜기",
-    "size": "",
-    "category": "other",
-    "price": 10.99,
-    "image": "images/official/jlm_AK 1033.jpg",
-    "vendor": "KOCO Trading"
-  },
-  {
-    "id": "AK 1032",
-    "brand": "KOCO",
-    "name": "S/S Steamer M 60",
-    "nameKr": "스텐찜기",
-    "size": "",
-    "category": "other",
-    "price": 10.99,
-    "image": "images/official/jlm_AK 1032.jpg",
-    "vendor": "KOCO Trading"
-  },
+  
+  
   {
     "id": "10999K",
     "brand": "BINGGRAE",
@@ -1826,7 +1806,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR BEEF (L)",
     "nameKr": "",
     "size": "1.85 LB",
-    "category": "beverages",
+    "category": "sauces",
     "price": 3.49,
     "image": "images/official/assi_05217K.jpg",
     "vendor": "Rhee Bros"
@@ -1903,7 +1883,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR RIBS (L)",
     "nameKr": "",
     "size": "1.85 LB",
-    "category": "beverages",
+    "category": "sauces",
     "price": 6.49,
     "image": "images/official/assi_05211K.jpg",
     "vendor": "Rhee Bros"
@@ -2266,7 +2246,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR BEEF (L)",
     "nameKr": "",
     "size": "31.7 OZ",
-    "category": "beverages",
+    "category": "sauces",
     "price": 3.49,
     "image": "images/official/jl_daesang_05197K.jpg",
     "vendor": "Rhee Bros"
@@ -2277,7 +2257,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR RIBS (L)",
     "nameKr": "",
     "size": "31.7 OZ",
-    "category": "beverages",
+    "category": "sauces",
     "price": 6.49,
     "image": "images/official/jl_ottogi_05198K.jpg",
     "vendor": "Rhee Bros"
@@ -2288,7 +2268,7 @@ const PRODUCTS = [
     "name": "KOREAN BBQ MARINADE&SAUCE FOR PORK (L)",
     "nameKr": "",
     "size": "1.85 LB",
-    "category": "beverages",
+    "category": "sauces",
     "price": 3.49,
     "image": "images/official/assi_05222K.jpg",
     "vendor": "Rhee Bros"
@@ -4631,7 +4611,7 @@ const PRODUCTS = [
     "name": "FRESH MILK CREAM BUN(1P)",
     "nameKr": "",
     "size": "4.76 OZ",
-    "category": "beverages",
+    "category": "snacks",
     "price": 3.99,
     "image": "images/official/SAMLIP_21280K.jpg",
     "vendor": "Rhee Bros"
@@ -5335,7 +5315,7 @@ const PRODUCTS = [
     "name": "Ppapico-Milky Yogurt (Ice Tube) 4/6/130ml",
     "nameKr": "롯데삼강)빠삐코 밀키요거트 4/6/130ml",
     "size": "130ml",
-    "category": "beverages",
+    "category": "frozen",
     "price": 7.99,
     "image": "images/official/lotte_IL1017C.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5379,7 +5359,7 @@ const PRODUCTS = [
     "name": "Cider & Yogurt Flavored Ice Bar6/6/80ml",
     "nameKr": "롯데삼강)보석바 6/6/80ml",
     "size": "80ml",
-    "category": "beverages",
+    "category": "frozen",
     "price": 7.99,
     "image": "images/official/lotte_IL1022.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5456,7 +5436,7 @@ const PRODUCTS = [
     "name": "Bibigo Beef Steamed Soup Dumpling 16/24oz",
     "nameKr": "CJ)비비고 육즙가득 소불고기 찐만두 16/24oz",
     "size": "",
-    "category": "beverages",
+    "category": "frozen",
     "price": 11.99,
     "image": "images/official/CJ_EC5142.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -5621,7 +5601,7 @@ const PRODUCTS = [
     "name": "PAPICO MILKY YOGURT(6P)",
     "nameKr": "",
     "size": "4.40 OZ",
-    "category": "beverages",
+    "category": "frozen",
     "price": 7.99,
     "image": "images/official/lotte_21092K.jpg",
     "vendor": "Rhee Bros"
@@ -7392,7 +7372,7 @@ const PRODUCTS = [
     "name": "MINCED GARLIC IN WATER",
     "nameKr": "",
     "size": "",
-    "category": "beverages",
+    "category": "seasonings",
     "price": 7.99,
     "image": "images/official/assi_19341K.jpg",
     "vendor": "Rhee Bros"
@@ -7766,7 +7746,7 @@ const PRODUCTS = [
     "name": "JOB'S TEARS (14 OZ)",
     "nameKr": "",
     "size": "14 OZ",
-    "category": "beverages",
+    "category": "dried",
     "price": 6.99,
     "image": "images/official/jl_ottogi_01206D.jpg",
     "vendor": "Rhee Bros"
