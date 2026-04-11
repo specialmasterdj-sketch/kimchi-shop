@@ -1,5 +1,5 @@
 // KIMCHI Shop - Final Curated Catalog (Top ~1000)
-// Generated: 2026-04-11T12:52:33.126Z
+// Generated: 2026-04-11T12:55:10.460Z
 // Total: 752 products
 
 const CATEGORIES = {
@@ -1465,7 +1465,7 @@ const PRODUCTS = [
     "size": "8.05 OZ",
     "category": "beverages",
     "price": 6.49,
-    "image": "images_clean/rhee/08884K.jpg",
+    "image": "images/official/resized/08884K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1927,7 +1927,7 @@ const PRODUCTS = [
     "size": "120g",
     "category": "sauces",
     "price": 4.49,
-    "image": "images/official/jlm_KD0113.jpg",
+    "image": "images/official/DW_KD0113.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1938,7 +1938,7 @@ const PRODUCTS = [
     "size": "240g",
     "category": "sauces",
     "price": 15.49,
-    "image": "images/official/jlm_KD0116.jpg",
+    "image": "images/official/DW_KD0116.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1949,7 +1949,7 @@ const PRODUCTS = [
     "size": "120g",
     "category": "sauces",
     "price": 4.49,
-    "image": "images/official/jlm_KD0111.jpg",
+    "image": "images/official/DW_KD0111.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -2994,7 +2994,7 @@ const PRODUCTS = [
     "size": "",
     "category": "dried",
     "price": 4.49,
-    "image": "images/official/jlm_KD1077.jpg",
+    "image": "images/official/DW_KD1077.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3027,7 +3027,7 @@ const PRODUCTS = [
     "size": "160g",
     "category": "dried",
     "price": 4.49,
-    "image": "images/official/jlm_KD0117.jpg",
+    "image": "images/official/DW_KD0117.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3489,7 +3489,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 3.99,
-    "image": "images/official/jlm_HD3030.jpg",
+    "image": "images/official/DW_HD3030.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3511,7 +3511,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 14.99,
-    "image": "images/official/jlm_HD3031.jpg",
+    "image": "images/official/DW_HD3031.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3533,7 +3533,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 14.99,
-    "image": "images/official/jlm_HD3038.jpg",
+    "image": "images/official/DW_HD3038.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3665,7 +3665,7 @@ const PRODUCTS = [
     "size": "0.56 OZ",
     "category": "seaweed",
     "price": 3.99,
-    "image": "images_clean/rhee/image135.jpg",
+    "image": "images/official/HANA_07347J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3720,7 +3720,7 @@ const PRODUCTS = [
     "size": "80g",
     "category": "seaweed",
     "price": 10.99,
-    "image": "images/official/jlm_HD3131.jpg",
+    "image": "images/official/DW_HD3131.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -4105,7 +4105,7 @@ const PRODUCTS = [
     "size": "3.17 OZ",
     "category": "prepared",
     "price": 3.49,
-    "image": "images/official/jlm_04281J.jpg",
+    "image": "images/official/KABUTO_04281J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4325,7 +4325,7 @@ const PRODUCTS = [
     "size": "3.5 OZ",
     "category": "prepared",
     "price": 4.79,
-    "image": "images/official/jlm_20015J.jpg",
+    "image": "images/official/HANA_20015J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4336,7 +4336,7 @@ const PRODUCTS = [
     "size": "5.2 OZ",
     "category": "prepared",
     "price": 6.49,
-    "image": "images/official/jlm_20021J.jpg",
+    "image": "images/official/KABUTO_20021J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4413,7 +4413,7 @@ const PRODUCTS = [
     "size": "23.8 OZ",
     "category": "prepared",
     "price": 8.99,
-    "image": "images/official/jlm_20669K.jpg",
+    "image": "images/official/SAMLIP_20669K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4446,7 +4446,7 @@ const PRODUCTS = [
     "size": "3.7 OZ",
     "category": "prepared",
     "price": 3.99,
-    "image": "images/official/jlm_20861K.jpg",
+    "image": "images/official/SAMLIP_20861K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4611,7 +4611,7 @@ const PRODUCTS = [
     "size": "4.76 OZ",
     "category": "snacks",
     "price": 3.99,
-    "image": "images/official/jlm_21282K.jpg",
+    "image": "images/official/SAMLIP_21282K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4633,7 +4633,7 @@ const PRODUCTS = [
     "size": "4.76 OZ",
     "category": "snacks",
     "price": 3.99,
-    "image": "images/official/jlm_21280K.jpg",
+    "image": "images/official/SAMLIP_21280K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4688,7 +4688,7 @@ const PRODUCTS = [
     "size": "7.05 OZ",
     "category": "snacks",
     "price": 5.49,
-    "image": "images/official/jlm_08894K.jpg",
+    "image": "images/official/SAMLIP_08894K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4963,7 +4963,7 @@ const PRODUCTS = [
     "size": "8.4 OZ",
     "category": "snacks",
     "price": 5.49,
-    "image": "images/official/jlm_09746K.jpg",
+    "image": "images/official/KABUTO_09746K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -6547,7 +6547,7 @@ const PRODUCTS = [
     "size": "30 OZ",
     "category": "seasonings",
     "price": 2.49,
-    "image": "images/official/jlm_05030D.jpg",
+    "image": "images/official/ASSI_05030D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -6569,7 +6569,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 8.99,
-    "image": "images/official/jlm_05077K.jpg",
+    "image": "images/official/ASSI_05077K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7031,7 +7031,7 @@ const PRODUCTS = [
     "size": "16.75 OZ",
     "category": "canned",
     "price": 5.99,
-    "image": "images/official/jlm_06478C.jpg",
+    "image": "images/official/KABUTO_06478C.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7042,7 +7042,7 @@ const PRODUCTS = [
     "size": "5 OZ",
     "category": "canned",
     "price": 9.49,
-    "image": "images_clean/rhee/image143.jpg",
+    "image": "images/official/HANA_19121J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7295,7 +7295,7 @@ const PRODUCTS = [
     "size": "1 LB",
     "category": "canned",
     "price": 8.99,
-    "image": "images/official/jlm_06100K.jpg",
+    "image": "images/official/ASSI_06100K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7339,7 +7339,7 @@ const PRODUCTS = [
     "size": "16 OZ",
     "category": "canned",
     "price": 8.99,
-    "image": "images/official/jlm_19092K.jpg",
+    "image": "images/official/ASSI_19092K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7493,7 +7493,7 @@ const PRODUCTS = [
     "size": "12 OZ",
     "category": "canned",
     "price": 13.49,
-    "image": "images/official/jlm_52106K.jpg",
+    "image": "images/official/ASSI_52106K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7592,7 +7592,7 @@ const PRODUCTS = [
     "size": "100G",
     "category": "meat",
     "price": 6.49,
-    "image": "images/official/jlm_440769.jpg",
+    "image": "images/official/NDM_440769.jpg",
     "vendor": "Namdaemun"
   },
   {
@@ -7713,7 +7713,7 @@ const PRODUCTS = [
     "size": "50 LB",
     "category": "nuts",
     "price": 6.99,
-    "image": "images/official/jlm_01039D.jpg",
+    "image": "images/official/ASSI_01039D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7724,7 +7724,7 @@ const PRODUCTS = [
     "size": "50 LB",
     "category": "nuts",
     "price": 8.99,
-    "image": "images/official/jlm_01041D.jpg",
+    "image": "images/official/ASSI_01041D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7735,7 +7735,7 @@ const PRODUCTS = [
     "size": "50 LB",
     "category": "nuts",
     "price": 8.99,
-    "image": "images/official/jlm_01061D.jpg",
+    "image": "images/official/ASSI_01061D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7757,7 +7757,7 @@ const PRODUCTS = [
     "size": "14OZ",
     "category": "nuts",
     "price": 4.99,
-    "image": "images/official/jlm_01118D.jpg",
+    "image": "images/official/ASSI_01118D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7801,7 +7801,7 @@ const PRODUCTS = [
     "size": "4 LB",
     "category": "nuts",
     "price": 6.79,
-    "image": "images/official/jlm_02096D.jpg",
+    "image": "images/official/ASSI_02096D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7812,7 +7812,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "nuts",
     "price": 4.49,
-    "image": "images/official/jlm_02148K.jpg",
+    "image": "images/official/ASSI_02148K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7823,7 +7823,7 @@ const PRODUCTS = [
     "size": "1.1 LB",
     "category": "nuts",
     "price": 5.99,
-    "image": "images/official/jlm_02153K.jpg",
+    "image": "images/official/ASSI_02153K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7845,7 +7845,7 @@ const PRODUCTS = [
     "size": "",
     "category": "nuts",
     "price": 5.99,
-    "image": "images/official/jlm_02156D.jpg",
+    "image": "images/official/ASSI_02156D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7856,7 +7856,7 @@ const PRODUCTS = [
     "size": "14 OZ",
     "category": "nuts",
     "price": 2.49,
-    "image": "images/official/jlm_02163D.jpg",
+    "image": "images/official/ASSI_02163D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7889,7 +7889,7 @@ const PRODUCTS = [
     "size": "30 OZ",
     "category": "nuts",
     "price": 10.99,
-    "image": "images/official/jlm_01113K.jpg",
+    "image": "images/official/ASSI_01045D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7900,7 +7900,7 @@ const PRODUCTS = [
     "size": "10 LB",
     "category": "nuts",
     "price": 8.99,
-    "image": "images/official/jlm_01136D.jpg",
+    "image": "images/official/ASSI_01054D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7933,7 +7933,7 @@ const PRODUCTS = [
     "size": "30 OZ",
     "category": "nuts",
     "price": 6.99,
-    "image": "images/official/jlm_18072.jpg",
+    "image": "images/official/ASSI_01208D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7944,7 +7944,7 @@ const PRODUCTS = [
     "size": "",
     "category": "nuts",
     "price": 8.99,
-    "image": "images/official/jlm_8501641NS.jpg",
+    "image": "images/official/ASSI_01214D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -8153,7 +8153,7 @@ const PRODUCTS = [
     "size": "100G",
     "category": "seafood",
     "price": 6.99,
-    "image": "images/official/jlm_440770.jpg",
+    "image": "images/official/NDM_440770.jpg",
     "vendor": "Namdaemun"
   },
   {
@@ -8164,7 +8164,7 @@ const PRODUCTS = [
     "size": "3/30PACK",
     "category": "seafood",
     "price": 6.99,
-    "image": "images/official/jlm_490999.jpg",
+    "image": "images/official/NDM_490999.jpg",
     "vendor": "Namdaemun"
   },
   {
@@ -8175,7 +8175,7 @@ const PRODUCTS = [
     "size": "1KG",
     "category": "seafood",
     "price": 5.49,
-    "image": "images/official/jlm_433178.jpg",
+    "image": "images/official/NDM_433178.jpg",
     "vendor": "Namdaemun"
   },
   {
@@ -8186,7 +8186,7 @@ const PRODUCTS = [
     "size": "10KG",
     "category": "seafood",
     "price": 5.99,
-    "image": "images/official/jlm_335507.jpg",
+    "image": "images/official/NDM_335507.jpg",
     "vendor": "Namdaemun"
   },
   {
