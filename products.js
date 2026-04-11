@@ -2455,7 +2455,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 19.99,
-    "image": "images_clean/wang/3734.jpg",
+    "image": "images/official/web_3734.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2466,7 +2466,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 19.99,
-    "image": "images_clean/wang/3732.jpg",
+    "image": "images/official/web_3732.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2477,7 +2477,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 5.49,
-    "image": "images_clean/wang/27232.jpg",
+    "image": "images/official/web_27232.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2488,7 +2488,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 5.49,
-    "image": "images_clean/wang/19259.jpg",
+    "image": "images/official/web_19259.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2521,7 +2521,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 5.49,
-    "image": "images_clean/wang/19727.jpg",
+    "image": "images/official/web_19727.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2543,7 +2543,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 4.49,
-    "image": "images_clean/wang/1896.jpg",
+    "image": "images/official/web_1896.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2565,7 +2565,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 4.49,
-    "image": "images_clean/wang/4070.jpg",
+    "image": "images/official/web_4070.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2576,7 +2576,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 5.49,
-    "image": "images_clean/wang/11.jpg",
+    "image": "images/official/web_11.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2664,7 +2664,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 8.99,
-    "image": "images_clean/wang/35429.jpg",
+    "image": "images/official/web_35429.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2675,7 +2675,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 8.49,
-    "image": "images_clean/wang/18744.jpg",
+    "image": "images/official/web_18744.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2686,7 +2686,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 5.99,
-    "image": "images_clean/wang/19601.jpg",
+    "image": "images/official/web_19601.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2697,7 +2697,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 2.99,
-    "image": "images_clean/wang/32485.jpg",
+    "image": "images/official/web_32485.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2708,7 +2708,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 19.99,
-    "image": "images/wang/11183.jpeg",
+    "image": "images/official/web_11183.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -2719,7 +2719,7 @@ const PRODUCTS = [
     "size": "",
     "category": "kimchi",
     "price": 5.49,
-    "image": "images_clean/wang/5528.jpg",
+    "image": "images/official/web_5528.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -3786,7 +3786,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 5.49,
-    "image": "images_clean/wang/13984.jpg",
+    "image": "images/official/web_13984.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -3797,7 +3797,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 5.49,
-    "image": "images_clean/wang/3975.jpg",
+    "image": "images/official/web_3975.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -3819,7 +3819,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 9.99,
-    "image": "images_clean/wang/6421.jpg",
+    "image": "images/official/web_6421.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -3841,7 +3841,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 4.99,
-    "image": "images_clean/wang/34824.jpg",
+    "image": "images/official/web_34824.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -3874,7 +3874,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seaweed",
     "price": 5.49,
-    "image": "images_clean/wang/19174.jpg",
+    "image": "images/official/web_19174.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -6030,7 +6030,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/60254.jpg",
+    "image": "images/official/web_60254.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6041,7 +6041,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/602502.jpg",
+    "image": "images/official/web_602502.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6052,7 +6052,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/60250.jpg",
+    "image": "images/official/web_60250.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6074,7 +6074,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/60252.jpg",
+    "image": "images/official/web_60252.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6085,7 +6085,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 6.49,
-    "image": "images_clean/asia_veg/30003.jpg",
+    "image": "images/official/web_30003.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6096,7 +6096,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/60257.jpg",
+    "image": "images/official/web_60257.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6107,7 +6107,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/60255.jpg",
+    "image": "images/official/web_60255.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6140,7 +6140,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "images_clean/asia_veg/60256.jpg",
+    "image": "images/official/web_60256.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6184,7 +6184,7 @@ const PRODUCTS = [
     "size": "7 CT",
     "category": "produce",
     "price": 16.99,
-    "image": "https://www.freshpoint.com/wp-content/uploads/commodity-mango.jpg",
+    "image": "images/official/web_146030.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6217,7 +6217,7 @@ const PRODUCTS = [
     "size": "12 CT",
     "category": "produce",
     "price": 9.99,
-    "image": "https://www.freshpoint.com/wp-content/uploads/commodity-cauliflower.jpg",
+    "image": "images/official/web_116680.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6228,7 +6228,7 @@ const PRODUCTS = [
     "size": "35 LB",
     "category": "produce",
     "price": 5.49,
-    "image": "https://www.freshpoint.com/wp-content/uploads/commodity-jicama.jpg",
+    "image": "images/official/web_137645.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6239,7 +6239,7 @@ const PRODUCTS = [
     "size": "13LB",
     "category": "produce",
     "price": 5.49,
-    "image": "https://www.freshpoint.com/wp-content/uploads/commodity-okra.jpg",
+    "image": "images/official/web_156040.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6283,7 +6283,7 @@ const PRODUCTS = [
     "size": "LB",
     "category": "produce",
     "price": 3.99,
-    "image": "images_clean/asia_veg/60229.jpg",
+    "image": "images/official/web_60229.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6305,7 +6305,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 3.99,
-    "image": "images_clean/asia_veg/30114.jpg",
+    "image": "images/official/web_30114.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6349,7 +6349,7 @@ const PRODUCTS = [
     "size": "BAG",
     "category": "produce",
     "price": 3.99,
-    "image": "images_clean/asia_veg/20010.jpg",
+    "image": "images/official/web_20010.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6360,7 +6360,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 3.99,
-    "image": "images_clean/asia_veg/20120.jpg",
+    "image": "images/official/web_20120.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6393,7 +6393,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 3.99,
-    "image": "images_clean/asia_veg/60248.jpg",
+    "image": "images/official/web_60248.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6734,7 +6734,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 5.99,
-    "image": "images/wang/1145.jpeg",
+    "image": "images/official/web_1145.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -6745,7 +6745,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 5.99,
-    "image": "images_clean/wang/1138.jpg",
+    "image": "images/official/web_1138.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -6756,7 +6756,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 10.49,
-    "image": "images_clean/wang/4456.jpg",
+    "image": "images/official/web_4456.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -6767,7 +6767,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 10.49,
-    "image": "images_clean/wang/20608.jpg",
+    "image": "images/official/web_20608.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -7559,7 +7559,7 @@ const PRODUCTS = [
     "size": "",
     "category": "meat",
     "price": 8.99,
-    "image": "images/wang/16045.jpeg",
+    "image": "images/official/web_16045.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -8054,7 +8054,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seafood",
     "price": 6.99,
-    "image": "images_clean/wang/35384.jpg",
+    "image": "images/official/web_35384.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -8340,7 +8340,7 @@ const PRODUCTS = [
     "size": "15/1 DZ",
     "category": "dairy",
     "price": 8.99,
-    "image": "https://dutchfarms.com/wp-content/uploads/2022/02/Cage-Free-Brown-Large-Eggs-PET.jpg",
+    "image": "images/official/web_417200.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -8351,7 +8351,7 @@ const PRODUCTS = [
     "size": "15/1DZ",
     "category": "dairy",
     "price": 8.99,
-    "image": "https://dutchfarms.com/wp-content/uploads/2022/02/Cage-Free-Brown-Large-Eggs-PET.jpg",
+    "image": "images/official/web_418000.jpg",
     "vendor": "Fresh Point"
   },
   {
