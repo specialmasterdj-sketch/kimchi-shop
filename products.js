@@ -695,7 +695,7 @@ const PRODUCTS = [
     "size": "15 LB",
     "category": "rice",
     "price": 11.99,
-    "image": "images/official/jlm_00030D.jpg",
+    "image": "images/official/fix_00030D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -706,7 +706,7 @@ const PRODUCTS = [
     "size": "40 LB",
     "category": "rice",
     "price": 11.99,
-    "image": "images/official/jlm_00033D.jpg",
+    "image": "images/official/fix_00033D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -728,7 +728,7 @@ const PRODUCTS = [
     "size": "",
     "category": "rice",
     "price": 17.49,
-    "image": "images/official/jlm_CS1221.jpg",
+    "image": "images/official/8elephants_CS1221.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -761,7 +761,7 @@ const PRODUCTS = [
     "size": "15 LB",
     "category": "rice",
     "price": 28.99,
-    "image": "images/official/jlm_00025D.jpg",
+    "image": "images/official/fix_00025D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -772,7 +772,7 @@ const PRODUCTS = [
     "size": "15 LB",
     "category": "rice",
     "price": 21.99,
-    "image": "images/official/jlm_00026D.jpg",
+    "image": "images/official/fix_00026D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -783,7 +783,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 8.99,
-    "image": "images/official/jlm_00004D.jpg",
+    "image": "images/official/fix_00004D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -794,7 +794,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 8.99,
-    "image": "images/official/jlm_00014D.jpg",
+    "image": "images/official/fix_00014D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -805,7 +805,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 9.99,
-    "image": "images/official/jlm_00016D.jpg",
+    "image": "images/official/fix_00016D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -816,7 +816,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "rice",
     "price": 21.99,
-    "image": "images/official/jlm_00024D.jpg",
+    "image": "images/official/fix_00024D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -827,7 +827,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 11.99,
-    "image": "images/official/jlm_00035D.jpg",
+    "image": "images/official/fix_00035D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -838,7 +838,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "rice",
     "price": 21.99,
-    "image": "images/official/jlm_00036D.jpg",
+    "image": "images/official/fix_00036D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -860,7 +860,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 4.49,
-    "image": "images/official/jlm_00093D.jpg",
+    "image": "images/official/fix_00093D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -893,7 +893,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 19.49,
-    "image": "images/official/jlm_01033D.jpg",
+    "image": "images/official/fix_01033D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -904,7 +904,7 @@ const PRODUCTS = [
     "size": "5 LB",
     "category": "rice",
     "price": 11.49,
-    "image": "images/official/jlm_01048D.jpg",
+    "image": "images/official/fix_01048D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -937,7 +937,7 @@ const PRODUCTS = [
     "size": "6.6 LB",
     "category": "rice",
     "price": 9.99,
-    "image": "images/official/jlm_03423K.jpg",
+    "image": "images/official/03423K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -970,7 +970,7 @@ const PRODUCTS = [
     "size": "2lb",
     "category": "rice",
     "price": 4.49,
-    "image": "images/official/jlm_CC1003.jpg",
+    "image": "images/official/crd_CC1003.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -981,7 +981,7 @@ const PRODUCTS = [
     "size": "2.26kg",
     "category": "rice",
     "price": 4.99,
-    "image": "images/official/jlm_CC1501.jpg",
+    "image": "images/official/crd_CC1501.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -992,7 +992,7 @@ const PRODUCTS = [
     "size": "",
     "category": "rice",
     "price": 17.49,
-    "image": "images/official/jlm_CS1226.jpg",
+    "image": "images/official/8elephants_CS1226.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1003,7 +1003,7 @@ const PRODUCTS = [
     "size": "",
     "category": "rice",
     "price": 17.49,
-    "image": "images/official/jlm_CS1228.jpg",
+    "image": "images/official/8elephants_CS1228.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1080,7 +1080,7 @@ const PRODUCTS = [
     "size": "15 LB",
     "category": "rice",
     "price": 11.99,
-    "image": "images/official/jlm_00012D.jpg",
+    "image": "images/official/rheechun_00012D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1102,7 +1102,7 @@ const PRODUCTS = [
     "size": "50 LB",
     "category": "rice",
     "price": 4.49,
-    "image": "images/official/jlm_00091D.jpg",
+    "image": "images/official/hankukmi_00091D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1113,7 +1113,7 @@ const PRODUCTS = [
     "size": "50 LB",
     "category": "rice",
     "price": 19.49,
-    "image": "images/official/jlm_01030D.jpg",
+    "image": "images/official/threeelephants_01030D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1135,7 +1135,7 @@ const PRODUCTS = [
     "size": "15 LB",
     "category": "rice",
     "price": 11.49,
-    "image": "images/official/jlm_01047D.jpg",
+    "image": "images/official/threeelephants_01047D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1335,7 +1335,7 @@ const PRODUCTS = [
     "size": "",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_LB1002.jpg",
+    "image": "images/official/BING_LB1002.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1346,7 +1346,7 @@ const PRODUCTS = [
     "size": "",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_LB1004.jpg",
+    "image": "images/official/BING_LB1004.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1522,7 +1522,7 @@ const PRODUCTS = [
     "size": "16.91 OZ",
     "category": "beverages",
     "price": 4.99,
-    "image": "images/official/jlm_09902K.jpg",
+    "image": "images/official/09902K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1687,7 +1687,7 @@ const PRODUCTS = [
     "size": "6.76 OZ",
     "category": "beverages",
     "price": 4.99,
-    "image": "images/official/jlm_10662K.jpg",
+    "image": "images/official/WOONGJIN_10662K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1797,7 +1797,7 @@ const PRODUCTS = [
     "size": "32 OZ",
     "category": "sauces",
     "price": 4.99,
-    "image": "images/official/jlm_06675T.jpg",
+    "image": "images/official/06675T.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1841,7 +1841,7 @@ const PRODUCTS = [
     "size": "10.14 OZ",
     "category": "sauces",
     "price": 3.49,
-    "image": "images/official/jlm_03315T.jpg",
+    "image": "images/official/03315T.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1962,7 +1962,7 @@ const PRODUCTS = [
     "size": "29.08 OZ",
     "category": "sauces",
     "price": 7.49,
-    "image": "images/official/jlm_03018K.jpg",
+    "image": "images/official/03018K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1973,7 +1973,7 @@ const PRODUCTS = [
     "size": "29 OZ",
     "category": "sauces",
     "price": 10.49,
-    "image": "images/official/jlm_03026K.jpg",
+    "image": "images/official/03026K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2006,7 +2006,7 @@ const PRODUCTS = [
     "size": "29 OZ",
     "category": "sauces",
     "price": 7.49,
-    "image": "images/official/jlm_03034K.jpg",
+    "image": "images/official/03034K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2039,7 +2039,7 @@ const PRODUCTS = [
     "size": "29 OZ",
     "category": "sauces",
     "price": 7.49,
-    "image": "images/official/jlm_03145K.jpg",
+    "image": "images/official/03145K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2083,7 +2083,7 @@ const PRODUCTS = [
     "size": "152 OZ",
     "category": "sauces",
     "price": 3.49,
-    "image": "images/official/jlm_03316T.jpg",
+    "image": "images/official/03316T.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2116,7 +2116,7 @@ const PRODUCTS = [
     "size": "2.2 LB",
     "category": "sauces",
     "price": 9.99,
-    "image": "images/official/jlm_03404K.jpg",
+    "image": "images/official/03404K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2127,7 +2127,7 @@ const PRODUCTS = [
     "size": "1.1 LB",
     "category": "sauces",
     "price": 8.99,
-    "image": "images/official/jlm_03405K.jpg",
+    "image": "images/official/03405K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2138,7 +2138,7 @@ const PRODUCTS = [
     "size": "1.1 LB",
     "category": "sauces",
     "price": 9.99,
-    "image": "images/official/jlm_03416K.jpg",
+    "image": "images/official/03416K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2160,7 +2160,7 @@ const PRODUCTS = [
     "size": "4.4 LB",
     "category": "sauces",
     "price": 8.99,
-    "image": "images/official/jlm_03444K.jpg",
+    "image": "images/official/03444K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2292,7 +2292,7 @@ const PRODUCTS = [
     "size": "12 OZ",
     "category": "sauces",
     "price": 4.99,
-    "image": "images/official/jlm_06680T.jpg",
+    "image": "images/official/06680T.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3073,7 +3073,7 @@ const PRODUCTS = [
     "size": "1.8kg",
     "category": "dried",
     "price": 4.99,
-    "image": "images/official/jlm_CH1001.jpg",
+    "image": "images/official/crd_CH1001.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3236,7 +3236,7 @@ const PRODUCTS = [
     "name": "HONEY BUTTER ALMOND 20/6.7oz",
     "nameKr": "길림양행)허니버터 아몬드 20/6.7oz",
     "size": "",
-    "category": "dairy",
+    "category": "snacks",
     "price": 3.49,
     "image": "images/official/jlm_GC7002.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -3247,7 +3247,7 @@ const PRODUCTS = [
     "name": "Hot Spicy Chicken Almond 20/6.7oz",
     "nameKr": "길림양행)불닭 아몬드 20/6.7oz",
     "size": "6.7oz",
-    "category": "meat",
+    "category": "snacks",
     "price": 6.49,
     "image": "images/official/jlm_GC7016.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -4404,7 +4404,7 @@ const PRODUCTS = [
     "size": "1.48 LB",
     "category": "frozen",
     "price": 8.99,
-    "image": "images/official/jlm_20777K.jpg",
+    "image": "images/official/20777K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4457,7 +4457,7 @@ const PRODUCTS = [
     "name": "KIMCHI SPICY BULGOGI KIMBAP",
     "nameKr": "",
     "size": "8.1 OZ",
-    "category": "kimchi",
+    "category": "prepared",
     "price": 5.99,
     "image": "images/official/jlm_27778K.jpg",
     "vendor": "Rhee Bros"
@@ -4756,7 +4756,7 @@ const PRODUCTS = [
     "size": "3.17 OZ",
     "category": "snacks",
     "price": 1.29,
-    "image": "images/official/jlm_09211K.jpg",
+    "image": "images/official/09211K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -5064,7 +5064,7 @@ const PRODUCTS = [
     "size": "",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_LB1009.jpg",
+    "image": "images/official/BING_LB1009.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5086,7 +5086,7 @@ const PRODUCTS = [
     "size": "70 ML",
     "category": "frozen",
     "price": 7.99,
-    "image": "images/official/jlm_IB1014.jpg",
+    "image": "images/official/BING_IB1014.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5108,7 +5108,7 @@ const PRODUCTS = [
     "size": "150ML",
     "category": "frozen",
     "price": 7.99,
-    "image": "images/official/jlm_IB1030B.jpg",
+    "image": "images/official/BING_IB1030B.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5394,7 +5394,7 @@ const PRODUCTS = [
     "size": "190ML",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_LS2021.jpg",
+    "image": "images/official/SEOUL_LS2021.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5427,7 +5427,7 @@ const PRODUCTS = [
     "size": "190ML",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_LS2011.jpg",
+    "image": "images/official/SEOUL_LS2011.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5460,7 +5460,7 @@ const PRODUCTS = [
     "size": "200ML",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_LS2026.jpg",
+    "image": "images/official/Seoul_LS2026.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5909,7 +5909,7 @@ const PRODUCTS = [
     "name": "Skina Bread Crumbs 20 Lb (9.07 kg) / 스키나 빵가루 20 Lb (9.07 kg)",
     "nameKr": "스키나 빵가루 20 Lb (9.07 kg)",
     "size": "",
-    "category": "snacks",
+    "category": "baking",
     "price": 14.99,
     "image": "images/official/jlm_10955.jpg",
     "vendor": "Wang Globalnet"
@@ -6096,7 +6096,7 @@ const PRODUCTS = [
     "name": "Korean Chili Pepper",
     "nameKr": "",
     "size": "CS",
-    "category": "seasonings",
+    "category": "produce",
     "price": 5.99,
     "image": "images/official/jlm_40300.jpg",
     "vendor": "Asia Vegetable"
@@ -6228,7 +6228,7 @@ const PRODUCTS = [
     "name": "Pepper Red 11 LB",
     "nameKr": "빨간 피망",
     "size": "11 LB",
-    "category": "seasonings",
+    "category": "produce",
     "price": 11.99,
     "image": "images/official/jlm_169200.jpg",
     "vendor": "Fresh Point"
@@ -6635,7 +6635,7 @@ const PRODUCTS = [
     "name": "Wang Kimchi Red Pepper Flakes Coarse 10/3lb / 왕 김치고추가루Coarse 10/3lb",
     "nameKr": "왕 김치고추가루Coarse 10/3lb",
     "size": "",
-    "category": "kimchi",
+    "category": "seasonings",
     "price": 5.99,
     "image": "images/official/jlm_3158.jpg",
     "vendor": "Wang Globalnet"
@@ -6646,7 +6646,7 @@ const PRODUCTS = [
     "name": "Wang Kimchi Red Pepper Flakes coarse6/5 lb / 왕 김치고추가루coarse6/5 lb",
     "nameKr": "왕 김치고추가루coarse6/5 lb",
     "size": "",
-    "category": "kimchi",
+    "category": "seasonings",
     "price": 6.49,
     "image": "images/official/jlm_1835.jpg",
     "vendor": "Wang Globalnet"
@@ -6657,7 +6657,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 10/4 lb / 왕 볶음통깨 10/4 lb",
     "nameKr": "왕 볶음통깨  10/4 lb",
     "size": "",
-    "category": "nuts",
+    "category": "seasonings",
     "price": 6.49,
     "image": "images/official/jlm_8275.jpg",
     "vendor": "Wang Globalnet"
@@ -6668,7 +6668,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 12/2 lb / 왕 볶음통깨 12/2 lb",
     "nameKr": "왕 볶음통깨  12/2 lb",
     "size": "",
-    "category": "nuts",
+    "category": "seasonings",
     "price": 6.49,
     "image": "images/official/jlm_8274.jpg",
     "vendor": "Wang Globalnet"
@@ -6690,7 +6690,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 12/8 oz / 왕 볶음통깨 12/8 oz",
     "nameKr": "왕 볶음통깨 12/8 oz",
     "size": "",
-    "category": "nuts",
+    "category": "seasonings",
     "price": 6.49,
     "image": "images/official/jlm_8269.jpg",
     "vendor": "Wang Globalnet"
@@ -6701,7 +6701,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Sesame Seeds 12/16 oz / 왕 볶음통깨 12/16 oz",
     "nameKr": "왕 볶음통깨 12/16 oz",
     "size": "",
-    "category": "nuts",
+    "category": "seasonings",
     "price": 6.49,
     "image": "images/official/jlm_8270.jpg",
     "vendor": "Wang Globalnet"
@@ -7207,7 +7207,7 @@ const PRODUCTS = [
     "name": "POWDER",
     "nameKr": "",
     "size": "",
-    "category": "canned",
+    "category": "seasonings",
     "price": 12.99,
     "image": "images/official/jlm_04305K.jpg",
     "vendor": "Rhee Bros"
@@ -7229,7 +7229,7 @@ const PRODUCTS = [
     "name": "PORK FLAVOR SCUP",
     "nameKr": "",
     "size": "10 OZ",
-    "category": "meat",
+    "category": "prepared",
     "price": 9.99,
     "image": "images/official/jlm_04366D.jpg",
     "vendor": "Rhee Bros"
@@ -7284,7 +7284,7 @@ const PRODUCTS = [
     "name": "SCUP STOC K",
     "nameKr": "",
     "size": "",
-    "category": "canned",
+    "category": "seasonings",
     "price": 8.99,
     "image": "images/official/jlm_07008K.jpg",
     "vendor": "Rhee Bros"
@@ -7361,7 +7361,7 @@ const PRODUCTS = [
     "name": "KOREAN STYLE PATTY",
     "nameKr": "",
     "size": "",
-    "category": "canned",
+    "category": "frozen",
     "price": 10.49,
     "image": "images/official/jlm_19333K.jpg",
     "vendor": "Rhee Bros"
@@ -7638,7 +7638,7 @@ const PRODUCTS = [
     "size": "30 OZ",
     "category": "nuts",
     "price": 6.49,
-    "image": "images/official/jlm_01147D.jpg",
+    "image": "images/official/01147D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7649,7 +7649,7 @@ const PRODUCTS = [
     "size": "7.5 OZ",
     "category": "nuts",
     "price": 6.49,
-    "image": "images/official/jlm_05389D.jpg",
+    "image": "images/official/05389D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7671,7 +7671,7 @@ const PRODUCTS = [
     "size": "7.5 OZ",
     "category": "nuts",
     "price": 6.49,
-    "image": "images/official/jlm_05413D.jpg",
+    "image": "images/official/05413D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7814,7 +7814,7 @@ const PRODUCTS = [
     "size": "2.2 LB",
     "category": "baking",
     "price": 5.99,
-    "image": "images/official/jlm_02155K.jpg",
+    "image": "images/official/02155K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7856,7 +7856,7 @@ const PRODUCTS = [
     "name": "GLUTINOUS RICE",
     "nameKr": "",
     "size": "2 LB",
-    "category": "nuts",
+    "category": "rice",
     "price": 4.49,
     "image": "images/official/jlm_20998D.jpg",
     "vendor": "Rhee Bros"
@@ -7891,7 +7891,7 @@ const PRODUCTS = [
     "size": "4 LB",
     "category": "nuts",
     "price": 6.49,
-    "image": "images/official/jlm_01208D.jpg",
+    "image": "images/official/01113K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7902,7 +7902,7 @@ const PRODUCTS = [
     "size": "",
     "category": "nuts",
     "price": 6.49,
-    "image": "images/official/jlm_05396D.jpg",
+    "image": "images/official/01136D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7935,7 +7935,7 @@ const PRODUCTS = [
     "size": "",
     "category": "baking",
     "price": 5.99,
-    "image": "images/official/jlm_436327.jpg",
+    "image": "images/official/02059K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7957,7 +7957,7 @@ const PRODUCTS = [
     "size": "",
     "category": "nuts",
     "price": 6.49,
-    "image": "images/official/jlm_01214D.jpg",
+    "image": "images/official/05396D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -8210,7 +8210,7 @@ const PRODUCTS = [
     "size": "",
     "category": "snacks",
     "price": 8.49,
-    "image": "images/official/jlm_8501743NS.jpg",
+    "image": "images/official/jl_nongshim_8501641NS.jpg",
     "vendor": "Wang Globalnet"
   },
   {
