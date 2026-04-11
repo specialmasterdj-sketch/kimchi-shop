@@ -320,28 +320,28 @@ input, select { font-family: inherit; }
   <div class="section">
     <div class="section-title"><span id="t-pickup-title">Pickup & Delivery</span></div>
     <div class="pickup-grid">
-      <div class="pickup-card">
+      <div class="pickup-card" onclick="setDeliveryMethod('pickup');navigate('browse')">
         <div class="pickup-badge">AVAILABLE NOW</div>
         <div class="pickup-icon">🏪</div>
         <div class="pickup-title" id="t-store-pickup">Store Pickup</div>
         <div class="pickup-desc" id="t-store-pickup-desc">Order online, pick up at store</div>
-        <button class="pickup-btn store" onclick="navigate('browse')" id="t-order-pickup">Order for Pickup</button>
+        <button class="pickup-btn store" id="t-order-pickup">Shop Now</button>
         <div class="pickup-partner">5 locations · Open 365 days</div>
       </div>
-      <div class="pickup-card">
+      <div class="pickup-card" onclick="setDeliveryMethod('doordash');navigate('browse')">
         <div class="pickup-badge">LIVE ORDERING</div>
         <div class="pickup-icon">🚗</div>
         <div class="pickup-title">DoorDash</div>
         <div class="pickup-desc" id="t-doordash-desc">Fast delivery to your door</div>
-        <a class="pickup-btn doordash" href="https://www.doordash.com/near-me/category/kimchi-mart/" target="_blank">Order on DoorDash</a>
+        <button class="pickup-btn doordash">Shop Now</button>
         <div class="pickup-partner">Official Partner · 30-45 min</div>
       </div>
-      <div class="pickup-card">
+      <div class="pickup-card" onclick="setDeliveryMethod('ubereats');navigate('browse')">
         <div class="pickup-badge">LIVE ORDERING</div>
         <div class="pickup-icon">🛵</div>
         <div class="pickup-title">Uber Eats</div>
         <div class="pickup-desc" id="t-uber-desc">Get groceries delivered</div>
-        <a class="pickup-btn uber" href="https://www.ubereats.com/dish/miami-fl/kimchi" target="_blank">Order on Uber Eats</a>
+        <button class="pickup-btn uber">Shop Now</button>
         <div class="pickup-partner">Official Partner · 30-45 min</div>
       </div>
     </div>
@@ -877,7 +877,14 @@ function showToast(msg) {
 }
 
 // ==================== CHECKOUT ====================
-let coState = { type: 'pickup', payment: 'store', store: 0 };
+let coState = { type: 'pickup', payment: 'store', store: 0, deliveryMethod: 'pickup' };
+
+function setDeliveryMethod(method) {
+  coState.deliveryMethod = method;
+  if (method === 'pickup') coState.type = 'pickup';
+  else coState.type = 'delivery';
+  showToast(method === 'pickup' ? '🏪 Store Pickup selected' : method === 'doordash' ? '🚗 DoorDash delivery selected' : '🛵 Uber Eats delivery selected');
+}
 const STORES = [
   { name: 'Miami (Palmetto Bay)', addr: '15355 S Dixie Hwy, Miami, FL 33157', phone: '(305) 964-5083' },
   { name: 'Pembroke Pines', addr: '11230 Pines Blvd, Pembroke Pines, FL 33026', phone: '(754) 217-4919' },
@@ -1042,6 +1049,9 @@ function openCheckout() {
         <div class="co-summary-row total"><span>${t('cart-total')}</span><span>${formatPrice(total)}</span></div>
       </div>
 
+      ${coState.deliveryMethod !== 'pickup' ? `<div style="background:#f0f7ff;border:1px solid #bbdefb;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;text-align:center">
+        ${coState.deliveryMethod === 'doordash' ? '🚗' : '🛵'} You are checking out via <strong>${coState.deliveryMethod === 'doordash' ? 'DoorDash' : 'Uber Eats'}</strong> delivery
+      </div>` : ''}
       <button class="co-place-btn" onclick="placeOrder()">${t('co-place')} - ${formatPrice(total)}</button>
     </div>`;
   document.body.appendChild(overlay);
