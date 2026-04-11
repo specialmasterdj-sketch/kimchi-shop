@@ -5539,7 +5539,7 @@ const PRODUCTS = [
     "size": "120g",
     "category": "bakery",
     "price": 3.99,
-    "image": "",
+    "image": "images/official/correct_EH1198.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -5880,7 +5880,7 @@ const PRODUCTS = [
     "size": "",
     "category": "bakery",
     "price": 14.99,
-    "image": "",
+    "image": "images/official/correct_10955.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -5968,7 +5968,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "produce",
     "price": 11.99,
-    "image": "",
+    "image": "images/official/correct_7350788.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6067,7 +6067,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 5.99,
-    "image": "",
+    "image": "images/official/correct_40300.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6100,7 +6100,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 12.99,
-    "image": "",
+    "image": "images/official/correct_60253.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6111,7 +6111,7 @@ const PRODUCTS = [
     "size": "6OZ",
     "category": "produce",
     "price": 2.49,
-    "image": "",
+    "image": "images/official/correct_110200.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6144,7 +6144,7 @@ const PRODUCTS = [
     "size": "6 CT",
     "category": "produce",
     "price": 3.49,
-    "image": "",
+    "image": "images/official/correct_171350.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6155,7 +6155,7 @@ const PRODUCTS = [
     "size": "1 LB",
     "category": "produce",
     "price": 5.99,
-    "image": "",
+    "image": "images/official/correct_905310.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6199,7 +6199,7 @@ const PRODUCTS = [
     "size": "11 LB",
     "category": "produce",
     "price": 11.99,
-    "image": "",
+    "image": "images/official/correct_169200.jpg",
     "vendor": "Fresh Point"
   },
   {
@@ -6276,7 +6276,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 3.99,
-    "image": "",
+    "image": "images/official/correct_60260.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6364,7 +6364,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 3.99,
-    "image": "",
+    "image": "images/official/correct_70120.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -6375,7 +6375,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "produce",
     "price": 3.99,
-    "image": "",
+    "image": "images/official/correct_602555.jpg",
     "vendor": "Asia Vegetable"
   },
   {
@@ -7178,7 +7178,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 12.99,
-    "image": "",
+    "image": "images/official/correct_04305K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7200,7 +7200,7 @@ const PRODUCTS = [
     "size": "10 OZ",
     "category": "ready",
     "price": 9.99,
-    "image": "",
+    "image": "images/official/correct_04366D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7211,7 +7211,7 @@ const PRODUCTS = [
     "size": "",
     "category": "snacks",
     "price": 3.49,
-    "image": "",
+    "image": "images/official/correct_06002K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7255,7 +7255,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 8.99,
-    "image": "",
+    "image": "images/official/correct_07008K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7332,7 +7332,7 @@ const PRODUCTS = [
     "size": "",
     "category": "ready",
     "price": 10.49,
-    "image": "",
+    "image": "images/official/correct_19333K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7398,7 +7398,7 @@ const PRODUCTS = [
     "size": "",
     "category": "ready",
     "price": 8.49,
-    "image": "",
+    "image": "images/official/correct_20366K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7420,7 +7420,7 @@ const PRODUCTS = [
     "size": "",
     "category": "ready",
     "price": 2.49,
-    "image": "",
+    "image": "images/official/correct_20786D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7453,7 +7453,7 @@ const PRODUCTS = [
     "size": "",
     "category": "seasonings",
     "price": 6.99,
-    "image": "",
+    "image": "images/official/correct_3816.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -7464,7 +7464,7 @@ const PRODUCTS = [
     "size": "",
     "category": "pantry",
     "price": 8.99,
-    "image": "",
+    "image": "images/official/correct_2327.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -7563,7 +7563,7 @@ const PRODUCTS = [
     "size": "CS",
     "category": "meat",
     "price": 9.99,
-    "image": "",
+    "image": "images/official/correct_9556481.jpg",
     "vendor": "Buckhead"
   },
   {
@@ -7596,7 +7596,7 @@ const PRODUCTS = [
     "size": "10 LB",
     "category": "meat",
     "price": 9.99,
-    "image": "",
+    "image": "images/official/correct_6344790.jpg",
     "vendor": "Buckhead"
   },
   {
@@ -7695,7 +7695,7 @@ const PRODUCTS = [
     "size": "50 LB",
     "category": "pantry",
     "price": 6.49,
-    "image": "",
+    "image": "images/official/correct_01106D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7827,7 +7827,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "rice",
     "price": 4.49,
-    "image": "",
+    "image": "images/official/correct_20998D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7915,7 +7915,7 @@ const PRODUCTS = [
     "size": "4 LB",
     "category": "bakery",
     "price": 6.49,
-    "image": "",
+    "image": "images/official/correct_02168D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7937,7 +7937,7 @@ const PRODUCTS = [
     "size": "",
     "category": "ready",
     "price": 10.99,
-    "image": "",
+    "image": "images/official/correct_26635.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -7948,7 +7948,7 @@ const PRODUCTS = [
     "size": "",
     "category": "snacks",
     "price": 2.99,
-    "image": "",
+    "image": "images/official/correct_29981.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -8025,7 +8025,7 @@ const PRODUCTS = [
     "size": "",
     "category": "pantry",
     "price": 6.49,
-    "image": "",
+    "image": "images/official/correct_4977.jpg",
     "vendor": "Wang Globalnet"
   },
   {
@@ -8047,7 +8047,7 @@ const PRODUCTS = [
     "size": "",
     "category": "snacks",
     "price": 3.99,
-    "image": "",
+    "image": "images/official/correct_35083.jpg",
     "vendor": "Wang Globalnet"
   },
   {
