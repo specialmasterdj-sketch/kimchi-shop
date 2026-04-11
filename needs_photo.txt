@@ -1,0 +1,20 @@
+Brand	Product	Size	Category
+COCK	TAPIOCA PEARL (L)	14 OZ	baking
+	Wang Potato Starch 16/2LBS / 왕 감자가루 16/2LBS		baking
+ASIA VEGETABLE	Snow Peas	CS	produce
+ASIA VEGETABLE	Mini King Oyster Mushroom 12x8oz	CS	produce
+SYSCO CLASSIC	Chicken Cvp Wings 1st And 2nd Joints Jumbo	10 LB	meat
+ASSI	12 MIXED GRAIN RICE (HWANGJABGOK, 30 OZ)	30 OZ	nuts
+ASSI	SOYBEAN	10 LB	nuts
+ASSI	ROASTED SESAME SEEDS	4 LB	nuts
+ASSI	ROASTED SESAME SEEDS		nuts
+ASSI	RED BEAN (30 OZ)	30 OZ	nuts
+ASSI	SOYBEAN		nuts
+GOMPYO	ALL PURPOSE WHEAT FLOUR GOLDEN (5.5#)		nuts
+	ASSI RICE FLOUR (441	4 LB	nuts
+ASSI	ROASTED SESAME SEEDS (16 OZ,BTL)		nuts
+	Nongshim S Baby Shrimp Chips BIG 6/200 G / 농심 S 알새우칩BIG 6/200 G		seafood
+	Nongshim S Jagalchi Taco Chips BIG 6/286 G / 농심 S 자갈치타코칩BIG 6/286 G		seafood
+	Surasang Chanbada Hairtail/Cutlassfish (Tray)24/11.5z / 수라상찬바다갈치(Tray)24/11.5z		seafood
+NDM	SEASONED OCTOPUS [12/ 300G (10.58OZ)]	300G	seafood
+BINGGRAE	BINGGRAE MILK DRINK (ASSORTED)	200ML	dairy
