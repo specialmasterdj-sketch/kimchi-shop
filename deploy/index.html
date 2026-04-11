@@ -223,15 +223,21 @@ input, select { font-family: inherit; }
   .price-now { font-size: 14px; }
 }
 @media (min-width: 1024px) {
-  .product-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .product-grid { grid-template-columns: repeat(6, 1fr); gap: 8px; }
   .cat-grid { grid-template-columns: repeat(8, 1fr); }
-  .product-info { padding: 7px 9px 36px; }
-  .product-name { font-size: 13px; }
-  .price-now { font-size: 15px; }
-  .product-add { width: 28px; height: 28px; font-size: 17px; }
+  .product-info { padding: 5px 7px 30px; }
+  .product-name { font-size: 12px; }
+  .price-now { font-size: 13px; }
+  .product-add { width: 26px; height: 26px; font-size: 16px; bottom: 6px; right: 6px; }
+  .product-qty-ctrl { bottom: 6px; right: 4px; }
+  .product-qty-ctrl button { width: 24px; height: 24px; }
+  .section { padding: 14px 16px; }
 }
-@media (min-width: 1200px) {
-  .product-grid { grid-template-columns: repeat(6, 1fr); }
+@media (min-width: 1280px) {
+  .product-grid { grid-template-columns: repeat(7, 1fr); gap: 8px; }
+}
+@media (min-width: 1600px) {
+  .product-grid { grid-template-columns: repeat(8, 1fr); }
 }
 @media (max-width: 380px) {
   .cat-grid { grid-template-columns: repeat(3, 1fr); }
