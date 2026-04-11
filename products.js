@@ -45,6 +45,12 @@ const CATEGORIES = {
     "es": "Condimentos",
     "icon": "🧂"
   },
+    "tea": {
+    "en": "Tea & Coffee",
+    "kr": "차 & 커피",
+    "es": "Te y Cafe",
+    "icon": "🍵"
+  },
   "seaweed": {
     "en": "Seaweed",
     "kr": "김 & 해조류",
@@ -1366,7 +1372,7 @@ const PRODUCTS = [
     "name": "Vanilla Flavor Americano(Pouch) 5/10/7.77floz",
     "nameKr": "칸타빌레)바닐라향아메리카노 파우치 5/10/230ml(7.77flo",
     "size": "230ml",
-    "category": "beverages",
+    "category": "tea",
     "price": 10.99,
     "image": "images/official/final_LC2514.jpg",
     "vendor": "Choripdong / Seoul Trading"
@@ -1379,7 +1385,7 @@ const PRODUCTS = [
     "size": "230ml",
     "category": "beverages",
     "price": 2.49,
-    "image": "images/official/jlm_LC2516.jpg",
+    "image": "images/official/cantabile_strawberry.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1390,7 +1396,7 @@ const PRODUCTS = [
     "size": "230ml",
     "category": "beverages",
     "price": 2.49,
-    "image": "images/official/jlm_LC2520.jpg",
+    "image": "images/official/cantabile_bluelemon.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -1410,7 +1416,7 @@ const PRODUCTS = [
     "name": "CORN SILK TEA (500ML)",
     "nameKr": "",
     "size": "16.9 OZ",
-    "category": "beverages",
+    "category": "tea",
     "price": 3.49,
     "image": "images/official/jl_lotte_08876K.jpg",
     "vendor": "Rhee Bros"
@@ -1421,7 +1427,7 @@ const PRODUCTS = [
     "name": "CORN SILK TEA (1.5L)",
     "nameKr": "",
     "size": "1.5 L",
-    "category": "beverages",
+    "category": "tea",
     "price": 3.49,
     "image": "images/official/jlm_08877K.jpg",
     "vendor": "Rhee Bros"
@@ -1432,7 +1438,7 @@ const PRODUCTS = [
     "name": "BURDOCK TEA DRINK (500ML)",
     "nameKr": "",
     "size": "16.9 OZ",
-    "category": "beverages",
+    "category": "tea",
     "price": 4.99,
     "image": "images/official/jl_damteo_08880K.jpg",
     "vendor": "Rhee Bros"
@@ -1586,7 +1592,7 @@ const PRODUCTS = [
     "name": "ROASTED BARLEY TEA",
     "nameKr": "",
     "size": "1 LB",
-    "category": "beverages",
+    "category": "tea",
     "price": 6.99,
     "image": "images/official/assi_10017K.jpg",
     "vendor": "Rhee Bros"
@@ -1608,7 +1614,7 @@ const PRODUCTS = [
     "name": "HONEY GINGER TEA (12TB)",
     "nameKr": "",
     "size": "0.63 OZ",
-    "category": "beverages",
+    "category": "tea",
     "price": 6.99,
     "image": "images/official/assi_10266C.jpg",
     "vendor": "Rhee Bros"
@@ -1630,7 +1636,7 @@ const PRODUCTS = [
     "name": "GINGER TEA (LIQUID 2.2#)",
     "nameKr": "",
     "size": "2.2 LB",
-    "category": "beverages",
+    "category": "tea",
     "price": 6.99,
     "image": "images/official/assi_10291K.jpg",
     "vendor": "Rhee Bros"
@@ -1652,7 +1658,7 @@ const PRODUCTS = [
     "name": "BUBBLE MILK TEA (GREEN TEA W/ BOBA PEARL)",
     "nameKr": "",
     "size": "16.2 OZ",
-    "category": "beverages",
+    "category": "tea",
     "price": 4.99,
     "image": "images/official/jl_damteo_10616W.jpg",
     "vendor": "Rhee Bros"
@@ -1663,7 +1669,7 @@ const PRODUCTS = [
     "name": "WHEATGRASS BARLEY TEA (1.5L)",
     "nameKr": "",
     "size": "1.5 L",
-    "category": "beverages",
+    "category": "tea",
     "price": 5.49,
     "image": "images/official/jl_damteo_10627K.jpg",
     "vendor": "Rhee Bros"
@@ -1729,7 +1735,7 @@ const PRODUCTS = [
     "name": "LEMON GREEN TEA (500ml)",
     "nameKr": "",
     "size": "16.9 OZ",
-    "category": "beverages",
+    "category": "tea",
     "price": 11.99,
     "image": "images/official/jl_damteo_10888K.jpg",
     "vendor": "Rhee Bros"
@@ -2411,7 +2417,7 @@ const PRODUCTS = [
     "name": "Surasang Burdock Tea 15/100T/1g / 수라상 우엉차 15/100T/1g",
     "nameKr": "수라상 우엉차 15/100T/1g",
     "size": "",
-    "category": "beverages",
+    "category": "tea",
     "price": 8.49,
     "image": "images/official/jlm_24189.jpg",
     "vendor": "Wang Globalnet"
@@ -2422,7 +2428,7 @@ const PRODUCTS = [
     "name": "Wang Roasted Burdock Tea (통) 12/7.05 oz / 왕 볶은우엉차(통) 12/7.05 oz",
     "nameKr": "왕 볶은우엉차(통) 12/7.05 oz",
     "size": "",
-    "category": "beverages",
+    "category": "tea",
     "price": 6.49,
     "image": "images/official/jl_damteo_21410.jpg",
     "vendor": "Wang Globalnet"
