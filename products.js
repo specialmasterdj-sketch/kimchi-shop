@@ -1069,7 +1069,7 @@ const PRODUCTS = [
     "size": "10 LB",
     "category": "rice",
     "price": 8.99,
-    "image": "images_clean/rhee/00003D.jpg",
+    "image": "images/official/hankukmi_00003D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1146,7 +1146,7 @@ const PRODUCTS = [
     "size": "20 LB",
     "category": "rice",
     "price": 17.49,
-    "image": "images_clean/rhee/01078D.jpg",
+    "image": "images/official/threeelephants_01078D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3082,7 +3082,7 @@ const PRODUCTS = [
     "size": "2lb",
     "category": "dried",
     "price": 4.99,
-    "image": "images_clean/choripdong/CH0100.jpg",
+    "image": "images/official/crd_CH0100.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3159,7 +3159,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "dried",
     "price": 8.49,
-    "image": "images_clean/choripdong/CS1001.jpg",
+    "image": "images/official/crd_CS1001.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3192,7 +3192,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "dried",
     "price": 8.49,
-    "image": "images_clean/choripdong/CW1002.jpg",
+    "image": "images/official/crd_CW1002.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
@@ -3203,7 +3203,7 @@ const PRODUCTS = [
     "size": "2 LB",
     "category": "dried",
     "price": 4.49,
-    "image": "images_clean/choripdong/CY1015.jpg",
+    "image": "images/official/crd_CY1015.jpg",
     "vendor": "Choripdong / Seoul Trading"
   },
   {
