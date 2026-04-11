@@ -1234,7 +1234,7 @@ const PRODUCTS = [
     "size": "6.8 OZ",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_11001K.jpg",
+    "image": "images/official/BINGGRAE_11001K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1245,7 +1245,7 @@ const PRODUCTS = [
     "size": "6.8 OZ",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_11025K.jpg",
+    "image": "images/official/BINGGRAE_11025K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1278,7 +1278,7 @@ const PRODUCTS = [
     "size": "6.8 OZ",
     "category": "beverages",
     "price": 7.99,
-    "image": "images/official/jlm_10999K.jpg",
+    "image": "images/official/BINGGRAE_10999K.jpg",
     "vendor": "Rhee Bros"
   },
   {
