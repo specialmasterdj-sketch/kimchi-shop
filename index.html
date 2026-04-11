@@ -203,14 +203,20 @@ input, select { font-family: inherit; }
 
 /* === PICKUP OPTIONS === */
 .pickup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-.pickup-card { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); }
+.pickup-card { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); position: relative; overflow: hidden; border: 2px solid transparent; transition: border-color 0.3s; }
+.pickup-card:hover { border-color: #eee; }
+.pickup-badge { display: inline-flex; align-items: center; gap: 4px; background: #E8F5E9; color: #2E7D32; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; letter-spacing: 0.5px; }
+.pickup-badge::before { content: ''; width: 6px; height: 6px; background: #4CAF50; border-radius: 50%; animation: pulse-dot 1.5s infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 .pickup-icon { font-size: 36px; margin-bottom: 8px; }
 .pickup-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
 .pickup-desc { font-size: 13px; color: var(--text2); margin-bottom: 12px; }
-.pickup-btn { display: inline-block; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; color: #fff; }
+.pickup-btn { display: inline-block; padding: 10px 24px; border-radius: 24px; font-size: 13px; font-weight: 700; color: #fff; transition: transform 0.2s, box-shadow 0.2s; }
+.pickup-btn:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .pickup-btn.doordash { background: #FF3008; }
 .pickup-btn.uber { background: #06C167; }
 .pickup-btn.store { background: var(--red); }
+.pickup-partner { font-size: 10px; color: var(--text2); margin-top: 8px; }
 
 /* === RESPONSIVE === */
 @media (min-width: 480px) {
@@ -315,22 +321,28 @@ input, select { font-family: inherit; }
     <div class="section-title"><span id="t-pickup-title">Pickup & Delivery</span></div>
     <div class="pickup-grid">
       <div class="pickup-card">
+        <div class="pickup-badge">AVAILABLE NOW</div>
         <div class="pickup-icon">🏪</div>
         <div class="pickup-title" id="t-store-pickup">Store Pickup</div>
         <div class="pickup-desc" id="t-store-pickup-desc">Order online, pick up at store</div>
         <button class="pickup-btn store" onclick="navigate('browse')" id="t-order-pickup">Order for Pickup</button>
+        <div class="pickup-partner">5 locations · Open 365 days</div>
       </div>
       <div class="pickup-card">
+        <div class="pickup-badge">LIVE ORDERING</div>
         <div class="pickup-icon">🚗</div>
         <div class="pickup-title">DoorDash</div>
         <div class="pickup-desc" id="t-doordash-desc">Fast delivery to your door</div>
-        <a class="pickup-btn doordash" href="https://www.doordash.com/near-me/category/kimchi-mart/" target="_blank">DoorDash</a>
+        <a class="pickup-btn doordash" href="https://www.doordash.com/near-me/category/kimchi-mart/" target="_blank">Order on DoorDash</a>
+        <div class="pickup-partner">Official Partner · 30-45 min</div>
       </div>
       <div class="pickup-card">
+        <div class="pickup-badge">LIVE ORDERING</div>
         <div class="pickup-icon">🛵</div>
         <div class="pickup-title">Uber Eats</div>
         <div class="pickup-desc" id="t-uber-desc">Get groceries delivered</div>
-        <a class="pickup-btn uber" href="https://www.ubereats.com/dish/miami-fl/kimchi" target="_blank">Uber Eats</a>
+        <a class="pickup-btn uber" href="https://www.ubereats.com/dish/miami-fl/kimchi" target="_blank">Order on Uber Eats</a>
+        <div class="pickup-partner">Official Partner · 30-45 min</div>
       </div>
     </div>
   </div>
@@ -398,7 +410,7 @@ const state = {
 // ==================== i18n ====================
 const LANG = {
   en: {
-    'hero-tagline': 'Fresh Korean Grocery',
+    'hero-tagline': 'CLEAN · SAFE · TRUST',
     'shop-now': 'Shop Now', 'clearance': 'Clearance Deals',
     'categories': 'Categories', 'see-all': 'See All',
     'popular': 'Popular Products', 'pickup-title': 'Pickup & Delivery',
@@ -451,7 +463,7 @@ const LANG = {
     'co-err-card': 'Please enter a valid card number', 'co-err-exp': 'Please enter card expiry', 'co-err-cvv': 'Please enter CVV'
   },
   ko: {
-    'hero-tagline': '신선한 한국 식료품',
+    'hero-tagline': 'CLEAN · SAFE · TRUST',
     'shop-now': '쇼핑하기', 'clearance': '마감 할인',
     'categories': '카테고리', 'see-all': '전체 보기',
     'popular': '인기 상품', 'pickup-title': '픽업 & 배달',
@@ -504,7 +516,7 @@ const LANG = {
     'co-err-card': '유효한 카드 번호를 입력하세요', 'co-err-exp': '유효기간을 입력하세요', 'co-err-cvv': 'CVV를 입력하세요'
   },
   es: {
-    'hero-tagline': 'Tienda Coreana Fresca',
+    'hero-tagline': 'CLEAN · SAFE · TRUST',
     'shop-now': 'Comprar', 'clearance': 'Ofertas',
     'categories': 'Categorias', 'see-all': 'Ver Todo',
     'popular': 'Productos Populares', 'pickup-title': 'Recogida y Entrega',
@@ -698,14 +710,18 @@ function renderHome() {
   }).join('');
   document.getElementById('catGrid').innerHTML = catHtml;
 
-  // Popular - curated featured products first, then official images (cached)
-  if (!window._cachedPopular) {
-    const featuredIds = ['08479K','08180K','08961K','CJ100'];
-    const featured = featuredIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
-    const withOfficialImg = PRODUCTS.filter(p => p.price > 0 && p.image && p.image.includes('official') && !featuredIds.includes(p.id));
-    window._cachedPopular = [...featured, ...withOfficialImg.sort(() => Math.random() - 0.5)].slice(0, 8);
-  }
-  const popular = window._cachedPopular;
+  // Popular - fixed curated best sellers
+  const popularIds = [
+    '08479K',  // Carbo Buldak Ramen (5P)
+    '08180K',  // Shin Ramen (4P)
+    '08961K',  // Shrimp Cracker (Hot & Spicy)
+    'CJ100',   // CJ Bibigo Sliced Kimchi
+    '08193K',  // Shin Ramen Gold (4P)
+    '08225K',  // Shin Ramen Black (4P)
+    '08155K',  // Buldak Ramen (5P)
+    '08213K',  // Chapagetti Noodles (4P)
+  ];
+  const popular = popularIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   document.getElementById('popularGrid').innerHTML = popular.map(renderProductCard).join('');
 }
 
