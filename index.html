@@ -600,8 +600,32 @@ function navigate(page, category) {
   document.getElementById('page-' + page)?.classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === page));
   window.scrollTo(0, 0);
+  // Push to browser history so back button works
+  const historyState = { page, category: state.category };
+  if (!history.state || history.state.page !== page || history.state.category !== state.category) {
+    history.pushState(historyState, '', '#' + page + (state.category ? '/' + state.category : ''));
+  }
   render();
 }
+
+// Handle browser back button
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.page) {
+    state.page = e.state.page;
+    if (e.state.category !== undefined) state.category = e.state.category;
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + state.page)?.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === state.page));
+    render();
+  } else {
+    state.page = 'home';
+    state.category = null;
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-home')?.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === 'home'));
+    render();
+  }
+});
 
 // ==================== PRICING ====================
 function getDiscount() {
