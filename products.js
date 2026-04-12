@@ -88,6 +88,12 @@ const CATEGORIES = {
     "es": "Algas y Secos",
     "icon": "🌿"
   },
+  "houseware": {
+    "en": "Houseware",
+    "kr": "주방 & 생활용품",
+    "es": "Artículos del Hogar",
+    "icon": "🍳"
+  },
   "bakery": {
     "en": "Bakery & Bread",
     "kr": "베이커리 & 빵",
