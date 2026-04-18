@@ -132,6 +132,27 @@ input, select { font-family: inherit; }
 .checkout-btn:active { transform: scale(0.98); }
 
 /* === CHECKOUT === */
+/* === PRODUCT DETAIL MODAL === */
+.pd-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 300; display: flex; align-items: flex-end; justify-content: center; }
+.pd-modal { background: #fff; width: 100%; max-width: 500px; max-height: 90vh; border-radius: 20px 20px 0 0; overflow-y: auto; animation: pdSlideUp 0.25s ease; }
+@keyframes pdSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.pd-close { position: absolute; top: 12px; right: 14px; font-size: 28px; color: #666; cursor: pointer; background: rgba(255,255,255,0.9); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: none; z-index: 2; }
+.pd-img-wrap { width: 100%; aspect-ratio: 1; background: #f9f9f9; display: flex; align-items: center; justify-content: center; position: relative; border-radius: 20px 20px 0 0; overflow: hidden; }
+.pd-img-wrap img { max-width: 80%; max-height: 80%; object-fit: contain; }
+.pd-body { padding: 20px; }
+.pd-brand { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+.pd-name { font-size: 20px; font-weight: 700; margin: 4px 0 2px; }
+.pd-size { font-size: 13px; color: #888; margin-bottom: 12px; }
+.pd-price-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.pd-price { font-size: 24px; font-weight: 800; color: var(--red); }
+.pd-price-orig { font-size: 15px; color: #aaa; text-decoration: line-through; }
+.pd-discount { font-size: 13px; color: var(--green); font-weight: 700; }
+.pd-add-btn { display: block; width: 100%; padding: 14px; border-radius: var(--radius); background: var(--red); color: #fff; font-size: 16px; font-weight: 700; text-align: center; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(211,47,47,0.3); }
+.pd-add-btn:active { transform: scale(0.98); }
+.pd-qty-ctrl { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 10px; }
+.pd-qty-ctrl button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--red); background: #fff; color: var(--red); font-size: 20px; font-weight: 700; cursor: pointer; }
+.pd-qty-ctrl span { font-size: 20px; font-weight: 700; min-width: 30px; text-align: center; }
+
 .checkout-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg); z-index: 200; overflow-y: auto; }
 .checkout-header { background: var(--red); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 1; }
 .checkout-header h3 { font-size: 18px; font-weight: 700; flex: 1; }
@@ -681,6 +702,62 @@ function saveCart() {
   updateCartBadge();
 }
 
+function showProductDetail(productId) {
+  const p = getProduct(productId);
+  if (!p) return;
+  const memberPrice = getMemberPrice(p.price);
+  const disc = getDiscount();
+  const imgPath = p.image || '';
+  const qty = getCartQty(p.id);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'pd-overlay';
+  overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="pd-modal">
+      <button class="pd-close" onclick="this.closest('.pd-overlay').remove()">&times;</button>
+      <div class="pd-img-wrap">
+        ${imgPath ? `<img src="${imgPath}" alt="${p.name}">` : `<div class="no-img" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:#ccc"><span>${p.name.substring(0,2)}</span></div>`}
+      </div>
+      <div class="pd-body">
+        <div class="pd-brand">${p.brand}</div>
+        <div class="pd-name">${p.name}${p.nameKr ? ' / ' + p.nameKr : ''}</div>
+        <div class="pd-size">${p.size}</div>
+        <div class="pd-price-row">
+          <span class="pd-price">${formatPrice(disc > 0 ? memberPrice : p.price)}</span>
+          ${disc > 0 ? `<span class="pd-price-orig">${formatPrice(p.price)}</span><span class="pd-discount">-${Math.round(disc*100)}%</span>` : ''}
+        </div>
+        <div id="pdCartArea">
+          ${qty > 0
+            ? `<div class="pd-qty-ctrl">
+                <button onclick="updateCartQty('${p.id}',-1);refreshPD('${p.id}')">−</button>
+                <span>${qty}</span>
+                <button onclick="updateCartQty('${p.id}',1);refreshPD('${p.id}')">+</button>
+              </div>`
+            : `<button class="pd-add-btn" onclick="addToCart('${p.id}');refreshPD('${p.id}')">Add to Cart</button>`}
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function refreshPD(productId) {
+  const qty = getCartQty(productId);
+  const area = document.getElementById('pdCartArea');
+  if (!area) return;
+  if (qty > 0) {
+    area.innerHTML = `<div class="pd-qty-ctrl">
+      <button onclick="updateCartQty('${productId}',-1);refreshPD('${productId}')">−</button>
+      <span>${qty}</span>
+      <button onclick="updateCartQty('${productId}',1);refreshPD('${productId}')">+</button>
+    </div>`;
+  } else {
+    area.innerHTML = `<button class="pd-add-btn" onclick="addToCart('${productId}');refreshPD('${productId}')">Add to Cart</button>`;
+    const overlay = document.querySelector('.pd-overlay');
+    if (overlay) overlay.remove();
+  }
+}
+
 function updateCartBadge() {
   const count = Object.values(state.cart).reduce((a, b) => a + b, 0);
   const badge = document.getElementById('cartBadge');
@@ -704,7 +781,7 @@ function renderProductCard(p) {
   const disc = getDiscount();
   const imgPath = p.image ? `${p.image}` : '';
   return `<div class="product-card">
-    <div class="product-img" onclick="navigate('browse','${p.category}')">
+    <div class="product-img" onclick="showProductDetail('${p.id}')">
       ${imgPath ? `<img src="${imgPath}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="no-img" style="display:none"><span>${p.name.substring(0,2)}</span></div>` : `<div class="no-img"><span>${p.name.substring(0,2)}</span></div>`}
     </div>
     <div class="product-info">
