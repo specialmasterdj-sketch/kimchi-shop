@@ -742,16 +742,24 @@ function renderHome() {
   }).join('');
   document.getElementById('catGrid').innerHTML = catHtml;
 
-  // Popular - fixed curated best sellers
+  // Popular - 2 picks from each category (16 categories × 2 = 32 items)
   const popularIds = [
-    '08479K',  // Carbo Buldak Ramen (5P)
-    '08180K',  // Shin Ramen (4P)
-    '08961K',  // Shrimp Cracker (Hot & Spicy)
-    'CJ100',   // CJ Bibigo Sliced Kimchi
-    '08193K',  // Shin Ramen Gold (4P)
-    '08225K',  // Shin Ramen Black (4P)
-    '08155K',  // Buldak Ramen (5P)
-    '08213K',  // Chapagetti Noodles (4P)
+    '08193K', '08479K',        // 라면 Ramyun
+    '08961K', '09700J',        // 과자 Snacks
+    '10530T', '10855K',        // 음료 Beverages
+    '10888K', 'LC2514',        // 차 Tea
+    'IL1018B', 'IL1019B',      // 냉동 Frozen
+    'KB1049', '04258K',        // 즉석 Ready
+    'CJ100', '3734',           // 김치 Kimchi
+    '00009D', '80089',         // 쌀 Rice
+    '8087072', '6343915',      // 육류 Meat
+    '146030', '60254',         // 채소 Produce
+    '417200', '418000',        // 유제품 Dairy
+    'HD1006', 'HD1013',        // 김 Seaweed
+    '440768', 'KC4505',        // 양념 Seasonings
+    'cj_1020697', 'cj_1020698',// 식료품 Pantry
+    '10955', 'EH1069',         // 베이커리 Bakery
+    'KK6070RD', 'KK6070SQ',    // 주방 Houseware
   ];
   const popular = popularIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   document.getElementById('popularGrid').innerHTML = popular.map(renderProductCard).join('');
