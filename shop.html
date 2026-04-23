@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#D32F2F">
+<title>KIMCHI - Korean Grocery</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #D32F2F; --red-dark: #B71C1C; --red-light: #FFCDD2;
+  --green: #2E7D32; --green-light: #C8E6C9;
+  --blue: #1565C0; --blue-light: #BBDEFB;
+  --orange: #EF6C00; --orange-light: #FFE0B2;
+  --gold: #F9A825;
+  --bg: #F5F5F5; --white: #FFF; --text: #212121; --text2: #757575;
+  --border: #E0E0E0; --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --radius: 12px; --radius-sm: 8px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select { font-family: inherit; }
+
+/* === HEADER === */
+.header { position: sticky; top: 0; z-index: 100; background: var(--red); color: #fff; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(211,47,47,0.3); }
+.header-logo { display: flex; align-items: center; }
+.header-logo-img { height: 28px; width: auto; }
+.header-search { flex: 1; position: relative; }
+.header-search input { width: 100%; padding: 8px 12px 8px 36px; border-radius: 20px; border: none; font-size: 14px; background: rgba(255,255,255,0.9); color: #333; }
+.header-search svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: #999; }
+.header-actions { display: flex; gap: 12px; align-items: center; }
+.header-btn { color: #fff; position: relative; padding: 4px; }
+.cart-badge { position: absolute; top: -4px; right: -6px; background: var(--gold); color: #000; font-size: 10px; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.membership-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; }
+.membership-badge.k1 { background: var(--gold); color: #000; }
+.membership-badge.k2 { background: #E040FB; color: #fff; }
+
+/* === BOTTOM NAV === */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); display: flex; z-index: 100; padding-bottom: var(--safe-b); }
+.nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 0 6px; font-size: 10px; color: var(--text2); transition: color 0.2s; }
+.nav-item.active { color: var(--red); }
+.nav-item svg { width: 22px; height: 22px; margin-bottom: 2px; }
+
+/* === PAGES === */
+.page { display: none; padding-bottom: 70px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* === HOME === */
+.hero { background: linear-gradient(160deg, #1a1a1a 0%, #2d1a1a 40%, #3d1515 100%); color: #fff; padding: 48px 16px 40px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(211,47,47,0.08) 0%, transparent 50%); }
+.hero-logo { width: 240px; margin: 0 auto 28px; position: relative; z-index: 1; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
+.hero-tagline { font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; opacity: 0.7; margin-bottom: 28px; position: relative; z-index: 1; }
+.hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+.hero-btn { padding: 12px 28px; border-radius: 2px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; }
+.hero-btn.primary { background: #D32F2F; color: #fff; }
+.hero-btn.primary:hover { background: #E53935; }
+.hero-btn.secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.hero-btn.secondary:hover { border-color: rgba(255,255,255,0.6); }
+
+.section { padding: 20px 16px; }
+.section-title { font-size: 20px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+.section-title .see-all { font-size: 13px; font-weight: 500; color: var(--red); }
+
+/* === CATEGORY GRID === */
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.cat-card { background: var(--white); border-radius: var(--radius); padding: 12px 6px; text-align: center; box-shadow: var(--shadow); transition: transform 0.2s; }
+.cat-card:active { transform: scale(0.95); }
+.cat-icon { font-size: 28px; margin-bottom: 4px; }
+.cat-name { font-size: 11px; font-weight: 600; color: var(--text); line-height: 1.2; }
+
+/* DoorDash-style horizontal circular category strip */
+.cat-strip-wrap { background: var(--white); padding: 14px 0 10px; border-bottom: 1px solid var(--border); }
+.cat-strip { display: flex; gap: 14px; overflow-x: auto; padding: 0 16px; scrollbar-width: none; }
+.cat-strip::-webkit-scrollbar { display: none; }
+.cat-chip { flex: 0 0 auto; text-align: center; text-decoration: none; color: var(--text); width: 72px; }
+.cat-chip:active { opacity: 0.7; }
+.cat-chip .chip-circle { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 6px; background: linear-gradient(135deg, #ffe5e5, #ffd7a1); box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.cat-chip .chip-circle.deals { background: linear-gradient(135deg, #ff4b4b, #ff9a00); color: #fff; font-weight: 900; font-size: 22px; letter-spacing: -0.5px; }
+.cat-chip .chip-name { font-size: 11px; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+
+/* DoorDash-style store info header */
+.store-info { background: var(--white); padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.store-info .store-logo { width: 44px; height: 44px; border-radius: 50%; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; flex-shrink: 0; }
+.store-info .store-meta { flex: 1; min-width: 0; }
+.store-info .store-name { font-weight: 800; font-size: 16px; color: var(--text); }
+.store-info .store-sub { font-size: 12px; color: var(--text2); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.store-info .store-sub a { color: var(--red); font-weight: 600; }
+.store-info .store-badge { background: #E8F5E9; color: var(--green); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 10px; flex-shrink: 0; }
+
+/* DoorDash-style promo banner */
+.promo-banner { background: #FFEBEE; color: var(--red); font-size: 13px; font-weight: 600; padding: 10px 16px; display: flex; align-items: center; gap: 8px; justify-content: center; border-bottom: 1px solid var(--border); }
+.promo-banner .promo-icon { font-size: 16px; }
+
+/* Sale badge on product cards */
+.product-img { position: relative; }
+.product-sale-badge { position: absolute; top: 6px; left: 6px; background: #D32F2F; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 7px; border-radius: 4px; letter-spacing: -0.3px; z-index: 2; box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+.product-stock { font-size: 11px; color: var(--green); font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+.product-stock::before { content: '●'; font-size: 8px; }
+
+/* Popular Deals horizontal carousel */
+.deals-rail-wrap { overflow: hidden; }
+.deals-rail { display: flex; gap: 10px; overflow-x: auto; padding: 2px 16px 6px; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.deals-rail::-webkit-scrollbar { display: none; }
+.deals-rail > .product-card { flex: 0 0 auto; width: 160px; scroll-snap-align: start; }
+
+/* === PRODUCT GRID === */
+.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.product-card { background: var(--white); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow); position: relative; transition: transform 0.2s; }
+.product-card:active { transform: scale(0.97); }
+.product-img { width: 100%; aspect-ratio: 1; background: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.product-img img { max-width: 85%; max-height: 85%; object-fit: contain; }
+.no-img { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 80px; background: linear-gradient(135deg, #f8f8f8, #eee); color: #bbb; font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+.product-info { padding: 6px 8px 34px; }
+.product-brand { font-size: 9px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+.product-name { font-size: 12px; font-weight: 600; line-height: 1.3; margin: 1px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.product-size { font-size: 10px; color: var(--text2); margin-bottom: 4px; }
+.product-price { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.price-now { font-size: 14px; font-weight: 800; color: var(--red); }
+.price-member { font-size: 11px; font-weight: 700; color: var(--green); }
+.price-original { font-size: 11px; color: #bbb; text-decoration: line-through; }
+.product-add { position: absolute; bottom: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(211,47,47,0.3); }
+.product-qty-ctrl { position: absolute; bottom: 8px; right: 6px; display: flex; align-items: center; gap: 0; background: var(--red); border-radius: 20px; box-shadow: 0 2px 6px rgba(211,47,47,0.3); overflow: hidden; }
+.product-qty-ctrl button { width: 26px; height: 26px; background: none; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; }
+.product-qty-ctrl button:active { background: rgba(0,0,0,0.1); }
+.product-qty-ctrl span { color: #fff; font-size: 12px; font-weight: 800; min-width: 18px; text-align: center; }
+.product-add:active { transform: scale(1.15); }
+
+/* Clearance badge */
+.badge-clearance { position: absolute; top: 8px; left: 8px; background: #FF1744; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+
+/* === BROWSE === */
+.browse-layout { display: flex; min-height: calc(100vh - 120px); align-items: flex-start; }
+.browse-sidebar { width: 100px; background: var(--white); border-right: 1px solid var(--border); flex-shrink: 0; position: -webkit-sticky; position: sticky; top: 52px; height: calc(100vh - 52px - 56px); overflow-y: scroll; -webkit-overflow-scrolling: touch; z-index: 10; }
+.sidebar-item { padding: 10px 6px; text-align: center; font-size: 11px; font-weight: 500; border-bottom: 1px solid #f5f5f5; color: var(--text2); cursor: pointer; }
+.sidebar-item.active { background: var(--red-light); color: var(--red); font-weight: 700; border-right: 3px solid var(--red); }
+.sidebar-icon { font-size: 20px; display: block; margin-bottom: 2px; }
+.browse-content { flex: 1; padding: 12px; overflow-y: auto; }
+.browse-count { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
+
+/* === CART === */
+.cart-empty { text-align: center; padding: 60px 20px; color: var(--text2); }
+.cart-empty-icon { font-size: 64px; margin-bottom: 16px; }
+.cart-item { background: var(--white); border-radius: var(--radius); padding: 12px; margin-bottom: 8px; display: flex; gap: 12px; align-items: center; box-shadow: var(--shadow); }
+.cart-item-img { width: 60px; height: 60px; border-radius: 8px; background: #f5f5f5; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.cart-item-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.cart-item-info { flex: 1; }
+.cart-item-name { font-size: 13px; font-weight: 600; line-height: 1.3; }
+.cart-item-size { font-size: 11px; color: var(--text2); }
+.cart-item-price { font-size: 15px; font-weight: 800; color: var(--red); margin-top: 4px; }
+.cart-qty { display: flex; align-items: center; gap: 0; }
+.cart-qty button { width: 30px; height: 30px; border-radius: 50%; background: #f0f0f0; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.cart-qty span { width: 36px; text-align: center; font-size: 15px; font-weight: 700; }
+.cart-summary { background: var(--white); border-radius: var(--radius); padding: 16px; margin-top: 12px; box-shadow: var(--shadow); }
+.cart-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+.cart-row.total { font-size: 18px; font-weight: 800; border-top: 2px solid var(--border); padding-top: 12px; margin-top: 8px; }
+.cart-row .discount { color: var(--green); }
+.checkout-btn { display: block; width: 100%; padding: 14px; border-radius: var(--radius); background: var(--red); color: #fff; font-size: 16px; font-weight: 700; text-align: center; margin-top: 12px; box-shadow: 0 4px 12px rgba(211,47,47,0.3); }
+.checkout-btn:active { transform: scale(0.98); }
+
+/* === CHECKOUT === */
+/* === PRODUCT DETAIL MODAL === */
+.pd-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 300; display: flex; align-items: flex-end; justify-content: center; }
+.pd-modal { background: #fff; width: 100%; max-width: 500px; max-height: 90vh; border-radius: 20px 20px 0 0; overflow-y: auto; animation: pdSlideUp 0.25s ease; }
+@keyframes pdSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.pd-close { position: absolute; top: 12px; right: 14px; font-size: 28px; color: #666; cursor: pointer; background: rgba(255,255,255,0.9); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: none; z-index: 2; }
+.pd-img-wrap { width: 100%; aspect-ratio: 1; background: #f9f9f9; display: flex; align-items: center; justify-content: center; position: relative; border-radius: 20px 20px 0 0; overflow: hidden; }
+.pd-img-wrap img { max-width: 80%; max-height: 80%; object-fit: contain; }
+.pd-body { padding: 20px; }
+.pd-brand { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+.pd-name { font-size: 20px; font-weight: 700; margin: 4px 0 2px; }
+.pd-size { font-size: 13px; color: #888; margin-bottom: 12px; }
+.pd-price-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.pd-price { font-size: 24px; font-weight: 800; color: var(--red); }
+.pd-price-orig { font-size: 15px; color: #aaa; text-decoration: line-through; }
+.pd-discount { font-size: 13px; color: var(--green); font-weight: 700; }
+.pd-add-btn { display: block; width: 100%; padding: 14px; border-radius: var(--radius); background: var(--red); color: #fff; font-size: 16px; font-weight: 700; text-align: center; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(211,47,47,0.3); }
+.pd-add-btn:active { transform: scale(0.98); }
+.pd-qty-ctrl { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 10px; }
+.pd-qty-ctrl button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--red); background: #fff; color: var(--red); font-size: 20px; font-weight: 700; cursor: pointer; }
+.pd-qty-ctrl span { font-size: 20px; font-weight: 700; min-width: 30px; text-align: center; }
+
+.checkout-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg); z-index: 200; overflow-y: auto; }
+.checkout-header { background: var(--red); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 1; }
+.checkout-header h3 { font-size: 18px; font-weight: 700; flex: 1; }
+.checkout-back { font-size: 24px; padding: 4px; cursor: pointer; background: none; color: #fff; border: none; }
+.checkout-body { padding: 16px; padding-bottom: 120px; max-width: 500px; margin: 0 auto; }
+.checkout-section { background: var(--white); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.checkout-section h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.checkout-section h4 span { font-size: 18px; }
+.order-type-btns { display: flex; gap: 8px; }
+.order-type-btn { flex: 1; padding: 14px 8px; border-radius: var(--radius-sm); border: 2px solid var(--border); text-align: center; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.order-type-btn.active { border-color: var(--red); background: var(--red-light); color: var(--red); }
+.order-type-btn .ot-icon { font-size: 24px; display: block; margin-bottom: 4px; }
+.co-input { width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; margin-bottom: 10px; }
+.co-input:focus { outline: none; border-color: var(--red); }
+.co-label { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 4px; display: block; }
+.co-row { display: flex; gap: 8px; }
+.co-row > div { flex: 1; }
+.pay-option { display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+.pay-option.active { border-color: var(--red); background: var(--red-light); }
+.pay-option .pay-icon { font-size: 22px; }
+.pay-option .pay-label { font-size: 14px; font-weight: 600; }
+.pay-option .pay-desc { font-size: 11px; color: var(--text2); }
+.co-summary-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; }
+.co-summary-row.total { font-size: 18px; font-weight: 800; border-top: 2px solid var(--border); padding-top: 10px; margin-top: 6px; }
+.co-place-btn { display: block; width: 100%; padding: 16px; border-radius: var(--radius); background: var(--green); color: #fff; font-size: 17px; font-weight: 800; text-align: center; margin-top: 16px; box-shadow: 0 4px 12px rgba(46,125,50,0.3); }
+.co-place-btn:active { transform: scale(0.98); }
+.co-note { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; resize: vertical; min-height: 60px; }
+.co-note:focus { outline: none; border-color: var(--red); }
+.order-success { text-align: center; padding: 60px 20px; }
+.order-success .check-icon { font-size: 64px; margin-bottom: 16px; }
+.order-success h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.order-success p { color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+.order-success .order-num { font-size: 20px; font-weight: 800; color: var(--red); margin-bottom: 24px; }
+.success-btn { padding: 14px 32px; border-radius: var(--radius); background: var(--red); color: #fff; font-size: 15px; font-weight: 700; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* === PROFILE / LOGIN === */
+.profile-header { background: linear-gradient(135deg, var(--red), var(--red-dark)); color: #fff; padding: 32px 16px; text-align: center; border-radius: 0 0 24px 24px; }
+.profile-avatar { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.2); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+.profile-name { font-size: 20px; font-weight: 700; }
+.profile-membership { display: inline-block; margin-top: 8px; padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+.profile-membership.general { background: rgba(255,255,255,0.2); }
+.profile-membership.k1 { background: var(--gold); color: #000; }
+.profile-membership.k2 { background: #E040FB; color: #fff; }
+.profile-menu { padding: 16px; }
+.profile-menu-item { background: var(--white); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); font-size: 14px; font-weight: 500; }
+.profile-menu-icon { font-size: 20px; }
+
+/* Login */
+.login-box { max-width: 400px; margin: 40px auto; padding: 0 16px; }
+.login-title { font-size: 24px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+.login-subtitle { font-size: 14px; color: var(--text2); text-align: center; margin-bottom: 24px; }
+.input-group { margin-bottom: 16px; }
+.input-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text2); }
+.input-group input { width: 100%; padding: 12px 14px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 16px; transition: border-color 0.2s; }
+.input-group input:focus { outline: none; border-color: var(--red); }
+.login-btn { width: 100%; padding: 14px; border-radius: var(--radius); background: var(--red); color: #fff; font-size: 16px; font-weight: 700; margin-top: 8px; }
+.login-skip { text-align: center; margin-top: 16px; font-size: 13px; color: var(--text2); }
+.login-skip a { color: var(--red); font-weight: 600; }
+
+/* === LANG SWITCHER === */
+.lang-switch { display: inline-flex; gap: 0; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.3); }
+.lang-btn { padding: 4px 10px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); background: none; }
+.lang-btn.active { background: rgba(255,255,255,0.2); color: #fff; }
+
+/* === TOAST === */
+.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 24px; border-radius: 24px; font-size: 14px; font-weight: 500; z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+
+/* === PICKUP OPTIONS === */
+.pickup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.pickup-card { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); position: relative; overflow: hidden; border: 2px solid transparent; transition: border-color 0.3s; }
+.pickup-card:hover { border-color: #eee; }
+.pickup-badge { display: inline-flex; align-items: center; gap: 4px; background: #E8F5E9; color: #2E7D32; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; letter-spacing: 0.5px; }
+.pickup-badge::before { content: ''; width: 6px; height: 6px; background: #4CAF50; border-radius: 50%; animation: pulse-dot 1.5s infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.pickup-icon { font-size: 36px; margin-bottom: 8px; }
+.pickup-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.pickup-desc { font-size: 13px; color: var(--text2); margin-bottom: 12px; }
+.pickup-btn { display: inline-block; padding: 10px 24px; border-radius: 24px; font-size: 13px; font-weight: 700; color: #fff; transition: transform 0.2s, box-shadow 0.2s; }
+.pickup-btn:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.pickup-btn.doordash { background: #FF3008; }
+.pickup-btn.uber { background: #06C167; }
+.pickup-btn.store { background: var(--red); }
+.pickup-partner { font-size: 10px; color: var(--text2); margin-top: 8px; }
+
+/* === RESPONSIVE === */
+@media (min-width: 480px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+}
+@media (min-width: 768px) {
+  .product-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .cat-grid { grid-template-columns: repeat(6, 1fr); }
+  .product-name { font-size: 12px; }
+  .price-now { font-size: 13px; }
+}
+@media (min-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .cat-grid { grid-template-columns: repeat(8, 1fr); }
+  /* Compact Weee!-style card */
+  .product-img { height: 115px; aspect-ratio: unset; }
+  .product-info { padding: 4px 6px 26px; }
+  .product-brand { font-size: 8px; }
+  .product-name { font-size: 11px; line-height: 1.25; margin: 1px 0; }
+  .product-size { font-size: 9px; margin-bottom: 2px; }
+  .price-now { font-size: 12px; }
+  .price-member { font-size: 9px; }
+  .price-original { font-size: 9px; }
+  .product-add { width: 22px; height: 22px; font-size: 14px; bottom: 5px; right: 5px; }
+  .product-qty-ctrl { bottom: 5px; right: 3px; }
+  .product-qty-ctrl button { width: 22px; height: 22px; font-size: 12px; }
+  .product-qty-ctrl span { font-size: 11px; min-width: 15px; }
+  .badge-clearance { font-size: 9px; padding: 1px 5px; top: 5px; left: 5px; }
+  .section { padding: 10px 12px; }
+  .section-title { font-size: 17px; margin-bottom: 10px; }
+}
+@media (min-width: 1280px) {
+  .product-grid { grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .product-img { height: 130px; }
+}
+@media (min-width: 1600px) {
+  .product-grid { grid-template-columns: repeat(8, 1fr); }
+}
+@media (max-width: 380px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo" onclick="navigate('home');window.scrollTo(0,0)" style="cursor:pointer"><img src="kimchi_logo_white.png" alt="KIMCHI" class="header-logo-img"></div>
+  <div class="header-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
+  </div>
+  <div class="header-actions">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ko')">KR</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="header-btn" onclick="navigate('cart')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+    </button>
+    <button class="header-btn" onclick="navigate('profile')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <!-- DoorDash-style store info header -->
+  <div class="store-info" onclick="navigate('browse')">
+    <div class="store-logo">김</div>
+    <div class="store-meta">
+      <div class="store-name">Kimchi Mart <span id="t-store-branch" style="font-weight:500;color:var(--text2);font-size:13px">· 할리우드</span></div>
+      <div class="store-sub"><span id="t-store-delivery">30-45분 배달 · 픽업 즉시</span> · <a href="#" onclick="event.stopPropagation();navigate('delivery')" id="t-store-fees">배송비 보기</a></div>
+    </div>
+    <div class="store-badge" id="t-store-open">영업중</div>
+  </div>
+  <div class="promo-banner"><span class="promo-icon">🎉</span> <span id="t-promo">첫 주문 배송비 무료 · $25 이상 주문 시</span></div>
+
+  <!-- DoorDash-style horizontal category strip -->
+  <div class="cat-strip-wrap">
+    <div class="cat-strip" id="catStrip"></div>
+  </div>
+
+  <div class="hero">
+    <img src="kimchi_logo_white.png" alt="KIMCHI" class="hero-logo">
+    <p class="hero-tagline" id="t-hero-tagline">Fresh Korean Grocery</p>
+    <div class="hero-buttons">
+      <button class="hero-btn primary" onclick="navigate('browse')">
+        <span id="t-shop-now">Shop Now</span>
+      </button>
+      <button class="hero-btn secondary" onclick="navigate('browse','clearance')">
+        <span>🔥</span> <span id="t-clearance">Clearance Deals</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Popular Deals carousel (DoorDash style) -->
+  <div class="section">
+    <div class="section-title">
+      <span id="t-popular-deals">🏷️ Popular Deals</span>
+      <button class="see-all" onclick="navigate('browse','clearance')" id="t-see-all-deals">See All</button>
+    </div>
+    <div class="deals-rail-wrap"><div class="deals-rail" id="dealsRail"></div></div>
+  </div>
+
+  <!-- Categories grid -->
+  <div class="section">
+    <div class="section-title">
+      <span id="t-categories">Categories</span>
+      <button class="see-all" onclick="navigate('browse')" id="t-see-all">See All</button>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+
+  <!-- Popular Products -->
+  <div class="section">
+    <div class="section-title"><span id="t-popular">Popular Products</span></div>
+    <div class="product-grid" id="popularGrid"></div>
+  </div>
+
+  <!-- Pickup & Delivery -->
+  <div class="section">
+    <div class="section-title"><span id="t-pickup-title">Pickup & Delivery</span></div>
+    <div class="pickup-grid">
+      <div class="pickup-card" onclick="setDeliveryMethod('pickup');navigate('browse')">
+        <div class="pickup-badge">AVAILABLE NOW</div>
+        <div class="pickup-icon">🏪</div>
+        <div class="pickup-title" id="t-store-pickup">Store Pickup</div>
+        <div class="pickup-desc" id="t-store-pickup-desc">Order online, pick up at store</div>
+        <button class="pickup-btn store" id="t-order-pickup">Shop Now</button>
+        <div class="pickup-partner">5 locations · Open 365 days</div>
+      </div>
+      <div class="pickup-card" onclick="setDeliveryMethod('doordash');navigate('browse')">
+        <div class="pickup-badge">LIVE ORDERING</div>
+        <div class="pickup-icon">🚗</div>
+        <div class="pickup-title">DoorDash</div>
+        <div class="pickup-desc" id="t-doordash-desc">Fast delivery to your door</div>
+        <button class="pickup-btn doordash">Shop Now</button>
+        <div class="pickup-partner">Official Partner · 30-45 min</div>
+      </div>
+      <div class="pickup-card" onclick="setDeliveryMethod('ubereats');navigate('browse')">
+        <div class="pickup-badge">LIVE ORDERING</div>
+        <div class="pickup-icon">🛵</div>
+        <div class="pickup-title">Uber Eats</div>
+        <div class="pickup-desc" id="t-uber-desc">Get groceries delivered</div>
+        <button class="pickup-btn uber">Shop Now</button>
+        <div class="pickup-partner">Official Partner · 30-45 min</div>
+      </div>
+      <div class="pickup-card" onclick="setDeliveryMethod('kimchi-delivery');navigate('browse')" style="border:2px solid var(--red)">
+        <div class="pickup-badge" style="background:#FFEBEE;color:#D32F2F">KIMCHI DIRECT</div>
+        <div class="pickup-icon">🚚</div>
+        <div class="pickup-title">Kimchi Mart Delivery</div>
+        <div class="pickup-desc">Direct delivery from our store to your door</div>
+        <button class="pickup-btn store">Shop Now</button>
+        <div class="pickup-partner">$100+ orders · Palm Beach · Broward · Miami-Dade</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BROWSE PAGE -->
+<div class="page" id="page-browse">
+  <div class="browse-layout">
+    <div class="browse-sidebar" id="browseSidebar"></div>
+    <div class="browse-content">
+      <div class="browse-count" id="browseCount"></div>
+      <div class="product-grid" id="browseGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CART PAGE -->
+<div class="page" id="page-cart">
+  <div class="section">
+    <div class="section-title"><span id="t-cart-title">Shopping Cart</span></div>
+    <div id="cartContent"></div>
+  </div>
+</div>
+
+<!-- PROFILE PAGE -->
+<div class="page" id="page-profile">
+  <div id="profileContent"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button class="nav-item active" onclick="navigate('home')" data-page="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    <span id="t-nav-home">Home</span>
+  </button>
+  <button class="nav-item" onclick="navigate('browse')" data-page="browse">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    <span id="t-nav-browse">Browse</span>
+  </button>
+  <button class="nav-item" onclick="navigate('cart')" data-page="cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span id="t-nav-cart">Cart</span>
+  </button>
+  <button class="nav-item" onclick="navigate('profile')" data-page="profile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span id="t-nav-profile">Profile</span>
+  </button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="products.js"></script>
+<script>
+// ==================== STATE ====================
+const state = {
+  page: 'home',
+  category: null,
+  search: '',
+  cart: JSON.parse(localStorage.getItem('kimchi_cart') || '{}'),
+  user: JSON.parse(localStorage.getItem('kimchi_user') || 'null'),
+  lang: localStorage.getItem('kimchi_lang') || 'en'
+};
+
+// ==================== i18n ====================
+const LANG = {
+  en: {
+    'hero-tagline': 'CLEAN · SAFE · TRUST',
+    'shop-now': 'Shop Now', 'clearance': 'Clearance Deals',
+    'categories': 'Categories', 'see-all': 'See All',
+    'popular': 'Popular Products', 'pickup-title': 'Pickup & Delivery',
+    'store-pickup': 'Store Pickup', 'store-pickup-desc': 'Order online, pick up at store',
+    'order-pickup': 'Order for Pickup', 'doordash-desc': 'Fast delivery to your door',
+    'uber-desc': 'Get groceries delivered',
+    'cart-title': 'Shopping Cart', 'cart-empty': 'Your cart is empty',
+    'cart-subtotal': 'Subtotal', 'cart-discount': 'Member Discount',
+    'cart-total': 'Total', 'checkout': 'Checkout',
+    'nav-home': 'Home', 'nav-browse': 'Browse', 'nav-cart': 'Cart', 'nav-profile': 'Profile',
+    'login-title': 'Log In', 'login-sub': 'Sign in to access K1/K2 member pricing',
+    'phone': 'Phone Number', 'login': 'Send Code', 'skip': 'Continue as Guest',
+    'profile-guest': 'Guest', 'membership-general': 'General',
+    'membership-k1': 'K1 Member (5% OFF)', 'membership-k2': 'K2 Business (10% OFF)',
+    'orders': 'Order History', 'membership': 'Membership', 'language': 'Language',
+    'logout': 'Log Out', 'added': 'Added to cart!',
+    'search-placeholder': 'Search products...', 'items': 'items',
+    'k1-price': 'K1', 'k2-price': 'K2', 'member-price': 'Member Price',
+    'all': 'All',
+    'co-title': 'Checkout', 'co-delivery': 'Delivery', 'co-pickup': 'Store Pickup',
+    'co-contact': 'Contact Info', 'co-name': 'Full Name', 'co-phone': 'Phone',
+    'co-address': 'Delivery Address', 'co-street': 'Street Address', 'co-apt': 'Apt/Suite',
+    'co-city': 'City', 'co-zip': 'ZIP', 'co-payment': 'Payment Method',
+    'co-pay-store': 'Pay at Pickup', 'co-pay-store-desc': 'Cash or card when you pick up',
+    'co-pay-card': 'Credit/Debit Card', 'co-pay-card-desc': 'Secure online payment',
+    'co-pay-zelle': 'Zelle', 'co-pay-zelle-desc': 'Send to kimchimart@gmail.com',
+    'co-notes': 'Order Notes', 'co-notes-ph': 'Special requests, delivery instructions...',
+    'co-place': 'Place Order', 'co-delivery-fee': 'Delivery Fee',
+    'co-free-delivery': 'FREE', 'co-min-delivery': 'Minimum $35 for free delivery',
+    'co-success': 'Order Placed!', 'co-success-msg': 'We will contact you to confirm your order.',
+    'co-order-num': 'Order #', 'co-back-home': 'Back to Home',
+    'co-pickup-info': 'Select your pickup store',
+    'co-pickup-hours': 'Open 365 days, 7 days/week',
+    'co-select-store': 'Select Store',
+    'co-pay-applepay-desc': 'Quick & secure payment',
+    'co-pay-googlepay-desc': 'Fast checkout with Google',
+    'co-pay-paypal-desc': 'Pay with your PayPal account',
+    'co-pay-venmo-desc': 'Send via Venmo',
+    'co-pay-ebt-desc': 'SNAP/EBT accepted at pickup',
+    'co-card-info': 'Card Information', 'co-card-number': 'Card Number', 'co-card-exp': 'Expiry',
+    'co-card-name': 'Name on Card', 'co-secure': 'Your payment info is encrypted and secure',
+    'co-instructions': 'Instructions', 'co-zelle-step1': 'Open your Zelle app',
+    'co-zelle-step2': 'Send to', 'co-zelle-step3': 'Amount', 'co-zelle-step4': 'Add your order name in memo',
+    'co-venmo-step1': 'Open Venmo app', 'co-venmo-step2': 'Send to', 'co-venmo-step3': 'Amount',
+    'co-paypal-redirect': 'You will be redirected to PayPal to complete payment',
+    'co-pay-at-store': 'Pay at Store', 'co-pay-at-store-desc': 'Pay with cash or card when you pick up your order',
+    'co-processing': 'Processing Payment...', 'co-processing-msg': 'Please wait while we process your payment',
+    'co-order-details': 'Order Summary', 'co-confirm-sms': 'A confirmation will be sent to your phone',
+    'co-err-contact': 'Please enter name and phone', 'co-err-address': 'Please enter delivery address',
+    'co-err-card': 'Please enter a valid card number', 'co-err-exp': 'Please enter card expiry', 'co-err-cvv': 'Please enter CVV'
+  },
+  ko: {
+    'hero-tagline': 'CLEAN · SAFE · TRUST',
+    'shop-now': '쇼핑하기', 'clearance': '마감 할인',
+    'categories': '카테고리', 'see-all': '전체 보기',
+    'popular': '인기 상품', 'pickup-title': '픽업 & 배달',
+    'store-pickup': '매장 픽업', 'store-pickup-desc': '온라인 주문, 매장 수령',
+    'order-pickup': '픽업 주문', 'doordash-desc': '빠른 배달',
+    'uber-desc': '식료품 배달',
+    'cart-title': '장바구니', 'cart-empty': '장바구니가 비어있습니다',
+    'cart-subtotal': '소계', 'cart-discount': '멤버 할인',
+    'cart-total': '합계', 'checkout': '결제하기',
+    'nav-home': '홈', 'nav-browse': '쇼핑', 'nav-cart': '장바구니', 'nav-profile': '내 정보',
+    'login-title': '로그인', 'login-sub': 'K1/K2 회원 가격을 이용하세요',
+    'phone': '전화번호', 'login': '인증번호 받기', 'skip': '비회원으로 계속',
+    'profile-guest': '비회원', 'membership-general': '일반',
+    'membership-k1': 'K1 회원 (5% 할인)', 'membership-k2': 'K2 자영업자 (10% 할인)',
+    'orders': '주문 내역', 'membership': '멤버십', 'language': '언어',
+    'logout': '로그아웃', 'added': '장바구니에 추가!',
+    'search-placeholder': '상품 검색...', 'items': '개',
+    'k1-price': 'K1', 'k2-price': 'K2', 'member-price': '회원가',
+    'all': '전체',
+    'co-title': '주문하기', 'co-delivery': '배달', 'co-pickup': '매장 픽업',
+    'co-contact': '연락처', 'co-name': '이름', 'co-phone': '전화번호',
+    'co-address': '배달 주소', 'co-street': '주소', 'co-apt': '상세주소',
+    'co-city': '도시', 'co-zip': '우편번호', 'co-payment': '결제 방법',
+    'co-pay-store': '매장 결제', 'co-pay-store-desc': '픽업 시 현금 또는 카드',
+    'co-pay-card': '신용/체크카드', 'co-pay-card-desc': '안전한 온라인 결제',
+    'co-pay-zelle': 'Zelle', 'co-pay-zelle-desc': 'kimchimart@gmail.com으로 송금',
+    'co-notes': '주문 메모', 'co-notes-ph': '특별 요청, 배달 안내사항...',
+    'co-place': '주문하기', 'co-delivery-fee': '배달비',
+    'co-free-delivery': '무료', 'co-min-delivery': '$35 이상 무료 배달',
+    'co-success': '주문 완료!', 'co-success-msg': '주문 확인을 위해 연락드리겠습니다.',
+    'co-order-num': '주문번호', 'co-back-home': '홈으로',
+    'co-pickup-info': '픽업 매장을 선택하세요',
+    'co-pickup-hours': '연중무휴, 주 7일 영업',
+    'co-select-store': '매장 선택',
+    'co-pay-applepay-desc': '빠르고 안전한 결제',
+    'co-pay-googlepay-desc': 'Google로 빠른 결제',
+    'co-pay-paypal-desc': 'PayPal 계정으로 결제',
+    'co-pay-venmo-desc': 'Venmo로 송금',
+    'co-pay-ebt-desc': '픽업 시 SNAP/EBT 사용 가능',
+    'co-card-info': '카드 정보', 'co-card-number': '카드 번호', 'co-card-exp': '유효기간',
+    'co-card-name': '카드 소유자', 'co-secure': '결제 정보는 암호화되어 안전합니다',
+    'co-instructions': '안내', 'co-zelle-step1': 'Zelle 앱을 열어주세요',
+    'co-zelle-step2': '받는 사람', 'co-zelle-step3': '금액', 'co-zelle-step4': '메모에 주문자명을 입력하세요',
+    'co-venmo-step1': 'Venmo 앱을 열어주세요', 'co-venmo-step2': '받는 사람', 'co-venmo-step3': '금액',
+    'co-paypal-redirect': 'PayPal로 이동하여 결제를 완료합니다',
+    'co-pay-at-store': '매장 결제', 'co-pay-at-store-desc': '픽업 시 현금 또는 카드로 결제하세요',
+    'co-processing': '결제 처리 중...', 'co-processing-msg': '결제를 처리하고 있습니다. 잠시만 기다려주세요',
+    'co-order-details': '주문 요약', 'co-confirm-sms': '확인 문자가 전화로 발송됩니다',
+    'co-err-contact': '이름과 전화번호를 입력하세요', 'co-err-address': '배달 주소를 입력하세요',
+    'co-err-card': '유효한 카드 번호를 입력하세요', 'co-err-exp': '유효기간을 입력하세요', 'co-err-cvv': 'CVV를 입력하세요'
+  },
+  es: {
+    'hero-tagline': 'CLEAN · SAFE · TRUST',
+    'shop-now': 'Comprar', 'clearance': 'Ofertas',
+    'categories': 'Categorias', 'see-all': 'Ver Todo',
+    'popular': 'Productos Populares', 'pickup-title': 'Recogida y Entrega',
+    'store-pickup': 'Recogida', 'store-pickup-desc': 'Ordena y recoge en tienda',
+    'order-pickup': 'Ordenar', 'doordash-desc': 'Entrega rapida',
+    'uber-desc': 'Entrega de viveres',
+    'cart-title': 'Carrito', 'cart-empty': 'Tu carrito esta vacio',
+    'cart-subtotal': 'Subtotal', 'cart-discount': 'Descuento Miembro',
+    'cart-total': 'Total', 'checkout': 'Pagar',
+    'nav-home': 'Inicio', 'nav-browse': 'Tienda', 'nav-cart': 'Carrito', 'nav-profile': 'Perfil',
+    'login-title': 'Iniciar Sesion', 'login-sub': 'Accede a precios K1/K2',
+    'phone': 'Telefono', 'login': 'Enviar Codigo', 'skip': 'Continuar como Invitado',
+    'profile-guest': 'Invitado', 'membership-general': 'General',
+    'membership-k1': 'K1 Miembro (5% OFF)', 'membership-k2': 'K2 Negocio (10% OFF)',
+    'orders': 'Historial', 'membership': 'Membresia', 'language': 'Idioma',
+    'logout': 'Cerrar Sesion', 'added': 'Agregado al carrito!',
+    'search-placeholder': 'Buscar productos...', 'items': 'items',
+    'k1-price': 'K1', 'k2-price': 'K2', 'member-price': 'Precio Miembro',
+    'all': 'Todo',
+    'co-title': 'Pagar', 'co-delivery': 'Entrega', 'co-pickup': 'Recogida',
+    'co-contact': 'Contacto', 'co-name': 'Nombre', 'co-phone': 'Telefono',
+    'co-address': 'Direccion', 'co-street': 'Calle', 'co-apt': 'Apto',
+    'co-city': 'Ciudad', 'co-zip': 'ZIP', 'co-payment': 'Metodo de Pago',
+    'co-pay-store': 'Pagar en Tienda', 'co-pay-store-desc': 'Efectivo o tarjeta al recoger',
+    'co-pay-card': 'Tarjeta', 'co-pay-card-desc': 'Pago seguro en linea',
+    'co-pay-zelle': 'Zelle', 'co-pay-zelle-desc': 'Enviar a kimchimart@gmail.com',
+    'co-notes': 'Notas', 'co-notes-ph': 'Solicitudes especiales...',
+    'co-place': 'Hacer Pedido', 'co-delivery-fee': 'Entrega',
+    'co-free-delivery': 'GRATIS', 'co-min-delivery': 'Minimo $35 para entrega gratis',
+    'co-success': 'Pedido Realizado!', 'co-success-msg': 'Le contactaremos para confirmar.',
+    'co-order-num': 'Pedido #', 'co-back-home': 'Inicio',
+    'co-pickup-info': 'Seleccione su tienda',
+    'co-pickup-hours': 'Abierto 365 dias, 7 dias/semana',
+    'co-select-store': 'Seleccionar Tienda',
+    'co-pay-applepay-desc': 'Pago rapido y seguro',
+    'co-pay-googlepay-desc': 'Pago rapido con Google',
+    'co-pay-paypal-desc': 'Pague con PayPal',
+    'co-pay-venmo-desc': 'Enviar por Venmo',
+    'co-pay-ebt-desc': 'SNAP/EBT aceptado al recoger',
+    'co-card-info': 'Datos de Tarjeta', 'co-card-number': 'Numero de Tarjeta', 'co-card-exp': 'Vencimiento',
+    'co-card-name': 'Titular', 'co-secure': 'Su informacion de pago esta encriptada y segura',
+    'co-instructions': 'Instrucciones', 'co-zelle-step1': 'Abra su app Zelle',
+    'co-zelle-step2': 'Enviar a', 'co-zelle-step3': 'Monto', 'co-zelle-step4': 'Agregue su nombre en la nota',
+    'co-venmo-step1': 'Abra Venmo', 'co-venmo-step2': 'Enviar a', 'co-venmo-step3': 'Monto',
+    'co-paypal-redirect': 'Sera redirigido a PayPal para completar el pago',
+    'co-pay-at-store': 'Pago en Tienda', 'co-pay-at-store-desc': 'Pague en efectivo o tarjeta al recoger',
+    'co-processing': 'Procesando Pago...', 'co-processing-msg': 'Espere mientras procesamos su pago',
+    'co-order-details': 'Resumen del Pedido', 'co-confirm-sms': 'Se enviara confirmacion a su telefono',
+    'co-err-contact': 'Ingrese nombre y telefono', 'co-err-address': 'Ingrese direccion de entrega',
+    'co-err-card': 'Ingrese un numero de tarjeta valido', 'co-err-exp': 'Ingrese vencimiento', 'co-err-cvv': 'Ingrese CVV'
+  }
+};
+
+function t(key) { return LANG[state.lang]?.[key] || LANG.en[key] || key; }
+
+function setLang(lang) {
+  state.lang = lang;
+  localStorage.setItem('kimchi_lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === {en:'EN',ko:'KR',es:'ES'}[lang]));
+  document.getElementById('searchInput').placeholder = t('search-placeholder');
+  document.querySelectorAll('[id^="t-"]').forEach(el => {
+    const key = el.id.replace('t-', '').replace(/-/g, '-');
+    if (LANG[lang]?.[key]) el.textContent = LANG[lang][key];
+  });
+  render();
+}
+
+// ==================== NAVIGATION ====================
+function navigate(page, category) {
+  state.page = page;
+  if (category !== undefined) state.category = category;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page)?.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === page));
+  window.scrollTo(0, 0);
+  // Push to browser history so back button works
+  const historyState = { page, category: state.category };
+  if (!history.state || history.state.page !== page || history.state.category !== state.category) {
+    history.pushState(historyState, '', '#' + page + (state.category ? '/' + state.category : ''));
+  }
+  render();
+}
+
+// Handle browser back button
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.page) {
+    state.page = e.state.page;
+    if (e.state.category !== undefined) state.category = e.state.category;
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + state.page)?.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === state.page));
+    render();
+  } else {
+    state.page = 'home';
+    state.category = null;
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-home')?.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === 'home'));
+    render();
+  }
+});
+
+// ==================== PRICING ====================
+function getDiscount() {
+  if (!state.user) return 0;
+  if (state.user.membership === 'K2') return 0.10;
+  if (state.user.membership === 'K1') return 0.05;
+  return 0;
+}
+
+function getMemberPrice(price) {
+  const disc = getDiscount();
+  return disc > 0 ? +(price * (1 - disc)).toFixed(2) : price;
+}
+
+function formatPrice(p) { return '$' + p.toFixed(2); }
+function getCartQty(productId) { return state.cart[productId] || 0; }
+
+// ==================== CART ====================
+function addToCart(productId) {
+  state.cart[productId] = (state.cart[productId] || 0) + 1;
+  saveCart();
+  showToast(t('added'));
+  updateProductButtons(productId);
+  if (state.page === 'cart') render();
+}
+
+function updateCartQty(productId, delta) {
+  const newQty = (state.cart[productId] || 0) + delta;
+  if (newQty <= 0) delete state.cart[productId];
+  else state.cart[productId] = newQty;
+  saveCart();
+  updateProductButtons(productId);
+  if (state.page === 'cart') render();
+}
+
+function updateProductButtons(productId) {
+  const qty = getCartQty(productId);
+  document.querySelectorAll(`[data-pid="${productId}"]`).forEach(el => {
+    if (qty > 0) {
+      el.innerHTML = `<div class="product-qty-ctrl" onclick="event.stopPropagation()">
+        <button onclick="updateCartQty('${productId}',-1)">−</button>
+        <span>${qty}</span>
+        <button onclick="updateCartQty('${productId}',1)">+</button>
+      </div>`;
+    } else {
+      el.innerHTML = `<button class="product-add" onclick="event.stopPropagation();addToCart('${productId}')">+</button>`;
+    }
+  });
+}
+
+function saveCart() {
+  localStorage.setItem('kimchi_cart', JSON.stringify(state.cart));
+  updateCartBadge();
+}
+
+function showProductDetail(productId) {
+  const p = getProduct(productId);
+  if (!p) return;
+  const memberPrice = getMemberPrice(p.price);
+  const disc = getDiscount();
+  const imgPath = p.image || '';
+  const qty = getCartQty(p.id);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'pd-overlay';
+  overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="pd-modal">
+      <button class="pd-close" onclick="this.closest('.pd-overlay').remove()">&times;</button>
+      <div class="pd-img-wrap">
+        ${imgPath ? `<img src="${imgPath}" alt="${p.name}">` : `<div class="no-img" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:#ccc"><span>${p.name.substring(0,2)}</span></div>`}
+      </div>
+      <div class="pd-body">
+        <div class="pd-brand">${p.brand}</div>
+        <div class="pd-name">${p.name}${p.nameKr ? ' / ' + p.nameKr : ''}</div>
+        <div class="pd-size">${p.size}</div>
+        <div class="pd-price-row">
+          <span class="pd-price">${formatPrice(disc > 0 ? memberPrice : p.price)}</span>
+          ${disc > 0 ? `<span class="pd-price-orig">${formatPrice(p.price)}</span><span class="pd-discount">-${Math.round(disc*100)}%</span>` : ''}
+        </div>
+        <div id="pdCartArea">
+          ${qty > 0
+            ? `<div class="pd-qty-ctrl">
+                <button onclick="updateCartQty('${p.id}',-1);refreshPD('${p.id}')">−</button>
+                <span>${qty}</span>
+                <button onclick="updateCartQty('${p.id}',1);refreshPD('${p.id}')">+</button>
+              </div>`
+            : `<button class="pd-add-btn" onclick="addToCart('${p.id}');refreshPD('${p.id}')">Add to Cart</button>`}
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function refreshPD(productId) {
+  const qty = getCartQty(productId);
+  const area = document.getElementById('pdCartArea');
+  if (!area) return;
+  if (qty > 0) {
+    area.innerHTML = `<div class="pd-qty-ctrl">
+      <button onclick="updateCartQty('${productId}',-1);refreshPD('${productId}')">−</button>
+      <span>${qty}</span>
+      <button onclick="updateCartQty('${productId}',1);refreshPD('${productId}')">+</button>
+    </div>`;
+  } else {
+    area.innerHTML = `<button class="pd-add-btn" onclick="addToCart('${productId}');refreshPD('${productId}')">Add to Cart</button>`;
+    const overlay = document.querySelector('.pd-overlay');
+    if (overlay) overlay.remove();
+  }
+}
+
+function updateCartBadge() {
+  const count = Object.values(state.cart).reduce((a, b) => a + b, 0);
+  const badge = document.getElementById('cartBadge');
+  badge.style.display = count > 0 ? 'flex' : 'none';
+  badge.textContent = count;
+}
+
+function getProduct(id) { return PRODUCTS.find(p => p.id === id); }
+
+// ==================== RENDER ====================
+function render() {
+  if (state.page === 'home') renderHome();
+  else if (state.page === 'browse') renderBrowse();
+  else if (state.page === 'cart') renderCart();
+  else if (state.page === 'profile') renderProfile();
+  updateCartBadge();
+}
+
+function renderProductCard(p) {
+  const memberPrice = getMemberPrice(p.price);
+  const disc = getDiscount();
+  const imgPath = p.image ? `${p.image}` : '';
+  const salePct = (p.origPrice && p.origPrice > p.price) ? Math.round((1 - p.price / p.origPrice) * 100) : 0;
+  const saleBadge = salePct > 0 ? `<div class="product-sale-badge">${salePct}% off</div>` : (disc > 0 ? `<div class="product-sale-badge">-${Math.round(disc*100)}%</div>` : '');
+  const stockLabel = state.lang === 'ko' ? '재고 충분' : state.lang === 'es' ? 'En stock' : 'Many in stock';
+  return `<div class="product-card">
+    <div class="product-img" onclick="showProductDetail('${p.id}')">
+      ${saleBadge}
+      ${imgPath ? `<img src="${imgPath}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="no-img" style="display:none"><span>${p.name.substring(0,2)}</span></div>` : `<div class="no-img"><span>${p.name.substring(0,2)}</span></div>`}
+    </div>
+    <div class="product-info">
+      <div class="product-brand">${p.brand}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-size">${p.size}</div>
+      <div class="product-price">
+        <span class="price-now">${formatPrice(disc > 0 ? memberPrice : p.price)}</span>
+        ${disc > 0 || salePct > 0 ? `<span class="price-original">${formatPrice(p.origPrice || p.price)}</span>${disc > 0 ? `<span class="price-member">-${Math.round(disc*100)}%</span>` : ''}` : ''}
+      </div>
+      <div class="product-stock">${stockLabel}</div>
+    </div>
+    <div data-pid="${p.id}">
+    ${getCartQty(p.id) > 0
+      ? `<div class="product-qty-ctrl" onclick="event.stopPropagation()">
+          <button onclick="updateCartQty('${p.id}',-1)">−</button>
+          <span>${getCartQty(p.id)}</span>
+          <button onclick="updateCartQty('${p.id}',1)">+</button>
+        </div>`
+      : `<button class="product-add" onclick="event.stopPropagation();addToCart('${p.id}')">+</button>`}
+    </div>
+  </div>`;
+}
+
+function renderHome() {
+  // Categories
+  const mainCats = ['ramyun','snacks','beverages','tea','frozen','ready','kimchi','rice','meat','produce','dairy','seaweed','seasonings','pantry','bakery','houseware'];
+  const catHtml = mainCats.map(catId => {
+    const cat = CATEGORIES[catId];
+    if (!cat) return '';
+    const name = state.lang === 'ko' ? cat.kr : state.lang === 'es' ? cat.es : cat.en;
+    return `<div class="cat-card" onclick="navigate('browse','${catId}')">
+      <div class="cat-icon">${cat.icon}</div>
+      <div class="cat-name">${name}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('catGrid').innerHTML = catHtml;
+
+  // DoorDash-style horizontal category strip — Deals chip first, then top categories
+  const stripCats = ['deals','produce','meat','kimchi','ready','ramyun','frozen','snacks','tea','beverages','rice','seaweed'];
+  const stripHtml = stripCats.map(catId => {
+    if (catId === 'deals') {
+      const label = state.lang === 'ko' ? '할인' : state.lang === 'es' ? 'Ofertas' : 'Deals';
+      return `<a class="cat-chip" href="#" onclick="event.preventDefault();navigate('browse','clearance')">
+        <div class="chip-circle deals">%</div>
+        <div class="chip-name" style="color:#D32F2F">${label}</div>
+      </a>`;
+    }
+    const cat = CATEGORIES[catId]; if (!cat) return '';
+    const name = state.lang === 'ko' ? cat.kr : state.lang === 'es' ? cat.es : cat.en;
+    return `<a class="cat-chip" href="#" onclick="event.preventDefault();navigate('browse','${catId}')">
+      <div class="chip-circle">${cat.icon}</div>
+      <div class="chip-name">${name}</div>
+    </a>`;
+  }).join('');
+  document.getElementById('catStrip').innerHTML = stripHtml;
+
+  // Popular Deals rail — clearance/discounted first, then fall back to the most
+  // photogenic products so the rail never renders empty on launch.
+  const dealsRail = document.getElementById('dealsRail');
+  if (dealsRail && typeof PRODUCTS !== 'undefined') {
+    const pool = PRODUCTS.filter(p => p && p.image);
+    const dealProducts = pool.filter(p => p.clearance || (p.origPrice && p.origPrice > p.price)).slice(0, 12);
+    const picks = dealProducts.length ? dealProducts : pool.slice(0, 12);
+    dealsRail.innerHTML = picks.map(p => renderProductCard(p)).join('');
+    updateProductButtons && updateProductButtons();
+  }
+
+  // Popular - 2 picks from each category (16 categories × 2 = 32 items)
+  const popularIds = [
+    '08193K', '08479K',        // 라면 Ramyun
+    '08961K', '09700J',        // 과자 Snacks
+    '10530T', '10855K',        // 음료 Beverages
+    '10888K', 'LC2514',        // 차 Tea
+    'IL1018B', 'IL1019B',      // 냉동 Frozen
+    'KB1049', '04258K',        // 즉석 Ready
+    'CJ100', '3734',           // 김치 Kimchi
+    '00009D', '80089',         // 쌀 Rice
+    '8087072', '6343915',      // 육류 Meat
+    '146030', '60254',         // 채소 Produce
+    '417200', '418000',        // 유제품 Dairy
+    'HD1006', 'HD1013',        // 김 Seaweed
+    '440768', 'KC4505',        // 양념 Seasonings
+    'cj_1020697', 'cj_1020698',// 식료품 Pantry
+    '10955', 'EH1069',         // 베이커리 Bakery
+    'KK6070RD', 'KK6070SQ',    // 주방 Houseware
+  ];
+  const popular = popularIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+  document.getElementById('popularGrid').innerHTML = popular.map(renderProductCard).join('');
+}
+
+function renderBrowse() {
+  // Sidebar
+  const allCats = Object.keys(CATEGORIES);
+  const catCounts = {};
+  PRODUCTS.forEach(p => { catCounts[p.category] = (catCounts[p.category] || 0) + 1; });
+
+  // Only show categories that exist in products and have names in CATEGORIES
+  const validCats = allCats.filter(c => catCounts[c] > 0);
+
+  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.category=null;renderBrowse()">
+    <span class="sidebar-icon">🛒</span>${t('all')}
+  </div>`;
+  validCats.forEach(catId => {
+    const cat = CATEGORIES[catId];
+    const name = state.lang === 'ko' ? cat.kr : state.lang === 'es' ? cat.es : cat.en;
+    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.category='${catId}';renderBrowse()">
+      <span class="sidebar-icon">${cat.icon}</span>${name}
+    </div>`;
+  });
+  document.getElementById('browseSidebar').innerHTML = sidebarHtml;
+
+  // Products
+  let filtered = PRODUCTS;
+  if (state.category) filtered = filtered.filter(p => p.category === state.category);
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    filtered = filtered.filter(p =>
+      p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q) ||
+      (p.nameKr && p.nameKr.includes(q))
+    );
+  }
+  filtered = filtered.slice(0, 60); // limit for performance
+
+  document.getElementById('browseCount').textContent = `${filtered.length}+ ${t('items')}`;
+  document.getElementById('browseGrid').innerHTML = filtered.map(renderProductCard).join('');
+}
+
+function renderCart() {
+  const items = Object.entries(state.cart).map(([id, qty]) => ({ product: getProduct(id), qty })).filter(i => i.product);
+
+  if (items.length === 0) {
+    document.getElementById('cartContent').innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>${t('cart-empty')}</p></div>`;
+    return;
+  }
+
+  const disc = getDiscount();
+  let subtotal = 0;
+
+  let html = items.map(({ product: p, qty }) => {
+    const itemTotal = p.price * qty;
+    subtotal += itemTotal;
+    const imgPath = p.image ? `${p.image}` : '';
+    return `<div class="cart-item">
+      <div class="cart-item-img">${imgPath ? `<img src="${imgPath}" onerror="this.parentElement.innerHTML='📦'">` : '📦'}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${p.brand} ${p.name}</div>
+        <div class="cart-item-size">${p.size}</div>
+        <div class="cart-item-price">${formatPrice(getMemberPrice(p.price))} ${disc > 0 ? `<span style="font-size:11px;color:#bbb;text-decoration:line-through">${formatPrice(p.price)}</span>` : ''}</div>
+      </div>
+      <div class="cart-qty">
+        <button onclick="updateCartQty('${p.id}',-1)">−</button>
+        <span>${qty}</span>
+        <button onclick="updateCartQty('${p.id}',1)">+</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  const discountAmt = subtotal * disc;
+  const total = subtotal - discountAmt;
+
+  html += `<div class="cart-summary">
+    <div class="cart-row"><span>${t('cart-subtotal')}</span><span>${formatPrice(subtotal)}</span></div>
+    ${disc > 0 ? `<div class="cart-row"><span>${t('cart-discount')} (${state.user?.membership})</span><span class="discount">-${formatPrice(discountAmt)}</span></div>` : ''}
+    <div class="cart-row total"><span>${t('cart-total')}</span><span>${formatPrice(total)}</span></div>
+  </div>
+  <button class="checkout-btn" onclick="openCheckout()">${t('checkout')} - ${formatPrice(total)}</button>`;
+
+  document.getElementById('cartContent').innerHTML = html;
+}
+
+function renderProfile() {
+  if (!state.user) {
+    document.getElementById('profileContent').innerHTML = `
+      <div class="login-box">
+        <div style="text-align:center;font-size:48px;margin-bottom:16px;">🥬</div>
+        <div class="login-title">${t('login-title')}</div>
+        <div class="login-subtitle">${t('login-sub')}</div>
+        <div class="input-group">
+          <label>${t('phone')}</label>
+          <input type="tel" id="phoneInput" placeholder="+1 (305) 000-0000">
+        </div>
+        <button class="login-btn" onclick="handleLogin()">${t('login')}</button>
+        <div class="login-skip"><a href="#" onclick="loginAsGuest()">${t('skip')}</a></div>
+      </div>`;
+    return;
+  }
+
+  const m = state.user.membership || 'general';
+  const mLabel = t('membership-' + m.toLowerCase());
+  document.getElementById('profileContent').innerHTML = `
+    <div class="profile-header">
+      <div class="profile-avatar">👤</div>
+      <div class="profile-name">${state.user.name || state.user.phone || t('profile-guest')}</div>
+      <div class="profile-membership ${m}">${mLabel}</div>
+    </div>
+    <div class="profile-menu">
+      <div class="profile-menu-item"><span class="profile-menu-icon">📦</span>${t('orders')}</div>
+      <div class="profile-menu-item"><span class="profile-menu-icon">⭐</span>${t('membership')}: ${mLabel}</div>
+      <div class="profile-menu-item"><span class="profile-menu-icon">🌐</span>${t('language')}: ${state.lang.toUpperCase()}</div>
+      <div class="profile-menu-item" onclick="handleLogout()" style="color:var(--red)"><span class="profile-menu-icon">🚪</span>${t('logout')}</div>
+    </div>`;
+}
+
+// ==================== AUTH ====================
+function handleLogin() {
+  const phone = document.getElementById('phoneInput')?.value;
+  if (!phone || phone.length < 7) return showToast('Enter valid phone number');
+  // For now, simulate login. Firebase Auth will replace this.
+  state.user = { phone, name: '', membership: 'general' };
+  localStorage.setItem('kimchi_user', JSON.stringify(state.user));
+  navigate('profile');
+  showToast('Logged in!');
+}
+
+function loginAsGuest() {
+  state.user = { phone: '', name: 'Guest', membership: 'general' };
+  localStorage.setItem('kimchi_user', JSON.stringify(state.user));
+  navigate('home');
+}
+
+function handleLogout() {
+  state.user = null;
+  localStorage.removeItem('kimchi_user');
+  navigate('profile');
+}
+
+// ==================== SEARCH ====================
+function handleSearch(query) {
+  state.search = query;
+  if (query.length > 0 && state.page !== 'browse') navigate('browse');
+  else if (state.page === 'browse') renderBrowse();
+}
+
+// ==================== UTILS ====================
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+// ==================== CHECKOUT ====================
+let coState = { type: 'pickup', payment: 'store', store: 0, deliveryMethod: 'pickup' };
+
+function setDeliveryMethod(method) {
+  coState.deliveryMethod = method;
+  if (method === 'pickup') coState.type = 'pickup';
+  else coState.type = 'delivery';
+  const labels = {
+    'pickup': '🏪 Store Pickup selected',
+    'doordash': '🚗 DoorDash delivery selected',
+    'ubereats': '🛵 Uber Eats delivery selected',
+    'kimchi-delivery': '🚚 Kimchi Mart Direct Delivery selected'
+  };
+  showToast(labels[method] || method);
+}
+const STORES = [
+  { name: 'Miami (Palmetto Bay)', addr: '15355 S Dixie Hwy, Miami, FL 33157', phone: '(305) 964-5083' },
+  { name: 'Pembroke Pines', addr: '11230 Pines Blvd, Pembroke Pines, FL 33026', phone: '(754) 217-4919' },
+  { name: 'Hollywood', addr: '2420 N Dixie Hwy, Hollywood, FL 33020', phone: '(754) 210-7965' },
+  { name: 'Coral Springs', addr: '2693 N University Dr, Coral Springs, FL 33065', phone: '(954) 688-9437' },
+  { name: 'Fort Lauderdale (Las Olas)', addr: '510 NW 7th Ave, Fort Lauderdale, FL 33311', phone: '(754) 216-0106' },
+];
+
+function openCheckout() {
+  const disc = state.user?.membership === 'K1' ? 0.05 : state.user?.membership === 'K2' ? 0.10 : 0;
+  const items = Object.entries(state.cart);
+  let subtotal = 0;
+  items.forEach(([id, qty]) => { const p = PRODUCTS.find(x => x.id == id); if (p) subtotal += getMemberPrice(p.price) * qty; });
+  const discountAmt = subtotal * disc;
+  const deliveryFee = coState.type === 'delivery' && subtotal < 35 ? 5.99 : 0;
+  const total = subtotal - discountAmt + deliveryFee;
+  const itemCount = items.reduce((s, [, q]) => s + q, 0);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'checkout-overlay';
+  overlay.id = 'checkoutOverlay';
+  overlay.innerHTML = `
+    <div class="checkout-header">
+      <button class="checkout-back" onclick="closeCheckout()">&larr;</button>
+      <h3>${t('co-title')}</h3>
+    </div>
+    <div class="checkout-body">
+      <div class="checkout-section">
+        <h4><span>🚗</span> ${t('co-delivery')} / ${t('co-pickup')}</h4>
+        <div class="order-type-btns">
+          <div class="order-type-btn ${coState.type==='pickup'?'active':''}" onclick="setOrderType('pickup')">
+            <span class="ot-icon">🏪</span>${t('co-pickup')}
+          </div>
+          <div class="order-type-btn ${coState.type==='delivery'?'active':''}" onclick="setOrderType('delivery')">
+            <span class="ot-icon">🚗</span>${t('co-delivery')}
+          </div>
+        </div>
+        ${coState.type==='pickup' ? `<div style="margin-top:12px">
+          <label class="co-label">${t('co-select-store')}</label>
+          ${STORES.map((s, i) => `<div class="pay-option ${coState.store===i?'active':''}" onclick="coState.store=${i};closeCheckout();openCheckout();" style="margin-bottom:6px">
+            <span class="pay-icon">🏪</span>
+            <div><div class="pay-label">${s.name}</div><div class="pay-desc">📍 ${s.addr}<br>📞 ${s.phone}</div></div>
+          </div>`).join('')}
+          <div style="padding:8px;background:#f5f5f5;border-radius:8px;font-size:12px;color:#757575;margin-top:8px">🕐 Open 365 days, 7 days/week</div>
+        </div>` : ''}
+      </div>
+
+      <div class="checkout-section">
+        <h4><span>👤</span> ${t('co-contact')}</h4>
+        <label class="co-label">${t('co-name')}</label>
+        <input class="co-input" id="coName" type="text" value="${state.user?.name||''}" placeholder="John Kim">
+        <label class="co-label">${t('co-phone')}</label>
+        <input class="co-input" id="coPhone" type="tel" value="${state.user?.phone||''}" placeholder="+1 (305) 000-0000">
+      </div>
+
+      ${coState.type==='delivery' ? `<div class="checkout-section">
+        <h4><span>📍</span> ${t('co-address')}</h4>
+        <label class="co-label">${t('co-street')}</label>
+        <input class="co-input" id="coStreet" type="text" placeholder="1758 NW 23rd Ave">
+        <div class="co-row">
+          <div><label class="co-label">${t('co-apt')}</label><input class="co-input" id="coApt" type="text" placeholder="Apt 2B"></div>
+          <div><label class="co-label">${t('co-zip')}</label><input class="co-input" id="coZip" type="text" placeholder="33142"></div>
+        </div>
+        <label class="co-label">${t('co-city')}</label>
+        <input class="co-input" id="coCity" type="text" value="Miami" placeholder="Miami">
+        ${subtotal < 35 ? `<div style="color:var(--orange);font-size:12px;font-weight:600">⚠️ ${t('co-min-delivery')}</div>` : ''}
+      </div>` : ''}
+
+      <div class="checkout-section">
+        <h4><span>💳</span> ${t('co-payment')}</h4>
+        <div class="pay-option ${coState.payment==='card'?'active':''}" onclick="setPayment('card')">
+          <span class="pay-icon">💳</span>
+          <div><div class="pay-label">${t('co-pay-card')}</div><div class="pay-desc">${t('co-pay-card-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='applepay'?'active':''}" onclick="setPayment('applepay')">
+          <span class="pay-icon">🍎</span>
+          <div><div class="pay-label">Apple Pay</div><div class="pay-desc">${t('co-pay-applepay-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='googlepay'?'active':''}" onclick="setPayment('googlepay')">
+          <span class="pay-icon">🅖</span>
+          <div><div class="pay-label">Google Pay</div><div class="pay-desc">${t('co-pay-googlepay-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='paypal'?'active':''}" onclick="setPayment('paypal')">
+          <span class="pay-icon">🅿️</span>
+          <div><div class="pay-label">PayPal</div><div class="pay-desc">${t('co-pay-paypal-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='venmo'?'active':''}" onclick="setPayment('venmo')">
+          <span class="pay-icon">Ⓥ</span>
+          <div><div class="pay-label">Venmo</div><div class="pay-desc">${t('co-pay-venmo-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='zelle'?'active':''}" onclick="setPayment('zelle')">
+          <span class="pay-icon">📱</span>
+          <div><div class="pay-label">${t('co-pay-zelle')}</div><div class="pay-desc">${t('co-pay-zelle-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='store'?'active':''}" onclick="setPayment('store')">
+          <span class="pay-icon">${coState.type==='pickup'?'🏪':'💵'}</span>
+          <div><div class="pay-label">${t('co-pay-store')}</div><div class="pay-desc">${t('co-pay-store-desc')}</div></div>
+        </div>
+        <div class="pay-option ${coState.payment==='ebt'?'active':''}" onclick="setPayment('ebt')">
+          <span class="pay-icon">🏛️</span>
+          <div><div class="pay-label">EBT / SNAP</div><div class="pay-desc">${t('co-pay-ebt-desc')}</div></div>
+        </div>
+      </div>
+
+      ${coState.payment === 'card' || coState.payment === 'applepay' || coState.payment === 'googlepay' ? `
+      <div class="checkout-section">
+        <h4><span>💳</span> ${t('co-card-info')}</h4>
+        <label class="co-label">${t('co-card-number')}</label>
+        <input class="co-input" id="coCardNum" type="text" maxlength="19" placeholder="1234 5678 9012 3456" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(.{4})/g,'$1 ').trim()">
+        <div class="co-row">
+          <div><label class="co-label">${t('co-card-exp')}</label><input class="co-input" id="coCardExp" type="text" maxlength="5" placeholder="MM/YY" oninput="this.value=this.value.replace(/[^0-9]/g,'');if(this.value.length>2)this.value=this.value.slice(0,2)+'/'+this.value.slice(2)"></div>
+          <div><label class="co-label">CVV</label><input class="co-input" id="coCardCvv" type="password" maxlength="4" placeholder="***"></div>
+        </div>
+        <label class="co-label">${t('co-card-name')}</label>
+        <input class="co-input" id="coCardHolder" type="text" placeholder="Name on card">
+        <div style="margin-top:8px;font-size:11px;color:#757575;display:flex;align-items:center;gap:6px">🔒 ${t('co-secure')}</div>
+      </div>` : ''}
+
+      ${coState.payment === 'zelle' ? `
+      <div class="checkout-section" style="background:#f0f7ff">
+        <h4><span>📱</span> Zelle ${t('co-instructions')}</h4>
+        <div style="font-size:14px;line-height:1.8">
+          <div>1. ${t('co-zelle-step1')}</div>
+          <div>2. ${t('co-zelle-step2')}: <strong>kimchimart@gmail.com</strong></div>
+          <div>3. ${t('co-zelle-step3')}: <strong>$${total.toFixed(2)}</strong></div>
+          <div>4. ${t('co-zelle-step4')}</div>
+        </div>
+      </div>` : ''}
+
+      ${coState.payment === 'venmo' ? `
+      <div class="checkout-section" style="background:#f0f0ff">
+        <h4><span>Ⓥ</span> Venmo ${t('co-instructions')}</h4>
+        <div style="font-size:14px;line-height:1.8">
+          <div>1. ${t('co-venmo-step1')}</div>
+          <div>2. ${t('co-venmo-step2')}: <strong>@KimchiMart</strong></div>
+          <div>3. ${t('co-venmo-step3')}: <strong>$${total.toFixed(2)}</strong></div>
+        </div>
+      </div>` : ''}
+
+      ${coState.payment === 'paypal' ? `
+      <div class="checkout-section" style="background:#fff8f0">
+        <h4><span>🅿️</span> PayPal</h4>
+        <div style="font-size:14px;color:#757575">${t('co-paypal-redirect')}</div>
+      </div>` : ''}
+
+      ${coState.payment === 'store' || coState.payment === 'ebt' ? `
+      <div class="checkout-section" style="background:#f0fff0">
+        <h4><span>🏪</span> ${t('co-pay-at-store')}</h4>
+        <div style="font-size:14px;color:#757575">${t('co-pay-at-store-desc')}</div>
+      </div>` : ''}
+
+      <div class="checkout-section">
+        <h4><span>📝</span> ${t('co-notes')}</h4>
+        <textarea class="co-note" id="coNotes" placeholder="${t('co-notes-ph')}"></textarea>
+      </div>
+
+      <div class="checkout-section">
+        <h4><span>🧾</span> ${t('cart-subtotal')}</h4>
+        <div class="co-summary-row"><span>${t('cart-subtotal')} (${itemCount} ${t('items')})</span><span>${formatPrice(subtotal)}</span></div>
+        ${disc > 0 ? `<div class="co-summary-row"><span>${t('cart-discount')} (${state.user.membership})</span><span style="color:var(--green)">-${formatPrice(discountAmt)}</span></div>` : ''}
+        ${coState.type==='delivery' ? `<div class="co-summary-row"><span>${t('co-delivery-fee')}</span><span>${deliveryFee > 0 ? formatPrice(deliveryFee) : t('co-free-delivery')}</span></div>` : ''}
+        <div class="co-summary-row total"><span>${t('cart-total')}</span><span>${formatPrice(total)}</span></div>
+      </div>
+
+      ${coState.deliveryMethod === 'kimchi-delivery' ? `<div style="background:#FFF3E0;border:1px solid #FFE0B2;border-radius:10px;padding:14px;margin-bottom:12px;font-size:13px">
+        <div style="font-weight:700;margin-bottom:8px;font-size:14px">🚚 Kimchi Mart Direct Delivery</div>
+        <div style="margin-bottom:6px">Minimum order: <strong>$100.00</strong></div>
+        <div style="margin-bottom:6px">Service area: <strong>Palm Beach, Broward & Miami-Dade County</strong></div>
+        <div style="margin-bottom:4px;font-weight:600">Delivery fee:</div>
+        <div style="font-size:12px;line-height:1.8;padding-left:8px">
+          • 0-10 miles: <strong>$5.99</strong><br>
+          • 10-20 miles: <strong>$9.99</strong><br>
+          • 20-35 miles: <strong>$14.99</strong><br>
+          • 35+ miles: <strong>$19.99</strong>
+        </div>
+        ${subtotal < 100 ? '<div style="color:#D32F2F;font-weight:700;margin-top:8px">⚠️ Minimum $100 order required for delivery. Current: ' + formatPrice(subtotal) + '</div>' : '<div style="color:#2E7D32;margin-top:8px">✅ Minimum order met!</div>'}
+      </div>` : coState.deliveryMethod !== 'pickup' ? `<div style="background:#f0f7ff;border:1px solid #bbdefb;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;text-align:center">
+        ${coState.deliveryMethod === 'doordash' ? '🚗' : '🛵'} You are checking out via <strong>${coState.deliveryMethod === 'doordash' ? 'DoorDash' : 'Uber Eats'}</strong> delivery
+      </div>` : ''}
+      <button class="co-place-btn" onclick="placeOrder()">${t('co-place')} - ${formatPrice(total)}</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function closeCheckout() { document.getElementById('checkoutOverlay')?.remove(); }
+
+function setOrderType(type) { coState.type = type; closeCheckout(); openCheckout(); }
+
+function setPayment(method) {
+  coState.payment = method;
+  closeCheckout();
+  openCheckout();
+}
+
+function placeOrder() {
+  const name = document.getElementById('coName')?.value;
+  const phone = document.getElementById('coPhone')?.value;
+  if (!name || !phone) { showToast(t('co-err-contact')); return; }
+  if (coState.type === 'delivery') {
+    const street = document.getElementById('coStreet')?.value;
+    if (!street) { showToast(t('co-err-address')); return; }
+  }
+  if (coState.payment === 'card' || coState.payment === 'applepay' || coState.payment === 'googlepay') {
+    const cardNum = document.getElementById('coCardNum')?.value?.replace(/\s/g,'');
+    const cardExp = document.getElementById('coCardExp')?.value;
+    const cardCvv = document.getElementById('coCardCvv')?.value;
+    if (!cardNum || cardNum.length < 15) { showToast(t('co-err-card')); return; }
+    if (!cardExp || cardExp.length < 5) { showToast(t('co-err-exp')); return; }
+    if (!cardCvv || cardCvv.length < 3) { showToast(t('co-err-cvv')); return; }
+  }
+
+  // Show processing animation
+  const overlay = document.getElementById('checkoutOverlay');
+  overlay.innerHTML = `
+    <div class="checkout-header"><h3 style="text-align:center">${t('co-processing')}</h3></div>
+    <div class="order-success">
+      <div style="font-size:48px;animation:spin 1s linear infinite">⏳</div>
+      <h3 style="margin-top:16px">${t('co-processing')}</h3>
+      <p>${t('co-processing-msg')}</p>
+    </div>`;
+
+  // Simulate payment processing
+  setTimeout(() => {
+    const orderNum = 'KM-' + Date.now().toString(36).toUpperCase();
+    const store = STORES[coState.store];
+    const payLabel = coState.payment === 'card' ? '💳 Card ending ****' + (document.getElementById('coCardNum')?.value?.slice(-4) || '')
+      : coState.payment === 'zelle' ? '📱 Zelle' : coState.payment === 'venmo' ? 'Ⓥ Venmo'
+      : coState.payment === 'paypal' ? '🅿️ PayPal' : coState.payment === 'applepay' ? '🍎 Apple Pay'
+      : coState.payment === 'googlepay' ? '🅖 Google Pay' : coState.payment === 'ebt' ? '🏛️ EBT/SNAP' : '🏪 ' + t('co-pay-store');
+
+    overlay.innerHTML = `
+      <div class="checkout-header"><h3 style="text-align:center">${t('co-success')}</h3></div>
+      <div class="order-success">
+        <div class="check-icon">✅</div>
+        <h3>${t('co-success')}</h3>
+        <div class="order-num">${t('co-order-num')} ${orderNum}</div>
+        <p>${t('co-success-msg')}</p>
+        <div style="background:#f5f5f5;border-radius:12px;padding:16px;margin:16px auto;max-width:300px;text-align:left;font-size:13px">
+          <div style="font-weight:700;margin-bottom:8px">${t('co-order-details')}</div>
+          <div style="margin-bottom:4px">📦 ${coState.type === 'pickup' ? t('co-pickup') : t('co-delivery')}</div>
+          ${coState.type==='pickup' ? `<div style="margin-bottom:4px">📍 ${store.name}</div><div style="margin-bottom:4px;color:#757575">${store.addr}</div>` : ''}
+          <div style="margin-bottom:4px">💰 ${payLabel}</div>
+          <div>👤 ${name} · ${phone}</div>
+        </div>
+        <p style="font-size:12px;color:#757575;margin-top:12px">${t('co-confirm-sms')}</p>
+        <button class="success-btn" onclick="closeCheckout();state.cart={};localStorage.setItem('kimchi_cart','{}');updateCartBadge();navigate('home');">${t('co-back-home')}</button>
+      </div>`;
+  }, 2000);
+}
+
+// ==================== INIT ====================
+setLang(state.lang);
+render();
+</script>
+</body>
+</html>
