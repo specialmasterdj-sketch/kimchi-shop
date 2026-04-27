@@ -2921,6 +2921,14 @@ function openCheckout() {
       ${coState.payment === 'card' || coState.payment === 'applepay' || coState.payment === 'googlepay' ? `
       <div class="checkout-section" id="anetMount">
         <h4><span>💳</span> ${t('co-card-info')}</h4>
+        ${!ANET_ENABLED_STORES.includes(coState.store) ? `
+        <div style="background:#FFF3E0;border:1px solid #FFE0B2;border-radius:10px;padding:12px;margin-bottom:14px;font-size:12px;line-height:1.5;color:#5D4037">
+          ⚠️ <strong>Card payment is currently only available at Hollywood store.</strong><br>
+          <span style="color:#757575">For ${STORES[coState.store]?.name || 'this store'}, please choose <strong>Pay at Pickup</strong> or <strong>Zelle/Venmo/PayPal</strong>, or use external delivery (DoorDash / Uber Eats / Grubhub).</span>
+        </div>` : `
+        <div style="background:#E8F5E9;border:1px solid #C8E6C9;border-radius:10px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:#2E7D32;display:flex;align-items:center;gap:6px">
+          🔒 Secured by Authorize.net · Hollywood store · ${ANET_ENV === 'sandbox' ? '<strong>SANDBOX MODE (test cards only)</strong>' : 'Live'}
+        </div>`}
         <div id="anetHostedFrame" style="display:none"></div>
         <label class="co-label">${t('co-card-number')}</label>
         <input class="co-input" id="coCardNum" type="text" maxlength="19" placeholder="1234 5678 9012 3456" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(.{4})/g,'$1 ').trim()">
@@ -3018,7 +3026,75 @@ function redirectToPartner(partner) {
   window.open(url, '_blank');
 }
 
-function placeOrder() {
+// ==================== AUTHORIZE.NET PAYMENT CONFIG ====================
+const ANET_ENV = 'sandbox';
+const ANET_CONFIG = {
+  sandbox: {
+    apiLoginID: '9bAG37FQf4',
+    publicClientKey: '3surx8G5S4nDr85mSakaUYE8LQn8xgb5pHtH6RY6n373ZGBKw3j5Gq4gE6aMaTKE',
+    acceptJsUrl: 'https://jstest.authorize.net/v1/Accept.js',
+    backendUrl: 'https://kimchi-pay.specialmasterdj.workers.dev'
+  },
+  production: {
+    apiLoginID: '',
+    publicClientKey: '',
+    acceptJsUrl: 'https://js.authorize.net/v1/Accept.js',
+    backendUrl: 'https://kimchi-pay.specialmasterdj.workers.dev'
+  }
+};
+const ANET_ENABLED_STORES = [2];
+
+(function loadAcceptJs() {
+  const cfg = ANET_CONFIG[ANET_ENV];
+  if (!cfg.acceptJsUrl) return;
+  if (document.querySelector(`script[src="${cfg.acceptJsUrl}"]`)) return;
+  const s = document.createElement('script');
+  s.src = cfg.acceptJsUrl;
+  s.async = true;
+  document.head.appendChild(s);
+})();
+
+function submitToAuthorizeNet({cardNumber, month, year, cardCode, amount, customer}) {
+  const cfg = ANET_CONFIG[ANET_ENV];
+  return new Promise((resolve, reject) => {
+    if (!window.Accept) {
+      reject(new Error('Payment library not loaded. Please retry.'));
+      return;
+    }
+    if (!cfg.apiLoginID || !cfg.publicClientKey) {
+      reject(new Error('Payment not configured for this environment'));
+      return;
+    }
+    const secureData = {
+      authData: { clientKey: cfg.publicClientKey, apiLoginID: cfg.apiLoginID },
+      cardData: { cardNumber, month, year, cardCode }
+    };
+    Accept.dispatchData(secureData, async (response) => {
+      if (response.messages.resultCode === 'Error') {
+        const errs = response.messages.message.map(m => m.text).join('; ');
+        reject(new Error(errs));
+        return;
+      }
+      const nonce = response.opaqueData.dataValue;
+      const dataDescriptor = response.opaqueData.dataDescriptor;
+      if (!cfg.backendUrl) { reject(new Error('Backend not configured')); return; }
+      try {
+        const r = await fetch(cfg.backendUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nonce, dataDescriptor, amount, customer })
+        });
+        const data = await r.json();
+        if (data.success) resolve(data);
+        else reject(new Error(data.error || 'Charge declined'));
+      } catch (e) {
+        reject(new Error('Network error: ' + e.message));
+      }
+    });
+  });
+}
+
+async function placeOrder() {
   const name = document.getElementById('coName')?.value;
   const phone = document.getElementById('coPhone')?.value;
   if (!name || !phone) { showToast(t('co-err-contact')); return; }
@@ -3026,16 +3102,22 @@ function placeOrder() {
     const street = document.getElementById('coStreet')?.value;
     if (!street) { showToast(t('co-err-address')); return; }
   }
-  if (coState.payment === 'card' || coState.payment === 'applepay' || coState.payment === 'googlepay') {
-    const cardNum = document.getElementById('coCardNum')?.value?.replace(/\s/g,'');
-    const cardExp = document.getElementById('coCardExp')?.value;
-    const cardCvv = document.getElementById('coCardCvv')?.value;
+
+  const isCardPayment = ['card','applepay','googlepay'].includes(coState.payment);
+  let cardNum, cardExp, cardCvv;
+  if (isCardPayment) {
+    cardNum = document.getElementById('coCardNum')?.value?.replace(/\s/g,'');
+    cardExp = document.getElementById('coCardExp')?.value;
+    cardCvv = document.getElementById('coCardCvv')?.value;
     if (!cardNum || cardNum.length < 15) { showToast(t('co-err-card')); return; }
     if (!cardExp || cardExp.length < 5) { showToast(t('co-err-exp')); return; }
     if (!cardCvv || cardCvv.length < 3) { showToast(t('co-err-cvv')); return; }
+    if (!ANET_ENABLED_STORES.includes(coState.store)) {
+      showToast('Card payment is currently only available at Hollywood store. Select Hollywood or change payment method.');
+      return;
+    }
   }
 
-  // Show processing animation
   const overlay = document.getElementById('checkoutOverlay');
   overlay.innerHTML = `
     <div class="checkout-header"><h3 style="text-align:center">${t('co-processing')}</h3></div>
@@ -3045,33 +3127,84 @@ function placeOrder() {
       <p>${t('co-processing-msg')}</p>
     </div>`;
 
-  // Simulate payment processing
-  setTimeout(() => {
-    const orderNum = 'KM-' + Date.now().toString(36).toUpperCase();
-    const store = STORES[coState.store];
-    const payLabel = coState.payment === 'card' ? '💳 Card ending ****' + (document.getElementById('coCardNum')?.value?.slice(-4) || '')
-      : coState.payment === 'zelle' ? '📱 Zelle' : coState.payment === 'venmo' ? 'Ⓥ Venmo'
-      : coState.payment === 'paypal' ? '🅿️ PayPal' : coState.payment === 'applepay' ? '🍎 Apple Pay'
-      : coState.payment === 'googlepay' ? '🅖 Google Pay' : coState.payment === 'ebt' ? '🏛️ EBT/SNAP' : '🏪 ' + t('co-pay-store');
+  let chargeResult = null;
+  let chargeError = null;
+  const useRealCharge = isCardPayment && ANET_ENABLED_STORES.includes(coState.store) && ANET_CONFIG[ANET_ENV].backendUrl;
 
+  if (useRealCharge) {
+    try {
+      let subtotal = 0;
+      Object.entries(state.cart || {}).forEach(([id, qty]) => {
+        const p = (window.PRODUCTS || {})[id];
+        if (p) subtotal += (p.price || 0) * qty;
+      });
+      const disc = state.user?.membership === 'k2' ? 0.10 : (state.user?.membership === 'k1' ? 0.05 : 0);
+      const deliveryFee = (coState.type === 'delivery' && subtotal < 35) ? 4.99 : 0;
+      const total = (subtotal * (1 - disc) + deliveryFee).toFixed(2);
+      const [mm, yyRaw] = (cardExp || '').split('/');
+      const yy = yyRaw && yyRaw.length === 2 ? '20' + yyRaw : (yyRaw || '');
+
+      chargeResult = await submitToAuthorizeNet({
+        cardNumber: cardNum,
+        month: mm,
+        year: yy,
+        cardCode: cardCvv,
+        amount: total,
+        customer: {
+          name,
+          email: '',
+          address: document.getElementById('coStreet')?.value || '',
+          city: document.getElementById('coCity')?.value || '',
+          state: 'FL',
+          zip: document.getElementById('coZip')?.value || ''
+        }
+      });
+    } catch (e) {
+      chargeError = e.message;
+    }
+  } else {
+    await new Promise(r => setTimeout(r, 1800));
+  }
+
+  if (chargeError) {
     overlay.innerHTML = `
-      <div class="checkout-header"><h3 style="text-align:center">${t('co-success')}</h3></div>
+      <div class="checkout-header"><h3 style="text-align:center;color:#D32F2F">Payment Failed</h3></div>
       <div class="order-success">
-        <div class="check-icon">✅</div>
-        <h3>${t('co-success')}</h3>
-        <div class="order-num">${t('co-order-num')} ${orderNum}</div>
-        <p>${t('co-success-msg')}</p>
-        <div style="background:#f5f5f5;border-radius:12px;padding:16px;margin:16px auto;max-width:300px;text-align:left;font-size:13px">
-          <div style="font-weight:700;margin-bottom:8px">${t('co-order-details')}</div>
-          <div style="margin-bottom:4px">📦 ${coState.type === 'pickup' ? t('co-pickup') : t('co-delivery')}</div>
-          ${coState.type==='pickup' ? `<div style="margin-bottom:4px">📍 ${store.name}</div><div style="margin-bottom:4px;color:#757575">${store.addr}</div>` : ''}
-          <div style="margin-bottom:4px">💰 ${payLabel}</div>
-          <div>👤 ${name} · ${phone}</div>
-        </div>
-        <p style="font-size:12px;color:#757575;margin-top:12px">${t('co-confirm-sms')}</p>
-        <button class="success-btn" onclick="closeCheckout();state.cart={};localStorage.setItem('kimchi_cart','{}');updateCartBadge();navigate('home');">${t('co-back-home')}</button>
+        <div style="font-size:48px">❌</div>
+        <h3 style="margin-top:16px;color:#D32F2F">Payment Failed</h3>
+        <p style="color:#555;font-size:13px;max-width:320px;margin:12px auto;line-height:1.5">${chargeError}</p>
+        <button class="success-btn" onclick="closeCheckout();openCheckout()">Back to Checkout</button>
       </div>`;
-  }, 2000);
+    return;
+  }
+
+  const orderNum = chargeResult?.refId || ('KM-' + Date.now().toString(36).toUpperCase());
+  const store = STORES[coState.store];
+  const last4 = chargeResult?.last4 || (document.getElementById('coCardNum')?.value?.slice(-4) || '');
+  const payLabel = coState.payment === 'card' ? `💳 Card ending ${last4}`
+    : coState.payment === 'zelle' ? '📱 Zelle' : coState.payment === 'venmo' ? 'Ⓥ Venmo'
+    : coState.payment === 'paypal' ? '🅿️ PayPal' : coState.payment === 'applepay' ? '🍎 Apple Pay'
+    : coState.payment === 'googlepay' ? '🅖 Google Pay' : coState.payment === 'ebt' ? '🏛️ EBT/SNAP' : '🏪 ' + t('co-pay-store');
+  const txnLine = chargeResult?.transactionId ? `<div style="margin-bottom:4px;color:#757575;font-size:11px">Txn: ${chargeResult.transactionId}${ANET_ENV==='sandbox'?' (Sandbox)':''}</div>` : '';
+
+  overlay.innerHTML = `
+    <div class="checkout-header"><h3 style="text-align:center">${t('co-success')}</h3></div>
+    <div class="order-success">
+      <div class="check-icon">✅</div>
+      <h3>${t('co-success')}</h3>
+      <div class="order-num">${t('co-order-num')} ${orderNum}</div>
+      <p>${t('co-success-msg')}</p>
+      <div style="background:#f5f5f5;border-radius:12px;padding:16px;margin:16px auto;max-width:300px;text-align:left;font-size:13px">
+        <div style="font-weight:700;margin-bottom:8px">${t('co-order-details')}</div>
+        <div style="margin-bottom:4px">📦 ${coState.type === 'pickup' ? t('co-pickup') : t('co-delivery')}</div>
+        ${coState.type==='pickup' ? `<div style="margin-bottom:4px">📍 ${store.name}</div><div style="margin-bottom:4px;color:#757575">${store.addr}</div>` : ''}
+        <div style="margin-bottom:4px">💰 ${payLabel}</div>
+        ${txnLine}
+        <div>👤 ${name} · ${phone}</div>
+      </div>
+      <p style="font-size:12px;color:#757575;margin-top:12px">${t('co-confirm-sms')}</p>
+      <button class="success-btn" onclick="closeCheckout();state.cart={};localStorage.setItem('kimchi_cart','{}');updateCartBadge();navigate('home');">${t('co-back-home')}</button>
+    </div>`;
 }
 
 // ==================== WELCOME BASKET MODAL ====================
