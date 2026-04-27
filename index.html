@@ -2875,6 +2875,13 @@ function openCheckout() {
         ${subtotal < 35 ? `<div style="color:var(--orange);font-size:12px;font-weight:600">⚠️ ${t('co-min-delivery')}</div>` : ''}
       </div>` : ''}
 
+      ${coState.deliveryMethod === 'doordash' || coState.deliveryMethod === 'ubereats' || coState.deliveryMethod === 'grubhub' ? `
+      <div class="checkout-section" style="background:#f0f7ff;text-align:center;padding:22px 16px">
+        <div style="font-size:40px;margin-bottom:10px">${coState.deliveryMethod === 'doordash' ? '🚗' : coState.deliveryMethod === 'ubereats' ? '🛵' : '🥡'}</div>
+        <h4 style="margin-bottom:6px">Continue on ${coState.deliveryMethod === 'doordash' ? 'DoorDash' : coState.deliveryMethod === 'ubereats' ? 'Uber Eats' : 'Grubhub'}</h4>
+        <p style="font-size:13px;color:#555;margin-bottom:16px;line-height:1.5">Payment and delivery handled by ${coState.deliveryMethod === 'doordash' ? 'DoorDash' : coState.deliveryMethod === 'ubereats' ? 'Uber Eats' : 'Grubhub'}. You'll be redirected to their app.</p>
+        <button class="co-place-btn" onclick="redirectToPartner('${coState.deliveryMethod}')" style="background:${coState.deliveryMethod === 'doordash' ? '#FF3008' : coState.deliveryMethod === 'ubereats' ? '#06C167' : '#F63440'}">Continue to ${coState.deliveryMethod === 'doordash' ? 'DoorDash' : coState.deliveryMethod === 'ubereats' ? 'Uber Eats' : 'Grubhub'} →</button>
+      </div>` : `
       <div class="checkout-section">
         <h4><span>💳</span> ${t('co-payment')}</h4>
         <div class="pay-option ${coState.payment==='card'?'active':''}" onclick="setPayment('card')">
@@ -2912,8 +2919,9 @@ function openCheckout() {
       </div>
 
       ${coState.payment === 'card' || coState.payment === 'applepay' || coState.payment === 'googlepay' ? `
-      <div class="checkout-section">
+      <div class="checkout-section" id="anetMount">
         <h4><span>💳</span> ${t('co-card-info')}</h4>
+        <div id="anetHostedFrame" style="display:none"></div>
         <label class="co-label">${t('co-card-number')}</label>
         <input class="co-input" id="coCardNum" type="text" maxlength="19" placeholder="1234 5678 9012 3456" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(.{4})/g,'$1 ').trim()">
         <div class="co-row">
@@ -2922,8 +2930,8 @@ function openCheckout() {
         </div>
         <label class="co-label">${t('co-card-name')}</label>
         <input class="co-input" id="coCardHolder" type="text" placeholder="Name on card">
-        <div style="margin-top:8px;font-size:11px;color:#757575;display:flex;align-items:center;gap:6px">🔒 ${t('co-secure')}</div>
-      </div>` : ''}
+        <div style="margin-top:8px;font-size:11px;color:#757575;display:flex;align-items:center;gap:6px">🔒 Secured by Authorize.net · ${t('co-secure')}</div>
+      </div>` : ''}`}
 
       ${coState.payment === 'zelle' ? `
       <div class="checkout-section" style="background:#f0f7ff">
@@ -2983,10 +2991,8 @@ function openCheckout() {
           • 35+ miles: <strong>$19.99</strong>
         </div>
         ${subtotal < 100 ? '<div style="color:#D32F2F;font-weight:700;margin-top:8px">⚠️ Minimum $100 order required for delivery. Current: ' + formatPrice(subtotal) + '</div>' : '<div style="color:#2E7D32;margin-top:8px">✅ Minimum order met!</div>'}
-      </div>` : coState.deliveryMethod !== 'pickup' ? `<div style="background:#f0f7ff;border:1px solid #bbdefb;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;text-align:center">
-        ${coState.deliveryMethod === 'doordash' ? '🚗' : '🛵'} You are checking out via <strong>${coState.deliveryMethod === 'doordash' ? 'DoorDash' : 'Uber Eats'}</strong> delivery
       </div>` : ''}
-      <button class="co-place-btn" onclick="placeOrder()">${t('co-place')} - ${formatPrice(total)}</button>
+      ${coState.deliveryMethod === 'doordash' || coState.deliveryMethod === 'ubereats' || coState.deliveryMethod === 'grubhub' ? '' : `<button class="co-place-btn" onclick="placeOrder()">${t('co-place')} - ${formatPrice(total)}</button>`}
     </div>`;
   document.body.appendChild(overlay);
 }
@@ -2999,6 +3005,17 @@ function setPayment(method) {
   coState.payment = method;
   closeCheckout();
   openCheckout();
+}
+
+const PARTNER_URLS = {
+  doordash: 'https://www.doordash.com/store/kimchi-mart/',
+  ubereats: 'https://www.ubereats.com/store/kimchi-mart',
+  grubhub: 'https://www.grubhub.com/restaurant/kimchi-mart'
+};
+function redirectToPartner(partner) {
+  const url = PARTNER_URLS[partner];
+  if (!url) { showToast('Partner link not configured yet'); return; }
+  window.open(url, '_blank');
 }
 
 function placeOrder() {
