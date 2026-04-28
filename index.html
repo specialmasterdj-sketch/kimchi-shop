@@ -3135,12 +3135,21 @@ async function placeOrder() {
     try {
       let subtotal = 0;
       Object.entries(state.cart || {}).forEach(([id, qty]) => {
-        const p = (window.PRODUCTS || {})[id];
-        if (p) subtotal += (p.price || 0) * qty;
+        const p = (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS))
+          ? PRODUCTS.find(x => x.id == id)
+          : null;
+        if (p) {
+          const unit = (typeof getMemberPrice === 'function') ? getMemberPrice(p.price) : p.price;
+          subtotal += (unit || 0) * qty;
+        }
       });
       const disc = state.user?.membership === 'k2' ? 0.10 : (state.user?.membership === 'k1' ? 0.05 : 0);
-      const deliveryFee = (coState.type === 'delivery' && subtotal < 35) ? 4.99 : 0;
-      const total = (subtotal * (1 - disc) + deliveryFee).toFixed(2);
+      const deliveryFee = (coState.type === 'delivery' && subtotal < 35) ? 5.99 : 0;
+      const totalNum = subtotal * (1 - disc) + deliveryFee;
+      if (!(totalNum > 0)) {
+        throw new Error('Cart total is $0.00. Please add items before placing an order.');
+      }
+      const total = totalNum.toFixed(2);
       const [mm, yyRaw] = (cardExp || '').split('/');
       const yy = yyRaw && yyRaw.length === 2 ? '20' + yyRaw : (yyRaw || '');
 
