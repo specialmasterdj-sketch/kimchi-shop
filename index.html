@@ -3133,25 +3133,36 @@ async function placeOrder() {
 
   if (useRealCharge) {
     try {
+      // Use IDENTICAL pattern to cart summary in openCheckout() to guarantee same amount
+      const items = Object.entries(state.cart || {});
       let subtotal = 0;
-      Object.entries(state.cart || {}).forEach(([id, qty]) => {
+      items.forEach(([id, qty]) => {
         const p = (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS))
           ? PRODUCTS.find(x => x.id == id)
           : null;
-        if (p) {
-          const unit = (typeof getMemberPrice === 'function') ? getMemberPrice(p.price) : p.price;
-          subtotal += (unit || 0) * qty;
+        if (p && typeof p.price === 'number') {
+          subtotal += (typeof getMemberPrice === 'function' ? getMemberPrice(p.price) : p.price) * qty;
         }
       });
-      const disc = state.user?.membership === 'k2' ? 0.10 : (state.user?.membership === 'k1' ? 0.05 : 0);
+      const disc = (typeof getDiscount === 'function') ? getDiscount() : 0;
+      const discountAmt = subtotal * disc;
       const deliveryFee = (coState.type === 'delivery' && subtotal < 35) ? 5.99 : 0;
-      const totalNum = subtotal * (1 - disc) + deliveryFee;
-      if (!(totalNum > 0)) {
-        throw new Error('Cart total is $0.00. Please add items before placing an order.');
+      const totalNum = subtotal - discountAmt + deliveryFee;
+
+      console.log('[Authorize.net charge] cart:', items, 'subtotal:', subtotal, 'disc:', disc, 'fee:', deliveryFee, 'total:', totalNum);
+
+      if (!Number.isFinite(totalNum) || totalNum <= 0) {
+        throw new Error(`Cart total is invalid (${totalNum}). Please re-add items and try again.`);
       }
       const total = totalNum.toFixed(2);
+      if (total === '0.00' || total === 'NaN') {
+        throw new Error(`Computed amount '${total}' is invalid. Please refresh the page.`);
+      }
+
       const [mm, yyRaw] = (cardExp || '').split('/');
       const yy = yyRaw && yyRaw.length === 2 ? '20' + yyRaw : (yyRaw || '');
+
+      console.log('[Authorize.net charge] sending amount:', total, 'card last4:', cardNum?.slice(-4), 'exp:', mm + '/' + yy);
 
       chargeResult = await submitToAuthorizeNet({
         cardNumber: cardNum,
@@ -3168,7 +3179,9 @@ async function placeOrder() {
           zip: document.getElementById('coZip')?.value || ''
         }
       });
+      console.log('[Authorize.net charge] result:', chargeResult);
     } catch (e) {
+      console.error('[Authorize.net charge] error:', e);
       chargeError = e.message;
     }
   } else {
