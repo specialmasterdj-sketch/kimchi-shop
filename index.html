@@ -3180,7 +3180,7 @@ async function placeOrder() {
 
   const orderNum = chargeResult?.refId || ('KM-' + Date.now().toString(36).toUpperCase());
   const store = STORES[coState.store];
-  const last4 = chargeResult?.last4 || (document.getElementById('coCardNum')?.value?.slice(-4) || '');
+  const last4 = chargeResult?.last4 || (cardNum ? cardNum.slice(-4) : '');
   const payLabel = coState.payment === 'card' ? `💳 Card ending ${last4}`
     : coState.payment === 'zelle' ? '📱 Zelle' : coState.payment === 'venmo' ? 'Ⓥ Venmo'
     : coState.payment === 'paypal' ? '🅿️ PayPal' : coState.payment === 'applepay' ? '🍎 Apple Pay'
