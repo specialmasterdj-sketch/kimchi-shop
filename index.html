@@ -1334,7 +1334,7 @@ input, select { font-family: inherit; }
     <div class="browse-sidebar" id="browseSidebar"></div>
     <div class="browse-content">
       <div id="browseHero"></div>
-      <div class="browse-count" id="browseCount"></div>
+      <div id="browseToolbar"></div>
       <div id="browseGrid"></div>
     </div>
   </div>
@@ -2312,8 +2312,7 @@ function renderBrowse() {
     { v:'price-desc', l: ko?'높은 가격순':es?'Precio: Mayor':'Price: High to Low' },
     { v:'new', l: ko?'신상품순':es?'Más Nuevo':'Newest' }
   ];
-  const browseCountEl = document.getElementById('browseCount');
-  browseCountEl.outerHTML = `<div class="browse-toolbar">
+  document.getElementById('browseToolbar').innerHTML = `<div class="browse-toolbar">
     <div class="browse-count" id="browseCount">${filtered.length}+ ${itemsLbl}</div>
     <div class="browse-sort">
       <label>${sortLbl}:</label>
