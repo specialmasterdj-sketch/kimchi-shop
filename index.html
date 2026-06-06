@@ -1807,7 +1807,7 @@ function getStorageType(category) {
 
 function getOrigin(brand) {
   const b = (brand || '').toUpperCase();
-  const koreanBrands = ['NONGSHIM','OTTOGI','PALDO','SAMYANG','CJ','BIBIGO','LOTTE','CROWN','HAITAI','ORION','BINGGRAE','NAMYANG','SEMPIO','DONGWON','CHUNGJUNGONE','CHUNG JUNG ONE','DAESANG','OURHOME','PULMUONE','SURASANG','SKINA','CHORIPDONG','ASSI','ROYAL','PREMIUM','HAIO','EDEN','WANG','KS','KH'];
+  const koreanBrands = ['NONGSHIM','OTTOGI','PALDO','SAMYANG','CJ','BIBIGO','LOTTE','CROWN','HAITAI','ORION','BINGGRAE','NAMYANG','SEMPIO','DONGWON','CHUNGJUNGONE','CHUNG JUNG ONE','DAESANG','OURHOME','PULMUONE','SURASANG','SKINA','CHORIPDONG','ROYAL','PREMIUM','HAIO','EDEN','WANG','KS','KH'];
   const japaneseBrands = ['KINMAI','KOKUHO','NISHIKI','KIKKOMAN','WEL-PAC','WELLPAC'];
   const chineseBrands = ['LEE KUM KEE','HUY FONG','POCAS'];
   if (koreanBrands.includes(b)) return { flag: '🇰🇷', en: 'Korea', kr: '한국' };

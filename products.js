@@ -302,17 +302,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "08027K",
-    "brand": "ASSI",
-    "name": "SWEET POTATO NOODLES (JAPCHAE 1.5#)",
-    "nameKr": "",
-    "size": "1.5 LB",
-    "category": "ramyun",
-    "price": 6.79,
-    "image": "images/official/assi_08027K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "08226K",
     "brand": "NONGSHIM",
     "name": "BEEF RAMEN (BOWL)",
@@ -588,28 +577,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "29097K",
-    "brand": "ASSI",
-    "name": "CRUSHED RAMEN & MOZZARELLA CORN DOGS",
-    "nameKr": "",
-    "size": "12.34 OZ",
-    "category": "frozen",
-    "price": 8.49,
-    "image": "images/official/assi_29097K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "08021K",
-    "brand": "ASSI",
-    "name": "JAPCHAE NOODLES (L)",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "ramyun",
-    "price": 6.79,
-    "image": "images/official/assi_08021K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "08038K",
     "brand": "SAMYANG",
     "name": "SAMYANG RAMEN (CUP 6P)",
@@ -629,28 +596,6 @@ const PRODUCTS = [
     "category": "ramyun",
     "price": 9.99,
     "image": "images/official/jl_nongshim_08088T.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "08090K",
-    "brand": "ASSI",
-    "name": "KATSUO UDON NOODLE BOWL",
-    "nameKr": "",
-    "size": "8.3 OZ",
-    "category": "ramyun",
-    "price": 2.99,
-    "image": "images/official/assi_08090K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "08094K",
-    "brand": "ASSI",
-    "name": "INSTANT JJAJANG NOODLE BOWL",
-    "nameKr": "",
-    "size": "8.2 OZ",
-    "category": "ramyun",
-    "price": 8.99,
-    "image": "images/official/assi_08094K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1556,17 +1501,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "10017K",
-    "brand": "ASSI",
-    "name": "ROASTED BARLEY TEA",
-    "nameKr": "",
-    "size": "1 LB",
-    "category": "tea",
-    "price": 6.99,
-    "image": "images/official/assi_10017K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "10019K",
     "brand": "NONGHYUP",
     "name": "PEAR JUICE (1.5L)",
@@ -1578,17 +1512,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "10266C",
-    "brand": "ASSI",
-    "name": "HONEY GINGER TEA (12TB)",
-    "nameKr": "",
-    "size": "0.63 OZ",
-    "category": "tea",
-    "price": 6.99,
-    "image": "images/official/assi_10266C.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "10274K",
     "brand": "NONGHYUP",
     "name": "PEAR DRINK W/PULP",
@@ -1597,17 +1520,6 @@ const PRODUCTS = [
     "category": "beverages",
     "price": 6.49,
     "image": "images/official/final_10274K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "10291K",
-    "brand": "ASSI",
-    "name": "GINGER TEA (LIQUID 2.2#)",
-    "nameKr": "",
-    "size": "2.2 LB",
-    "category": "tea",
-    "price": 6.99,
-    "image": "images/official/assi_10291K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1710,28 +1622,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "29903K",
-    "brand": "ASSI",
-    "name": "YOGURT FLAVORED DRINK",
-    "nameKr": "",
-    "size": "10.5 OZ",
-    "category": "beverages",
-    "price": 7.99,
-    "image": "images/official/assi_29903K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "29904K",
-    "brand": "ASSI",
-    "name": "STRAWBERRY YOGURT FLAVORED DRINK",
-    "nameKr": "",
-    "size": "10.5 OZ",
-    "category": "beverages",
-    "price": 7.99,
-    "image": "images/official/assi_29904K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "KS3403",
     "brand": "SS",
     "name": "Soy Bean Paste 30.84 LB",
@@ -1773,17 +1663,6 @@ const PRODUCTS = [
     "category": "seasonings",
     "price": 4.99,
     "image": "images/official/06675T.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05217K",
-    "brand": "ASSI",
-    "name": "KOREAN BBQ MARINADE&SAUCE FOR BEEF (L)",
-    "nameKr": "",
-    "size": "1.85 LB",
-    "category": "seasonings",
-    "price": 3.49,
-    "image": "images/official/assi_05217K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -1850,17 +1729,6 @@ const PRODUCTS = [
     "category": "seasonings",
     "price": 7.49,
     "image": "images/official/fix_03016K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05211K",
-    "brand": "ASSI",
-    "name": "KOREAN BBQ MARINADE&SAUCE FOR RIBS (L)",
-    "nameKr": "",
-    "size": "1.85 LB",
-    "category": "seasonings",
-    "price": 6.49,
-    "image": "images/official/assi_05211K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2117,17 +1985,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "03432K",
-    "brand": "ASSI",
-    "name": "HOT PEPPER PASTE (1.1# JAR)",
-    "nameKr": "",
-    "size": "1.1 LB",
-    "category": "seasonings",
-    "price": 8.99,
-    "image": "images/official/assi_03432K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "03444K",
     "brand": "JONGGAVISION",
     "name": "PLUM HOT PEPPER PASTE (4.4#)",
@@ -2136,39 +1993,6 @@ const PRODUCTS = [
     "category": "seasonings",
     "price": 8.99,
     "image": "images/official/03444K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "03470K",
-    "brand": "ASSI",
-    "name": "BLACK BEAN SAUCE (JJAJANG 1.1# JAR)",
-    "nameKr": "",
-    "size": "1.1 LB",
-    "category": "seasonings",
-    "price": 8.99,
-    "image": "images/official/assi_03470K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "03471K",
-    "brand": "ASSI",
-    "name": "BLACK BEAN SAUCE (JJAJANG 2.2# JAR)",
-    "nameKr": "",
-    "size": "2.2 LB",
-    "category": "seasonings",
-    "price": 8.99,
-    "image": "images/official/assi_03471K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "03524K",
-    "brand": "ASSI",
-    "name": "K-BBQ DIPPING SAUCE (ORIGINAL)",
-    "nameKr": "",
-    "size": "11.99 OZ",
-    "category": "seasonings",
-    "price": 4.99,
-    "image": "images/official/assi_03524K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2235,17 +2059,6 @@ const PRODUCTS = [
     "category": "seasonings",
     "price": 6.49,
     "image": "images/official/fix_05198K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05222K",
-    "brand": "ASSI",
-    "name": "KOREAN BBQ MARINADE&SAUCE FOR PORK (L)",
-    "nameKr": "",
-    "size": "1.85 LB",
-    "category": "seasonings",
-    "price": 3.49,
-    "image": "images/official/assi_05222K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -2986,39 +2799,6 @@ const PRODUCTS = [
     "vendor": "Choripdong / Seoul Trading"
   },
   {
-    "id": "00097D",
-    "brand": "ASSI",
-    "name": "BLACK RICE (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "rice",
-    "price": 6.49,
-    "image": "images/official/assi_00097D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01139D",
-    "brand": "ASSI",
-    "name": "ROASTED SESAME SEEDS (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/assi_01139D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05038D",
-    "brand": "ASSI",
-    "name": "RED PEPPER POWDER (KIMCHI 7 OZ)",
-    "nameKr": "",
-    "size": "7 OZ",
-    "category": "seasonings",
-    "price": 11.99,
-    "image": "images/official/assi_05038D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "05153D",
     "brand": "EVERGREEN",
     "name": "CORN OIL",
@@ -3503,28 +3283,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "07091K",
-    "brand": "ASSI",
-    "name": "DRIED SEAWEED (PUREUNBADA L)",
-    "nameKr": "",
-    "size": "7 OZ",
-    "category": "seaweed",
-    "price": 12.49,
-    "image": "images/official/assi_07091K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "07102K",
-    "brand": "ASSI",
-    "name": "DRIED SEAWEED (S)",
-    "nameKr": "",
-    "size": "5 OZ",
-    "category": "seaweed",
-    "price": 12.49,
-    "image": "images/official/assi_07102K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "07129K",
     "brand": "KWANGCHEON",
     "name": "ROASTED & SEASONED LAVER (8+2P)",
@@ -3547,17 +3305,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "07152K",
-    "brand": "ASSI",
-    "name": "ROASTED & SEASONED LAVER (8+2P)",
-    "nameKr": "",
-    "size": "0.17 OZ",
-    "category": "seaweed",
-    "price": 3.99,
-    "image": "images/official/assi_07152K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "07156K",
     "brand": "MYEONGGA",
     "name": "ROASTED LAVER FOR SUSHI",
@@ -3577,39 +3324,6 @@ const PRODUCTS = [
     "category": "seaweed",
     "price": 3.99,
     "image": "images/official/dongwon_07192K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "07300K",
-    "brand": "ASSI",
-    "name": "ROASTED & SEASONED LAVER (16+4P)",
-    "nameKr": "",
-    "size": "0.14 OZ",
-    "category": "seaweed",
-    "price": 3.99,
-    "image": "images/official/assi_07300K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "07339J",
-    "brand": "ASSI",
-    "name": "SUSHI LAVER (SUSHI NORI GREEN 40SHT)",
-    "nameKr": "",
-    "size": "3.52 OZ",
-    "category": "seaweed",
-    "price": 7.29,
-    "image": "images/official/assi_07339J.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "07341J",
-    "brand": "ASSI",
-    "name": "SUSHI LAVER (SUSHI NORI GOLD 100SHT)",
-    "nameKr": "",
-    "size": "8.81 OZ",
-    "category": "seaweed",
-    "price": 7.29,
-    "image": "images/official/assi_07341J.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -3932,28 +3646,6 @@ const PRODUCTS = [
     "vendor": "Wang Globalnet"
   },
   {
-    "id": "05027D",
-    "brand": "ASSI",
-    "name": "RED PEPPER POWDER (KIMCHI 5#)",
-    "nameKr": "",
-    "size": "5 LB",
-    "category": "seasonings",
-    "price": 11.99,
-    "image": "images/official/assi_05027D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19981D",
-    "brand": "ASSI",
-    "name": "TOFU (FIRM)",
-    "nameKr": "",
-    "size": "16 OZ",
-    "category": "dairy",
-    "price": 1.99,
-    "image": "images/official/assi_19981D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "04048C",
     "brand": "LKK",
     "name": "HOT AND SPICY SOUP BASE (MALATANG)",
@@ -3962,17 +3654,6 @@ const PRODUCTS = [
     "category": "ready",
     "price": 2.99,
     "image": "images/official/correct_04048C.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04141K",
-    "brand": "ASSI",
-    "name": "BEEF BROTH FOR NAENGMYEON (BEEF BONE)",
-    "nameKr": "",
-    "size": "11.6 OZ",
-    "category": "ready",
-    "price": 13.49,
-    "image": "images/official/assi_04141K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4064,72 +3745,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "04300K",
-    "brand": "ASSI",
-    "name": "TABLET BROTH (ORIGINAL)",
-    "nameKr": "",
-    "size": "3.52 OZ",
-    "category": "seasonings",
-    "price": 13.49,
-    "image": "images/official/assi_04300K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04304K",
-    "brand": "ASSI",
-    "name": "BEEF SOUP STOCK (1.1#)",
-    "nameKr": "",
-    "size": "1.1 LB",
-    "category": "seasonings",
-    "price": 6.49,
-    "image": "images/official/assi_04304K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04551K",
-    "brand": "ASSI",
-    "name": "BEEF BONE FLAVORED SOUP",
-    "nameKr": "",
-    "size": "21.16 OZ",
-    "category": "ready",
-    "price": 2.49,
-    "image": "images/official/assi_04551K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04553K",
-    "brand": "ASSI",
-    "name": "SEAWEED SOUP WITH ABALONE",
-    "nameKr": "",
-    "size": "21.16 OZ",
-    "category": "ready",
-    "price": 5.49,
-    "image": "images/official/assi_04553K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04555K",
-    "brand": "ASSI",
-    "name": "SOYBEAN PASTE SOUP WITH MUSHROOM",
-    "nameKr": "",
-    "size": "21.16 OZ",
-    "category": "ready",
-    "price": 6.49,
-    "image": "images/official/assi_04555K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04556K",
-    "brand": "ASSI",
-    "name": "SEAWEED SOUP WITH PERILLA",
-    "nameKr": "",
-    "size": "21.16 OZ",
-    "category": "ready",
-    "price": 5.49,
-    "image": "images/official/assi_04556K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "06124K",
     "brand": "DONGWON",
     "name": "BANCHAN STIR-FRIED KIMCHI (CAN)",
@@ -4207,72 +3822,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "19410K",
-    "brand": "ASSI",
-    "name": "SEAWEED JELLY (12 OZ)",
-    "nameKr": "",
-    "size": "12 OZ",
-    "category": "snacks",
-    "price": 3.49,
-    "image": "images/official/assi_19410K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19560K",
-    "brand": "ASSI",
-    "name": "BANCHAN SLICED VEGAN KIMCHI",
-    "nameKr": "",
-    "size": "14.01 OZ",
-    "category": "kimchi",
-    "price": 14.99,
-    "image": "images/official/assi_19560K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19902K",
-    "brand": "ASSI",
-    "name": "SOFT TOFU SOUP",
-    "nameKr": "",
-    "size": "19.4 OZ",
-    "category": "dairy",
-    "price": 2.49,
-    "image": "images/official/assi_19902K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19903K",
-    "brand": "ASSI",
-    "name": "SOYBEAN PASTE SOUP",
-    "nameKr": "",
-    "size": "21.16 OZ",
-    "category": "ready",
-    "price": 6.49,
-    "image": "images/official/assi_19903K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19982D",
-    "brand": "ASSI",
-    "name": "TOFU (SOFT)",
-    "nameKr": "",
-    "size": "16 OZ",
-    "category": "dairy",
-    "price": 2.49,
-    "image": "images/official/assi_19982D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19983D",
-    "brand": "ASSI",
-    "name": "TOFU (SILKEN)",
-    "nameKr": "",
-    "size": "16 OZ",
-    "category": "dairy",
-    "price": 2.99,
-    "image": "images/official/assi_19983D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "20015J",
     "brand": "HANA",
     "name": "FRIED BEAN CURD (SUSHI AGE)",
@@ -4303,61 +3852,6 @@ const PRODUCTS = [
     "category": "frozen",
     "price": 5.49,
     "image": "images/official/correct_20371J.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "20434K",
-    "brand": "ASSI",
-    "name": "COMBO FISH CAKE",
-    "nameKr": "",
-    "size": "1.1 LB",
-    "category": "ready",
-    "price": 8.49,
-    "image": "images/official/assi_20434K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "20460K",
-    "brand": "ASSI",
-    "name": "RECTANGULAR FISH CAKE (KOREA 22#)",
-    "nameKr": "",
-    "size": "22 LB",
-    "category": "ready",
-    "price": 8.49,
-    "image": "images/official/assi_20460K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "20485K",
-    "brand": "ASSI",
-    "name": "BANCHAN SEASONED PERILLA LEAF",
-    "nameKr": "",
-    "size": "8 LB",
-    "category": "kimchi",
-    "price": 3.49,
-    "image": "images/official/assi_20485K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "20486K",
-    "brand": "ASSI",
-    "name": "BANCHAN SEASONED GREEN PEPPER",
-    "nameKr": "",
-    "size": "8 LB",
-    "category": "kimchi",
-    "price": 6.99,
-    "image": "images/official/assi_20486K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "20571D",
-    "brand": "ASSI",
-    "name": "PORK DUMPLINGS",
-    "nameKr": "",
-    "size": "1.25 LB",
-    "category": "frozen",
-    "price": 7.79,
-    "image": "images/official/assi_20571D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -4446,39 +3940,6 @@ const PRODUCTS = [
     "category": "ready",
     "price": 5.99,
     "image": "images/official/final_27780K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "29100K",
-    "brand": "ASSI",
-    "name": "CRISPY MOZZARELLA & FISH CAKE CORN DOGS",
-    "nameKr": "",
-    "size": "14.1 OZ",
-    "category": "frozen",
-    "price": 8.49,
-    "image": "images/official/assi_29100K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "29312K",
-    "brand": "ASSI",
-    "name": "SEASONED FILE FISH (10 OZ)",
-    "nameKr": "",
-    "size": "10 OZ",
-    "category": "snacks",
-    "price": 3.49,
-    "image": "images/official/assi_29312K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "08022K",
-    "brand": "ASSI",
-    "name": "MAK-GUKSOO NOODLES",
-    "nameKr": "",
-    "size": "2LB",
-    "category": "ramyun",
-    "price": 7.99,
-    "image": "images/official/assi_08022K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -5604,28 +5065,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "02002D",
-    "brand": "ASSI",
-    "name": "RICE FLOUR (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "bakery",
-    "price": 6.49,
-    "image": "images/official/assi_02002D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02008D",
-    "brand": "ASSI",
-    "name": "SWEET RICE FLOUR (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "bakery",
-    "price": 6.49,
-    "image": "images/official/assi_02008D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "02019T",
     "brand": "VINHTHUAN",
     "name": "MIXED FLOUR FOR CAKE",
@@ -5645,17 +5084,6 @@ const PRODUCTS = [
     "category": "bakery",
     "price": 4.49,
     "image": "images/official/correct_02020T.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02032D",
-    "brand": "ASSI",
-    "name": "POTATO STARCH (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "bakery",
-    "price": 6.79,
-    "image": "images/official/assi_02032D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -5689,17 +5117,6 @@ const PRODUCTS = [
     "category": "bakery",
     "price": 4.49,
     "image": "images/official/jl_daesang_02151K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02164D",
-    "brand": "ASSI",
-    "name": "ACORN STARCH (8 OZ)",
-    "nameKr": "",
-    "size": "8 OZ",
-    "category": "bakery",
-    "price": 2.49,
-    "image": "images/official/assi_02164D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -5744,39 +5161,6 @@ const PRODUCTS = [
     "category": "bakery",
     "price": 4.49,
     "image": "images/official/correct_02214T.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05381K",
-    "brand": "ASSI",
-    "name": "SEA SALT (FINE 4#)",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "seasonings",
-    "price": 3.49,
-    "image": "images/official/assi_05381K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05384K",
-    "brand": "ASSI",
-    "name": "SEA SALT (COARSE 10#)",
-    "nameKr": "",
-    "size": "10 LB",
-    "category": "seasonings",
-    "price": 5.99,
-    "image": "images/official/assi_05384K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05399K",
-    "brand": "ASSI",
-    "name": "SEA SALT (FINE 10#)",
-    "nameKr": "",
-    "size": "10 LB",
-    "category": "seasonings",
-    "price": 3.49,
-    "image": "images/official/assi_05399K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -6396,39 +5780,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "05149K",
-    "brand": "ASSI",
-    "name": "SESAME OIL (S BTL)",
-    "nameKr": "",
-    "size": "5.48 OZ",
-    "category": "seasonings",
-    "price": 8.99,
-    "image": "images/official/assi_05149K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05037D",
-    "brand": "ASSI",
-    "name": "RED PEPPER POWDER (KIMCHI 3#)",
-    "nameKr": "",
-    "size": "3 LB",
-    "category": "seasonings",
-    "price": 11.99,
-    "image": "images/official/assi_05037D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05039D",
-    "brand": "ASSI",
-    "name": "RED PEPPER POWDER (FINE 6.7 OZ)",
-    "nameKr": "",
-    "size": "6.7 OZ",
-    "category": "seasonings",
-    "price": 11.99,
-    "image": "images/official/assi_05039D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "05069K",
     "brand": "HAEPYO",
     "name": "PERILLA OIL (320ML)",
@@ -6481,61 +5832,6 @@ const PRODUCTS = [
     "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07636K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05015K",
-    "brand": "ASSI",
-    "name": "SEA SALT (FINE 271",
-    "nameKr": "",
-    "size": "",
-    "category": "seasonings",
-    "price": 3.49,
-    "image": "images/official/resized/05015K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05030D",
-    "brand": "ASSI",
-    "name": "CORN STARCH (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "bakery",
-    "price": 2.49,
-    "image": "images/official/ASSI_05030D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05076K",
-    "brand": "ASSI",
-    "name": "SESAME OIL",
-    "nameKr": "",
-    "size": "",
-    "category": "seasonings",
-    "price": 8.99,
-    "image": "images/official/assi_05076K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05077K",
-    "brand": "ASSI",
-    "name": "SESAME OIL (L,52 OZ,CANI",
-    "nameKr": "",
-    "size": "",
-    "category": "seasonings",
-    "price": 8.99,
-    "image": "images/official/ASSI_05077K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05382K",
-    "brand": "ASSI",
-    "name": "4#1",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "seasonings",
-    "price": 10.99,
-    "image": "images/official/resized/05382K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -6935,17 +6231,6 @@ const PRODUCTS = [
     "vendor": "Wang Globalnet"
   },
   {
-    "id": "07441D",
-    "brand": "ASSI",
-    "name": "LUNCHEON LOAF",
-    "nameKr": "",
-    "size": "12 OZ",
-    "category": "pantry",
-    "price": 4.99,
-    "image": "images/official/assi_07441D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "07598K",
     "brand": "DONGWON",
     "name": "TUNA CAN (S 4CAN)",
@@ -6954,17 +6239,6 @@ const PRODUCTS = [
     "category": "pantry",
     "price": 12.99,
     "image": "images/official/dongwon_07598K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "06194C",
-    "brand": "ASSI",
-    "name": "ORGANIC ROASTED CHESTNUTS",
-    "nameKr": "",
-    "size": "7 OZ",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/assi_06194C.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7009,39 +6283,6 @@ const PRODUCTS = [
     "category": "kimchi",
     "price": 9.49,
     "image": "images/official/resized/19127D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19351K",
-    "brand": "ASSI",
-    "name": "SLICED PICKLED RADISH (SILSOK 2.2#)",
-    "nameKr": "",
-    "size": "2.2 LB",
-    "category": "kimchi",
-    "price": 4.49,
-    "image": "images/official/assi_19351K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19359K",
-    "brand": "ASSI",
-    "name": "SLICED PICKLED RADISH (GIMBAP 2.2#)",
-    "nameKr": "",
-    "size": "2.2 LB",
-    "category": "kimchi",
-    "price": 4.49,
-    "image": "images/official/assi_19359K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19363K",
-    "brand": "ASSI",
-    "name": "SLICED PICKLED RADISH (SSEOLEUN 12 OZ)",
-    "nameKr": "",
-    "size": "12 OZ",
-    "category": "kimchi",
-    "price": 4.49,
-    "image": "images/official/resized/19363K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7166,17 +6407,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "04301K",
-    "brand": "ASSI",
-    "name": "TABLET BROTH (SPICY)",
-    "nameKr": "",
-    "size": "",
-    "category": "seasonings",
-    "price": 13.49,
-    "image": "images/official/assi_04301K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "04305K",
     "brand": "",
     "name": "POWDER",
@@ -7185,17 +6415,6 @@ const PRODUCTS = [
     "category": "seasonings",
     "price": 12.99,
     "image": "images/official/correct_04305K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "04307K",
-    "brand": "ASSI",
-    "name": "ANCHOVY SCUP STOCK",
-    "nameKr": "",
-    "size": "",
-    "category": "seasonings",
-    "price": 10.99,
-    "image": "images/official/assi_04307K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7243,17 +6462,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "06100K",
-    "brand": "ASSI",
-    "name": "DOILED RADISH LEAVES",
-    "nameKr": "",
-    "size": "1 LB",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/ASSI_06100K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "07008K",
     "brand": "AJINOVOTO",
     "name": "SCUP STOC K",
@@ -7284,17 +6492,6 @@ const PRODUCTS = [
     "category": "pantry",
     "price": 9.99,
     "image": "images/official/final_13309K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19092K",
-    "brand": "ASSI",
-    "name": "BOILED ROYAL FERN",
-    "nameKr": "",
-    "size": "16 OZ",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/ASSI_19092K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7342,28 +6539,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "19341K",
-    "brand": "ASSI",
-    "name": "MINCED GARLIC IN WATER",
-    "nameKr": "",
-    "size": "",
-    "category": "pantry",
-    "price": 7.99,
-    "image": "images/official/assi_19341K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19342K",
-    "brand": "ASSI",
-    "name": "MINCED GARLIC (14)",
-    "nameKr": "",
-    "size": "",
-    "category": "pantry",
-    "price": 7.99,
-    "image": "images/official/final_19342K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "19347K",
     "brand": "RADISH 1",
     "name": "1PI",
@@ -7372,39 +6547,6 @@ const PRODUCTS = [
     "category": "kimchi",
     "price": 12.99,
     "image": "images/official/final_19347K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19601K",
-    "brand": "ASSI",
-    "name": "PEELEO PICKLED GARLIC",
-    "nameKr": "",
-    "size": "",
-    "category": "kimchi",
-    "price": 7.99,
-    "image": "images/official/resized/19601K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "19610K",
-    "brand": "ASSI",
-    "name": "MINCEO GARLIC (241",
-    "nameKr": "",
-    "size": "2 LB",
-    "category": "pantry",
-    "price": 7.99,
-    "image": "images/official/resized/19610K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "20366K",
-    "brand": "ASSI",
-    "name": "MINI FISH CAKE (16P)",
-    "nameKr": "",
-    "size": "",
-    "category": "ready",
-    "price": 8.49,
-    "image": "images/official/correct_20366K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7427,28 +6569,6 @@ const PRODUCTS = [
     "category": "ready",
     "price": 2.49,
     "image": "images/official/correct_20786D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "26026D",
-    "brand": "ASSI",
-    "name": "PEELED CHESTNUT",
-    "nameKr": "",
-    "size": "12 OZ",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/final_26026D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "52106K",
-    "brand": "ASSI",
-    "name": "BEEF BROTH FOR",
-    "nameKr": "",
-    "size": "12 OZ",
-    "category": "ready",
-    "price": 13.49,
-    "image": "images/official/ASSI_52106K.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7606,50 +6726,6 @@ const PRODUCTS = [
     "vendor": "Buckhead"
   },
   {
-    "id": "01147D",
-    "brand": "ASSI",
-    "name": "YELLOW SESAME SEEDS (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/01147D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05389D",
-    "brand": "ASSI",
-    "name": "ROASTED SESAME SEEDS (7.5 OZ BTL)",
-    "nameKr": "",
-    "size": "7.5 OZ",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/05389D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05412D",
-    "brand": "ASSI",
-    "name": "ROASTED BLACK SESAME SEEDS (7.5 OZ BTL)",
-    "nameKr": "",
-    "size": "7.5 OZ",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/jl_ottogi_05412D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05413D",
-    "brand": "ASSI",
-    "name": "ROASTED WHITE SESAME SEEDS (7.5 OZ BTL)",
-    "nameKr": "",
-    "size": "7.5 OZ",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/05413D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "21206K",
     "brand": "BINGGRAE",
     "name": "MELONA (COCONUT)",
@@ -7658,39 +6734,6 @@ const PRODUCTS = [
     "category": "frozen",
     "price": 7.99,
     "image": "images/official/resized/21206K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01039D",
-    "brand": "ASSI",
-    "name": "RED BEAN (CHINA, 50#)",
-    "nameKr": "",
-    "size": "50 LB",
-    "category": "pantry",
-    "price": 6.99,
-    "image": "images/official/ASSI_01039D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01041D",
-    "brand": "ASSI",
-    "name": "SOYBEAN",
-    "nameKr": "",
-    "size": "50 LB",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/ASSI_01041D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01061D",
-    "brand": "ASSI",
-    "name": "BLACK BEAN (CHINA, 50#)",
-    "nameKr": "",
-    "size": "50 LB",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/ASSI_01061D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7705,83 +6748,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "01118D",
-    "brand": "ASSI",
-    "name": "BLACK SESAME SEEDS (14 OZ)",
-    "nameKr": "",
-    "size": "14OZ",
-    "category": "pantry",
-    "price": 4.99,
-    "image": "images/official/ASSI_01118D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01206D",
-    "brand": "ASSI",
-    "name": "JOB'S TEARS (14 OZ)",
-    "nameKr": "",
-    "size": "14 OZ",
-    "category": "pantry",
-    "price": 6.99,
-    "image": "images/official/jl_ottogi_01206D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01221D",
-    "brand": "ASSI",
-    "name": "ORGANIC BLACK BEANS",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/resized/01221D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01223D",
-    "brand": "ASSI",
-    "name": "ORGANIC RED BEANS",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "pantry",
-    "price": 6.99,
-    "image": "images/official/jl_ottogi_01223D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02096D",
-    "brand": "ASSI",
-    "name": "POTATO STARCH",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "bakery",
-    "price": 6.79,
-    "image": "images/official/ASSI_02096D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02148K",
-    "brand": "ASSI",
-    "name": "KOREAN VEGETABLE PANCAKE MIX",
-    "nameKr": "",
-    "size": "2 LB",
-    "category": "bakery",
-    "price": 4.49,
-    "image": "images/official/ASSI_02148K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02153K",
-    "brand": "ASSI",
-    "name": "TEMPURA BATTER MIX",
-    "nameKr": "",
-    "size": "1.1 LB",
-    "category": "bakery",
-    "price": 5.99,
-    "image": "images/official/ASSI_02153K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "02155K",
     "brand": "GOMPYO",
     "name": "TEMPURA BATTER MIX (L)",
@@ -7790,39 +6756,6 @@ const PRODUCTS = [
     "category": "bakery",
     "price": 5.99,
     "image": "images/official/02155K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02156D",
-    "brand": "ASSI",
-    "name": "COARSE MALT POMDER",
-    "nameKr": "",
-    "size": "",
-    "category": "pantry",
-    "price": 5.99,
-    "image": "images/official/ASSI_02156D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02163D",
-    "brand": "ASSI",
-    "name": "ACORN STARCH (14 OZ)",
-    "nameKr": "",
-    "size": "14 OZ",
-    "category": "bakery",
-    "price": 2.49,
-    "image": "images/official/ASSI_02163D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02170D",
-    "brand": "ASSI",
-    "name": "SWEET RICE FLOUR",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "bakery",
-    "price": 6.49,
-    "image": "images/official/resized/02170D.jpg",
     "vendor": "Rhee Bros"
   },
   {
@@ -7837,72 +6770,6 @@ const PRODUCTS = [
     "vendor": "Rhee Bros"
   },
   {
-    "id": "01045D",
-    "brand": "ASSI",
-    "name": "12 MIXED GRAIN RICE (HWANGJABGOK, 30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "rice",
-    "price": 10.99,
-    "image": "images/official/ASSI_01045D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01054D",
-    "brand": "ASSI",
-    "name": "SOYBEAN",
-    "nameKr": "",
-    "size": "10 LB",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/ASSI_01054D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01113K",
-    "brand": "ASSI",
-    "name": "ROASTED SESAME SEEDS",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/01113K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01136D",
-    "brand": "ASSI",
-    "name": "ROASTED SESAME SEEDS",
-    "nameKr": "",
-    "size": "",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/01136D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01208D",
-    "brand": "ASSI",
-    "name": "RED BEAN (30 OZ)",
-    "nameKr": "",
-    "size": "30 OZ",
-    "category": "pantry",
-    "price": 6.99,
-    "image": "images/official/ASSI_01208D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "01214D",
-    "brand": "ASSI",
-    "name": "SOYBEAN",
-    "nameKr": "",
-    "size": "",
-    "category": "pantry",
-    "price": 8.99,
-    "image": "images/official/ASSI_01214D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
     "id": "02059K",
     "brand": "GOMPYO",
     "name": "ALL PURPOSE WHEAT FLOUR GOLDEN (5.5#)",
@@ -7911,28 +6778,6 @@ const PRODUCTS = [
     "category": "bakery",
     "price": 5.99,
     "image": "images/official/02059K.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "02168D",
-    "brand": "ASSI",
-    "name": "RICE FLOUR (441",
-    "nameKr": "",
-    "size": "4 LB",
-    "category": "bakery",
-    "price": 6.49,
-    "image": "images/official/correct_02168D.jpg",
-    "vendor": "Rhee Bros"
-  },
-  {
-    "id": "05396D",
-    "brand": "ASSI",
-    "name": "ROASTED SESAME SEEDS (16 OZ,BTL)",
-    "nameKr": "",
-    "size": "",
-    "category": "pantry",
-    "price": 6.49,
-    "image": "images/official/05396D.jpg",
     "vendor": "Rhee Bros"
   },
   {
