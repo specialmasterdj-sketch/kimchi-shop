@@ -1146,7 +1146,7 @@ input, select { font-family: inherit; }
               <span id="t-mb-perk2">★ Birthday Reward</span>
               <span id="t-mb-perk3">★ Member Sales</span>
             </div>
-            <button class="member-cta" onclick="navigate('profile')"><span id="t-mb-cta">JOIN FREE</span> <span>→ 5% OFF</span></button>
+            <button class="member-cta" onclick="openSignup('k1')"><span id="t-mb-cta">JOIN</span> <span>→ 5% OFF</span></button>
           </div>
         </div>
       </div>
@@ -2558,28 +2558,9 @@ function renderLocations() {
 }
 
 function upgradeTier(targetTier) {
-  if (!state.user) return;
-  const t2 = targetTier.toLowerCase();
-  if (t2 === 'k2') {
-    const msg = state.lang === 'ko'
-      ? 'K2 (비즈니스 등급)은 식당/사업자 등록증 확인 후 활성화됩니다.\n\n매장 매니저에게 등록증 사진을 보여주시면 즉시 업그레이드해 드립니다.\n\n지금은 K1로 활성화하시겠습니까? (5% 자동 할인)'
-      : state.lang === 'es'
-      ? 'K2 (Nivel Empresarial) requiere verificación de licencia comercial.\n\nMuestre su licencia al gerente de tienda para activación inmediata.\n\n¿Activar K1 ahora? (5% descuento automático)'
-      : 'K2 (Business tier) activates after verifying your business license.\n\nShow your license to a store manager for instant upgrade.\n\nActivate K1 now? (5% automatic discount)';
-    if (confirm(msg)) {
-      state.user.membership = 'k1';
-      localStorage.setItem('kimchi_user', JSON.stringify(state.user));
-      renderProfile();
-      if (typeof showRecipeToast === 'function') showRecipeToast('★ K1 activated · 5% off applied');
-    }
-    return;
-  }
-  state.user.membership = t2;
-  localStorage.setItem('kimchi_user', JSON.stringify(state.user));
-  renderProfile();
-  if (typeof showRecipeToast === 'function') {
-    showRecipeToast('★ ' + targetTier.toUpperCase() + ' activated');
-  }
+  // 온라인 가입 신청 오버레이 열기 (연회비 결제·매장 승인 후 활성화)
+  const t2 = (String(targetTier).toLowerCase()==='k2') ? 'k2' : 'k1';
+  openSignup(t2);
 }
 
 // ==================== AUTH ====================
@@ -2847,6 +2828,106 @@ function timeSlotOptions() {
   slots.push('내일 오전', '내일 오후');
   return slots;
 }
+
+// ==================== K1/K2 온라인 멤버십 가입 (쇼핑앱) ====================
+const MEM_FEE = { k1: 25, k2: 35 };
+const MEM_ZELLE = 'kimchimart@gmail.com';
+function _mDateKey(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function _mAppId(){ return 'MB'+Date.now().toString(36).toUpperCase()+Math.random().toString(36).slice(2,5).toUpperCase(); }
+function memEsc(s){ return String(s==null?'':s).replace(/"/g,'&quot;'); }
+window.openSignup = function(plan){
+  plan = (plan==='k2')?'k2':'k1';
+  const fee = MEM_FEE[plan];
+  const u = state.user || {};
+  const ov = document.createElement('div');
+  ov.id='memSignupOv';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;justify-content:center';
+  ov.innerHTML = `
+    <div style="background:#fff;width:100%;max-width:480px;border-radius:18px 18px 0 0;max-height:92vh;overflow-y:auto;padding:20px;font-family:inherit">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-size:1.3em;font-weight:900">${plan.toUpperCase()} 멤버십 가입</div>
+        <button onclick="closeSignup()" style="margin-left:auto;background:none;border:0;font-size:1.6em;cursor:pointer">×</button>
+      </div>
+      <div style="background:${plan==='k2'?'#FFF5F8':'#FFFAF0'};border-radius:12px;padding:12px;margin-bottom:14px;font-size:.95em">
+        <b>${plan==='k1'?'매 구매 5% 즉시 할인':'매 구매 10% 즉시 할인'}</b> · 연회비 <b>$${fee}/년</b>
+      </div>
+      <label style="font-weight:700;font-size:.85em">이름 / Name</label>
+      <input id="msName" value="${memEsc(u.name)}" style="width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;margin:5px 0 12px">
+      <label style="font-weight:700;font-size:.85em">전화 / Phone</label>
+      <input id="msPhone" value="${memEsc(u.phone)}" style="width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;margin:5px 0 12px">
+      <label style="font-weight:700;font-size:.85em">이메일 / Email</label>
+      <input id="msEmail" type="email" placeholder="you@email.com" style="width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;margin:5px 0 12px">
+      ${plan==='k2'?`
+      <label style="font-weight:700;font-size:.85em">사업체명 / Business name</label>
+      <input id="msBiz" style="width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;margin:5px 0 12px">
+      <label style="font-weight:700;font-size:.85em">사업자 등록증(Resale certificate) 번호</label>
+      <input id="msCert" style="width:100%;padding:11px;border:1.5px solid #ddd;border-radius:10px;margin:5px 0 6px">
+      <div style="font-size:.76em;color:#b45309;margin-bottom:12px">※ K2는 본인 명의 유효 등록증 확인 후 활성화. 첫 방문 시 원본 지참.</div>`:''}
+      <label style="font-weight:700;font-size:.85em">연회비 결제 방법 / Fee payment</label>
+      <div style="margin:6px 0 14px">
+        <label style="display:flex;gap:8px;align-items:center;padding:10px;border:1.5px solid #ddd;border-radius:10px;margin-bottom:6px;cursor:pointer"><input type="radio" name="msPay" value="zelle" checked> <b>Zelle 송금</b> — ${MEM_ZELLE} 로 $${fee}</label>
+        <label style="display:flex;gap:8px;align-items:center;padding:10px;border:1.5px solid #ddd;border-radius:10px;margin-bottom:6px;cursor:pointer"><input type="radio" name="msPay" value="store"> <b>매장 방문 결제</b> — 첫 방문 시 $${fee}</label>
+        <label style="display:flex;gap:8px;align-items:center;padding:10px;border:1.5px solid #eee;border-radius:10px;color:#aaa;cursor:not-allowed"><input type="radio" name="msPay" value="card" disabled> 온라인 카드결제 — 곧 지원</label>
+      </div>
+      <button onclick="submitSignup('${plan}')" style="width:100%;background:#1a5c3a;color:#fff;border:0;border-radius:12px;padding:15px;font-weight:900;font-size:1.05em;cursor:pointer">가입 신청하기</button>
+    </div>`;
+  document.body.appendChild(ov);
+};
+window.closeSignup = function(){ const o=document.getElementById('memSignupOv'); if(o)o.remove(); };
+window.submitSignup = async function(plan){
+  const name=(document.getElementById('msName')?.value||'').trim();
+  const phone=(document.getElementById('msPhone')?.value||'').trim();
+  const email=(document.getElementById('msEmail')?.value||'').trim();
+  if(!name||!phone){ alert('이름과 전화번호를 입력하세요 / Enter name & phone'); return; }
+  const payEl=document.querySelector('input[name="msPay"]:checked');
+  const pay=payEl?payEl.value:'zelle';
+  const fee=MEM_FEE[plan];
+  const app={ id:_mAppId(), at:Date.now(), status:'pending', plan:plan, fee:fee,
+    customer:{ name, phone, email },
+    business: plan==='k2' ? { name:(document.getElementById('msBiz')?.value||'').trim(), cert:(document.getElementById('msCert')?.value||'').trim() } : null,
+    payMethod: pay, lang: state.lang||'en', source:'shop-online' };
+  try{
+    const url=SHOP_FB_DB+'/membershipApplications/'+_mDateKey()+'/'+app.id+'.json';
+    const r=await fetch(url,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(app)});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+  }catch(e){ alert('신청 저장 실패: '+(e.message||e)); return; }
+  try{ localStorage.setItem('kimchi_pending_membership', JSON.stringify({id:app.id,date:_mDateKey(),plan,fee,pay})); }catch(e){}
+  const box=document.getElementById('memSignupOv').querySelector('div');
+  box.innerHTML = `
+    <div style="text-align:center;padding:16px 6px">
+      <div style="font-size:3em">✅</div>
+      <div style="font-size:1.25em;font-weight:900;margin:10px 0">가입 신청 완료!</div>
+      <div style="color:#555;font-size:.9em;line-height:1.6">신청번호 <b>${app.id}</b><br>${plan.toUpperCase()} · 연회비 $${fee}</div>
+      <div style="background:#f0f7ff;border-radius:12px;padding:14px;margin:16px 0;text-align:left;font-size:.9em;line-height:1.7">
+        ${pay==='zelle'?`<b>📱 Zelle로 연회비 $${fee} 보내기</b><br>받는 이메일: <b>${MEM_ZELLE}</b><br>메모에 신청번호 <b>${app.id}</b> 적기<br>입금 후 아래 버튼으로 <b>스크린샷</b>을 올려주시면 더 빨리 활성화됩니다.`:`<b>🏪 첫 방문 시 매장에서 $${fee} 결제</b><br>계산대에서 신청번호 <b>${app.id}</b> 말씀하시면 바로 활성화.`}
+        ${plan==='k2'?'<br><br>⚠️ K2는 사업자 등록증(원본) 확인 필요.':''}
+      </div>
+      ${pay==='zelle'?`<button onclick="attachProof('${app.id}','${_mDateKey()}')" style="width:100%;background:#1d4ed8;color:#fff;border:0;border-radius:12px;padding:14px;font-weight:800;cursor:pointer;margin-bottom:8px">📷 입금 완료 · 스크린샷 올리기</button>`:''}
+      <button onclick="closeSignup()" style="width:100%;background:#eef2f0;color:#374151;border:0;border-radius:12px;padding:13px;font-weight:800;cursor:pointer">닫기 / Close</button>
+    </div>`;
+};
+window.attachProof = function(id, date){
+  const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.capture='environment';
+  inp.onchange=function(){
+    const f=inp.files&&inp.files[0]; if(!f)return;
+    const rd=new FileReader();
+    rd.onload=function(e){ const img=new Image();
+      img.onload=async function(){
+        const max=1000; let w=img.width,h=img.height;
+        if(w>h&&w>max){h=Math.round(h*max/w);w=max;} else if(h>max){w=Math.round(w*max/h);h=max;}
+        const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);
+        const b64=cv.toDataURL('image/jpeg',0.6);
+        try{ const url=SHOP_FB_DB+'/membershipApplications/'+date+'/'+id+'.json';
+          const r=await fetch(url,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:'paidClaimed',proof:b64,proofAt:Date.now()})});
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          try{ localStorage.removeItem('kimchi_pending_membership'); }catch(_){}
+          alert('✅ 스크린샷 접수 완료! 매장 확인 후 멤버십이 활성화됩니다.'); closeSignup();
+        }catch(err){ alert('업로드 실패: '+(err.message||err)); }
+      }; img.src=e.target.result; };
+    rd.readAsDataURL(f);
+  };
+  inp.click();
+};
 
 function openCheckout() {  const disc = state.user?.membership === 'K1' ? 0.05 : state.user?.membership === 'K2' ? 0.10 : 0;
   const items = Object.entries(state.cart);
