@@ -4029,6 +4029,48 @@ function showRecipeToast(msg) {
 setLang(state.lang);
 render();
 renderModeBar();
+
+// ==================== LIVE CATALOG OVERRIDES (staff Product Manager) ====================
+// Safe overlay: reads shopCatalog/items from Firebase and applies edits/new/hidden
+// on top of the static PRODUCTS. On any failure, the static catalog is used as-is.
+(function loadCatalogOverrides(){
+  try {
+    if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return;
+    var url = SHOP_FB_DB + '/shopCatalog/items.json';
+    fetch(url, { cache: 'no-store' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(items){
+      if (!items || typeof items !== 'object') return;
+      var byId = {}; PRODUCTS.forEach(function(p){ byId[p.id] = p; });
+      var hideIds = {};
+      Object.keys(items).forEach(function(id){
+        var o = items[id] || {};
+        var ex = byId[id];
+        if (ex) {
+          // override existing product fields
+          ['name','nameKr','brand','size','category'].forEach(function(k){ if (o[k] !== undefined && o[k] !== '') ex[k] = o[k]; });
+          if (o.price !== undefined && o.price !== '' && o.price !== null && !isNaN(+o.price)) ex.price = +o.price;
+          if (o.image !== undefined && o.image !== '') ex.image = o.image;
+          if (o.hidden) hideIds[id] = true;
+        } else if (!o.hidden) {
+          // brand-new custom product
+          PRODUCTS.push({
+            id: id,
+            name: o.name || '',
+            nameKr: o.nameKr || '',
+            brand: o.brand || '',
+            size: o.size || '',
+            category: o.category || 'pantry',
+            price: +o.price || 0,
+            image: o.image || '',
+            vendor: o.createdBy || ''
+          });
+        }
+      });
+      // remove hidden products
+      for (var i = PRODUCTS.length - 1; i >= 0; i--) { if (hideIds[PRODUCTS[i].id]) PRODUCTS.splice(i, 1); }
+      if (typeof render === 'function') render();
+    }).catch(function(){ /* keep static catalog */ });
+  } catch (e) { /* keep static catalog */ }
+})();
 </script>
 
 <!-- TRENDING SEARCH (Weee pattern) -->
