@@ -1056,6 +1056,29 @@ input, select { font-family: inherit; }
   .cat-grid { grid-template-columns: repeat(3, 1fr); }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* === HMART-STYLE CATEGORY TILE ROW === */
+.cat-tiles-wrap { margin: 4px 0 10px; }
+.cat-tiles-head { display: flex; align-items: center; justify-content: space-between; margin: 0 0 10px; }
+.cat-tiles-title { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.2px; }
+.cat-tiles-title .ct-icon { margin-right: 6px; }
+.cat-tiles-more { background: none; border: none; font-size: 13px; font-weight: 700; color: var(--red); cursor: pointer; padding: 4px 2px; }
+.cat-tiles { display: flex; gap: 4px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 2px 0 4px; margin: 0 -4px; }
+.cat-tiles::-webkit-scrollbar { display: none; }
+.cat-tile { flex: 0 0 auto; width: 76px; display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 6px 2px; background: none; border: none; cursor: pointer; scroll-snap-align: start; }
+.cat-tile-ic { width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; background: var(--red-light); border: 1.5px solid #FBD7D7; transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s; }
+.cat-tile:hover .cat-tile-ic { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(211,47,47,0.18); border-color: var(--red); }
+.cat-tile:nth-child(6n+2) .cat-tile-ic { background: var(--green-light); border-color: #C8E6C9; }
+.cat-tile:nth-child(6n+3) .cat-tile-ic { background: var(--blue-light); border-color: #C9DDF7; }
+.cat-tile:nth-child(6n+4) .cat-tile-ic { background: var(--gold-soft); border-color: #F5E3AE; }
+.cat-tile:nth-child(6n+5) .cat-tile-ic { background: var(--orange-light); border-color: #F7D9BC; }
+.cat-tile:nth-child(6n+6) .cat-tile-ic { background: var(--pink); border-color: var(--pink-deep); }
+.cat-tile-nm { font-size: 11.5px; font-weight: 700; color: var(--ink-soft); line-height: 1.2; text-align: center; max-width: 74px; }
+@media (min-width: 768px) {
+  .cat-tile { width: 90px; }
+  .cat-tile-ic { width: 72px; height: 72px; font-size: 34px; }
+  .cat-tile-nm { font-size: 12.5px; }
+}
 </style>
 </head>
 <body>
@@ -1216,6 +1239,15 @@ input, select { font-family: inherit; }
     <div class="ebt-strip-arrow">→</div>
   </div>
 
+  <!-- HMART-STYLE CATEGORY TILE ROW -->
+  <div class="cat-tiles-wrap">
+    <div class="cat-tiles-head">
+      <div class="cat-tiles-title"><span class="ct-icon">🧺</span><span id="t-cattiles-title">Shop by Category</span></div>
+      <button class="cat-tiles-more" onclick="state.category=null;navigate('browse')" id="t-cattiles-more">See all →</button>
+    </div>
+    <div class="cat-tiles" id="catTiles"></div>
+  </div>
+
   <!-- Best Sellers (Weee multi-section pattern) -->
   <section class="hp-section">
     <div class="hp-section-head">
@@ -1251,6 +1283,9 @@ input, select { font-family: inherit; }
     </div>
     <div class="hp-scroll" id="popularGrid"></div>
   </section>
+
+  <!-- HMART-STYLE THEMED CATEGORY SECTIONS (Banchan / Ramyun / Snacks / Frozen / Home) -->
+  <div id="catSections"></div>
 
   <!-- RESTAURANT FAVORITES HUB (USP — recipe-to-cart) -->
   <section class="recipe-section" aria-label="Restaurant Favorites">
@@ -1534,6 +1569,7 @@ window.addEventListener('load', resetHeroTimer);
 const LANG = {
   en: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
+    'cattiles-title': 'Shop by Category', 'cattiles-more': 'See all →',
     'shop-now': 'Shop Now', 'clearance': 'Clearance Deals',
     'categories': 'Categories', 'see-all': 'See All',
     'popular': 'Popular Products', 'pickup-title': 'Pickup & Delivery',
@@ -1587,6 +1623,7 @@ const LANG = {
   },
   ko: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
+    'cattiles-title': '카테고리별 쇼핑', 'cattiles-more': '전체 보기 →',
     'shop-now': '쇼핑하기', 'clearance': '마감 할인',
     'categories': '카테고리', 'see-all': '전체 보기',
     'popular': '인기 상품', 'pickup-title': '픽업 & 배달',
@@ -1640,6 +1677,7 @@ const LANG = {
   },
   es: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
+    'cattiles-title': 'Comprar por Categoría', 'cattiles-more': 'Ver todo →',
     'shop-now': 'Comprar', 'clearance': 'Ofertas',
     'categories': 'Categorias', 'see-all': 'Ver Todo',
     'popular': 'Productos Populares', 'pickup-title': 'Recogida y Entrega',
@@ -2216,7 +2254,62 @@ function renderHome() {
   const popular = popularIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   fillSection('popularGrid', popular);
 
+  renderCatTiles();
+  renderCatSections();
+
   if (typeof renderRecipeHub === 'function') renderRecipeHub();
+}
+
+// HMART-STYLE: horizontal round category shortcut tiles
+function renderCatTiles() {
+  const el = document.getElementById('catTiles');
+  if (!el || typeof CATEGORIES === 'undefined') return;
+  const ko = state.lang === 'ko', es = state.lang === 'es';
+  const counts = {};
+  PRODUCTS.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+  // Hmart-like ordering of departments
+  const order = ['kimchi','ramyun','snacks','frozen','beverages','tea','ready','rice','meat','produce','seaweed','dairy','seasonings','pantry','bakery','houseware'];
+  const cats = order.filter(c => CATEGORIES[c] && counts[c] > 0);
+  el.innerHTML = cats.map(catId => {
+    const cat = CATEGORIES[catId];
+    const name = ko ? cat.kr : es ? cat.es : cat.en;
+    return `<button class="cat-tile" onclick="state.category='${catId}';navigate('browse')">
+      <span class="cat-tile-ic">${cat.icon}</span>
+      <span class="cat-tile-nm">${name}</span>
+    </button>`;
+  }).join('');
+}
+
+// HMART-STYLE: themed category product carousels
+function renderCatSections() {
+  const wrap = document.getElementById('catSections');
+  if (!wrap || typeof CATEGORIES === 'undefined') return;
+  const ko = state.lang === 'ko', es = state.lang === 'es';
+  const seeAll = ko ? '전체 보기 →' : es ? 'Ver todo →' : 'See all →';
+  // Hmart-style themed rows: {category, icon, title per lang}
+  const themed = [
+    { cat: 'kimchi',    icon: '🥬', ko: '반찬 · 김치',       en: 'Side Dishes · Banchan',   es: 'Guarniciones · Banchan' },
+    { cat: 'ramyun',    icon: '🍜', ko: '라면 · 면류',       en: 'Ramyun & Noodles',        es: 'Ramen y Fideos' },
+    { cat: 'snacks',    icon: '🍪', ko: '과자 · 스낵',       en: 'Snacks & Sweets',         es: 'Snacks y Dulces' },
+    { cat: 'frozen',    icon: '❄️', ko: '냉동 인기상품',      en: 'Frozen Favorites',        es: 'Congelados Favoritos' },
+    { cat: 'beverages', icon: '🥤', ko: '음료 · 차',         en: 'Drinks & Beverages',      es: 'Bebidas' },
+    { cat: 'houseware', icon: '🏠', ko: '홈 · 생활용품',      en: 'Home & Lifestyle',        es: 'Hogar y Estilo' }
+  ];
+  let html = '';
+  themed.forEach(t => {
+    if (!CATEGORIES[t.cat]) return;
+    const items = PRODUCTS.filter(p => p.category === t.cat).slice(0, 16);
+    if (items.length < 4) return;
+    const title = ko ? t.ko : es ? t.es : t.en;
+    html += `<section class="hp-section">
+      <div class="hp-section-head">
+        <h3 class="hp-section-title"><span class="hp-icon">${t.icon}</span><span>${title}</span></h3>
+        <button class="hp-section-more" onclick="state.category='${t.cat}';navigate('browse')">${seeAll}</button>
+      </div>
+      <div class="hp-scroll">${items.map(renderProductCard).join('')}</div>
+    </section>`;
+  });
+  wrap.innerHTML = html;
 }
 
 function getBrowseHero() {
