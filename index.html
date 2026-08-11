@@ -2163,6 +2163,19 @@ function renderProductCard(p) {
   </div>`;
 }
 
+// Curated collections (staff-picked product lists per event/mode)
+function curatedProducts(key){
+  try {
+    if (!window.CURATED || !window.CURATED[key]) return null;
+    var ids = window.CURATED[key];
+    if (!Array.isArray(ids) || !ids.length) return null;
+    var byId = {}; PRODUCTS.forEach(function(p){ byId[p.id] = p; });
+    var out = ids.map(function(id){ return byId[id]; }).filter(Boolean);
+    return out.length ? out : null;
+  } catch(e){ return null; }
+}
+window.curatedProducts = curatedProducts;
+
 // Event shortcut click handler (staff-managed events)
 function eventClick(action, category){
   try {
@@ -2263,26 +2276,26 @@ function renderHome() {
     if (el) el.innerHTML = products.map(renderProductCard).join('');
   };
 
-  // Best Sellers — top 16 by pseudoSold
-  const bestSellers = PRODUCTS.slice().sort((a,b) => pseudoSold(b.id) - pseudoSold(a.id)).slice(0, 16);
+  // Best Sellers — curated (staff) if set, else top 16 by pseudoSold
+  const bestSellers = curatedProducts('best') || PRODUCTS.slice().sort((a,b) => pseudoSold(b.id) - pseudoSold(a.id)).slice(0, 16);
   fillSection('bestSellersGrid', bestSellers);
 
-  // New Arrivals — top 16 by isNewArrival hash
-  const newArrivals = PRODUCTS.filter(p => isNewArrival(p.id)).slice(0, 16);
+  // New Arrivals — curated if set, else isNewArrival hash
+  const newArrivals = curatedProducts('new') || PRODUCTS.filter(p => isNewArrival(p.id)).slice(0, 16);
   fillSection('newArrivalsGrid', newArrivals);
 
-  // Daily Lowest Price — cheapest 16 on sale
-  const lowest = PRODUCTS.filter(p => isOnSale(p.id) && p.price > 0).slice().sort((a,b) => a.price - b.price).slice(0, 16);
+  // Daily Lowest Price — curated (sale) if set, else cheapest 16 on sale
+  const lowest = curatedProducts('sale') || PRODUCTS.filter(p => isOnSale(p.id) && p.price > 0).slice().sort((a,b) => a.price - b.price).slice(0, 16);
   fillSection('lowestPriceGrid', lowest);
 
-  // For You — 1 pick from each category (16 categories — guaranteed variety)
+  // For You — curated (popular) if set, else fixed picks
   const popularIds = [
     '08193K', '08479K', '08961K', '09700J', '10530T', '10855K', '10888K', 'LC2514',
     'IL1018B', 'IL1019B', 'KB1049', '04258K', 'CJ100', '3734', '00009D', '80089',
     '8087072', '6343915', '146030', '60254', '417200', '418000', 'HD1006', 'HD1013',
     '440768', 'KC4505', 'cj_1020697', 'cj_1020698', '10955', 'EH1069', 'KK6070RD', 'KK6070SQ'
   ];
-  const popular = popularIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+  const popular = curatedProducts('popular') || popularIds.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   fillSection('popularGrid', popular);
 
   renderCatTiles();
@@ -2391,6 +2404,17 @@ function renderBrowse() {
   // Filter pipeline
   const mode = state.browseMode || 'all';
   let filtered = PRODUCTS.slice();
+  // Curated collection override: staff-picked product list for this mode/category
+  let curatedKey = null;
+  if (window.CURATED) {
+    if (['best','new','sale','weekly','deals'].indexOf(mode) >= 0 && curatedProducts(mode)) curatedKey = mode;
+    else if (state.category && curatedProducts('cat_' + state.category)) curatedKey = 'cat_' + state.category;
+  }
+  let curatedOrder = false;
+  if (curatedKey) {
+    filtered = curatedProducts(curatedKey);
+    curatedOrder = true; // preserve staff order unless an explicit sort is chosen
+  } else {
   if (mode === 'sale') filtered = filtered.filter(p => isOnSale(p.id));
   else if (mode === 'new') filtered = filtered.filter(p => isNewArrival(p.id));
   else if (mode === 'best') filtered = filtered.filter(p => isBestSeller(p.id));
@@ -2399,6 +2423,7 @@ function renderBrowse() {
   else if (mode === 'brand' && state.brandFilter) filtered = filtered.filter(p => normalizeBrand(p.brand) === state.brandFilter);
 
   if (state.category) filtered = filtered.filter(p => p.category === state.category);
+  }
 
   if (state.search) {
     const q = state.search.toLowerCase();
@@ -2423,7 +2448,7 @@ function renderBrowse() {
   if (sort === 'price-asc') filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
   else if (sort === 'price-desc') filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
   else if (sort === 'new') filtered.sort((a, b) => pseudoHash(b.id, 'new') - pseudoHash(a.id, 'new'));
-  else /* popular */ filtered.sort((a, b) => pseudoSold(b.id) - pseudoSold(a.id));
+  else if (!curatedOrder) /* popular */ filtered.sort((a, b) => pseudoSold(b.id) - pseudoSold(a.id));
 
   filtered = filtered.slice(0, 240);
 
@@ -4115,6 +4140,25 @@ renderModeBar();
         window.EVENTS_CFG = arr;
         if (typeof renderHomeSidebar === 'function' && state.page === 'home') renderHomeSidebar();
       }
+    }).catch(function(){});
+  } catch(e){}
+})();
+
+// ==================== CURATED COLLECTIONS (staff-picked products per event) ====================
+(function loadCurated(){
+  try {
+    var url = SHOP_FB_DB + '/shopCatalog/curated.json';
+    fetch(url, { cache:'no-store' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(cur){
+      if (!cur || typeof cur !== 'object') return;
+      // normalize: each value should be an array of ids
+      var norm = {};
+      Object.keys(cur).forEach(function(k){
+        var v = cur[k];
+        if (Array.isArray(v)) norm[k] = v.filter(Boolean);
+        else if (v && typeof v === 'object') norm[k] = Object.keys(v).map(function(i){ return v[i]; }).filter(Boolean);
+      });
+      window.CURATED = norm;
+      if (typeof render === 'function') render();
     }).catch(function(){});
   } catch(e){}
 })();
