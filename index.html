@@ -2163,6 +2163,17 @@ function renderProductCard(p) {
   </div>`;
 }
 
+// Event shortcut click handler (staff-managed events)
+function eventClick(action, category){
+  try {
+    if (action === 'category' && category) { state.category = category; navigate('browse'); }
+    else if (action === 'pickup') { setDeliveryMethod('pickup'); navigate('browse'); }
+    else if (action === 'all') { state.category = null; navigate('browse'); }
+    else { gotoBrowseMode(action); }
+  } catch(e){}
+}
+window.eventClick = eventClick;
+
 function renderHomeSidebar() {
   const sidebar = document.getElementById('homeSidebar');
   if (!sidebar) return;
@@ -2177,8 +2188,18 @@ function renderHomeSidebar() {
   const ebtLbl = ko ? 'EBT/SNAP' : es ? 'EBT/SNAP' : 'EBT/SNAP';
   const ramyunFestLbl = ko ? '라면 페스티벌' : es ? 'Festival de Ramen' : 'Ramyun Festival';
 
-  // EVENTS section (Weee top-of-sidebar pattern: HOT/NEW/SALE badges)
+  // EVENTS section — staff-managed via Firebase (window.EVENTS_CFG) if available, else defaults
   let html = `<div class="home-sidebar-head">${eventsLbl}</div>`;
+  if (Array.isArray(window.EVENTS_CFG) && window.EVENTS_CFG.length) {
+    window.EVENTS_CFG.forEach(function(e){
+      var badge = e.badge ? `<span class="sidebar-badge ${String(e.badge).toLowerCase()}">${e.badge}</span>` : '';
+      var icon = e.icon || '⭐';
+      var label = e.label || '';
+      html += `<div class="sidebar-item event-row" onclick="eventClick('${e.action||'best'}','${e.category||''}')">
+        <span class="sidebar-icon">${icon}</span>${label}${badge}
+      </div>`;
+    });
+  } else {
   html += `<div class="sidebar-item event-row" onclick="gotoBrowseMode('best')">
     <span class="sidebar-icon">🏆</span>${bestLbl}<span class="sidebar-badge hot">HOT</span>
   </div>`;
@@ -2197,6 +2218,7 @@ function renderHomeSidebar() {
   html += `<div class="sidebar-item event-row" onclick="setDeliveryMethod('pickup');navigate('browse')">
     <span class="sidebar-icon">🥬</span>${ebtLbl}
   </div>`;
+  }
 
   html += `<div class="home-sidebar-divider"></div>`;
   html += `<div class="home-sidebar-head">${catsLbl}</div>`;
@@ -4079,6 +4101,22 @@ renderModeBar();
       if (typeof render === 'function') render();
     }).catch(function(){ /* keep static catalog */ });
   } catch (e) { /* keep static catalog */ }
+})();
+
+// ==================== LIVE EVENTS (staff-managed sidebar shortcuts) ====================
+(function loadEvents(){
+  try {
+    var url = SHOP_FB_DB + '/shopCatalog/events.json';
+    fetch(url, { cache:'no-store' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(ev){
+      if (!ev) return;
+      var arr = Array.isArray(ev) ? ev.filter(Boolean) : Object.keys(ev).map(function(k){ return ev[k]; });
+      arr = arr.filter(function(e){ return e && e.label && !e.hidden; }).sort(function(a,b){ return (a.order||0)-(b.order||0); });
+      if (arr.length) {
+        window.EVENTS_CFG = arr;
+        if (typeof renderHomeSidebar === 'function' && state.page === 'home') renderHomeSidebar();
+      }
+    }).catch(function(){});
+  } catch(e){}
 })();
 
 // ==================== COMING SOON NOTICE (staff-toggleable, dismissable) ====================
