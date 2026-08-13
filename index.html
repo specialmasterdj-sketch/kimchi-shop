@@ -1752,6 +1752,9 @@ function setLang(lang) {
     if (LANG[lang]?.[key]) el.textContent = LANG[lang][key];
   });
   render();
+  // If a product-detail popup is open, re-render it in the new language
+  const openPd = document.querySelector('.pd-overlay');
+  if (openPd && openPd.dataset.pid) { const pid = openPd.dataset.pid; openPd.remove(); showProductDetail(pid); }
 }
 
 // ==================== NAVIGATION ====================
@@ -1968,6 +1971,7 @@ function showProductDetail(productId) {
 
   const overlay = document.createElement('div');
   overlay.className = 'pd-overlay';
+  overlay.dataset.pid = productId;
   overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
   overlay.innerHTML = `
     <div class="pd-modal">
@@ -1982,7 +1986,7 @@ function showProductDetail(productId) {
         <div class="pd-meta">
           ${catName ? `<span class="pd-meta-pill cat">${catIcon} ${catName}</span>` : ''}
           <span class="pd-meta-pill origin">${origin.flag} ${state.lang === 'ko' ? origin.kr : origin.en}</span>
-          <span class="pd-meta-pill">✓ In Stock</span>
+          <span class="pd-meta-pill">✓ ${state.lang === 'ko' ? '재고 있음' : state.lang === 'es' ? 'En stock' : 'In Stock'}</span>
         </div>
         <div class="pd-price-row">
           <span class="pd-price">${formatPrice(showDisc ? memberPrice : p.price)}</span>
