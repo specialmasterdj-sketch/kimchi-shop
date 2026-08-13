@@ -2280,7 +2280,7 @@ function renderHome() {
   const bestSellers = curatedProducts('best') || PRODUCTS.slice().sort((a,b) => pseudoSold(b.id) - pseudoSold(a.id)).slice(0, 16);
   fillSection('bestSellersGrid', bestSellers);
 
-  // New Arrivals — curated if set, else isNewArrival hash
+  // New Arrivals — curated if set, else isNewArrival hash (staff curate real new arrivals via events)
   const newArrivals = curatedProducts('new') || PRODUCTS.filter(p => isNewArrival(p.id)).slice(0, 16);
   fillSection('newArrivalsGrid', newArrivals);
 
@@ -2342,7 +2342,10 @@ function renderCatSections() {
   let html = '';
   themed.forEach(t => {
     if (!CATEGORIES[t.cat]) return;
-    const items = PRODUCTS.filter(p => p.category === t.cat).slice(0, 16);
+    // staff-added (custom) products show first, so newly-entered items are visible in their category
+    const items = PRODUCTS.filter(p => p.category === t.cat)
+      .sort((a,b) => ((b._custom?1:0)-(a._custom?1:0)) || ((b._createdAt||0)-(a._createdAt||0)))
+      .slice(0, 16);
     if (items.length < 4) return;
     const title = ko ? t.ko : es ? t.es : t.en;
     html += `<section class="hp-section">
@@ -4117,7 +4120,9 @@ renderModeBar();
             category: o.category || 'pantry',
             price: +o.price || 0,
             image: o.image || '',
-            vendor: o.createdBy || ''
+            vendor: o.createdBy || '',
+            _custom: true,
+            _createdAt: o.createdAt || 0
           });
         }
       });
