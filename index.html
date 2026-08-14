@@ -1082,8 +1082,8 @@ input, select { font-family: inherit; }
 </style>
 </head>
 <body>
-<style>.km-back{position:fixed;top:10px;left:10px;z-index:9999;background:#1a5c3a;color:#fff!important;border-radius:8px;padding:8px 14px;font-size:.82em;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}</style>
-<a class="km-back" href="https://specialmasterdj-sketch.github.io/kfood-guide/apps.html" onclick="if(history.length>1){event.preventDefault();history.back();}">← All Apps</a>
+<style>.km-home{position:fixed;top:10px;left:10px;z-index:9999;background:#D32F2F;color:#fff!important;border-radius:8px;padding:8px 14px;font-size:.82em;font-weight:800;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer}</style>
+<a class="km-home" href="#" onclick="event.preventDefault();navigate('home');window.scrollTo({top:0,behavior:'smooth'})">🏠 <span id="t-home-btn">홈</span></a>
 
 <!-- HEADER -->
 <div class="header">
@@ -1578,7 +1578,7 @@ window.addEventListener('load', resetHeroTimer);
 const LANG = {
   en: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
-    'cattiles-title': 'Shop by Category', 'cattiles-more': 'See all →',
+    'cattiles-title': 'Shop by Category', 'cattiles-more': 'See all →', 'home-btn': 'Home',
     'shop-now': 'Shop Now', 'clearance': 'Clearance Deals',
     'categories': 'Categories', 'see-all': 'See All',
     'popular': 'Popular Products', 'pickup-title': 'Pickup & Delivery',
@@ -1632,7 +1632,7 @@ const LANG = {
   },
   ko: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
-    'cattiles-title': '카테고리별 쇼핑', 'cattiles-more': '전체 보기 →',
+    'cattiles-title': '카테고리별 쇼핑', 'cattiles-more': '전체 보기 →', 'home-btn': '홈',
     'shop-now': '쇼핑하기', 'clearance': '마감 할인',
     'categories': '카테고리', 'see-all': '전체 보기',
     'popular': '인기 상품', 'pickup-title': '픽업 & 배달',
@@ -1686,7 +1686,7 @@ const LANG = {
   },
   es: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
-    'cattiles-title': 'Comprar por Categoría', 'cattiles-more': 'Ver todo →',
+    'cattiles-title': 'Comprar por Categoría', 'cattiles-more': 'Ver todo →', 'home-btn': 'Inicio',
     'shop-now': 'Comprar', 'clearance': 'Ofertas',
     'categories': 'Categorias', 'see-all': 'Ver Todo',
     'popular': 'Productos Populares', 'pickup-title': 'Recogida y Entrega',
