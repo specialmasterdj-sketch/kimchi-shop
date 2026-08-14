@@ -1082,12 +1082,10 @@ input, select { font-family: inherit; }
 </style>
 </head>
 <body>
-<style>.km-home{position:fixed;top:10px;left:10px;z-index:9999;background:#D32F2F;color:#fff!important;border-radius:8px;padding:8px 14px;font-size:.82em;font-weight:800;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer}</style>
-<a class="km-home" href="#" onclick="event.preventDefault();navigate('home');window.scrollTo({top:0,behavior:'smooth'})">🏠 <span id="t-home-btn">홈</span></a>
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-logo" onclick="navigate('home');window.scrollTo(0,0)" style="cursor:pointer"><img src="kimchi_logo_only.png" alt="KIMCHI" class="header-logo-img" onerror="this.onerror=null;this.src='kimchi_logo_clean.png'"></div>
+  <div class="header-logo" onclick="navigate('home');window.scrollTo(0,0)" style="cursor:pointer" title="Home"><img src="kimchi_logo_only.png" alt="KIMCHI" class="header-logo-img" onerror="this.onerror=null;this.src='kimchi_logo_clean.png'"></div>
   <div class="header-search">
     <input type="text" id="searchInput" placeholder="Search products, brands…" oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" onblur="setTimeout(closeSuggest, 180)" onkeydown="if(event.key==='Escape')closeSuggest();else if(event.key==='Enter'){closeSuggest();if(state.page!=='browse')navigate('browse');}" autocomplete="off">
     <button class="header-search-btn" type="button" aria-label="Search" onclick="if(state.page!=='browse')navigate('browse');closeSuggest()">
