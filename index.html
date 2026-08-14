@@ -2383,13 +2383,13 @@ function renderBrowse() {
 
   const validCats = allCats.filter(c => catCounts[c] > 0);
 
-  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.category=null;renderBrowse()">
+  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.category=null;renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
     <span class="sidebar-icon">🛒</span>${t('all')}
   </div>`;
   validCats.forEach(catId => {
     const cat = CATEGORIES[catId];
     const name = state.lang === 'ko' ? cat.kr : state.lang === 'es' ? cat.es : cat.en;
-    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.category='${catId}';renderBrowse()">
+    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.category='${catId}';renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
       <span class="sidebar-icon">${cat.icon}</span>${name}
     </div>`;
   });
