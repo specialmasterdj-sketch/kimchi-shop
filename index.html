@@ -1026,7 +1026,7 @@ input, select { font-family: inherit; }
   .price-now { font-size: 13px; }
 }
 @media (min-width: 1024px) {
-  .product-grid { grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .product-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
   .cat-grid { grid-template-columns: repeat(8, 1fr); }
   /* Compact Weee!-style card — keep square aspect ratio for image balance */
   .product-img { aspect-ratio: 1 / 1; }
@@ -1046,11 +1046,11 @@ input, select { font-family: inherit; }
   .section-title { font-size: 17px; margin-bottom: 10px; }
 }
 @media (min-width: 1280px) {
-  .product-grid { grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .product-grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .product-img { aspect-ratio: 1 / 1; }
 }
 @media (min-width: 1600px) {
-  .product-grid { grid-template-columns: repeat(8, 1fr); }
+  .product-grid { grid-template-columns: repeat(5, 1fr); gap: 14px; }
 }
 @media (max-width: 380px) {
   .cat-grid { grid-template-columns: repeat(3, 1fr); }
@@ -2478,7 +2478,7 @@ function renderBrowse() {
 
   // Render: flat grid for search / sort != popular / empty; brand groups for popular
   const grid = document.getElementById('browseGrid');
-  const flatMode = state.search || filtered.length === 0 || (state.sort && state.sort !== 'popular');
+  const flatMode = true; // always flat grid — no brand grouping (per request)
   if (flatMode) {
     grid.className = 'product-grid';
     grid.innerHTML = filtered.map(renderProductCard).join('') || `<div style="padding:32px;text-align:center;color:#888">No products found</div>`;
