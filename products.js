@@ -5,9 +5,9 @@
 
 const CATEGORIES = {
   "ramyun": {
-    "en": "Ramyun",
-    "kr": "라면",
-    "es": "Ramen",
+    "en": "Ramyun & Noodles",
+    "kr": "라면과 국수",
+    "es": "Ramen y Fideos",
     "icon": "🍜"
   },
   "snacks": {
