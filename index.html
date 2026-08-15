@@ -2129,9 +2129,7 @@ function renderProductCard(p) {
     leftBadge = `<div class="badge-sale">-${discPct}%</div>`;
   }
   // Social proof (deterministic from id) — top-right
-  const sold = pseudoSold(p.id);
   let socialHtml = '';
-  if (sold > 1850) socialHtml = `<div class="badge-social bestseller" title="Best Seller">BEST</div>`;
   // Display name: prefer Korean name in KO mode if available
   const displayName = (state.lang === 'ko' && p.nameKr) ? p.nameKr : p.name;
   const initials = (p.brand || p.name || '??').replace(/[^A-Za-z가-힯0-9]/g, '').slice(0, 2).toUpperCase() || '••';
@@ -2259,7 +2257,7 @@ function renderHome() {
   // catGrid section removed (duplicate of sidebar) — skip if not present
   const catGridEl = document.getElementById('catGrid');
   if (catGridEl) {
-    const mainCats = ['ramyun','snacks','beverages','tea','frozen','ready','kimchi','rice','meat','produce','dairy','seaweed','seasonings','pantry','bakery','houseware'];
+    const mainCats = ['ramyun','snacks','beverages','alcohol','tea','frozen','ready','kimchi','rice','meat','produce','dairy','seaweed','seasonings','pantry','bakery','houseware'];
     const catHtml = mainCats.map(catId => {
       const cat = CATEGORIES[catId];
       if (!cat) return '';
@@ -2314,7 +2312,7 @@ function renderCatTiles() {
   const counts = {};
   PRODUCTS.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
   // Hmart-like ordering of departments
-  const order = ['kimchi','ramyun','snacks','frozen','beverages','tea','ready','rice','meat','produce','seaweed','dairy','seasonings','pantry','bakery','houseware'];
+  const order = ['kimchi','ramyun','snacks','frozen','beverages','alcohol','tea','ready','rice','meat','produce','seaweed','dairy','seasonings','pantry','bakery','houseware'];
   const cats = order.filter(c => CATEGORIES[c] && counts[c] > 0);
   el.innerHTML = cats.map(catId => {
     const cat = CATEGORIES[catId];
@@ -4086,8 +4084,28 @@ function showRecipeToast(msg) {
   setTimeout(() => t.remove(), 2400);
 }
 
+// ==================== ALCOHOL AUTO-CLASSIFY ====================
+// Moves alcoholic drinks (sake/soju/makgeolli/wine/beer/…) out of "beverages"
+// into the dedicated "alcohol" category — for both static and custom products.
+var __ALC_RX = /\b(sake|sakekasu|soju|makgeolli|makkolli|makkoli|nigori|junmai|ginjo|daiginjo|cheongju|bekseju|bokbunja|umeshu|shochu|rice wine|plum wine|wine|beer|lager|whisk(?:e)?y|vodka|liquor|spirit|jinro|chamisul|chum ?churum|hwayo|bael)\b/i;
+function isAlcohol(p){
+  if(!p) return false;
+  var en = ((p.name||'')+' '+(p.brand||'')).toLowerCase();
+  if(__ALC_RX.test(en)) return true;
+  var kr = (p.name||'')+' '+(p.nameKr||'');
+  if(/(사케|사께|소주|막걸리|청주|약주|복분자주|매실주|맥주|와인|위스키|보드카|정종|리큐르|고량주|백세주|청하)/.test(kr)) return true;
+  return false;
+}
+function classifyAlcohol(){
+  try{
+    if(typeof PRODUCTS==='undefined'||!Array.isArray(PRODUCTS)) return;
+    PRODUCTS.forEach(function(p){ if(p && p.category==='beverages' && isAlcohol(p)) p.category='alcohol'; });
+  }catch(e){}
+}
+
 // ==================== INIT ====================
 setLang(state.lang);
+classifyAlcohol();
 render();
 renderModeBar();
 
@@ -4130,6 +4148,7 @@ renderModeBar();
       });
       // remove hidden products
       for (var i = PRODUCTS.length - 1; i >= 0; i--) { if (hideIds[PRODUCTS[i].id]) PRODUCTS.splice(i, 1); }
+      if (typeof classifyAlcohol === 'function') classifyAlcohol();
       if (typeof render === 'function') render();
     }).catch(function(){ /* keep static catalog */ });
   } catch (e) { /* keep static catalog */ }
