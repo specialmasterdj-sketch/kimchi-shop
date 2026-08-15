@@ -15,6 +15,11 @@ const CATEGORIES = {
     "kr": "과자 & 스낵",
     "es": "Snacks",
     "icon": "🍿"
+  },"alcohol": {
+    "en": "Wine & Liquor",
+    "kr": "주류",
+    "es": "Licores",
+    "icon": "🍶"
   },
   "beverages": {
     "en": "Beverages",
