@@ -1258,7 +1258,7 @@ input, select { font-family: inherit; }
   <div class="cat-tiles-wrap">
     <div class="cat-tiles-head">
       <div class="cat-tiles-title"><span class="ct-icon">🧺</span><span id="t-cattiles-title">Shop by Category</span></div>
-      <button class="cat-tiles-more" onclick="state.category=null;navigate('browse')" id="t-cattiles-more">See all →</button>
+      <button class="cat-tiles-more" onclick="state.browseMode='all';state.brandFilter=null;state.category=null;navigate('browse')" id="t-cattiles-more">See all →</button>
     </div>
     <div class="cat-tiles" id="catTiles"></div>
   </div>
@@ -2228,7 +2228,7 @@ function renderHomeSidebar() {
   html += `<div class="sidebar-item event-row" onclick="gotoBrowseMode('new')">
     <span class="sidebar-icon">✨</span>${newLbl}<span class="sidebar-badge new">NEW</span>
   </div>`;
-  html += `<div class="sidebar-item event-row" onclick="state.category='ramyun';navigate('browse')">
+  html += `<div class="sidebar-item event-row" onclick="state.browseMode='all';state.brandFilter=null;state.category='ramyun';navigate('browse')">
     <span class="sidebar-icon">🍜</span>${ramyunFestLbl}<span class="sidebar-badge new">NEW</span>
   </div>`;
   html += `<div class="sidebar-item event-row" onclick="gotoBrowseMode('weekly')">
@@ -2241,7 +2241,7 @@ function renderHomeSidebar() {
 
   html += `<div class="home-sidebar-divider"></div>`;
   html += `<div class="home-sidebar-head">${catsLbl}</div>`;
-  html += `<div class="sidebar-item" onclick="state.category=null;navigate('browse')">
+  html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.category=null;navigate('browse')">
     <span class="sidebar-icon">🛒</span>${allLbl}
   </div>`;
   const allCats = Object.keys(CATEGORIES);
@@ -2251,7 +2251,7 @@ function renderHomeSidebar() {
   validCats.forEach(catId => {
     const cat = CATEGORIES[catId];
     const name = ko ? cat.kr : es ? cat.es : cat.en;
-    html += `<div class="sidebar-item" onclick="state.category='${catId}';navigate('browse')">
+    html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.category='${catId}';navigate('browse')">
       <span class="sidebar-icon">${cat.icon}</span>${name}
     </div>`;
   });
@@ -2323,7 +2323,7 @@ function renderCatTiles() {
   el.innerHTML = cats.map(catId => {
     const cat = CATEGORIES[catId];
     const name = ko ? cat.kr : es ? cat.es : cat.en;
-    return `<button class="cat-tile" onclick="state.category='${catId}';navigate('browse')">
+    return `<button class="cat-tile" onclick="state.browseMode='all';state.brandFilter=null;state.category='${catId}';navigate('browse')">
       <span class="cat-tile-ic">${cat.icon}</span>
       <span class="cat-tile-nm">${name}</span>
     </button>`;
@@ -2357,7 +2357,7 @@ function renderCatSections() {
     html += `<section class="hp-section">
       <div class="hp-section-head">
         <h3 class="hp-section-title"><span class="hp-icon">${t.icon}</span><span>${title}</span></h3>
-        <button class="hp-section-more" onclick="state.category='${t.cat}';navigate('browse')">${seeAll}</button>
+        <button class="hp-section-more" onclick="state.browseMode='all';state.brandFilter=null;state.category='${t.cat}';navigate('browse')">${seeAll}</button>
       </div>
       <div class="hp-scroll">${items.map(renderProductCard).join('')}</div>
     </section>`;
@@ -2385,13 +2385,13 @@ function renderBrowse() {
 
   const validCats = allCats.filter(c => catCounts[c] > 0);
 
-  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.category=null;renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
+  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.browseMode='all';state.brandFilter=null;state.category=null;renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
     <span class="sidebar-icon">🛒</span>${t('all')}
   </div>`;
   validCats.forEach(catId => {
     const cat = CATEGORIES[catId];
     const name = state.lang === 'ko' ? cat.kr : state.lang === 'es' ? cat.es : cat.en;
-    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.category='${catId}';renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
+    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.browseMode='all';state.brandFilter=null;state.category='${catId}';renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
       <span class="sidebar-icon">${cat.icon}</span>${name}
     </div>`;
   });
