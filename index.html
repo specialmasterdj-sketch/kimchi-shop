@@ -4178,7 +4178,7 @@ function renderCatMega(){
   var mainEl=document.getElementById('catMegaMain'); if(!mainEl||typeof CATEGORIES==='undefined') return;
   var counts={}; PRODUCTS.forEach(function(p){ counts[p.category]=(counts[p.category]||0)+1; });
   var cats=CAT_MEGA_ORDER.filter(function(c){ return CATEGORIES[c] && counts[c]>0; });
-  mainEl.innerHTML=cats.map(function(c){ var cat=CATEGORIES[c]; return '<div class="cmm-item" data-cat="'+c+'" onmouseenter="openMegaCat(\''+c+'\')" onclick="selectCat(\''+c+'\')"><span class="cmm-ic">'+(cat.icon||'')+'</span><span class="cmm-nm">'+catNameL(c)+'</span><span class="cmm-arrow">›</span></div>'; }).join('');
+  mainEl.innerHTML=cats.map(function(c){ var cat=CATEGORIES[c]; return '<div class="cmm-item" data-cat="'+c+'" onmouseenter="openMegaCat(\''+c+'\')" onclick="openMegaCat(\''+c+'\')"><span class="cmm-ic">'+(cat.icon||'')+'</span><span class="cmm-nm">'+catNameL(c)+'</span><span class="cmm-arrow">›</span></div>'; }).join('');
   if(cats.length) openMegaCat(cats[0]);
 }
 function openMegaCat(cat){
