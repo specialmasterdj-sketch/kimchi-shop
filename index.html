@@ -1143,6 +1143,12 @@ input, select { font-family: inherit; }
   .cat-mega-sub { width: 175px; }
   .cat-mega { left: 0; }
 }
+.subcat-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 2px 12px; }
+.subcat-chip { display: inline-flex; align-items: center; gap: 5px; background: #fff; border: 1.5px solid #e5e5e5; color: var(--ink); border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+.subcat-chip:hover { border-color: var(--red); color: var(--red); }
+.subcat-chip.active { background: var(--red); border-color: var(--red); color: #fff; }
+.subcat-chip .sbc-ct { font-size: 11px; font-weight: 700; opacity: 0.6; }
+.subcat-chip.active .sbc-ct { opacity: 0.85; }
 </style>
 <!-- MAIN NAV -->
 <nav class="main-nav" id="mainNav">
@@ -2512,7 +2518,20 @@ function renderBrowse() {
     { v:'price-desc', l: ko?'높은 가격순':es?'Precio: Mayor':'Price: High to Low' },
     { v:'new', l: ko?'신상품순':es?'Más Nuevo':'Newest' }
   ];
-  document.getElementById('browseToolbar').innerHTML = `<div class="browse-toolbar">
+  // Subcategory chips (shown when inside a category that has subcategories)
+  let subBar = '';
+  if (state.category && window.SUBCATS && SUBCATS[state.category]) {
+    const _catP = PRODUCTS.filter(p => p.category === state.category);
+    const _sc = {}; _catP.forEach(p => { const k = subcatOf(p); if (k) _sc[k] = (_sc[k]||0)+1; });
+    const _avail = SUBCATS[state.category].filter(it => (_sc[it[0]]||0) > 0);
+    if (_avail.length > 1) {
+      const _allLbl = state.lang==='ko'?'전체':state.lang==='es'?'Todo':'All';
+      subBar = `<div class="subcat-bar"><button class="subcat-chip ${!state.subcat?'active':''}" onclick="state.subcat=null;renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">${_allLbl}</button>` +
+        _avail.map(it => `<button class="subcat-chip ${state.subcat===it[0]?'active':''}" onclick="state.subcat='${it[0]}';renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">${it[1][state.lang]||it[1].en}<span class="sbc-ct">${_sc[it[0]]}</span></button>`).join('') +
+        `</div>`;
+    }
+  }
+  document.getElementById('browseToolbar').innerHTML = subBar + `<div class="browse-toolbar">
     <div class="browse-count" id="browseCount">${filtered.length}+ ${itemsLbl}</div>
     <div class="browse-sort">
       <label>${sortLbl}:</label>
