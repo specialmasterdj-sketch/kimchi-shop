@@ -1119,9 +1119,41 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
+<style>
+.cat-mega-wrap { position: relative; flex-shrink: 0; margin-right: 6px; }
+.cat-mega-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; border: none; border-radius: 8px; padding: 7px 14px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.cat-mega-btn .cmb-chev { font-size: 10px; }
+.cat-mega { display: none; position: fixed; top: 96px; left: 8px; z-index: 4000; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.18); overflow: hidden; }
+.cat-mega.open { display: flex; }
+.cat-mega-main { width: 210px; max-height: 70vh; overflow-y: auto; border-right: 1px solid #f0f0f0; padding: 6px 0; background: #fafafa; }
+.cmm-item { display: flex; align-items: center; gap: 9px; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; white-space: nowrap; }
+.cmm-item:hover, .cmm-item.active { background: #fff; color: var(--red); }
+.cmm-item.active { box-shadow: inset 3px 0 0 var(--red); }
+.cmm-ic { font-size: 17px; width: 22px; text-align: center; flex-shrink: 0; }
+.cmm-nm { flex: 1; }
+.cmm-arrow { color: #ccc; font-size: 14px; }
+.cat-mega-sub { width: 230px; max-height: 70vh; overflow-y: auto; padding: 10px 8px; }
+.cms-head { font-size: 12px; font-weight: 800; color: #999; text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 12px 8px; }
+.cms-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; border-radius: 8px; }
+.cms-item:hover { background: var(--red-light); color: var(--red); }
+.cms-ct { font-size: 11px; color: #bbb; font-weight: 700; }
+.cms-all { color: var(--red); font-weight: 800; margin-top: 4px; border-top: 1px solid #f2f2f2; border-radius: 0; }
+@media (max-width: 640px) {
+  .cat-mega-main { width: 150px; }
+  .cat-mega-sub { width: 175px; }
+  .cat-mega { left: 0; }
+}
+</style>
 <!-- MAIN NAV -->
 <nav class="main-nav" id="mainNav">
   <div class="main-nav-inner">
+    <div class="cat-mega-wrap" id="catMegaWrap">
+      <button class="cat-mega-btn" onclick="toggleCatMega(event)"><span class="cmb-bars">☰</span> <span id="t-cat-mega">Categories</span> <span class="cmb-chev">▾</span></button>
+      <div class="cat-mega" id="catMega">
+        <div class="cat-mega-main" id="catMegaMain"></div>
+        <div class="cat-mega-sub" id="catMegaSub"></div>
+      </div>
+    </div>
     <a class="nav-store" onclick="openStorePicker()">
       <span class="pin">📍</span>
       <span class="store-label" id="t-nav-pickup">Pickup at</span>
@@ -1258,7 +1290,7 @@ input, select { font-family: inherit; }
   <div class="cat-tiles-wrap">
     <div class="cat-tiles-head">
       <div class="cat-tiles-title"><span class="ct-icon">🧺</span><span id="t-cattiles-title">Shop by Category</span></div>
-      <button class="cat-tiles-more" onclick="state.browseMode='all';state.brandFilter=null;state.category=null;navigate('browse')" id="t-cattiles-more">See all →</button>
+      <button class="cat-tiles-more" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category=null;navigate('browse')" id="t-cattiles-more">See all →</button>
     </div>
     <div class="cat-tiles" id="catTiles"></div>
   </div>
@@ -1440,6 +1472,7 @@ const state = {
   search: '',
   browseMode: 'all',
   brandFilter: null,
+  subcat: null,
   sort: 'popular',
   cart: JSON.parse(localStorage.getItem('kimchi_cart') || '{}'),
   user: JSON.parse(localStorage.getItem('kimchi_user') || 'null'),
@@ -1584,7 +1617,7 @@ window.addEventListener('load', resetHeroTimer);
 const LANG = {
   en: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
-    'cattiles-title': 'Shop by Category', 'cattiles-more': 'See all →', 'home-btn': 'Home',
+    'cattiles-title': 'Shop by Category', 'cattiles-more': 'See all →', 'home-btn': 'Home', 'cat-mega': 'Categories',
     'shop-now': 'Shop Now', 'clearance': 'Clearance Deals',
     'categories': 'Categories', 'see-all': 'See All',
     'popular': 'Popular Products', 'pickup-title': 'Pickup & Delivery',
@@ -1638,7 +1671,7 @@ const LANG = {
   },
   ko: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
-    'cattiles-title': '카테고리별 쇼핑', 'cattiles-more': '전체 보기 →', 'home-btn': '홈',
+    'cattiles-title': '카테고리별 쇼핑', 'cattiles-more': '전체 보기 →', 'home-btn': '홈', 'cat-mega': '카테고리',
     'shop-now': '쇼핑하기', 'clearance': '마감 할인',
     'categories': '카테고리', 'see-all': '전체 보기',
     'popular': '인기 상품', 'pickup-title': '픽업 & 배달',
@@ -1692,7 +1725,7 @@ const LANG = {
   },
   es: {
     'hero-tagline': 'CLEAN · SAFE · TRUST',
-    'cattiles-title': 'Comprar por Categoría', 'cattiles-more': 'Ver todo →', 'home-btn': 'Inicio',
+    'cattiles-title': 'Comprar por Categoría', 'cattiles-more': 'Ver todo →', 'home-btn': 'Inicio', 'cat-mega': 'Categorías',
     'shop-now': 'Comprar', 'clearance': 'Ofertas',
     'categories': 'Categorias', 'see-all': 'Ver Todo',
     'popular': 'Productos Populares', 'pickup-title': 'Recogida y Entrega',
@@ -1758,6 +1791,7 @@ function setLang(lang) {
     if (LANG[lang]?.[key]) el.textContent = LANG[lang][key];
   });
   render();
+  if (typeof renderCatMega === 'function') { try { renderCatMega(); } catch(e){} }
   // If a product-detail popup is open, re-render it in the new language
   const openPd = document.querySelector('.pd-overlay');
   if (openPd && openPd.dataset.pid) { const pid = openPd.dataset.pid; openPd.remove(); showProductDetail(pid); }
@@ -2228,7 +2262,7 @@ function renderHomeSidebar() {
   html += `<div class="sidebar-item event-row" onclick="gotoBrowseMode('new')">
     <span class="sidebar-icon">✨</span>${newLbl}<span class="sidebar-badge new">NEW</span>
   </div>`;
-  html += `<div class="sidebar-item event-row" onclick="state.browseMode='all';state.brandFilter=null;state.category='ramyun';navigate('browse')">
+  html += `<div class="sidebar-item event-row" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category='ramyun';navigate('browse')">
     <span class="sidebar-icon">🍜</span>${ramyunFestLbl}<span class="sidebar-badge new">NEW</span>
   </div>`;
   html += `<div class="sidebar-item event-row" onclick="gotoBrowseMode('weekly')">
@@ -2241,7 +2275,7 @@ function renderHomeSidebar() {
 
   html += `<div class="home-sidebar-divider"></div>`;
   html += `<div class="home-sidebar-head">${catsLbl}</div>`;
-  html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.category=null;navigate('browse')">
+  html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category=null;navigate('browse')">
     <span class="sidebar-icon">🛒</span>${allLbl}
   </div>`;
   const allCats = Object.keys(CATEGORIES);
@@ -2251,7 +2285,7 @@ function renderHomeSidebar() {
   validCats.forEach(catId => {
     const cat = CATEGORIES[catId];
     const name = ko ? cat.kr : es ? cat.es : cat.en;
-    html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.category='${catId}';navigate('browse')">
+    html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category='${catId}';navigate('browse')">
       <span class="sidebar-icon">${cat.icon}</span>${name}
     </div>`;
   });
@@ -2323,7 +2357,7 @@ function renderCatTiles() {
   el.innerHTML = cats.map(catId => {
     const cat = CATEGORIES[catId];
     const name = ko ? cat.kr : es ? cat.es : cat.en;
-    return `<button class="cat-tile" onclick="state.browseMode='all';state.brandFilter=null;state.category='${catId}';navigate('browse')">
+    return `<button class="cat-tile" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category='${catId}';navigate('browse')">
       <span class="cat-tile-ic">${cat.icon}</span>
       <span class="cat-tile-nm">${name}</span>
     </button>`;
@@ -2357,7 +2391,7 @@ function renderCatSections() {
     html += `<section class="hp-section">
       <div class="hp-section-head">
         <h3 class="hp-section-title"><span class="hp-icon">${t.icon}</span><span>${title}</span></h3>
-        <button class="hp-section-more" onclick="state.browseMode='all';state.brandFilter=null;state.category='${t.cat}';navigate('browse')">${seeAll}</button>
+        <button class="hp-section-more" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category='${t.cat}';navigate('browse')">${seeAll}</button>
       </div>
       <div class="hp-scroll">${items.map(renderProductCard).join('')}</div>
     </section>`;
@@ -2374,6 +2408,10 @@ function getBrowseHero() {
   if (mode === 'weekly') return { cls: 'mode-weekly', badge: ko?'주간 광고':es?'SEMANAL':'WEEKLY ADS', title: ko?'📰 이번 주 특가':es?'📰 Ofertas de la Semana':'📰 This Week\'s Ads', sub: ko?'매주 월요일 업데이트':es?'Actualizado cada lunes':'Updated every Monday' };
   if (mode === 'deals') return { cls: 'mode-deals', badge: ko?'특별 딜':es?'OFERTA ESPECIAL':'SPECIAL DEALS', title: ko?'🎁 특별 할인':es?'🎁 Ofertas Especiales':'🎁 Special Deals', sub: ko?'한정 수량 · 빠른 마감':es?'Cantidad limitada · Termina pronto':'Limited quantity · Ending soon' };
   if (mode === 'brand' && state.brandFilter) return { cls: 'mode-brand', badge: ko?'브랜드':es?'MARCA':'BRAND', title: state.brandFilter, sub: ko?'이 브랜드의 모든 상품':es?'Todos los productos de esta marca':'All products from this brand' };
+  if (state.subcat && state.category && window.SUBCATS && SUBCATS[state.category]) {
+    var _sc = SUBCATS[state.category].find(function(x){ return x[0]===state.subcat; });
+    if (_sc) { var _c = CATEGORIES[state.category]; var _cn = _c ? (ko?(_c.kr||_c.en):es?(_c.es||_c.kr):(_c.en||_c.kr)) : ''; return { cls: 'mode-brand', badge: _cn, title: (_sc[1][state.lang]||_sc[1].en), sub: '' }; }
+  }
   return null;
 }
 
@@ -2385,13 +2423,13 @@ function renderBrowse() {
 
   const validCats = allCats.filter(c => catCounts[c] > 0);
 
-  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.browseMode='all';state.brandFilter=null;state.category=null;renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
+  let sidebarHtml = `<div class="sidebar-item ${!state.category ? 'active' : ''}" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category=null;renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
     <span class="sidebar-icon">🛒</span>${t('all')}
   </div>`;
   validCats.forEach(catId => {
     const cat = CATEGORIES[catId];
     const name = state.lang === 'ko' ? cat.kr : state.lang === 'es' ? cat.es : cat.en;
-    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.browseMode='all';state.brandFilter=null;state.category='${catId}';renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
+    sidebarHtml += `<div class="sidebar-item ${state.category === catId ? 'active' : ''}" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category='${catId}';renderBrowse();window.scrollTo({top:0,behavior:'smooth'})">
       <span class="sidebar-icon">${cat.icon}</span>${name}
     </div>`;
   });
@@ -2432,6 +2470,10 @@ function renderBrowse() {
   else if (mode === 'brand' && state.brandFilter) filtered = filtered.filter(p => normalizeBrand(p.brand) === state.brandFilter);
 
   if (state.category) filtered = filtered.filter(p => p.category === state.category);
+  }
+  // Subcategory filter (mega-menu): keep only products whose first-matching subcat === state.subcat
+  if (state.subcat && state.category && window.SUBCATS && SUBCATS[state.category]) {
+    filtered = filtered.filter(p => subcatOf(p) === state.subcat);
   }
 
   if (state.search) {
@@ -4109,10 +4151,57 @@ function classifyAlcohol(){
   }catch(e){}
 }
 
+// ==================== CATEGORY MEGA-MENU (H-Mart style, 2-level) ====================
+window.SUBCATS = {
+ ramyun:[['jjajang',{ko:'짜장·비빔',en:'Jjajang & Bibim',es:'Jjajang y Bibim'},/CHAPAGETTI|JJAJANG|짜장|BIBIM|비빔/i],['udon',{ko:'우동·국수',en:'Udon & Noodle',es:'Udon y Fideos'},/UDON|우동|국수|냉면|GLASS NOODLE/i],['cup',{ko:'컵라면',en:'Cup Ramyun',es:'Ramyun en Vaso'},/CUP/i],['bowl',{ko:'사발·큰컵',en:'Bowl',es:'Tazón'},/BOWL/i],['pack',{ko:'봉지라면',en:'Pack Ramyun',es:'Ramyun en Paquete'},/./i]],
+ snacks:[['seaweed',{ko:'김스낵',en:'Seaweed Snack',es:'Snack de Alga'},/SEAWEED|스낵김|김맛|LAVER SNACK|MARINE BOY/i],['cookie',{ko:'쿠키·파이',en:'Cookies & Pie',es:'Galletas y Pastel'},/COOKIE|PIE|PEPERO|YAKGWA|약과|BISCUIT|ROLL SNACK/i],['choco',{ko:'초코·캔디',en:'Choco & Candy',es:'Choco y Dulces'},/CHOCO|CANDY|CARAMEL|초코|사탕|MALA/i],['nuts',{ko:'견과',en:'Nuts',es:'Nueces'},/ALMOND|PEANUT|아몬드|땅콩/i],['chips',{ko:'과자·칩',en:'Chips & Snacks',es:'Papas y Snacks'},/./i]],
+ beverages:[['ade',{ko:'에이드',en:'Ade',es:'Ade'},/ADE|에이드/i],['juice',{ko:'주스·과즙',en:'Juice',es:'Jugo'},/JUICE|PEAR|MANGO|과즙|주스/i],['soda',{ko:'탄산',en:'Soda',es:'Refresco'},/CIDER|SODA|MILKIS|SOFT DRINK|사이다|탄산/i],['milk',{ko:'우유·유음료',en:'Milk Drinks',es:'Bebidas Lácteas'},/MILK|우유|YOGURT|DAIRY/i],['traditional',{ko:'전통·기타음료',en:'Traditional & Other',es:'Tradicional y Otros'},/./i]],
+ tea:[['coffee',{ko:'커피',en:'Coffee',es:'Café'},/COFFEE|AMERICANO|LATTE|커피|아메리카노/i],['tea',{ko:'차',en:'Tea',es:'Té'},/./i]],
+ kimchi:[['kimchi',{ko:'김치',en:'Kimchi',es:'Kimchi'},/KIMCHI|김치/i],['pickle',{ko:'단무지·절임',en:'Pickles',es:'Encurtidos'},/DANMUJI|PICKLED|단무지|절임|장아찌|RADISH/i],['jeotgal',{ko:'젓갈',en:'Salted Seafood',es:'Mariscos Salados'},/SALTED|젓|새우젓|오징어젓|OYSTER|SQUID|SHRIMP|OCTOPUS/i],['banchan',{ko:'반찬·기타',en:'Side Dishes',es:'Guarniciones'},/./i]],
+ frozen:[['dumpling',{ko:'만두',en:'Dumplings',es:'Dumplings'},/DUMPLING|GYOZA|MANDU|WONTON|만두|교자/i],['icecream',{ko:'아이스크림',en:'Ice Cream',es:'Helado'},/MELONA|SAMANCO|ICE|아이스|POLAPO|SLUSH|POPSICLE|SCREWBAR|PAPICO|BAR\b/i],['fishcake',{ko:'어묵·해산물',en:'Fish Cake & Seafood',es:'Pescado y Mariscos'},/FISH CAKE|CRAB|어묵|맛살|IMITATION/i],['etc',{ko:'기타 냉동',en:'Other Frozen',es:'Otros Congelados'},/./i]],
+ ready:[['topokki',{ko:'떡볶이',en:'Tteokbokki',es:'Tteokbokki'},/TOPOKKI|RAPOKKI|떡볶이/i],['cookedrice',{ko:'즉석밥',en:'Cooked Rice',es:'Arroz Listo'},/COOKED.*RICE|RICE BOWL|COOKED BROWN|COOKED WHITE|COOKED BLACK|즉석밥|햇반/i],['porridge',{ko:'죽',en:'Porridge',es:'Gachas'},/PORRIDGE|죽/i],['ricecake',{ko:'떡',en:'Rice Cake',es:'Pastel de Arroz'},/RICE CAKE|떡/i],['soup',{ko:'국·탕',en:'Soup',es:'Sopa'},/SOUP|BROTH|국|탕/i],['etc',{ko:'기타 간편식',en:'Other Meals',es:'Otras Comidas'},/./i]],
+ rice:[['rice',{ko:'쌀',en:'Rice',es:'Arroz'},/RICE/i],['grain',{ko:'잡곡',en:'Grains',es:'Granos'},/./i]],
+ dairy:[['tofu',{ko:'두부',en:'Tofu',es:'Tofu'},/TOFU|BEAN CURD|두부/i],['egg',{ko:'계란',en:'Eggs',es:'Huevos'},/./i]],
+ meat:[['beef',{ko:'소고기',en:'Beef',es:'Res'},/BEEF|소고기|갈비|SHORT RIB/i],['pork',{ko:'돼지',en:'Pork',es:'Cerdo'},/PORK|돼지|SAUSAGE|소세지|VIENNA/i],['chicken',{ko:'닭',en:'Chicken',es:'Pollo'},/CHICKEN|닭/i],['seafood',{ko:'해산물',en:'Seafood',es:'Mariscos'},/./i]],
+ produce:[['fruit',{ko:'과일',en:'Fruit',es:'Fruta'},/BERRY|MANGO|PINEAPPLE|LEMON|APPLE|과일|딸기|BLUEBERRY|BLACKBERRY|STRAWBERRY/i],['mushroom',{ko:'버섯',en:'Mushroom',es:'Hongos'},/MUSHROOM|버섯|ENOKI/i],['veg',{ko:'채소',en:'Vegetables',es:'Verduras'},/./i]],
+ seasonings:[['soysauce',{ko:'간장',en:'Soy Sauce',es:'Salsa de Soya'},/SOY SAUCE|간장/i],['paste',{ko:'장류',en:'Paste',es:'Pasta'},/PASTE|고추장|된장/i],['fishsauce',{ko:'액젓',en:'Fish Sauce',es:'Salsa de Pescado'},/FISH SAUCE|ANCHOVY|액젓|멸치/i],['oilsalt',{ko:'기름·소금',en:'Oil & Salt',es:'Aceite y Sal'},/OIL|SALT|기름|소금|PERILLA/i],['powder',{ko:'가루·양념',en:'Powder & Spice',es:'Polvo y Especias'},/POWDER|CURRY|SEASONING|가루|양념|다시다|MSG/i],['cookingwine',{ko:'맛술',en:'Cooking Wine',es:'Vino de Cocina'},/COOKING WINE|MIRIM|MIRIN|맛술/i],['sauce',{ko:'소스·기타',en:'Sauce & Other',es:'Salsa y Otros'},/./i]],
+ seaweed:[['laver',{ko:'김',en:'Roasted Laver',es:'Alga Tostada'},/ROASTED|LAVER|SEAWEED|김/i],['dried',{ko:'건어물·해조',en:'Dried & Kelp',es:'Secos y Kelp'},/./i]],
+ houseware:[['cook',{ko:'조리도구',en:'Cookware',es:'Utensilios'},/POT|PAN|STEAMER|GRILL|KNIFE|냄비|팬/i],['tableware',{ko:'식기·수저',en:'Tableware',es:'Vajilla'},/CHOPSTICK|SPOON|BOWL|CUP|젓가락|숟가락|그릇/i],['living',{ko:'생활용품',en:'Household',es:'Hogar'},/./i]],
+ bakery:[['bread',{ko:'빵·디저트',en:'Bread & Dessert',es:'Pan y Postre'},/BREAD|BUN|CREAM|CAKE|DESSERT|빵|디저트|케이크/i],['flour',{ko:'가루·믹스',en:'Flour & Mix',es:'Harina y Mezcla'},/./i]],
+ pantry:[['oil',{ko:'기름',en:'Oil',es:'Aceite'},/OIL|기름|참기름/i],['can',{ko:'통조림',en:'Canned',es:'Enlatados'},/CAN\b|TUNA|통조림/i],['sugarflour',{ko:'설탕·조청',en:'Sugar & Syrup',es:'Azúcar y Jarabe'},/SUGAR|설탕|SYRUP|엿/i],['beans',{ko:'콩·깨',en:'Beans & Sesame',es:'Frijoles y Sésamo'},/BEAN|BARLEY|PEA|서리태|콩|보리|SESAME|참깨/i],['etc',{ko:'기타 식료품',en:'Other Grocery',es:'Otros'},/./i]],
+ alcohol:[['all',{ko:'전체',en:'All',es:'Todo'},/./i]],
+};
+var CAT_MEGA_ORDER = ['ramyun','snacks','bakery','frozen','ready','beverages','tea','alcohol','kimchi','seaweed','rice','dairy','meat','produce','seasonings','pantry','houseware'];
+function subcatOf(p){ try{ var list=window.SUBCATS&&SUBCATS[p.category]; if(!list) return null; var s=((p.name||'')+' '+(p.nameKr||'')); for(var i=0;i<list.length;i++){ if(list[i][2].test(s)) return list[i][0]; } }catch(e){} return null; }
+function catNameL(c){ var cat=CATEGORIES[c]; if(!cat) return c; return state.lang==='en'?(cat.en||cat.kr):state.lang==='es'?(cat.es||cat.kr):(cat.kr||cat.en); }
+function renderCatMega(){
+  var mainEl=document.getElementById('catMegaMain'); if(!mainEl||typeof CATEGORIES==='undefined') return;
+  var counts={}; PRODUCTS.forEach(function(p){ counts[p.category]=(counts[p.category]||0)+1; });
+  var cats=CAT_MEGA_ORDER.filter(function(c){ return CATEGORIES[c] && counts[c]>0; });
+  mainEl.innerHTML=cats.map(function(c){ var cat=CATEGORIES[c]; return '<div class="cmm-item" data-cat="'+c+'" onmouseenter="openMegaCat(\''+c+'\')" onclick="selectCat(\''+c+'\')"><span class="cmm-ic">'+(cat.icon||'')+'</span><span class="cmm-nm">'+catNameL(c)+'</span><span class="cmm-arrow">›</span></div>'; }).join('');
+  if(cats.length) openMegaCat(cats[0]);
+}
+function openMegaCat(cat){
+  var subEl=document.getElementById('catMegaSub'); if(!subEl) return;
+  var items=document.querySelectorAll('#catMegaMain .cmm-item'); for(var i=0;i<items.length;i++){ items[i].classList.toggle('active', items[i].getAttribute('data-cat')===cat); }
+  var list=(window.SUBCATS&&SUBCATS[cat])||[];
+  var sc={}; PRODUCTS.forEach(function(p){ if(p.category===cat){ var k=subcatOf(p); if(k) sc[k]=(sc[k]||0)+1; } });
+  var seeAll=(state.lang==='ko'?'전체 보기':state.lang==='es'?'Ver todo':'See all');
+  var html='<div class="cms-head">'+catNameL(cat)+'</div>';
+  html+=list.filter(function(it){return (sc[it[0]]||0)>0;}).map(function(it){ var lb=it[1][state.lang]||it[1].en; return '<div class="cms-item" onclick="selectCat(\''+cat+'\',\''+it[0]+'\')">'+lb+'<span class="cms-ct">'+(sc[it[0]]||0)+'</span></div>'; }).join('');
+  html+='<div class="cms-item cms-all" onclick="selectCat(\''+cat+'\')">'+seeAll+' →</div>';
+  subEl.innerHTML=html;
+}
+function toggleCatMega(e){ if(e){e.preventDefault();e.stopPropagation();} var m=document.getElementById('catMega'); if(!m) return; var willOpen=!m.classList.contains('open'); if(willOpen){ var btn=document.querySelector('.cat-mega-btn'); if(btn){ var r=btn.getBoundingClientRect(); m.style.top=(r.bottom+6)+'px'; m.style.left=Math.max(4,r.left)+'px'; } renderCatMega(); } m.classList.toggle('open',willOpen); }
+function closeCatMega(){ var m=document.getElementById('catMega'); if(m) m.classList.remove('open'); }
+function selectCat(cat, sub){ state.browseMode='all'; state.brandFilter=null; state.category=cat; state.subcat=sub||null; closeCatMega(); navigate('browse'); window.scrollTo({top:0,behavior:'smooth'}); }
+document.addEventListener('click', function(e){ var w=document.getElementById('catMegaWrap'); if(w && !w.contains(e.target)) closeCatMega(); });
+
 // ==================== INIT ====================
 setLang(state.lang);
 classifyAlcohol();
 render();
+renderCatMega();
 renderModeBar();
 
 // ==================== LIVE CATALOG OVERRIDES (staff Product Manager) ====================
