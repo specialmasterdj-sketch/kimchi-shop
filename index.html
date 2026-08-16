@@ -1120,9 +1120,12 @@ input, select { font-family: inherit; }
 </div>
 
 <style>
-.cat-mega-wrap { position: relative; flex-shrink: 0; margin-right: 6px; }
-.cat-mega-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: #fff; border: none; border-radius: 8px; padding: 7px 14px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; }
-.cat-mega-btn .cmb-chev { font-size: 10px; }
+.cat-mega-wrap { position: relative; flex-shrink: 0; align-self: stretch; display: flex; margin-right: 14px; }
+.cat-mega-btn { display: inline-flex; align-items: center; gap: 9px; align-self: stretch; background: var(--red); color: #fff; border: none; border-radius: 0; padding: 0 20px; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; cursor: pointer; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
+.cat-mega-btn:hover { background: var(--red-dark); }
+.cat-mega-btn .cmb-bars { font-size: 15px; }
+.cat-mega-btn .cmb-chev { font-size: 10px; opacity: 0.85; transition: transform 0.2s; }
+.cat-mega.open ~ .cat-mega-btn .cmb-chev, .cat-mega-wrap .cat-mega.open + .cmb-chev { transform: rotate(180deg); }
 .cat-mega { display: none; position: fixed; top: 96px; left: 8px; z-index: 4000; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.18); overflow: hidden; }
 .cat-mega.open { display: flex; }
 .cat-mega-main { width: 260px; max-height: 78vh; overflow-y: auto; border-right: 1px solid #f0f0f0; padding: 8px 0; background: #fafafa; }
