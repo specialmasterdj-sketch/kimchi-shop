@@ -2278,7 +2278,7 @@ function renderHomeSidebar() {
   html += `<div class="sidebar-item" onclick="state.browseMode='all';state.brandFilter=null;state.subcat=null;state.category=null;navigate('browse')">
     <span class="sidebar-icon">🛒</span>${allLbl}
   </div>`;
-  const allCats = Object.keys(CATEGORIES);
+  const allCats = (typeof CAT_MEGA_ORDER!=='undefined'?CAT_MEGA_ORDER.filter(c=>CATEGORIES[c]).concat(Object.keys(CATEGORIES).filter(c=>CAT_MEGA_ORDER.indexOf(c)<0)):Object.keys(CATEGORIES));
   const catCounts = {};
   PRODUCTS.forEach(p => { catCounts[p.category] = (catCounts[p.category] || 0) + 1; });
   const validCats = allCats.filter(c => catCounts[c] > 0);
@@ -2297,7 +2297,7 @@ function renderHome() {
   // catGrid section removed (duplicate of sidebar) — skip if not present
   const catGridEl = document.getElementById('catGrid');
   if (catGridEl) {
-    const mainCats = ['ramyun','snacks','beverages','alcohol','tea','frozen','ready','kimchi','rice','meat','produce','dairy','seaweed','seasonings','pantry','bakery','houseware'];
+    const mainCats = ['ramyun','snacks','bakery','beverages','alcohol','tea','frozen','ready','kimchi','rice','meat','produce','dairy','seaweed','seasonings','pantry','houseware'];
     const catHtml = mainCats.map(catId => {
       const cat = CATEGORIES[catId];
       if (!cat) return '';
@@ -2352,7 +2352,7 @@ function renderCatTiles() {
   const counts = {};
   PRODUCTS.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
   // Hmart-like ordering of departments
-  const order = ['kimchi','ramyun','snacks','frozen','beverages','alcohol','tea','ready','rice','meat','produce','seaweed','dairy','seasonings','pantry','bakery','houseware'];
+  const order = ['kimchi','ramyun','snacks','bakery','frozen','beverages','alcohol','tea','ready','rice','meat','produce','seaweed','dairy','seasonings','pantry','houseware'];
   const cats = order.filter(c => CATEGORIES[c] && counts[c] > 0);
   el.innerHTML = cats.map(catId => {
     const cat = CATEGORIES[catId];
@@ -2417,7 +2417,7 @@ function getBrowseHero() {
 
 function renderBrowse() {
   // Sidebar
-  const allCats = Object.keys(CATEGORIES);
+  const allCats = (typeof CAT_MEGA_ORDER!=='undefined'?CAT_MEGA_ORDER.filter(c=>CATEGORIES[c]).concat(Object.keys(CATEGORIES).filter(c=>CAT_MEGA_ORDER.indexOf(c)<0)):Object.keys(CATEGORIES));
   const catCounts = {};
   PRODUCTS.forEach(p => { catCounts[p.category] = (catCounts[p.category] || 0) + 1; });
 
