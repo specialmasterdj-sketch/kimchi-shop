@@ -3625,6 +3625,7 @@ async function placeOrder() {
 
 // ==================== WELCOME BASKET MODAL ====================
 function showWelcomeIfFirstVisit() {
+  return; // 환영 팝업 비활성화 (전무님 지시)
   const claimed = localStorage.getItem('kimchi_welcome_claimed');
   if (claimed) return;
   setTimeout(() => {
