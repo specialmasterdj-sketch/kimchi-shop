@@ -4340,9 +4340,9 @@ renderModeBar();
     injectStyle();
     var lang = 'en'; try { lang = (state && state.lang) || 'en'; } catch(e){}
     var T = {
-      ko: { badge:'GRAND OPENING', t:'곧 오픈!', s:'김치마트 온라인 쇼핑몰이<br>드디어 문을 엽니다', tag:'새로운 쇼핑의 시작 — 기대해 주세요!', b:'🎁 미리 둘러보기' },
-      en: { badge:'GRAND OPENING', t:'Opening Soon!', s:'The Kimchi Mart online store<br>is almost here', tag:'A whole new way to shop — stay tuned!', b:'🎁 Take a Peek' },
-      es: { badge:'GRAN APERTURA', t:'¡Muy Pronto!', s:'La tienda en línea de Kimchi Mart<br>ya casi está lista', tag:'Una nueva forma de comprar — ¡atento!', b:'🎁 Echar un Vistazo' }
+      ko: { badge:'GRAND OPENING', t:'곧 오픈!', s:'온라인 주문은 아직 준비 중입니다.<br>상품과 가격은 둘러보시고 구매는 매장에서!', tag:'주문·결제·배달·멤버십 가입은 곧 열려요', b:'🛒 상품 둘러보기' },
+      en: { badge:'GRAND OPENING', t:'Opening Soon!', s:'Online ordering is not open yet.<br>Browse products &amp; prices — shop in store today!', tag:'Ordering, payment, delivery &amp; sign-ups coming soon', b:'🛒 Browse Products' },
+      es: { badge:'GRAN APERTURA', t:'¡Muy Pronto!', s:'Los pedidos en línea aún no están abiertos.<br>Vea productos y precios — compre en la tienda.', tag:'Pedidos, pagos, entrega y membresías muy pronto', b:'🛒 Ver Productos' }
     };
     var t = T[lang] || T.en;
     var colors = ['#FFD54A','#FF8A3D','#FF4D67','#2E7D32','#1E88E5','#FF4081','#00BFA5'];
@@ -4581,5 +4581,93 @@ renderModeBar();
   </div>
 </div>
 
+
+<!-- ═══ 온라인 주문 준비 중 안내 — 정식 오픈 때 ONLINE_ORDERING_OPEN = true 로 바꾸면 주문·결제·가입이 다시 열립니다 ═══ -->
+<script>
+var ONLINE_ORDERING_OPEN = false;
+(function () {
+  if (ONLINE_ORDERING_OPEN) return;
+  var STORES = [
+    ['Miami (Palmetto Bay)', '15355 S Dixie Hwy', '(305) 964-5083', '+13059645083'],
+    ['Pembroke Pines', '11230 Pines Blvd', '(754) 217-4919', '+17542174919'],
+    ['Hollywood', '2420 N Dixie Hwy', '(754) 210-7965', '+17542107965'],
+    ['Coral Springs', '2693 N University Dr', '(954) 688-9437', '+19546889437'],
+    ['Fort Lauderdale (Las Olas)', '510 NW 7th Ave', '(754) 216-0106', '+17542160106']
+  ];
+  var T = {
+    en: { bar: '🕒 <b>Online ordering is coming soon.</b> Browse products &amp; prices here — to buy, please visit any Kimchi Mart store (open daily 8AM–10PM).',
+          title: 'Online ordering is not open yet',
+          body: 'Our online store is still being prepared. You can browse products and prices, but <b>orders, payments, pickup, delivery and membership sign-ups are not available online yet.</b>',
+          how: 'To shop today, visit or call any of our stores — open every day 8AM–10PM:',
+          ok: 'Keep browsing', cart: 'This is your shopping list — online checkout is coming soon. Show it at any Kimchi Mart store.', btn: '🕒 Online checkout — Coming soon' },
+    ko: { bar: '🕒 <b>온라인 주문은 준비 중입니다.</b> 상품과 가격은 여기서 둘러보시고, 구매는 가까운 김치마트 매장에서 해 주세요 (매일 8AM–10PM).',
+          title: '온라인 주문은 아직 준비 중입니다',
+          body: '김치마트 온라인 쇼핑몰은 지금 준비 중입니다. 상품과 가격은 보실 수 있지만 <b>주문·결제·픽업·배달·멤버십 가입은 아직 온라인으로 하실 수 없습니다.</b>',
+          how: '지금 구매하시려면 가까운 매장을 방문하거나 전화해 주세요 — 매일 8AM–10PM:',
+          ok: '계속 둘러보기', cart: '장보기 목록입니다 — 온라인 결제는 준비 중이에요. 매장에서 이 목록을 보여 주세요.', btn: '🕒 온라인 결제 — 준비 중' },
+    es: { bar: '🕒 <b>Los pedidos en línea llegarán pronto.</b> Vea productos y precios aquí — para comprar, visite cualquier tienda Kimchi Mart (todos los días 8AM–10PM).',
+          title: 'Los pedidos en línea aún no están disponibles',
+          body: 'Nuestra tienda en línea aún se está preparando. Puede ver productos y precios, pero <b>los pedidos, pagos, recogida, entrega y membresías aún no están disponibles en línea.</b>',
+          how: 'Para comprar hoy, visite o llame a cualquiera de nuestras tiendas — todos los días 8AM–10PM:',
+          ok: 'Seguir viendo', cart: 'Esta es su lista de compras — el pago en línea llegará pronto. Muéstrela en cualquier tienda Kimchi Mart.', btn: '🕒 Pago en línea — Próximamente' }
+  };
+  function L() { var l = 'en'; try { l = (state && state.lang) || 'en'; } catch (e) {} return T[l] || T.en; }
+
+  function notice() {
+    var t = L(), old = document.getElementById('kmOrderNotice'); if (old) old.remove();
+    var ov = document.createElement('div');
+    ov.id = 'kmOrderNotice';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:100001;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(15,10,10,.66)';
+    ov.innerHTML = '<div style="background:#fff;max-width:440px;width:100%;border-radius:20px;padding:26px 24px 22px;box-shadow:0 24px 60px rgba(0,0,0,.4);max-height:calc(100vh - 36px);overflow:auto">' +
+      '<div style="font-size:40px;line-height:1">🕒</div>' +
+      '<div style="font-size:21px;font-weight:900;margin:10px 0 8px;color:#B71C1C">' + t.title + '</div>' +
+      '<p style="font-size:14.5px;line-height:1.55;color:#333;margin:0 0 12px">' + t.body + '</p>' +
+      '<p style="font-size:13.5px;font-weight:700;color:#555;margin:0 0 8px">' + t.how + '</p>' +
+      STORES.map(function (s) {
+        return '<a href="tel:' + s[3] + '" style="display:flex;justify-content:space-between;gap:10px;padding:9px 12px;border:1px solid #eee;border-radius:10px;margin-bottom:6px;text-decoration:none;color:#222;font-size:13.5px">' +
+          '<span><b>' + s[0] + '</b><br><span style="color:#777">' + s[1] + '</span></span><span style="color:#2E7D32;font-weight:800;white-space:nowrap;align-self:center">📞 ' + s[2] + '</span></a>';
+      }).join('') +
+      '<button type="button" id="kmOrderNoticeOk" style="width:100%;margin-top:10px;border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:800;color:#fff;background:#D32F2F;cursor:pointer">' + t.ok + '</button></div>';
+    document.body.appendChild(ov);
+    var close = function () { ov.remove(); };
+    document.getElementById('kmOrderNoticeOk').onclick = close;
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+  }
+  window.kmOrderNotice = notice;
+
+  // 주문·결제·배달앱·멤버십 가입으로 가는 길은 모두 안내창으로
+  window.openCheckout = notice;
+  window.placeOrder = notice;
+  window.redirectToPartner = notice;
+  window.upgradeTier = notice;
+  window.openSignup = notice;
+
+  // 장바구니: 맨 위 안내 + 결제 버튼을 "준비 중" 으로
+  var _renderCart = window.renderCart;
+  window.renderCart = function () {
+    _renderCart();
+    var box = document.getElementById('cartContent'); if (!box) return;
+    var t = L();
+    if (box.querySelector('.cart-item')) box.insertAdjacentHTML('afterbegin', '<div style="background:#FFF8E1;border:1px solid #F0D9A0;border-radius:12px;padding:12px 14px;margin:0 0 12px;font-size:13.5px;font-weight:700;color:#6b4e00">🕒 ' + t.cart + '</div>');
+    var b = box.querySelector('.checkout-btn');
+    if (b) { b.textContent = t.btn; b.style.background = '#9e9e9e'; b.style.boxShadow = 'none'; }
+  };
+
+  // 모든 화면 맨 위 안내 띠
+  function bar() {
+    var el = document.getElementById('kmOrderBar');
+    if (!el) {
+      el = document.createElement('div'); el.id = 'kmOrderBar';
+      el.style.cssText = 'background:#FFD54A;color:#3a2a00;font-size:13px;line-height:1.45;text-align:center;padding:8px 14px;cursor:pointer';
+      el.onclick = notice;
+      document.body.insertBefore(el, document.body.firstChild);
+    }
+    el.innerHTML = L().bar;
+  }
+  bar();
+  setInterval(function () { var el = document.getElementById('kmOrderBar'); if (el && el.dataset.l !== (window.state && state.lang)) { el.dataset.l = window.state && state.lang; bar(); } }, 1000);
+  try { if (state.page === 'cart') render(); } catch (e) {}
+})();
+</script>
 </body>
 </html>
