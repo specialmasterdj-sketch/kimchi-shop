@@ -1570,6 +1570,8 @@ function pickStore(idx) {
   localStorage.setItem('kimchi_store', s.name);
   const el = document.getElementById('currentStoreName');
   if (el) el.textContent = s.name;
+  // 상단 'Pickup at' 매장과 초록 픽업 띠·결제 매장을 같은 값으로
+  if (typeof coState !== 'undefined') { coState.store = idx; saveDelivery(); renderModeBar(); }
   closeStorePicker();
   if (typeof showToast === 'function') showToast('📍 Pickup at ' + s.name);
   else if (typeof showRecipeToast === 'function') showRecipeToast('📍 Pickup at ' + s.name);
@@ -1580,6 +1582,9 @@ window.addEventListener('load', () => {
   const current = localStorage.getItem('kimchi_store') || KIMCHI_STORES[0];
   const el = document.getElementById('currentStoreName');
   if (el) el.textContent = current;
+  // 저장된 상단 매장을 초록 픽업 띠에도 맞춤
+  const idx = STORES.findIndex(s => s.name === current);
+  if (idx >= 0 && coState.store !== idx) { coState.store = idx; saveDelivery(); renderModeBar(); }
 });
 
 // ==================== PROMO COUNTDOWN ====================
@@ -2997,6 +3002,13 @@ function renderModeBar() {
   if (!bar) return;
   const m = DELIVERY_MODES[coState.deliveryMethod] || DELIVERY_MODES['pickup'];
   const storeLabel = coState.type === 'pickup' ? (STORES[coState.store]?.name || '') : '';
+  // 결제 화면 등에서 매장을 바꿔도 상단 'Pickup at' 이 같이 바뀌도록
+  const cur = STORES[coState.store];
+  if (cur && !cur.comingSoon && document.readyState === 'complete') { // 첫 로딩 땐 상단에 저장된 매장이 우선
+    const hdr = document.getElementById('currentStoreName');
+    if (hdr) hdr.textContent = cur.name;
+    try { localStorage.setItem('kimchi_store', cur.name); } catch(e) {}
+  }
   const changeLbl = state.lang === 'ko' ? '변경' : state.lang === 'es' ? 'Cambiar' : 'Change';
   const subText = coState.type === 'pickup'
     ? (state.lang === 'ko' ? `${storeLabel} 픽업` : state.lang === 'es' ? `Recogida en ${storeLabel}` : `Pickup at ${storeLabel}`)
